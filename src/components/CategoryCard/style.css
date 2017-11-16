@@ -1,0 +1,17 @@
+.item {
+  position: relative;
+}
+
+/* override semantic ui styles */
+/* item header */
+.ui.header {
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  left: 0;
+  right: 0;
+}
+/* image */
+.ui.image.big {
+  width: 100vw;
+}

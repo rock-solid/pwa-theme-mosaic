@@ -1,0 +1,21 @@
+/* override semantic ui styles */
+/* GRID */
+.ui.grid > .row {
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.ui.grid > .row:first-child {
+  padding-top: 1em;
+}
+.ui.grid > .row > .column {
+  padding-left: 0;
+  padding-right: 0;
+}
+.ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
+  box-shadow: none;
+}
+.slick-next,
+.slick-prev {
+  display: none !important;
+}
