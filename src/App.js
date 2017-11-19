@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import CategoriesCarousel from './views/CategoriesCarousel/index';
-// import PostsCarousel from './views/PostsCarousel/index';
 import Test from './components/test';
 
 class App extends Component {
@@ -12,7 +11,6 @@ class App extends Component {
         <div className="carousel-container">
           {/* <Test /> */}
           <CategoriesCarousel id="categories-carousel" />
-          {/* <PostsCarousel id="posts-carousel" /> */}
         </div>
       </div>
     );

@@ -8,17 +8,21 @@ import { fetchCategories } from './action';
 import { getCategories } from './reducer';
 
 import CategoriesList from '../../components/CategoriesList/index';
+import './style.css';
 
 class CategoriesCarousel extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(fetchCategories);
   }
-  createCategoriesList(chunkSize) {
+  createCategoriesList(homeChunkSize, regularChunkSize) {
+    // get the subset of categories for home card
     const categoriesList = [];
+    categoriesList.push(this.props.categories.slice(0, homeChunkSize));
+
     let i;
-    for (i = 0; i < this.props.categories.length; i += chunkSize) {
-      categoriesList.push(this.props.categories.slice(i, i + chunkSize));
+    for (i = homeChunkSize; i < this.props.categories.length; i += regularChunkSize) {
+      categoriesList.push(this.props.categories.slice(i, i + regularChunkSize));
     }
     return categoriesList;
   }
@@ -34,13 +38,12 @@ class CategoriesCarousel extends Component {
       slidesToScroll: 1,
     };
 
-    const listedCategories = this.createCategoriesList(3);
-
+    const categoriesList = this.createCategoriesList(3, 5);
     return (
       <Slider {...settings}>
-        {listedCategories.map((categoriesList, k) => (
-          <div key={k}>
-            <CategoriesList categoriesList={categoriesList} />
+        {categoriesList.map((categoriesChunk, k) => (
+          <div key={Math.random(k)}>
+            <CategoriesList prop={categoriesChunk} />
           </div>
         ))}
       </Slider>

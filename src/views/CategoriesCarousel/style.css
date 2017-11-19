@@ -1,0 +1,25 @@
+.carousel-container {
+  height: 100vh;
+}
+
+.slick-slider,
+.slick-list,
+.slick-track,
+div {
+  height: 100%;
+}
+
+.slick-side {
+  height: 110%;
+}
+/* .header {
+  height: unset;
+} */
+
+.row {
+  height: 34%;
+}
+
+.slick-dots {
+  bottom: 30px;
+}
