@@ -5,6 +5,7 @@
 /* override semantic ui styles */
 /* item header */
 .ui.header {
+  color: #ffffff;
   position: absolute;
   z-index: 1;
   top: 10%;
@@ -14,4 +15,9 @@
 /* image */
 .ui.image.big {
   width: 100vw;
+}
+.item {
+  background-image: url("http://lorempixel.com/300/300/cats/");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
