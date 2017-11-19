@@ -1,12 +1,12 @@
 /* override semantic ui styles */
 /* GRID */
+.ui.grid {
+  margin: 0;
+}
 .ui.grid > .row {
   justify-content: center;
   padding-top: 0;
   padding-bottom: 0;
-}
-.ui.grid > .row:first-child {
-  padding-top: 1em;
 }
 .ui.grid > .row > .column {
   padding-left: 0;
@@ -18,4 +18,7 @@
 .slick-next,
 .slick-prev {
   display: none !important;
+}
+.divided.two > .row > .column:only-child {
+  width: 100vw;
 }

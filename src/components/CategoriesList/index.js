@@ -1,53 +1,37 @@
 import React, { Component } from 'react';
-import { Grid, GridColumn, GridRow } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import CategoryCard from '../CategoryCard/index';
 import './style.css';
 
-export default class CategoriesList extends Component {
-  render() {
-    const { categoriesList } = this.props;
+import FiveCards from './FiveCards';
+import FourCards from './FourCards';
+import ThreeCards from './ThreeCards';
+import TwoCards from './TwoCards';
+import OneCard from './OneCard';
 
-    return (
-      <div>
-        {categoriesList.length % 3 === 0 ? (
-          <Grid columns={2} divided>
-            <GridRow>
-              <GridColumn>
-                <CategoryCard category={categoriesList[0]} key={Math.random()} />
-              </GridColumn>
-              <GridColumn>
-                <CategoryCard category={categoriesList[1]} key={Math.random()} />
-              </GridColumn>
-            </GridRow>
-            <GridRow>
-              <CategoryCard category={categoriesList[2]} key={Math.random()} />
-            </GridRow>
-          </Grid>
-        ) : categoriesList.length % 3 === 1 ? (
-          <Grid>
-            <GridRow>
-              <CategoryCard category={categoriesList[0]} key={Math.random()} />
-            </GridRow>
-          </Grid>
-        ) : (
-          <Grid>
-            <GridRow>
-              <GridColumn>
-                <CategoryCard category={categoriesList[0]} key={Math.random()} />
-              </GridColumn>
-              <GridColumn>
-                <CategoryCard category={categoriesList[1]} key={Math.random()} />
-              </GridColumn>
-            </GridRow>
-          </Grid>
-        )}
-      </div>
-    );
+export default class CategoriesList extends Component {
+  getCards() {
+    switch (this.props.prop.length % 5) {
+    case 0:
+      return <FiveCards categoriesList={this.props.prop} />;
+    case 1:
+      return <OneCard categoriesList={this.props.prop} />;
+    case 2:
+      return <TwoCards categoriesList={this.props.prop} />;
+    case 3:
+      return <ThreeCards categoriesList={this.props.prop} />;
+    case 4:
+      return <FourCards categoriesList={this.props.prop} />;
+    default:
+      return null;
+    }
+  }
+
+  render() {
+    return <div>{this.props.prop.length !== 0 ? this.getCards() : ''}</div>;
   }
 }
 
 CategoriesList.propTypes = {
-  categoriesList: PropTypes.array.isRequired,
+  prop: PropTypes.array.isRequired,
 };
