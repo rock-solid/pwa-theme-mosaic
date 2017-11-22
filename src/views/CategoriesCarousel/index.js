@@ -40,13 +40,15 @@ class CategoriesCarousel extends Component {
 
     const categoriesList = this.createCategoriesList(3, 5);
     return (
-      <Slider {...settings}>
-        {categoriesList.map((categoriesChunk, k) => (
-          <div key={Math.random(k)}>
-            <CategoriesList prop={categoriesChunk} />
-          </div>
-        ))}
-      </Slider>
+      <div className="carousel-container">
+        <Slider {...settings}>
+          {categoriesList.map((categoriesChunk, k) => (
+            <div key={Math.random(k)}>
+              <CategoriesList prop={categoriesChunk} />
+            </div>
+          ))}
+        </Slider>
+      </div>
     );
   }
 }
