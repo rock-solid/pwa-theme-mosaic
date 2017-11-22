@@ -12,10 +12,10 @@ export const receivePosts = posts => ({
   posts,
 });
 
-export const fetchPosts = (dispatch) => {
+export const fetchPosts = categoryId => (dispatch) => {
   dispatch(requestPosts());
 
-  return fetch(config.API_POSTS_URL)
+  return fetch(config.API_POSTS_URL + '?categories=' + categoryId)
     .then(response => response.json())
     .then(json => dispatch(receivePosts(json)))
     .catch(() => {

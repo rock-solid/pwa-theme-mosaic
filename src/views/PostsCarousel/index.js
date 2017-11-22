@@ -12,7 +12,7 @@ import PostsList from '../../components/PostsList/index';
 class PostsCarousel extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchPosts);
+    dispatch(fetchPosts(this.props.match.params.categoryId));
   }
   createPostsList(chunkSize) {
     const postsList = [];
@@ -33,11 +33,10 @@ class PostsCarousel extends Component {
     };
 
     const listedPosts = this.createPostsList(2);
-
     return (
       <Slider {...settings}>
-        {listedPosts.map((postsList, k) => (
-          <div key={k}>
+        {listedPosts.map(postsList => (
+          <div key={Math.random()}>
             <PostsList postsList={postsList} />
           </div>
         ))}
@@ -49,6 +48,7 @@ class PostsCarousel extends Component {
 PostsCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   posts: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired, //validare mai ok
 };
 const mapStateToProps = state => ({
   posts: getPosts(state.posts),
