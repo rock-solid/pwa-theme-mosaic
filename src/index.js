@@ -19,8 +19,8 @@ render(
         <Switch>
           <Route exact path="/" component={CategoriesCarousel} />
           <Route path="/categories" component={CategoriesCarousel} />
-          <Route path="/category/:categoryId" component={PostsCarousel} />
-          <Route path="/post/:postId" component={PostView} />
+          <Route path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
+          <Route path="/post/:postSlug/:postId" component={PostView} />
         </Switch>
       </App>
     </HashRouter>
