@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchCategories } from './action';
-import { getCategories } from './reducer';
+import { getCategories, categoryPropType } from './reducer';
 
 import CategoriesList from '../../components/CategoriesList/index';
 import './style.css';
@@ -55,7 +55,7 @@ class CategoriesCarousel extends Component {
 
 CategoriesCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.arrayOf(categoryPropType).isRequired,
 };
 const mapStateToProps = state => ({
   categories: getCategories(state.categories),

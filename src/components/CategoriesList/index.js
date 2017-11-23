@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './style.css';
-
+import { categoryPropType } from '../../views/CategoriesCarousel/reducer';
 import FiveCards from './FiveCards';
 import FourCards from './FourCards';
 import ThreeCards from './ThreeCards';
@@ -33,5 +33,5 @@ export default class CategoriesList extends Component {
 }
 
 CategoriesList.propTypes = {
-  categoriesChunk: PropTypes.array.isRequired,
+  categoriesChunk: PropTypes.arrayOf(categoryPropType).isRequired,
 };

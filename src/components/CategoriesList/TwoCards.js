@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
+import { categoryPropType } from '../../views/CategoriesCarousel/reducer';
 import CategoryCard from '../CategoryCard/index';
 
 const TwoCards = props => (
@@ -18,7 +19,7 @@ const TwoCards = props => (
 );
 
 TwoCards.propTypes = {
-  categoriesList: PropTypes.array.isRequired,
+  categoriesList: PropTypes.arrayOf(categoryPropType).isRequired,
 };
 
 export default TwoCards;

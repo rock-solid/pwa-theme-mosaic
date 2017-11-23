@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Item, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+
+import { categoryPropType } from '../../views/CategoriesCarousel/reducer';
 import './style.css';
 
 export default class CategoryCard extends Component {
@@ -18,7 +19,7 @@ export default class CategoryCard extends Component {
 }
 
 CategoryCard.propTypes = {
-  category: PropTypes.object.isRequired,
+  category: categoryPropType.isRequired,
 };
 CategoryCard.defaultProps = {
   tall: 0,
