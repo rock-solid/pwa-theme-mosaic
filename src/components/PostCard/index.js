@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image, Header, Container } from 'semantic-ui-react';
+import { Item } from 'semantic-ui-react';
+
+import './style.css';
 
 export default class PostCard extends Component {
   render() {
     const { post } = this.props;
-    const postSettings = {
-      fluid: true,
-    };
 
     return (
       <div>
-        <Card {...postSettings}>
-          <Card.Header as={Header}>{post.title.rendered}</Card.Header>
-          <Container>{post.excerpt.rendered}</Container>
-        </Card>
+        <Item className="posts">
+          <Item.Header>{post.title.rendered}</Item.Header>
+          <Item.Image size="large" src="http://via.placeholder.com/350x150" />
+          <Item.Description>
+            <p>{post.excerpt.rendered}</p>
+          </Item.Description>
+        </Item>
       </div>
     );
   }
