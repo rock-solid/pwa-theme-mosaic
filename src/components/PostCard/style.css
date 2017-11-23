@@ -1,0 +1,10 @@
+/* OVER RIDE semantic UI styles */
+/* Image Element */
+.ui.large.image {
+  width: 100%;
+}
+
+/* Item */
+.posts .header {
+  height: 10%;
+}
