@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import PostCard from '../PostCard/index';
+import SinglePost from './SinglePost';
+import DoublePost from './DoublePost';
 
 export default class CategoriesList extends Component {
+  getPosts() {
+    if (this.props.postsList.length % 2 === 0) {
+      return <DoublePost postsList={this.props.postsList} />;
+    }
+    return <SinglePost postsList={this.props.postsList} />;
+  }
   render() {
-    const { postsList } = this.props;
-    return <div>{postsList.map(post => <PostCard post={post} key={Math.random()} />)}</div>;
+    return <div>{this.getPosts()}</div>;
   }
 }
 
