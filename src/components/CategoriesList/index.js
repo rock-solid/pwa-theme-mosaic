@@ -11,27 +11,27 @@ import OneCard from './OneCard';
 
 export default class CategoriesList extends Component {
   getCards() {
-    switch (this.props.prop.length % 5) {
+    switch (this.props.categoriesChunk.length % 5) {
     case 0:
-      return <FiveCards categoriesList={this.props.prop} />;
+      return <FiveCards categoriesList={this.props.categoriesChunk} />;
     case 1:
-      return <OneCard categoriesList={this.props.prop} />;
+      return <OneCard categoriesList={this.props.categoriesChunk} />;
     case 2:
-      return <TwoCards categoriesList={this.props.prop} />;
+      return <TwoCards categoriesList={this.props.categoriesChunk} />;
     case 3:
-      return <ThreeCards categoriesList={this.props.prop} />;
+      return <ThreeCards categoriesList={this.props.categoriesChunk} />;
     case 4:
-      return <FourCards categoriesList={this.props.prop} />;
+      return <FourCards categoriesList={this.props.categoriesChunk} />;
     default:
       return null;
     }
   }
 
   render() {
-    return <div>{this.props.prop.length !== 0 ? this.getCards() : ''}</div>;
+    return <div>{this.props.categoriesChunk.length !== 0 ? this.getCards() : ''}</div>;
   }
 }
 
 CategoriesList.propTypes = {
-  prop: PropTypes.array.isRequired,
+  categoriesChunk: PropTypes.array.isRequired,
 };
