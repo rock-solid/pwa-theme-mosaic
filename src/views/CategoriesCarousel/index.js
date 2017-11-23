@@ -43,7 +43,7 @@ class CategoriesCarousel extends Component {
       <div className="carousel-container">
         <Slider {...settings}>
           {categoriesList.map((categoriesChunk, k) => (
-            <div key={Math.random(k)}>
+            <div key={Math.random(k)} className="categories">
               <CategoriesList prop={categoriesChunk} />
             </div>
           ))}

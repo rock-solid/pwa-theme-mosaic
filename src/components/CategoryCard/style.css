@@ -13,11 +13,11 @@
   right: 0;
 }
 /* image */
-.ui.image.big {
+.categories .ui.image.big {
   width: 100vw;
 }
-.item {
-  background-image: url("http://lorempixel.com/300/300/cats/");
+.categories .item {
+  background-image: url("http://via.placeholder.com/300x300");
   background-repeat: no-repeat;
   background-size: cover;
 }
