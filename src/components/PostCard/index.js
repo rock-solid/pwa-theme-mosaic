@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Item } from 'semantic-ui-react';
 
+import { postPropType } from '../../views/PostsCarousel/reducer';
 import './style.css';
 
 export default class PostCard extends Component {
@@ -23,5 +23,5 @@ export default class PostCard extends Component {
 }
 
 PostCard.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: postPropType.isRequired,
 };

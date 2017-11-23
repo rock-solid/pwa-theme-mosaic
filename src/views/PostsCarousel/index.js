@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from './action';
-import { getPosts } from './reducer';
+import { getPosts, postPropType } from './reducer';
 
 import PostsList from '../../components/PostsList/index';
 
@@ -47,8 +47,13 @@ class PostsCarousel extends Component {
 
 PostsCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  posts: PropTypes.array.isRequired,
-  match: PropTypes.object.isRequired, //validare mai ok
+  posts: PropTypes.arrayOf(postPropType).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      categoryId: PropTypes.string.isRequired, // TO DO : check for number instead of string
+      categorySlug: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 const mapStateToProps = state => ({
   posts: getPosts(state.posts),

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
+import { postPropType } from '../../views/PostsCarousel/reducer';
 import PostCard from '../PostCard/index';
 
 const DoublePost = props => (
@@ -18,7 +19,7 @@ const DoublePost = props => (
 );
 
 DoublePost.propTypes = {
-  postsList: PropTypes.array.isRequired,
+  postsList: PropTypes.arrayOf(postPropType).isRequired,
 };
 
 export default DoublePost;

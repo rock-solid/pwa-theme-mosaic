@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { postPropType } from '../../views/PostsCarousel/reducer';
 import SinglePost from './SinglePost';
 import DoublePost from './DoublePost';
 
@@ -17,5 +18,5 @@ export default class CategoriesList extends Component {
 }
 
 CategoriesList.propTypes = {
-  postsList: PropTypes.array.isRequired,
+  postsList: PropTypes.arrayOf(postPropType).isRequired,
 };
