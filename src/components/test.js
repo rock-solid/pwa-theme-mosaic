@@ -7,16 +7,10 @@ export default class Test extends Component {
     return (
       <Grid columns={2} divided>
         <GridRow>
-          <GridColumn>
-            <Container />
-          </GridColumn>
-          <GridColumn>
-            <Container />
-          </GridColumn>
+          <GridColumn />
+          <GridColumn />
         </GridRow>
-        <GridRow>
-          <Container />
-        </GridRow>
+        <GridRow />
       </Grid>
     );
   }

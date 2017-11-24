@@ -8,7 +8,7 @@ import App from './App';
 
 import CategoriesCarousel from './views/CategoriesCarousel/index';
 import PostsCarousel from './views/PostsCarousel/index';
-import PostView from './views/Post/Container';
+import PostView from './views/Post/index';
 
 import './index.css';
 
