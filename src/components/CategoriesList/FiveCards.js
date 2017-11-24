@@ -6,7 +6,7 @@ import { categoryPropType } from '../../views/CategoriesCarousel/reducer';
 import CategoryCard from '../CategoryCard/index';
 
 const FiveCards = props => (
-  <Grid columns={2} divided>
+  <Grid columns={2} divided className="one-third-row">
     <GridRow>
       <GridColumn>
         <CategoryCard category={props.categoriesList[0]} key={Math.random()} />

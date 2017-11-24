@@ -6,7 +6,7 @@ import CategoryCard from '../CategoryCard/index';
 import './style.css';
 
 const OneCard = props => (
-  <Grid>
+  <Grid className="full-row">
     <GridRow>
       <CategoryCard category={props.categoriesList[0]} key={Math.random()} />
     </GridRow>
