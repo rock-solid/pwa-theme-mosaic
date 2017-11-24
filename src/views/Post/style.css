@@ -1,0 +1,14 @@
+.post.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+}
+
+.post.container .container {
+  margin: 0 1em !important;
+}
+.post.container .container .ui.header {
+  color: #000000;
+  height: unset;
+  position: static;
+}
