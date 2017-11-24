@@ -28,7 +28,10 @@ const items = (state = [], action) => {
   case REQUEST_POSTS:
     return state;
   case RECEIVE_POSTS:
-    return _.unionBy(state, action.posts, 'id');
+    if (Array.isArray(action.posts)) {
+      return _.unionBy(state, action.posts, 'id');
+    }
+    return _.unionBy(state, [action.posts], 'id');
   default:
     return state;
   }
