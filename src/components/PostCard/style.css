@@ -20,3 +20,7 @@
   text-align: start;
   text-transform: uppercase;
 }
+
+.ui.card a {
+  height: 100%;
+}
