@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Item } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { postPropType } from '../../views/PostsCarousel/reducer';
 import './style.css';
@@ -7,9 +8,8 @@ import './style.css';
 export default class PostCard extends Component {
   render() {
     const { post } = this.props;
-
     return (
-      <div>
+      <Link to={'/post/' + post.slug + '/' + post.id}>
         <Item className="posts">
           <Item.Header>{post.title.rendered}</Item.Header>
           <Item.Content>
@@ -17,7 +17,7 @@ export default class PostCard extends Component {
             <Item.Description dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
           </Item.Content>
         </Item>
-      </div>
+      </Link>
     );
   }
 }
