@@ -8,6 +8,7 @@ import { fetchPosts } from './action';
 import { getPosts, postPropType } from './reducer';
 
 import PostsList from '../../components/PostsList/index';
+import './style.css';
 
 class PostsCarousel extends Component {
   componentWillMount() {
@@ -25,7 +26,6 @@ class PostsCarousel extends Component {
 
   render() {
     const settings = {
-      dots: true,
       infinite: false,
       speed: 500,
       slidesToShow: 1,

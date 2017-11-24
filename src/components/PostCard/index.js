@@ -12,10 +12,10 @@ export default class PostCard extends Component {
       <div>
         <Item className="posts">
           <Item.Header>{post.title.rendered}</Item.Header>
-          <Item.Image size="large" src="http://via.placeholder.com/350x150" />
-          <Item.Description>
-            <p>{post.excerpt.rendered}</p>
-          </Item.Description>
+          <Item.Content>
+            <Item.Image size="large" src="http://via.placeholder.com/177x119" />
+            <Item.Description dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+          </Item.Content>
         </Item>
       </div>
     );

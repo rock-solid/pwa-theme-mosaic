@@ -11,6 +11,7 @@ const DoublePost = props => (
       <GridRow>
         <PostCard post={props.postsList[0]} key={Math.random()} />
       </GridRow>
+      <hr />
       <GridRow>
         <PostCard post={props.postsList[1]} key={Math.random()} />
       </GridRow>

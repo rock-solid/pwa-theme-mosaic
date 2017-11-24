@@ -1,10 +1,22 @@
 /* OVER RIDE semantic UI styles */
 /* Image Element */
 .ui.large.image {
-  width: 100%;
+  width: unset;
+  float: left;
+  margin-right: 6px;
 }
 
 /* Item */
+.posts {
+  text-align: start;
+}
 .posts .header {
-  height: 10%;
+  height: 7%;
+  margin: 5px 0;
+  font-size: 1.6rem;
+  font-weight: 100;
+  line-height: 20px;
+  color: #000000;
+  text-align: start;
+  text-transform: uppercase;
 }

@@ -3,3 +3,18 @@
 .double-post .row {
   height: 50%;
 }
+/* CARD */
+.row .ui.card {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 27px;
+  border-radius: 0;
+}
+
+.row .ui.card .ui.large.image {
+  float: none;
+  margin: -15px auto 10px;
+}
+.row .ui.card .ui.large.image img {
+  min-width: 63vw;
+}
