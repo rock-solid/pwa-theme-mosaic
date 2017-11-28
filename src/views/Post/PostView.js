@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { Container, Image, Header } from 'semantic-ui-react';
+import { Container, Image, Header, Label } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import { postPropType } from '../PostsCarousel/reducer';
+import { categoryPropType } from '../CategoriesCarousel/reducer';
 import './style.css';
 
 export default class PostView extends Component {
   render() {
-    console.log('PROP', this.props.post);
-    const { post } = this.props;
+    console.log('PROP', this.props);
+    const { post, categories } = this.props;
     return (
       <Container className="post">
-        <Image src="https://placeholdit.co//i/555x350" />
+        <Image src="https://placeholdit.co//i/555x650" />
         <Container textAlign="justified">
+          {categories.map(category => (
+            <Label color="teal" key={category.id}>
+              {category.name}
+            </Label>
+          ))}
           <Header>{post.title.rendered}</Header>
           <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
         </Container>
@@ -22,4 +29,5 @@ export default class PostView extends Component {
 
 PostView.propTypes = {
   post: postPropType.isRequired,
+  categories: PropTypes.arrayOf(categoryPropType).isRequired,
 };

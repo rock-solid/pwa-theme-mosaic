@@ -6,7 +6,7 @@ import { REQUEST_CATEGORIES, RECEIVE_CATEGORIES } from './action';
 export const categoryPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  // description: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 });
 const items = (state = [], action) => {

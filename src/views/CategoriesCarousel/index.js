@@ -13,7 +13,7 @@ import './style.css';
 class CategoriesCarousel extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories);
+    dispatch(fetchCategories());
   }
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
