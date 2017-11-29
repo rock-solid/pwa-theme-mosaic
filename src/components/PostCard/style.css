@@ -1,9 +1,11 @@
 /* OVER RIDE semantic UI styles */
 /* Image Element */
-.ui.large.image {
-  width: unset;
+.item.posts div.image {
+  background-size: cover;
+  height: 40%;
+  width: 50%;
   float: left;
-  margin-right: 6px;
+  margin: 4px 10px 5px 0;
 }
 
 /* Item */
