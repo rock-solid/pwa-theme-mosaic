@@ -13,7 +13,7 @@ import './style.css';
 class PostsCarousel extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchPosts(this.props.match.params.categoryId));
+    dispatch(fetchPosts({ categoryId: this.props.match.params.categoryId }));
   }
   createPostsList(chunkSize) {
     const postsList = [];
@@ -50,7 +50,7 @@ PostsCarousel.propTypes = {
   posts: PropTypes.arrayOf(postPropType).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      categoryId: PropTypes.string.isRequired, // TO DO : check for number instead of string
+      categoryId: PropTypes.string.isRequired,
       categorySlug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
