@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
 import { Container, Image, Header, Label } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
 import { postPropType } from '../PostsCarousel/reducer';
-import { categoryPropType } from '../CategoriesCarousel/reducer';
 import './style.css';
 
 export default class PostView extends Component {
   render() {
-    const { post: { _embedded: { author } }, categories, post } = this.props;
+    const { post } = this.props;
+    const { author } = post._embedded;
+    const categories = post._embedded['wp:term'];
+    const featuredMedia = post._embedded['wp:featuredmedia'];
+
+    function getImage(sourceImg) {
+      let imageSource;
+      if (sourceImg) {
+        imageSource = sourceImg[0].source_url;
+        return imageSource;
+      }
+      imageSource = 'https://placeholdit.co//i/555x650';
+      return imageSource;
+    }
 
     return (
       <Container className="post">
-        <Image src="https://placeholdit.co//i/555x650" />
+        <Image src={getImage(featuredMedia)} />
         <Container textAlign="justified">
-          {categories.map(category => (
-            <Label color="teal" key={category.id}>
+          {categories[0].map(category => (
+            <Label color="teal" key={Math.random()}>
               {category.name}
             </Label>
           ))}
@@ -35,5 +46,4 @@ export default class PostView extends Component {
 
 PostView.propTypes = {
   post: postPropType.isRequired,
-  categories: PropTypes.arrayOf(categoryPropType).isRequired,
 };
