@@ -11,7 +11,9 @@ export default class PostCard extends Component {
     return (
       <Link to={'/post/' + post.slug + '/' + post.id}>
         <Item className="posts">
-          <Item.Header dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+          <Item.Header>
+            <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+          </Item.Header>
           <Item.Content>
             <Item.Image size="large" src="http://via.placeholder.com/177x119" />
             <Item.Description dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
