@@ -20,6 +20,7 @@
 }
 
 .categories .ui.header {
+  text-align: start;
   font-size: 22px;
   font-weight: 100;
   text-transform: uppercase;
