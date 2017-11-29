@@ -20,7 +20,7 @@ export default class PostView extends Component {
               {category.name}
             </Label>
           ))}
-          <Header>{post.title.rendered}</Header>
+          <Header dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           <Header.Subheader>
             &nbsp;by&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">{post.date}</Moment>
           </Header.Subheader>

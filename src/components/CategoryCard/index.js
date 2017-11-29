@@ -11,7 +11,7 @@ export default class CategoryCard extends Component {
     return (
       <Link to={'/category/' + category.slug + '/' + category.id}>
         <Item>
-          <Item.Header as={Header}>{category.name}</Item.Header>
+          <Item.Header as={Header} dangerouslySetInnerHTML={{ __html: category.name }} />
         </Item>
       </Link>
     );
