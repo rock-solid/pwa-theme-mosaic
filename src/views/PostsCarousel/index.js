@@ -5,14 +5,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from './action';
-import { getPosts } from './reducer';
+import { getPosts, postPropType } from './reducer';
 
 import PostsList from '../../components/PostsList/index';
+import './style.css';
 
 class PostsCarousel extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchPosts);
+    dispatch(fetchPosts({ categoryId: this.props.match.params.categoryId }));
   }
   createPostsList(chunkSize) {
     const postsList = [];
@@ -25,7 +26,6 @@ class PostsCarousel extends Component {
 
   render() {
     const settings = {
-      dots: true,
       infinite: false,
       speed: 500,
       slidesToShow: 1,
@@ -33,11 +33,10 @@ class PostsCarousel extends Component {
     };
 
     const listedPosts = this.createPostsList(2);
-
     return (
       <Slider {...settings}>
-        {listedPosts.map((postsList, k) => (
-          <div key={k}>
+        {listedPosts.map(postsList => (
+          <div key={Math.random()}>
             <PostsList postsList={postsList} />
           </div>
         ))}
@@ -48,7 +47,13 @@ class PostsCarousel extends Component {
 
 PostsCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  posts: PropTypes.array.isRequired,
+  posts: PropTypes.arrayOf(postPropType).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      categoryId: PropTypes.string.isRequired,
+      categorySlug: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 const mapStateToProps = state => ({
   posts: getPosts(state.posts),

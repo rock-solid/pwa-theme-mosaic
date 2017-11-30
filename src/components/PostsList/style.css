@@ -1,0 +1,12 @@
+/* OVER RIDE semantic UI styles */
+/* GRID row */
+.double-post .row {
+  height: 50%;
+}
+/* CARD */
+.row .ui.card {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 27px;
+  border-radius: 0;
+}

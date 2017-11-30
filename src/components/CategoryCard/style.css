@@ -8,16 +8,51 @@
   color: #ffffff;
   position: absolute;
   z-index: 1;
-  top: 10%;
+  top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: flex-end;
 }
 /* image */
-.ui.image.big {
+.categories .ui.image.big {
   width: 100vw;
 }
-.item {
-  background-image: url("http://lorempixel.com/300/300/cats/");
+
+.categories .ui.header {
+  text-align: start;
+  font-size: 22px;
+  font-weight: 100;
+  text-transform: uppercase;
+  padding: 9px 15px;
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.08) 55px,
+    transparent 80px,
+    transparent
+  );
+}
+.categories .ui.header.header > div {
+  height: unset;
+}
+
+.categories .item {
+  background-image: url("http://via.placeholder.com/300x300");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* CARDS - grid division */
+/* 1 CARD/SLIDER */
+.full-row .row {
+  height: 100%;
+}
+/* 2/3/4 CARDS */
+.half-row .row {
+  height: 50.2%;
+}
+/* FIVE CARDS */
+.one-third-row .row {
+  height: 33.7%;
 }

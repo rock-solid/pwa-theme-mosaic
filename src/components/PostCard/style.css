@@ -1,0 +1,28 @@
+/* OVER RIDE semantic UI styles */
+/* Image Element */
+.item.posts div.image {
+  background-size: cover;
+  height: 40%;
+  width: 50%;
+  float: left;
+  margin: 4px 10px 5px 0;
+}
+
+/* Item */
+.posts {
+  text-align: start;
+}
+.posts .header {
+  height: 10%;
+  margin: 10px 0;
+  font-size: 1.6rem;
+  font-weight: 100;
+  line-height: 19px;
+  color: #000000;
+  text-align: start;
+  text-transform: uppercase;
+}
+
+.ui.card a {
+  height: 100%;
+}

@@ -12,14 +12,19 @@ div {
 .slick-side {
   height: 110%;
 }
-/* .header {
-  height: unset;
-} */
-
-.row {
-  height: 34%;
-}
 
 .slick-dots {
-  bottom: 30px;
+  bottom: 35px;
+  width: 30%;
+  left: 35%;
+  background-color: #000000;
+  border-radius: 50px;
+  opacity: 0.25;
+}
+.slick-dots li button::before {
+  font-size: 13px;
+  color: #ffffff;
+}
+.slick-dots li.slick-active button::before {
+  color: #ffffff;
 }

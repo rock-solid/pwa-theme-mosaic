@@ -12,10 +12,21 @@ export const receivePosts = posts => ({
   posts,
 });
 
-export const fetchPosts = (dispatch) => {
+export const fetchPosts = (params = {}) => (dispatch) => {
   dispatch(requestPosts());
 
-  return fetch(config.API_POSTS_URL)
+  let url;
+  if (params && params.id) {
+    url = config.API_POSTS_URL + '/' + String(params.id);
+  } else {
+    url =
+      config.API_POSTS_URL +
+      '?' +
+      Object.keys(params)
+        .map(k => k + '=' + encodeURIComponent(params[k]))
+        .join('&');
+  }
+  return fetch(url)
     .then(response => response.json())
     .then(json => dispatch(receivePosts(json)))
     .catch(() => {

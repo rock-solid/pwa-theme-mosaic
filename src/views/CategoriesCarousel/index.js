@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchCategories } from './action';
-import { getCategories } from './reducer';
+import { getCategories, categoryPropType } from './reducer';
 
 import CategoriesList from '../../components/CategoriesList/index';
 import './style.css';
@@ -13,7 +13,7 @@ import './style.css';
 class CategoriesCarousel extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories);
+    dispatch(fetchCategories());
   }
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
@@ -40,20 +40,22 @@ class CategoriesCarousel extends Component {
 
     const categoriesList = this.createCategoriesList(3, 5);
     return (
-      <Slider {...settings}>
-        {categoriesList.map((categoriesChunk, k) => (
-          <div key={Math.random(k)}>
-            <CategoriesList prop={categoriesChunk} />
-          </div>
-        ))}
-      </Slider>
+      <div className="carousel-container">
+        <Slider {...settings}>
+          {categoriesList.map((categoriesChunk, k) => (
+            <div key={Math.random(k)} className="categories">
+              <CategoriesList categoriesChunk={categoriesChunk} />
+            </div>
+          ))}
+        </Slider>
+      </div>
     );
   }
 }
 
 CategoriesCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.arrayOf(categoryPropType).isRequired,
 };
 const mapStateToProps = state => ({
   categories: getCategories(state.categories),

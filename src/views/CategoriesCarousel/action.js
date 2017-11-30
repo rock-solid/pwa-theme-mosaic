@@ -12,10 +12,21 @@ export const receiveCategories = categories => ({
   categories,
 });
 
-export const fetchCategories = (dispatch) => {
+export const fetchCategories = (params = {}) => (dispatch) => {
   dispatch(requestCategories());
 
-  return fetch(config.API_CATEGORIES_URL)
+  let url;
+  if (params && params.post) {
+    url = config.API_CATEGORIES_URL + '?post=' + String(params.post);
+  } else {
+    url =
+      config.API_CATEGORIES_URL +
+      '?' +
+      Object.keys(params)
+        .map(k => k + '=' + encodeURIComponent(params[k]))
+        .join('&');
+  }
+  return fetch(url)
     .then(response => response.json())
     .then(json => dispatch(receiveCategories(json)))
     .catch(() => {
