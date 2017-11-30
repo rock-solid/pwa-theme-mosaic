@@ -5,6 +5,14 @@ import { REQUEST_PAGES, RECEIVE_PAGES } from './action';
 
 export const pagePropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
+  parent: PropTypes.number.isRequired,
+  title: PropTypes.shape({
+    rendered: PropTypes.string.isRequired,
+  }).isRequired,
+  slug: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+    rendered: PropTypes.string.isRequired,
+  }),
 });
 
 const items = (state = [], action) => {
