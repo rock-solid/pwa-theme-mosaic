@@ -5,14 +5,11 @@ export default class PageList extends Component {
   state = { parentId: 0 };
 
   setParent(parentId) {
-    console.log(parentId);
     parentId ? this.setState({ parentId }) : '';
   }
 
   render() {
     const parents = this.props.pages.filter(page => page.parent === this.state.parentId);
-    console.log('state >>>>>>>>>> ', this);
-    console.log('parents >>', parents);
     return (
       <List divided relaxed>
         <Header>Go to</Header>
