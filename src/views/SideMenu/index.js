@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Sidebar, Header, List } from 'semantic-ui-react';
+import { Sidebar } from 'semantic-ui-react';
 
 import { fetchPages } from './action';
 import { getPages, pagePropType } from './reducer';
+import PageList from './PageList';
 
 import './style.css';
 
@@ -15,37 +16,32 @@ class SideMenu extends Component {
     dispatch(fetchPages({}));
   }
 
-  makePagesObject() {
+  makePagesList() {
     const { pages } = this.props;
-
-    pages.map(page => (page.children = []));
+    pages.map((page) => {
+      page.children = [];
+      return page;
+    });
     function placeChildren(crtLvl, nxtLvl) {
       crtLvl.map((parent) => {
         nxtLvl.map((child) => {
           if (child.parent === parent.id) {
             parent.children.push(child);
           }
-          return crtLvl;
+          return nxtLvl;
         });
         return crtLvl;
       });
     }
-
-    function cleanList(list) {
-      const parents = list.filter(item => item.parent === 0);
-      return parents;
-    }
-
     placeChildren(pages, pages);
-    const parents = cleanList(pages);
-    return parents;
   }
+
   render() {
-    const parents = this.makePagesObject();
+    const { pages } = this.props;
+    this.makePagesList();
     return (
       <Sidebar visible={this.props.isVisible} direction="right">
-        <Header>Pages</Header>
-        {parents.map(item => <div key={Math.random()}>{item.title.rendered}</div>)}
+        <PageList pages={pages} />
       </Sidebar>
     );
   }
