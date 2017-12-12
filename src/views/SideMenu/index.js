@@ -22,15 +22,15 @@ class SideMenu extends Component {
       page.children = [];
       return page;
     });
-    function placeChildren(crtLvl, nxtLvl) {
-      crtLvl.map((parent) => {
-        nxtLvl.map((child) => {
+    function placeChildren(currentLevel, nextLevel) {
+      currentLevel.map((parent) => {
+        nextLevel.map((child) => {
           if (child.parent === parent.id) {
             parent.children.push(child);
           }
-          return nxtLvl;
+          return nextLevel;
         });
-        return crtLvl;
+        return currentLevel;
       });
     }
     placeChildren(pages, pages);
