@@ -13,6 +13,11 @@ export const pagePropType = PropTypes.shape({
   content: PropTypes.shape({
     rendered: PropTypes.string.isRequired,
   }),
+  link: PropTypes.string.isRequired,
+  author: PropTypes.number.isRequired,
+  comment_status: PropTypes.string.isRequired,
+  featured_media: PropTypes.number.isRequired,
+  status: PropTypes.string.isRequired,
 });
 
 const items = (state = [], action) => {
