@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { List, Header, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { List, Header, Icon, Modal } from 'semantic-ui-react';
+
+import './style.css';
 
 export default class PageList extends Component {
   state = { parentIds: [], pages: [], parentPageTitle: ['Go to'], goBack: false };
@@ -42,7 +45,16 @@ export default class PageList extends Component {
           <List.Item key={Math.random()}>
             <List.Icon name="linkify" size="large" verticalAlign="middle" />
             <List.Content>
-              <List.Header as="a">{page.title.rendered}</List.Header>
+              <Modal
+                trigger={
+                  <Link to={'/page/' + page.slug + '/' + page.id}>
+                    <List.Header>{page.title.rendered}</List.Header>
+                  </Link>
+                }
+              >
+                <Modal.Header dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
+                <Modal.Content dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+              </Modal>
             </List.Content>
             {page.children.length > 0 ? (
               <List.Icon
