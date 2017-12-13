@@ -21,6 +21,7 @@ render(
           <Route path="/categories" component={CategoriesCarousel} />
           <Route path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
           <Route path="/post/:postSlug/:postId" component={PostView} />
+          <Route path="/page/:pageSlug/:pageId" component={CategoriesCarousel} />
         </Switch>
       </App>
     </HashRouter>
