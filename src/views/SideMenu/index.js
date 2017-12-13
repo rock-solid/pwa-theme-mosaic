@@ -41,7 +41,7 @@ class SideMenu extends Component {
     this.makePagesList();
     return (
       <Sidebar visible={this.props.isVisible} direction="right">
-        <PageList pages={pages} />
+        <PageList visible={this.props.isVisible} pages={pages} />
       </Sidebar>
     );
   }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { List, Header, Icon, Modal } from 'semantic-ui-react';
 
 import './style.css';
@@ -9,6 +8,8 @@ export default class PageList extends Component {
 
   componentWillReceiveProps() {
     this.setState({ parentIds: [...this.state.parentIds, 0] });
+    // resets state when menu reopens
+    this.props.visible === true && this.setState({ parentIds: [], pages: [], parentPageTitle: ['Go to'], goBack: false });
   }
   setParentsList(parentId, pages, parentPageTitle) {
     this.setState({
@@ -18,7 +19,7 @@ export default class PageList extends Component {
       goBack: false,
     });
   }
-  setParentsBackList(wat) {
+  setParentsBackList() {
     this.state.parentIds.pop();
     const poppedParentIds = this.state.parentIds;
     this.state.parentPageTitle.pop();
@@ -45,13 +46,7 @@ export default class PageList extends Component {
           <List.Item key={Math.random()}>
             <List.Icon name="linkify" size="large" verticalAlign="middle" />
             <List.Content>
-              <Modal
-                trigger={
-                  <Link to={'/page/' + page.slug + '/' + page.id}>
-                    <List.Header>{page.title.rendered}</List.Header>
-                  </Link>
-                }
-              >
+              <Modal closeIcon trigger={<List.Header as="a">{page.title.rendered}</List.Header>}>
                 <Modal.Header dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
                 <Modal.Content dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
               </Modal>
