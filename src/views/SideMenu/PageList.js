@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { List, Header, Icon, Modal, Image, Transition } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+
+import { pagePropType } from './reducer';
 
 import './style.css';
 
-export default class PageList extends Component {
+class PageList extends Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
@@ -85,3 +88,9 @@ export default class PageList extends Component {
     );
   }
 }
+
+PageList.PropTypes = {
+  pages: PropTypes.arrayOf(pagePropType).isRequired,
+};
+
+export default PageList;
