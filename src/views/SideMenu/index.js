@@ -11,9 +11,27 @@ import PageList from './PageList';
 import './style.css';
 
 class SideMenu extends Component {
+  constructor(props) {
+    super(props);
+    this.placeChildren = this.placeChildren.bind(this);
+    this.makePagesList = this.makePagesList.bind(this);
+  }
+
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(fetchPages({}));
+  }
+
+  placeChildren(currentLevel, nextLevel) {
+    currentLevel.map((parent) => {
+      nextLevel.map((child) => {
+        if (child.parent === parent.id) {
+          parent.children.push(child);
+        }
+        return nextLevel;
+      });
+      return currentLevel;
+    });
   }
 
   makePagesList() {
@@ -22,18 +40,7 @@ class SideMenu extends Component {
       page.children = [];
       return page;
     });
-    function placeChildren(currentLevel, nextLevel) {
-      currentLevel.map((parent) => {
-        nextLevel.map((child) => {
-          if (child.parent === parent.id) {
-            parent.children.push(child);
-          }
-          return nextLevel;
-        });
-        return currentLevel;
-      });
-    }
-    placeChildren(pages, pages);
+    this.placeChildren(pages, pages);
   }
 
   render() {
