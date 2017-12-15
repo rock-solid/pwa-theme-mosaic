@@ -3,9 +3,10 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Loader } from 'semantic-ui-react';
 
 import { fetchPosts } from './action';
-import { getPosts, postPropType } from './reducer';
+import { getPosts, postPropType, getPostsFetching } from './reducer';
 
 import PostsList from '../../components/PostsList/index';
 import './style.css';
@@ -33,6 +34,15 @@ class PostsCarousel extends Component {
     };
 
     const listedPosts = this.createPostsList(2);
+
+    if (this.props.loading === 1) {
+      return (
+        <div>
+          <Loader active />
+        </div>
+      );
+    }
+
     return (
       <Slider {...settings}>
         {listedPosts.map(postsList => (
@@ -48,6 +58,7 @@ class PostsCarousel extends Component {
 PostsCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(postPropType).isRequired,
+  loading: PropTypes.number.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       categoryId: PropTypes.string.isRequired,
@@ -57,6 +68,7 @@ PostsCarousel.propTypes = {
 };
 const mapStateToProps = state => ({
   posts: getPosts(state.posts),
+  loading: getPostsFetching(state.posts),
 });
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchPosts }, dispatch));
