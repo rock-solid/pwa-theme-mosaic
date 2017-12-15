@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Sidebar } from 'semantic-ui-react';
+import { Sidebar, Loader } from 'semantic-ui-react';
 
 import { fetchCategories } from './action';
-import { getCategories, categoryPropType } from './reducer';
+import { getCategories, getCategoriesFetching, categoryPropType } from './reducer';
 
 import SideMenu from '../SideMenu/index';
 import NavBar from '../../components/NavBar/index';
@@ -56,6 +56,15 @@ class CategoriesCarousel extends Component {
     };
 
     const categoriesList = this.createCategoriesList(3, 5);
+
+    if (this.props.loading === 1) {
+      return (
+        <div>
+          <Loader active />
+        </div>
+      );
+    }
+
     return (
       <div className="carousel-container">
         <Sidebar.Pushable>
@@ -79,11 +88,13 @@ class CategoriesCarousel extends Component {
 
 CategoriesCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.number.isRequired,
   categories: PropTypes.arrayOf(categoryPropType).isRequired,
   sideMenuVisible: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({
+  loading: getCategoriesFetching(state.categories),
   categories: getCategories(state.categories),
   sideMenuVisible: state.sideMenuVisible,
 });

@@ -6,9 +6,9 @@ import { REQUEST_CATEGORIES, RECEIVE_CATEGORIES } from './action';
 export const categoryPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  // description: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 });
+
 const items = (state = [], action) => {
   switch (action.type) {
   case REQUEST_CATEGORIES:
@@ -19,6 +19,17 @@ const items = (state = [], action) => {
     return state;
   }
 };
+const isFetching = (state = 0, action) => {
+  switch (action.type) {
+  case REQUEST_CATEGORIES:
+    return state + 1;
+  case RECEIVE_CATEGORIES:
+    return state - 1;
+  default:
+    return state;
+  }
+};
 
 export const getCategories = state => state.items;
-export default combineReducers({ items });
+export const getCategoriesFetching = state => state.isFetching;
+export default combineReducers({ items, isFetching });
