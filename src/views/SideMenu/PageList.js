@@ -60,9 +60,9 @@ export default class PageList extends Component {
                 <Modal.Header dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
                 <Image src={getImage(page._embedded['wp:featuredmedia'])} size="medium" />
                 <Modal.Content dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-                <Modal.Actions>
+                <div className="go-to">
                   <Link to={'/page/' + page.slug + '/' + page.id}>More</Link>
-                </Modal.Actions>
+                </div>
               </Modal>
             </List.Content>
             {page.children.length > 0 ? (

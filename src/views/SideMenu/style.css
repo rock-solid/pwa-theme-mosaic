@@ -45,6 +45,7 @@
   margin: auto;
 }
 
-.ui.modal .actions {
-  padding-top: 0.5em !important;
+.ui.modal .go-to {
+  display: flex;
+  justify-content: center;
 }
