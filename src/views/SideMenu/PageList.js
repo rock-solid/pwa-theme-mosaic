@@ -5,67 +5,62 @@ import { List, Header, Icon, Modal, Image, Transition } from 'semantic-ui-react'
 import './style.css';
 
 export default class PageList extends Component {
-  state = { parentIds: [], pages: [], parentPageTitle: ['Go to'], goBack: false, visible: true };
+  constructor(props) {
+    super(props);
+    this.goBack = this.goBack.bind(this);
+    this.openSubmenu = this.openSubmenu.bind(this);
+    this.getImage = this.getImage.bind(this);
+    this.state = {
+      parentId: 0,
+      parentPageTitle: ['Go to'],
+      visible: true,
+    };
+  }
 
-  componentWillReceiveProps() {
-    this.setState({ parentIds: [...this.state.parentIds, 0] });
-    // resets state when menu reopens
-    this.props.visible === true && this.setState({ parentIds: [], pages: [], parentPageTitle: ['Go to'], goBack: false });
+  getImage(sourceImg) {
+    if (sourceImg) {
+      return sourceImg[0].source_url;
+    }
+    return null;
   }
-  setParentsList(parentId, pages, parentPageTitle) {
-    this.setState({
-      parentIds: [...this.state.parentIds, parentId],
-      pages: [...this.state.pages, pages],
-      parentPageTitle: [...this.state.parentPageTitle, parentPageTitle],
-      goBack: false,
-      visible: !this.state.visible,
-    });
+
+  filterPages() {
+    return this.props.pages.filter(page => page.parent === this.state.parentId);
   }
-  setParentsBackList() {
-    this.state.parentIds.pop();
-    const poppedParentIds = this.state.parentIds;
-    this.state.parentPageTitle.pop();
-    const poppedPageTitles = this.state.parentPageTitle;
-    this.setState({
-      parentId: poppedParentIds,
-      parentsPageTitle: poppedPageTitles,
-      goBack: true,
-      visible: !this.state.visible,
-    });
+
+  openSubmenu(parentId, parentPageTitle) {
+    this.setState({ parentId, parentPageTitle: [...this.state.parentPageTitle, parentPageTitle] });
+  }
+
+  goBack() {
+    const parentPage = this.props.pages.filter(page => page.id === this.state.parentId);
+    const titles = this.state.parentPageTitle.slice();
+    titles.pop();
+    this.setState({ parentId: parentPage[0].parent, parentPageTitle: titles });
   }
 
   render() {
-    const checkParent = this.state.parentIds[this.state.parentIds.length - 1];
-    let parents;
-    this.state.goBack === false ? (parents = this.props.pages.filter(page => page.parent === checkParent)) : (parents = this.state.pages.pop());
-
-    function getImage(sourceImg) {
-      let imageSource;
-      if (sourceImg) {
-        imageSource = sourceImg[0].source_url;
-        return imageSource;
-      }
-      return imageSource;
-    }
+    const pages = this.filterPages();
 
     return (
       <Transition animation="pulse" duration={700} visible={this.state.visible}>
         <List divided relaxed>
-          {checkParent === 0 || parents.length === 0 ? (
+          {this.state.parentId === 0 ? (
             <Header>{this.state.parentPageTitle[this.state.parentPageTitle.length - 1]}</Header>
           ) : (
             <Header>
-              <Icon name="caret left" onClick={e => this.setParentsBackList()} />
+              <Icon name="caret left" onClick={this.goBack} />
               {this.state.parentPageTitle[this.state.parentPageTitle.length - 1]}
             </Header>
           )}
-          {parents.map(page => (
+          {pages.map(page => (
             <List.Item key={Math.random()}>
               <List.Icon name="linkify" size="large" verticalAlign="middle" />
               <List.Content>
                 <Modal closeIcon trigger={<List.Header as="a">{page.title.rendered}</List.Header>}>
                   <Modal.Header dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
-                  <Image src={getImage(page._embedded['wp:featuredmedia'])} size="medium" />
+                  {/* eslint */}
+                  <Image src={this.getImage(page._embedded['wp:featuredmedia'])} size="medium" />
                   <Modal.Content dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
                   <div className="go-to">
                     <Link to={'/page/' + page.slug + '/' + page.id}>More</Link>
@@ -78,7 +73,7 @@ export default class PageList extends Component {
                   name="triangle right"
                   size="large"
                   verticalAlign="middle"
-                  onClick={e => this.setParentsList(page.id, parents, page.title.rendered)}
+                  onClick={() => this.openSubmenu(page.id, page.title.rendered)}
                 />
               ) : (
                 ''
