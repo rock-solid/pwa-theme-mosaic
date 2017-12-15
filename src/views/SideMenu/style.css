@@ -38,3 +38,13 @@
 .modal > div {
   height: unset;
 }
+.ui.scrolling.modal .header {
+  border: none;
+}
+.modal .image {
+  margin: auto;
+}
+
+.ui.modal .actions {
+  padding-top: 0.5em !important;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { List, Header, Icon, Modal } from 'semantic-ui-react';
+import { List, Header, Icon, Modal, Image } from 'semantic-ui-react';
 
 import './style.css';
 
@@ -33,6 +33,15 @@ export default class PageList extends Component {
     let parents;
     this.state.goBack === false ? (parents = this.props.pages.filter(page => page.parent === checkParent)) : (parents = this.state.pages.pop());
 
+    function getImage(sourceImg) {
+      let imageSource;
+      if (sourceImg) {
+        imageSource = sourceImg[0].source_url;
+        return imageSource;
+      }
+      return imageSource;
+    }
+
     return (
       <List divided relaxed>
         {checkParent === 0 ? (
@@ -49,10 +58,10 @@ export default class PageList extends Component {
             <List.Content>
               <Modal closeIcon trigger={<List.Header as="a">{page.title.rendered}</List.Header>}>
                 <Modal.Header dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
+                <Image src={getImage(page._embedded['wp:featuredmedia'])} size="medium" />
                 <Modal.Content dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
                 <Modal.Actions>
                   <Link to={'/page/' + page.slug + '/' + page.id}>More</Link>
-                  {console.log(this.props)}
                 </Modal.Actions>
               </Modal>
             </List.Content>
