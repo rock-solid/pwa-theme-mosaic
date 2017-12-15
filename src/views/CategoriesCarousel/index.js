@@ -57,21 +57,13 @@ class CategoriesCarousel extends Component {
 
     const categoriesList = this.createCategoriesList(3, 5);
 
-    if (this.props.loading === 1) {
-      return (
-        <div>
-          <Loader active />
-        </div>
-      );
-    }
-
     return (
       <div className="carousel-container">
         <Sidebar.Pushable>
           <SideMenu isVisible={this.props.sideMenuVisible} closeMenu={this.props.closeMenu} />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
             <NavBar />
-
+            {this.props.loading === 1 ? <Loader active /> : ''}
             <Slider {...settings}>
               {categoriesList.map((categoriesChunk, k) => (
                 <div key={Math.random(k)} className="categories">

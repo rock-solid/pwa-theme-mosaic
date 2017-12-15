@@ -36,11 +36,7 @@ class PostsCarousel extends Component {
     const listedPosts = this.createPostsList(2);
 
     if (this.props.loading === 1) {
-      return (
-        <div>
-          <Loader active />
-        </div>
-      );
+      return <Loader active />;
     }
 
     return (
