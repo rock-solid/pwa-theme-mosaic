@@ -16,6 +16,15 @@ class PageView extends Component {
     this.hideSidebar = this.hideSidebar.bind(this);
   }
 
+  getImage(sourceImg) {
+    let imageSource;
+    if (sourceImg) {
+      imageSource = sourceImg[0].source_url;
+      return imageSource;
+    }
+    return imageSource;
+  }
+
   hideSidebar() {
     if (this.props.sideMenuVisible) {
       this.props.closeMenu();
@@ -27,17 +36,9 @@ class PageView extends Component {
     const { author } = page._embedded;
     const featuredMedia = page._embedded['wp:featuredmedia'];
 
-    function getImage(sourceImg) {
-      let imageSource;
-      if (sourceImg) {
-        imageSource = sourceImg[0].source_url;
-        return imageSource;
-      }
-      return imageSource;
-    }
     return (
       <Container className="page">
-        <Image src={getImage(featuredMedia)} />
+        {featuredMedia ? <Image src={this.getImage(featuredMedia)} /> : ''}
         <Container textAlign="justified">
           <Header>
             <Link to="/" onClick={this.hideSidebar}>

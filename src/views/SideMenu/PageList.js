@@ -63,7 +63,7 @@ class PageList extends Component {
                 <Modal closeIcon trigger={<List.Header as="a">{page.title.rendered}</List.Header>}>
                   <Modal.Header dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
                   {/* eslint */}
-                  <Image src={this.getImage(page._embedded['wp:featuredmedia'])} size="medium" />
+                  {page._embedded['wp:featuredmedia'] ? <Image src={this.getImage(page._embedded['wp:featuredmedia'])} size="medium" /> : ''}
                   <Modal.Content dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
                   <div className="go-to">
                     <Link to={'/page/' + page.slug + '/' + page.id}>More</Link>
