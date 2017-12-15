@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Sidebar } from 'semantic-ui-react';
+import { Sidebar, Loader } from 'semantic-ui-react';
 
 import { fetchPages } from './action';
-import { getPages, pagePropType } from './reducer';
+import { getPages, pagePropType, getPagesFetching } from './reducer';
 import PageList from './PageList';
 
 import './style.css';
@@ -46,8 +46,10 @@ class SideMenu extends Component {
   render() {
     const { pages } = this.props;
     this.makePagesList();
+
     return (
       <Sidebar visible={this.props.isVisible} direction="right">
+        {this.props.loading === 1 ? <Loader /> : ''}
         <PageList visible={this.props.isVisible} pages={pages} />
       </Sidebar>
     );
@@ -55,12 +57,16 @@ class SideMenu extends Component {
 }
 SideMenu.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.number.isRequired,
   isVisible: PropTypes.bool.isRequired,
   pages: PropTypes.arrayOf(pagePropType).isRequired,
 };
+
 const mapStateToProps = state => ({
   pages: getPages(state.pages),
+  loading: getPagesFetching(state.pages),
 });
+
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchPages }, dispatch));
 }

@@ -33,6 +33,18 @@ const items = (state = [], action) => {
     return state;
   }
 };
+const isFetching = (state = 0, action) => {
+  switch (action.type) {
+  case REQUEST_PAGES:
+    return state + 1;
+  case RECEIVE_PAGES:
+    return state - 1;
+  default:
+    return state;
+  }
+};
 
 export const getPages = state => state.items;
-export default combineReducers({ items });
+export const getPagesFetching = state => state.isFetching;
+
+export default combineReducers({ items, isFetching });
