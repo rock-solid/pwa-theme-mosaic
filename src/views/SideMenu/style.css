@@ -45,7 +45,15 @@
   margin: auto;
 }
 
+.ui.modal .content {
+  position: relative;
+}
+
 .ui.modal .go-to {
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  right: 0;
 }
