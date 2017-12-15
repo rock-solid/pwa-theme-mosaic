@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { List, Header, Icon, Modal } from 'semantic-ui-react';
 
 import './style.css';
@@ -49,6 +50,10 @@ export default class PageList extends Component {
               <Modal closeIcon trigger={<List.Header as="a">{page.title.rendered}</List.Header>}>
                 <Modal.Header dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
                 <Modal.Content dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+                <Modal.Actions>
+                  <Link to={'/page/' + page.slug + '/' + page.id}>More</Link>
+                  {console.log(this.props)}
+                </Modal.Actions>
               </Modal>
             </List.Content>
             {page.children.length > 0 ? (
