@@ -36,6 +36,21 @@ const items = (state = [], action) => {
     return state;
   }
 };
+const isFetching = (state = 0, action) => {
+  switch (action.type) {
+  case REQUEST_POSTS:
+    return state + 1;
+  case RECEIVE_POSTS:
+    return state - 1;
+  default:
+    return state;
+  }
+};
 
 export const getPosts = state => state.items;
-export default combineReducers({ items });
+export const getPostsFetching = state => state.isFetching;
+
+export default combineReducers({
+  items,
+  isFetching,
+});

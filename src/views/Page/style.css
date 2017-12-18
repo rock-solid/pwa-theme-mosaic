@@ -1,0 +1,16 @@
+/* HEADER */
+.page .ui.header {
+  margin-top: 1em;
+  height: unset;
+  position: static;
+  color: #000000;
+}
+
+.page .sub.header {
+  height: unset;
+  margin: -3% 0% 5% 7%;
+}
+
+.page .ui.header .ui.icon.button {
+  background: none;
+}

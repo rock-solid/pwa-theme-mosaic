@@ -4,23 +4,31 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux';
 
+import sideMenuVisible from './components/NavBar/reducer';
 import categories from './views/CategoriesCarousel/reducer';
 import posts from './views/PostsCarousel/reducer';
+import pages from './views/SideMenu/reducer';
 
 const history = createHistory();
 
 const defaultState = {
+  sideMenuVisible: false,
   categories: {
     items: [],
   },
   posts: {
     items: [],
   },
+  pages: {
+    items: [],
+  },
 };
 
 const rootReducer = combineReducers({
+  sideMenuVisible,
   categories,
   posts,
+  pages,
 });
 
 const store = createStore(rootReducer, defaultState, compose(applyMiddleware(thunk, logger, routerMiddleware(history))));

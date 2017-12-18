@@ -1,0 +1,11 @@
+.navbar.button {
+  position: absolute;
+  z-index: 1;
+  top: 2%;
+  right: 3%;
+  padding: 0.78571429em 1em 0.78571429em;
+}
+
+.navbar.button.tiny.right.ui .icon.content.large {
+  margin: 0;
+}
