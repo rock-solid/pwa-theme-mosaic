@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post screen should render correctly a loader 1`] = `
+<div
+  className="ui active loader"
+/>
+`;
+
+exports[`Post screen should render correctly an existing post 1`] = `
+<Post view test
+  post={
+    Object {
+      "author": 54,
+      "categories": Array [
+        1,
+        4,
+        2,
+      ],
+      "content": Object {
+        "protected": true,
+        "rendered": "Some post content to be rendered",
+      },
+      "date": "some mock date",
+      "excerpt": Object {
+        "protected": false,
+        "rendered": "Some post excerpt to be rendered",
+      },
+      "id": 1,
+      "slug": "some-post-slug",
+      "title": Object {
+        "rendered": "Some post title",
+      },
+    }
+  }
+/>
+`;
+
+exports[`Post screen should render correctly that a post does not exist 1`] = `
+<div
+  className="ui container"
+>
+  <h1
+    className="ui header"
+  >
+     Not found
+  </h1>
+</div>
+`;

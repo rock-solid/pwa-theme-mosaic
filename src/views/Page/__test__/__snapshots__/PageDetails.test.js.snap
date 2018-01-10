@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page details renders page details 1`] = `
+<Container
+  className="page"
+>
+  <Header
+    dividing={true}
+  >
+    <Link
+      replace={false}
+      to="/"
+    >
+      <Button
+        as="button"
+        icon="close"
+        size="huge"
+      />
+    </Link>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some title",
+        }
+      }
+    />
+  </Header>
+  <HeaderSubheader>
+     by 
+    <b />
+    , 
+    <t
+      ago={false}
+      calendar={false}
+      element="time"
+      filter={[Function]}
+      format="MMMM DD, YYYY"
+      fromNow={false}
+      interval={60000}
+      onChange={[Function]}
+      toNow={false}
+      unix={false}
+      utc={false}
+    />
+  </HeaderSubheader>
+  <Image
+    as="img"
+    ui={true}
+  />
+  <Container
+    textAlign="justified"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some content for some page",
+        }
+      }
+    />
+  </Container>
+</Container>
+`;

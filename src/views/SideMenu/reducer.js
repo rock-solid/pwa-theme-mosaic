@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import Immutable from 'seamless-immutable';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { REQUEST_PAGES, RECEIVE_PAGES } from './action';
@@ -20,7 +21,12 @@ export const pagePropType = PropTypes.shape({
   status: PropTypes.string.isRequired,
 });
 
-const items = (state = [], action) => {
+export const INITIAL_STATE = Immutable({
+  items: [],
+  isFetching: 0,
+});
+
+const items = (state = INITIAL_STATE.items, action) => {
   switch (action.type) {
   case REQUEST_PAGES:
     return state;
@@ -33,7 +39,7 @@ const items = (state = [], action) => {
     return state;
   }
 };
-const isFetching = (state = 0, action) => {
+const isFetching = (state = INITIAL_STATE.isFetching, action) => {
   switch (action.type) {
   case REQUEST_PAGES:
     return state + 1;

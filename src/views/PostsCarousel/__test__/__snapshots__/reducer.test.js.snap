@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Posts reducer handles RECEIVE_POSTS action case 1 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "id": 1,
+      "name": "Nice post",
+    },
+    Object {
+      "id": 2,
+      "name": "Nicer post",
+    },
+    Object {
+      "id": 3,
+      "name": "Nicest post",
+    },
+  ],
+}
+`;
+
+exports[`Posts reducer handles RECEIVE_POSTS action case 2 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "id": 1,
+      "name": "Nice post",
+    },
+    Object {
+      "id": 2,
+      "name": "Nicer post",
+    },
+    Object {
+      "id": 3,
+      "name": "Nicest post",
+    },
+  ],
+}
+`;
+
+exports[`Posts reducer handles REQUEST_POSTS action 1`] = `
+Object {
+  "isFetching": 1,
+  "items": Array [
+    Object {
+      "id": 1,
+      "name": "Nice post",
+    },
+    Object {
+      "id": 2,
+      "name": "Nicer post",
+    },
+  ],
+}
+`;
+
+exports[`Posts reducer returns same state on an unhandled action 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [],
+}
+`;

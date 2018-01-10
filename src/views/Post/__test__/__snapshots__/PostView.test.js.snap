@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post card should render post with featured image 1`] = `
+<Container
+  className="post"
+>
+  <Icon
+    as="i"
+    name="chevron left"
+    onClick={[Function]}
+    size="big"
+  />
+  <Image
+    as="img"
+    ui={true}
+  />
+  <Container
+    textAlign="justified"
+  >
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Header>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Mock title",
+          }
+        }
+      />
+    </Header>
+    <HeaderSubheader>
+       by 
+      <b />
+      , 
+      <t
+        ago={false}
+        calendar={false}
+        element="time"
+        filter={[Function]}
+        format="MMMM DD, YYYY"
+        fromNow={false}
+        interval={60000}
+        onChange={[Function]}
+        toNow={false}
+        unix={false}
+        utc={false}
+      >
+        someMockDate
+      </t>
+    </HeaderSubheader>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some content that should be rendered",
+        }
+      }
+    />
+  </Container>
+</Container>
+`;
+
+exports[`Post card should render post with image placeholder 1`] = `
+<Container
+  className="post"
+>
+  <Icon
+    as="i"
+    name="chevron left"
+    onClick={[Function]}
+    size="big"
+  />
+  <Image
+    as="img"
+    src="https://placeholdit.co//i/555x650"
+    ui={true}
+  />
+  <Container
+    textAlign="justified"
+  >
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Header>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Mock title",
+          }
+        }
+      />
+    </Header>
+    <HeaderSubheader>
+       by 
+      <b />
+      , 
+      <t
+        ago={false}
+        calendar={false}
+        element="time"
+        filter={[Function]}
+        format="MMMM DD, YYYY"
+        fromNow={false}
+        interval={60000}
+        onChange={[Function]}
+        toNow={false}
+        unix={false}
+        utc={false}
+      >
+        someMockDate
+      </t>
+    </HeaderSubheader>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some content that should be rendered",
+        }
+      }
+    />
+  </Container>
+</Container>
+`;

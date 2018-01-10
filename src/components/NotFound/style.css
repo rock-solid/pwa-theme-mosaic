@@ -1,0 +1,12 @@
+.ui.container + div {
+  display: none;
+}
+
+.ui.container {
+  height: unset;
+}
+
+.ui.container h1.ui.header {
+  color: #000000;
+  position: static;
+}

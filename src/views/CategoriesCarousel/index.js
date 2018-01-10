@@ -60,7 +60,7 @@ class CategoriesCarousel extends Component {
     return (
       <div className="carousel-container">
         <Sidebar.Pushable>
-          <SideMenu isVisible={this.props.sideMenuVisible} closeMenu={this.props.closeMenu} />
+          <SideMenu />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
             <NavBar />
             {this.props.loading === 1 ? <Loader active /> : ''}

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
+import Immutable from 'seamless-immutable';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
+
 import { REQUEST_POSTS, RECEIVE_POSTS } from './action';
 
 export const postPropType = PropTypes.shape({
@@ -23,7 +25,12 @@ export const postPropType = PropTypes.shape({
   // TO DO : proptype for image src
 });
 
-const items = (state = [], action) => {
+export const INITIAL_STATE = Immutable({
+  items: [],
+  isFetching: 0,
+});
+
+const items = (state = INITIAL_STATE.items, action) => {
   switch (action.type) {
   case REQUEST_POSTS:
     return state;
@@ -36,7 +43,7 @@ const items = (state = [], action) => {
     return state;
   }
 };
-const isFetching = (state = 0, action) => {
+const isFetching = (state = INITIAL_STATE.isFetching, action) => {
   switch (action.type) {
   case REQUEST_POSTS:
     return state + 1;

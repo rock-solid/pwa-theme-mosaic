@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`One card should render correctly 1`] = `
+<Grid
+  className="full-row"
+>
+  <GridRow>
+    <CategoryCard
+      category={
+        Object {
+          "id": 1,
+          "name": "Some mock name",
+          "slug": "mock-slug",
+        }
+      }
+      key="1"
+    />
+  </GridRow>
+</Grid>
+`;

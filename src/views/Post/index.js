@@ -3,10 +3,12 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Loader } from 'semantic-ui-react';
 
 import { fetchPosts } from '../PostsCarousel/action';
-import { getPosts, postPropType } from '../PostsCarousel/reducer';
+import { getPosts, getPostsFetching, postPropType } from '../PostsCarousel/reducer';
 
+import NotFound from '../../components/NotFound/index';
 import PostDetails from './PostView';
 
 class Post extends Component {
@@ -27,8 +29,13 @@ class Post extends Component {
 
   render() {
     const post = this.props.posts.find(obj => obj.id === Number(this.props.match.params.postId));
+
+    if (this.props.loading === 1) {
+      return <Loader active />;
+    }
+
     if (_.isNil(post)) {
-      return <p>Post does not exist</p>;
+      return <NotFound />;
     }
 
     return <PostDetails post={post} />;
@@ -43,9 +50,11 @@ Post.propTypes = {
     }).isRequired,
   }).isRequired,
   posts: PropTypes.arrayOf(postPropType).isRequired,
+  loading: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
+  loading: getPostsFetching(state.posts),
   posts: getPosts(state.posts),
 });
 

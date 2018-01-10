@@ -9,6 +9,7 @@ import { fetchPosts } from './action';
 import { getPosts, postPropType, getPostsFetching } from './reducer';
 
 import PostsList from '../../components/PostsList/index';
+import Footer from '../../components/Footer/index';
 import './style.css';
 
 class PostsCarousel extends Component {
@@ -44,6 +45,7 @@ class PostsCarousel extends Component {
         {listedPosts.map(postsList => (
           <div key={Math.random()}>
             <PostsList postsList={postsList} />
+            <Footer />
           </div>
         ))}
       </Slider>

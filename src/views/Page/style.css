@@ -1,3 +1,9 @@
+/* CONTAINER */
+.ui.container.page {
+  height: unset;
+  margin-bottom: 20px;
+}
+
 /* HEADER */
 .page .ui.header {
   margin-top: 1em;
@@ -13,4 +19,30 @@
 
 .page .ui.header .ui.icon.button {
   background: none;
+}
+
+.react-router-modal__modal {
+  width: 94%;
+  height: 98%;
+}
+
+/* IMAGE */
+.ui.container.page .image {
+  margin-bottom: 10px;
+}
+
+/* CLOSE BTN */
+.ui.dividing.header a {
+  position: absolute;
+  right: 5px;
+  top: 20px;
+}
+button.ui.icon.button {
+  background: none;
+  padding: 10px 0 0 0;
+}
+
+/* MODAL */
+.react-router-modal__modal {
+  overflow-y: scroll;
 }
