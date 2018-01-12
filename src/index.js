@@ -11,6 +11,7 @@ import CategoriesCarousel from './views/CategoriesCarousel/index';
 import PostsCarousel from './views/PostsCarousel/index';
 import PostView from './views/Post/index';
 import PageView from './views/Page/index';
+import Comments from './views/Comments/index';
 
 import './index.css';
 
@@ -22,7 +23,8 @@ render(
           <Route exact path="/" component={CategoriesCarousel} />
           <Route path="/categories" component={CategoriesCarousel} />
           <Route path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
-          <Route path="/post/:postSlug/:postId" component={PostView} />
+          <Route exact path="/post/:postSlug/:postId" component={PostView} />
+          <Route exact path="/post/:postSlug/:postId/comments" parentPath="/post/:postSlug/:postId" component={Comments} />
           <ModalRoute path="/page/:pageSlug/:pageId" parentPath="/" component={PageView} />
         </Switch>
         <ModalContainer />
