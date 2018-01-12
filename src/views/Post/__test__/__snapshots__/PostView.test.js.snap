@@ -72,6 +72,76 @@ exports[`Post card should render post with featured image 1`] = `
       }
     />
   </Container>
+  <Modal
+    basic={true}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClick={[Function]}
+    open={false}
+    trigger={
+      <TransitionGroup
+        animation="fade up"
+        className="transition-container"
+        duration="500"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          name="share alternate"
+          onClick={[Function]}
+          size="large"
+        />
+      </TransitionGroup>
+    }
+  >
+    <Icon
+      as="i"
+      inverted={true}
+      name="close"
+      onClick={[Function]}
+      size="large"
+    />
+    <ModalActions>
+      <Link
+        replace={false}
+        to="/post/mock-slug/1/comments"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="grey"
+          inverted={true}
+          name="comment"
+          size="large"
+        />
+      </Link>
+      <Icon
+        as="i"
+        circular={true}
+        color="blue"
+        inverted={true}
+        name="facebook f"
+        size="large"
+      />
+      <Icon
+        as="i"
+        circular={true}
+        color="teal"
+        inverted={true}
+        name="twitter"
+        size="large"
+      />
+      <Icon
+        as="i"
+        circular={true}
+        color="red"
+        inverted={true}
+        name="google plus"
+        size="large"
+      />
+    </ModalActions>
+  </Modal>
 </Container>
 `;
 
@@ -148,5 +218,75 @@ exports[`Post card should render post with image placeholder 1`] = `
       }
     />
   </Container>
+  <Modal
+    basic={true}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClick={[Function]}
+    open={false}
+    trigger={
+      <TransitionGroup
+        animation="fade up"
+        className="transition-container"
+        duration="500"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          name="share alternate"
+          onClick={[Function]}
+          size="large"
+        />
+      </TransitionGroup>
+    }
+  >
+    <Icon
+      as="i"
+      inverted={true}
+      name="close"
+      onClick={[Function]}
+      size="large"
+    />
+    <ModalActions>
+      <Link
+        replace={false}
+        to="/post/mock-slug/1/comments"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="grey"
+          inverted={true}
+          name="comment"
+          size="large"
+        />
+      </Link>
+      <Icon
+        as="i"
+        circular={true}
+        color="blue"
+        inverted={true}
+        name="facebook f"
+        size="large"
+      />
+      <Icon
+        as="i"
+        circular={true}
+        color="teal"
+        inverted={true}
+        name="twitter"
+        size="large"
+      />
+      <Icon
+        as="i"
+        circular={true}
+        color="red"
+        inverted={true}
+        name="google plus"
+        size="large"
+      />
+    </ModalActions>
+  </Modal>
 </Container>
 `;

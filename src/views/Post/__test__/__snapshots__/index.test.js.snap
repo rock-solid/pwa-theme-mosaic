@@ -37,7 +37,7 @@ exports[`Post screen should render correctly an existing post 1`] = `
 
 exports[`Post screen should render correctly that a post does not exist 1`] = `
 <div
-  className="ui container"
+  className="ui container not-found"
 >
   <h1
     className="ui header"

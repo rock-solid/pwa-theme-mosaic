@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Not found component should render correctly 1`] = `
-<Container>
+<Container
+  className="not-found"
+>
   <Header
     as="h1"
   >
