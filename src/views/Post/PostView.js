@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
+import { Link } from 'react-router-dom';
 import { Container, Image, Header, Label, Icon, Modal, Transition } from 'semantic-ui-react';
 import Moment from 'react-moment';
 
@@ -10,7 +11,6 @@ export default class PostView extends Component {
   constructor(props) {
     super(props);
     this.getImage = this.getImage.bind(this);
-    // this.handleVisibility = this.handleVisibility.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.state = {
@@ -74,10 +74,18 @@ export default class PostView extends Component {
         >
           <Icon name="close" inverted size="large" onClick={this.handleClose} />
           <Modal.Actions>
-            <Icon name="comment" size="large" circular inverted color="grey" />
-            <Icon name="facebook f" size="large" circular inverted color="blue" />
-            <Icon name="twitter" size="large" circular inverted color="teal" />
-            <Icon name="google plus" size="large" circular inverted color="red" />
+            <Link to={'/post/' + post.slug + '/' + post.id + '/comments'}>
+              <Icon name="comment" size="large" circular inverted color="grey" />
+            </Link>
+            <a href={'https://m.facebook.com/sharer.php?u=' + post.link}>
+              <Icon name="facebook f" size="large" circular inverted color="blue" />
+            </a>
+            <a href={'https://twitter.com/intent/tweet?text=' + encodeURIComponent(post.title.rendered) + ' ' + post.link}>
+              <Icon name="twitter" size="large" circular inverted color="teal" />
+            </a>
+            <a href={'https://plus.google.com/share?url=' + post.link}>
+              <Icon name="google plus" size="large" circular inverted color="red" />
+            </a>
           </Modal.Actions>
         </Modal>
       </Container>
