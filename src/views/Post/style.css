@@ -47,6 +47,7 @@
   position: absolute;
   z-index: 1;
   top: 10px;
+  left: 0;
 }
 
 .ui.container.post i.icon.circular.share {
