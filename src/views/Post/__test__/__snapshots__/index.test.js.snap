@@ -8,6 +8,11 @@ exports[`Post screen should render correctly a loader 1`] = `
 
 exports[`Post screen should render correctly an existing post 1`] = `
 <Post view test
+  category={
+    Object {
+      "postId": "1",
+    }
+  }
   post={
     Object {
       "author": 54,
