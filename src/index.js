@@ -21,11 +21,15 @@ render(
       <div className="App">
         <Switch>
           <Route exact path="/" component={CategoriesCarousel} />
-          <Route path="/categories" component={CategoriesCarousel} />
-          <Route path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
+          <Route exact path="/categories" component={CategoriesCarousel} />
+          <Route exact path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
+          {/* post routes direct url */}
           <Route exact path="/post/:postSlug/:postId" component={PostView} />
-          <Route exact path="/post/:postSlug/:postId/comments" parentPath="/post/:postSlug/:postId" component={Comments} />
-          <ModalRoute path="/page/:pageSlug/:pageId" parentPath="/" component={PageView} />
+          <Route exact path="/post/:postSlug/:postId/comments" component={Comments} />
+          {/* post routes from app navigation */}
+          <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId" component={PostView} />
+          <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId/comments" component={Comments} />
+          <ModalRoute exact path="/page/:pageSlug/:pageId" parentPath="/" component={PageView} />
         </Switch>
         <ModalContainer />
       </div>
