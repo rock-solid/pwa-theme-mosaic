@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import createHistory from 'history/createBrowserHistory';
 import { Link } from 'react-router-dom';
 import { Container, Image, Header, Label, Icon, Modal, Transition } from 'semantic-ui-react';
 import Moment from 'react-moment';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 import { postPropType } from '../PostsCarousel/reducer';
 import './style.css';
@@ -42,11 +43,23 @@ export default class PostView extends Component {
     const { author } = post._embedded;
     const categoriesList = post._embedded['wp:term'];
     const featuredMedia = post._embedded['wp:featuredmedia'];
-    const history = createHistory();
+    // set path routes
+    let goBack = {};
+    let path = {};
+    if (_.isNil(this.props.category)) {
+      goBack = '/';
+      path = '/post/' + post.slug + '/' + post.id;
+    } else {
+      goBack = '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId;
+      path =
+        '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId + '/post/' + post.slug + '/' + post.id + '/comments';
+    }
 
     return (
       <Container className="post">
-        <Icon size="big" name="chevron left" onClick={history.goBack} />
+        <Link to={goBack}>
+          <Icon size="big" name="chevron left" />
+        </Link>
         <Image src={this.getImage(featuredMedia)} />
         <Container textAlign="justified">
           {categoriesList[0].map(category => (
@@ -72,9 +85,8 @@ export default class PostView extends Component {
           }
           basic
         >
-          <Icon name="close" inverted size="large" onClick={this.handleClose} />
           <Modal.Actions>
-            <Link to={'/post/' + post.slug + '/' + post.id + '/comments'}>
+            <Link to={path}>
               <Icon name="comment" size="large" circular inverted color="grey" />
             </Link>
             <a href={'https://m.facebook.com/sharer.php?u=' + post.link}>
@@ -94,4 +106,8 @@ export default class PostView extends Component {
 }
 PostView.propTypes = {
   post: postPropType.isRequired,
+  category: PropTypes.shape({
+    categorySlug: PropTypes.string.isRequired,
+    categoryId: PropTypes.string.isRequired,
+  }).isRequired,
 };

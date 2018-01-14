@@ -40,11 +40,13 @@ class PostsCarousel extends Component {
       return <Loader active />;
     }
 
+    console.log('POSTS CAROUSEL', this.props);
+
     return (
       <Slider {...settings}>
         {listedPosts.map(postsList => (
           <div key={Math.random()}>
-            <PostsList postsList={postsList} />
+            <PostsList postsList={postsList} category={this.props.match} />
             <Footer />
           </div>
         ))}

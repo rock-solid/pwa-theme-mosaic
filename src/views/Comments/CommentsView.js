@@ -1,16 +1,32 @@
 import React from 'react';
 import { Header, Comment, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
 const CommentsView = (props) => {
-  console.log(props);
+  let path = {};
+  if (_.isNil(props.match.params.categorySlug)) {
+    path = '/post/' + props.match.params.postSlug + '/' + props.match.params.postId;
+  } else {
+    path =
+      '/category/' +
+      props.match.params.categorySlug +
+      '/' +
+      props.match.params.categoryId +
+      '/post/' +
+      props.match.params.postSlug +
+      '/' +
+      props.match.params.postId;
+  }
+
   return (
     <Comment.Group>
       <Header as="h3" block>
         Comments
-        <Link to={'/post/' + props.match.params.postSlug + '/' + props.match.params.postId}>
+        <Link to={path}>
           <Icon name="close" />
         </Link>
       </Header>
@@ -31,6 +47,16 @@ const CommentsView = (props) => {
       ))}
     </Comment.Group>
   );
+};
+
+CommentsView.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      postSlug: PropTypes.string.isRequired,
+      postId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  comments: PropTypes.any.isRequired, // TO DO VALIDATION
 };
 
 export default CommentsView;

@@ -19,8 +19,6 @@ class Comments extends Component {
   }
 
   render() {
-    console.log('this.props', this.props);
-
     const comm = this.props.comments.filter(comment => comment.post === Number(this.props.match.params.postId));
 
     if (this.props.loading === 1) {
@@ -41,6 +39,7 @@ Comments.propTypes = {
     }).isRequired,
   }).isRequired,
   loading: PropTypes.number.isRequired,
+  comments: PropTypes.any.isRequired, //TO DO validate
 };
 
 const mapStateToProps = state => ({

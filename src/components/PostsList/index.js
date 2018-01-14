@@ -13,11 +13,11 @@ const PostsList = (props) => {
         <Grid columns={1} divided>
           <GridColumn className="double-post">
             <GridRow>
-              <PostCard post={props.postsList[0]} key={props.postsList[0].id} />
+              <PostCard post={props.postsList[0]} key={props.postsList[0].id} category={props.category} />
             </GridRow>
             <hr />
             <GridRow>
-              <PostCard post={props.postsList[1]} key={props.postsList[1].id} />
+              <PostCard post={props.postsList[1]} key={props.postsList[1].id} category={props.category} />
             </GridRow>
           </GridColumn>
         </Grid>
@@ -28,7 +28,7 @@ const PostsList = (props) => {
         <GridColumn>
           <GridRow>
             <Card>
-              <PostCard post={props.postsList[0]} key={props.postsList[0].id} />
+              <PostCard post={props.postsList[0]} key={props.postsList[0].id} category={props.category} />
             </Card>
           </GridRow>
         </GridColumn>
@@ -40,6 +40,12 @@ const PostsList = (props) => {
 
 PostsList.propTypes = {
   postsList: PropTypes.arrayOf(postPropType).isRequired, // TO DO: check rule for eslint
+  category: PropTypes.shape({
+    params: PropTypes.shape({
+      categoryId: PropTypes.string.isRequired,
+      categorySlug: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default PostsList;
