@@ -58,6 +58,8 @@ CommentsView.propTypes = {
     params: PropTypes.shape({
       postSlug: PropTypes.string.isRequired,
       postId: PropTypes.string.isRequired,
+      categorySlug: PropTypes.string,
+      categoryId: PropTypes.string,
     }).isRequired,
   }).isRequired,
   comments: PropTypes.any.isRequired, // TO DO VALIDATION
