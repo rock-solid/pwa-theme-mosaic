@@ -37,3 +37,8 @@
 .ui.comments + div {
   display: none;
 }
+
+/* text */
+.no-comments {
+  padding-top: 20%;
+}

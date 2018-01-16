@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Comment, Icon } from 'semantic-ui-react';
+import { Header, Comment, Icon, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
@@ -30,21 +30,25 @@ const CommentsView = (props) => {
           <Icon name="close" />
         </Link>
       </Header>
-      {props.comments.map(comment => (
-        <Comment key={comment.id + comment.author}>
-          <Comment.Avatar src={comment.author_avatar_urls[24]} />
-          <Comment.Content>
-            <Comment.Author as="a">{comment.author_name}</Comment.Author>
-            <Comment.Metadata>
-              <div>{comment.date}</div>
-            </Comment.Metadata>
-            <Comment.Text dangerouslySetInnerHTML={{ __html: comment.content.rendered }} />
-            <Comment.Actions>
-              <Comment.Action>Reply</Comment.Action>
-            </Comment.Actions>
-          </Comment.Content>
-        </Comment>
-      ))}
+      {props.comments.length > 0 ? (
+        props.comments.map(comment => (
+          <Comment key={comment.id + comment.author}>
+            <Comment.Avatar src={comment.author_avatar_urls[24]} />
+            <Comment.Content>
+              <Comment.Author as="a">{comment.author_name}</Comment.Author>
+              <Comment.Metadata>
+                <div>{comment.date}</div>
+              </Comment.Metadata>
+              <Comment.Text dangerouslySetInnerHTML={{ __html: comment.content.rendered }} />
+              <Comment.Actions>
+                <Comment.Action>Reply</Comment.Action>
+              </Comment.Actions>
+            </Comment.Content>
+          </Comment>
+        ))
+      ) : (
+        <Container className="no-comments">There are no comments for this article. Be the first one to comment about this!</Container>
+      )}
     </Comment.Group>
   );
 };
