@@ -8,7 +8,7 @@ import './style.css';
 
 const CommentsView = (props) => {
   let path = {};
-  if (_.isNil(props.match.params.categorySlug)) {
+  if (_.isNil(props.match.params.categorySlug) || _.isNil(props.match.params.categoryId)) {
     path = '/post/' + props.match.params.postSlug + '/' + props.match.params.postId;
   } else {
     path =

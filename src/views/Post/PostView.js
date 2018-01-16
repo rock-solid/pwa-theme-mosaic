@@ -46,7 +46,7 @@ export default class PostView extends Component {
     // set path routes
     let goBack = {};
     let path = {};
-    if (_.isNil(this.props.category.categorySlug)) {
+    if (_.isNil(this.props.category.categorySlug) || _.isNil(this.props.category.categoryId)) {
       goBack = '/';
       path = '/post/' + post.slug + '/' + post.id + '/comments';
     } else {
