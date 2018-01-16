@@ -107,7 +107,7 @@ export default class PostView extends Component {
 PostView.propTypes = {
   post: postPropType.isRequired,
   category: PropTypes.shape({
-    categorySlug: PropTypes.string.isRequired,
-    categoryId: PropTypes.string.isRequired,
+    categorySlug: PropTypes.string,
+    categoryId: PropTypes.string,
   }).isRequired,
 };
