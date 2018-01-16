@@ -40,8 +40,6 @@ class PostsCarousel extends Component {
       return <Loader active />;
     }
 
-    console.log('POSTS CAROUSEL', this.props);
-
     return (
       <Slider {...settings}>
         {listedPosts.map(postsList => (
