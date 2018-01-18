@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Form, Button } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
@@ -25,6 +26,10 @@ let CommentForm = (props) => {
       </Button>
     </Form>
   );
+};
+
+CommentForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 CommentForm = reduxForm({
