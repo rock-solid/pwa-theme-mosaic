@@ -25,10 +25,10 @@ render(
           <Route exact path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
           {/* post routes direct url */}
           <Route exact path="/post/:postSlug/:postId" component={PostView} />
-          <Route exact path="/post/:postSlug/:postId/comments" component={Comments} />
+          <Route exact path="/post/:postSlug/:postId/comments/:comment_status" component={Comments} />
           {/* post routes from app navigation */}
           <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId" component={PostView} />
-          <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId/comments" component={Comments} />
+          <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId/comments/:comment_status" component={Comments} />
           <ModalRoute exact path="/page/:pageSlug/:pageId" parentPath="/" component={PageView} />
         </Switch>
         <ModalContainer />
