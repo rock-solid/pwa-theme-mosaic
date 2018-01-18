@@ -12,6 +12,7 @@ export const commentPropType = PropTypes.shape({
   content: PropTypes.shape({
     rendered: PropTypes.string.isRequired,
   }).isRequired,
+  date: PropTypes.string.isRequired,
 });
 
 export const INITIAL_STATE = Immutable({
