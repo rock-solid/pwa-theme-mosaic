@@ -41,6 +41,7 @@
     "react-slick": "^0.15.4",
     "react-test-renderer": "^16.2.0",
     "redux": "^3.6.0",
+    "redux-form": "^7.2.0",
     "redux-logger": "^3.0.6",
     "redux-polyglot": "^0.5.3",
     "redux-thunk": "^2.2.0",
@@ -56,6 +57,11 @@
     "eject": "react-scripts eject"
   },
   "jest": {
-    "collectCoverageFrom": ["src/**/*.js", "!src/configureStore.js", "!src/registerServiceWorker.js", "!src/index.js"]
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/configureStore.js",
+      "!src/registerServiceWorker.js",
+      "!src/index.js"
+    ]
   }
 }
