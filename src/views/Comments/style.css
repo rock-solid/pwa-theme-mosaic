@@ -33,9 +33,17 @@
   text-align: start;
 }
 
-/* FIX MODAL */
+/* MODAL */
+/* FIX */
 .ui.comments + div {
   display: none;
+}
+/* override styling */
+.dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+  opacity: 1
+}
+.ui.modal.transition.visible.active {
+  height: unset;
 }
 
 /* text */
