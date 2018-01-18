@@ -48,11 +48,20 @@ export default class PostView extends Component {
     let path = {};
     if (_.isNil(this.props.category.categorySlug) || _.isNil(this.props.category.categoryId)) {
       goBack = '/';
-      path = '/post/' + post.slug + '/' + post.id + '/comments';
+      path = '/post/' + post.slug + '/' + post.id + '/comments/' + post.comment_status;
     } else {
       goBack = '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId;
       path =
-        '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId + '/post/' + post.slug + '/' + post.id + '/comments';
+        '/category/' +
+        this.props.category.categorySlug +
+        '/' +
+        this.props.category.categoryId +
+        '/post/' +
+        post.slug +
+        '/' +
+        post.id +
+        '/comments/' +
+        post.comment_status;
     }
 
     return (
@@ -76,6 +85,7 @@ export default class PostView extends Component {
           <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
         </Container>
         <Modal
+          className="share"
           open={this.state.modalOpen}
           onClick={this.handleClose}
           trigger={
