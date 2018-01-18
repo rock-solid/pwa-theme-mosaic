@@ -38,7 +38,7 @@ class Post extends Component {
       return <NotFound />;
     }
 
-    return <PostDetails post={post} />;
+    return <PostDetails post={post} category={this.props.match.params} />;
   }
 }
 

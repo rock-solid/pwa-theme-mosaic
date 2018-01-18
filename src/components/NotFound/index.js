@@ -4,7 +4,7 @@ import { Header, Container } from 'semantic-ui-react';
 import './style.css';
 
 const NotFound = () => (
-  <Container>
+  <Container className="not-found">
     <Header as="h1"> Not found</Header>
   </Container>
 );

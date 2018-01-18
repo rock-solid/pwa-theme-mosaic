@@ -72,6 +72,88 @@ exports[`Post card should render post with featured image 1`] = `
       }
     />
   </Container>
+  <Modal
+    basic={true}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClick={[Function]}
+    open={false}
+    trigger={
+      <TransitionGroup
+        animation="fade up"
+        className="transition-container"
+        duration="500"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          name="share alternate"
+          onClick={[Function]}
+          size="large"
+        />
+      </TransitionGroup>
+    }
+  >
+    <Icon
+      as="i"
+      inverted={true}
+      name="close"
+      onClick={[Function]}
+      size="large"
+    />
+    <ModalActions>
+      <Link
+        replace={false}
+        to="/post/mock-slug/1/comments"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="grey"
+          inverted={true}
+          name="comment"
+          size="large"
+        />
+      </Link>
+      <a
+        href="https://m.facebook.com/sharer.php?u=undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="blue"
+          inverted={true}
+          name="facebook f"
+          size="large"
+        />
+      </a>
+      <a
+        href="https://twitter.com/intent/tweet?text=Mock%20title undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="teal"
+          inverted={true}
+          name="twitter"
+          size="large"
+        />
+      </a>
+      <a
+        href="https://plus.google.com/share?url=undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="red"
+          inverted={true}
+          name="google plus"
+          size="large"
+        />
+      </a>
+    </ModalActions>
+  </Modal>
 </Container>
 `;
 
@@ -148,5 +230,87 @@ exports[`Post card should render post with image placeholder 1`] = `
       }
     />
   </Container>
+  <Modal
+    basic={true}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClick={[Function]}
+    open={false}
+    trigger={
+      <TransitionGroup
+        animation="fade up"
+        className="transition-container"
+        duration="500"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          name="share alternate"
+          onClick={[Function]}
+          size="large"
+        />
+      </TransitionGroup>
+    }
+  >
+    <Icon
+      as="i"
+      inverted={true}
+      name="close"
+      onClick={[Function]}
+      size="large"
+    />
+    <ModalActions>
+      <Link
+        replace={false}
+        to="/post/mock-slug/1/comments"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="grey"
+          inverted={true}
+          name="comment"
+          size="large"
+        />
+      </Link>
+      <a
+        href="https://m.facebook.com/sharer.php?u=undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="blue"
+          inverted={true}
+          name="facebook f"
+          size="large"
+        />
+      </a>
+      <a
+        href="https://twitter.com/intent/tweet?text=Mock%20title undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="teal"
+          inverted={true}
+          name="twitter"
+          size="large"
+        />
+      </a>
+      <a
+        href="https://plus.google.com/share?url=undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="red"
+          inverted={true}
+          name="google plus"
+          size="large"
+        />
+      </a>
+    </ModalActions>
+  </Modal>
 </Container>
 `;

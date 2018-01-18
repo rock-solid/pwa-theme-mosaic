@@ -8,6 +8,11 @@ exports[`Post screen should render correctly a loader 1`] = `
 
 exports[`Post screen should render correctly an existing post 1`] = `
 <Post view test
+  category={
+    Object {
+      "postId": "1",
+    }
+  }
   post={
     Object {
       "author": 54,
@@ -37,7 +42,7 @@ exports[`Post screen should render correctly an existing post 1`] = `
 
 exports[`Post screen should render correctly that a post does not exist 1`] = `
 <div
-  className="ui container"
+  className="ui container not-found"
 >
   <h1
     className="ui header"

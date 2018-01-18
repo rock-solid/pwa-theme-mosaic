@@ -2,7 +2,7 @@
 
 exports[`Page screen renders a message if the page does not exist 1`] = `
 <div
-  className="ui container"
+  className="ui container not-found"
 >
   <h1
     className="ui header"

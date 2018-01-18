@@ -1,0 +1,44 @@
+/* HEADER */
+.ui.block.header {
+  border: none;
+  color: black;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: 100;
+  position: fixed;
+  margin: 0;
+}
+
+/* CLOSE ICON */
+.ui.block.header a {
+  position: absolute;
+  right: 0;
+}
+
+/* COMMENTS */
+.ui.comments {
+  margin: 0;
+}
+.ui.comments .comment:first-of-type {
+  margin: 4em 0;
+}
+.ui.comments .comment {
+  height: unset;
+  margin: 2em 0;
+  padding: 0;
+}
+
+.ui.comments .comment > .avatar ~ .content {
+  height: unset;
+  text-align: start;
+}
+
+/* FIX MODAL */
+.ui.comments + div {
+  display: none;
+}
+
+/* text */
+.no-comments {
+  padding-top: 20%;
+}

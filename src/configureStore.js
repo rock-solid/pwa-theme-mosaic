@@ -8,6 +8,7 @@ import sideMenuVisible from './components/NavBar/reducer';
 import categories from './views/CategoriesCarousel/reducer';
 import posts from './views/PostsCarousel/reducer';
 import pages from './views/SideMenu/reducer';
+import comments from './views/Comments/reducers';
 
 const history = createHistory();
 
@@ -22,6 +23,9 @@ const defaultState = {
   pages: {
     items: [],
   },
+  comments: {
+    items: [],
+  },
 };
 
 const rootReducer = combineReducers({
@@ -29,6 +33,7 @@ const rootReducer = combineReducers({
   categories,
   posts,
   pages,
+  comments,
 });
 
 const store = createStore(rootReducer, defaultState, compose(applyMiddleware(thunk, logger, routerMiddleware(history))));
