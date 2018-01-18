@@ -39,10 +39,12 @@
   display: none;
 }
 /* override styling */
-.dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
-  opacity: 1
+.dimmed.dimmable > .ui.animating.dimmer,
+.dimmed.dimmable > .ui.visible.dimmer,
+.ui.active.dimmer {
+  opacity: 1;
 }
-.ui.modal.transition.visible.active {
+.ui.modal.transition.visible.active:not(.share) {
   height: unset;
 }
 
