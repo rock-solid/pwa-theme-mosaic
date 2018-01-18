@@ -31,3 +31,14 @@ export const fetchComments = (params = {}) => (dispatch) => {
       dispatch(receiveComments([]));
     });
 };
+
+export const addComment = (params = {}) => {
+  fetch(config.API_COMMENTS_URL, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ params }),
+  });
+};

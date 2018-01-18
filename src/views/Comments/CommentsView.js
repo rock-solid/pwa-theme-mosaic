@@ -1,9 +1,12 @@
 import React from 'react';
-import { Header, Comment, Icon, Container } from 'semantic-ui-react';
+import { Header, Comment, Icon, Container, Button, Modal } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
+import { addComment } from './actions';
+import { commentPropType } from './reducers';
+import CommentForm from '../../components/Form/index';
 import './style.css';
 
 const CommentsView = (props) => {
@@ -22,6 +25,20 @@ const CommentsView = (props) => {
       props.match.params.postId;
   }
 
+  const submit = (values) => {
+    const params = {
+      author_name: values.name,
+      email: values.email,
+      content: {
+        rendered: values.content,
+      },
+      date: new Date(),
+      post: props.match.params.postId,
+    };
+    addComment(params);
+    console.log(values);
+  };
+  console.log(props);
   return (
     <Comment.Group>
       <Header as="h3" block>
@@ -49,6 +66,14 @@ const CommentsView = (props) => {
       ) : (
         <Container className="no-comments">There are no comments for this article. Be the first one to comment about this!</Container>
       )}
+      {props.match.params.comment_status === 'open' ? (
+        <Modal trigger={<Button>Leave a comment</Button>} closeIcon>
+          <Header icon="commenting" content="Leave a comment" />
+          <Modal.Content>
+            <CommentForm onSubmit={submit} />
+          </Modal.Content>
+        </Modal>
+      ) : null}
     </Comment.Group>
   );
 };
@@ -60,9 +85,10 @@ CommentsView.propTypes = {
       postId: PropTypes.string.isRequired,
       categorySlug: PropTypes.string,
       categoryId: PropTypes.string,
+      comment_status: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  comments: PropTypes.any.isRequired, // TO DO VALIDATION
+  comments: PropTypes.arrayOf(commentPropType).isRequired,
 };
 
 export default CommentsView;
