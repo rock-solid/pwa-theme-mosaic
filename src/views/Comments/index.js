@@ -8,7 +8,7 @@ import { Loader } from 'semantic-ui-react';
 import _ from 'lodash';
 
 import { fetchComments } from './actions';
-import { getComments, getCommentsFetching } from './reducers';
+import { getComments, getCommentsFetching, commentPropType } from './reducers';
 import NotFound from '../../components/NotFound/index';
 import CommentsView from './CommentsView';
 
@@ -39,7 +39,7 @@ Comments.propTypes = {
     }).isRequired,
   }).isRequired,
   loading: PropTypes.number.isRequired,
-  comments: PropTypes.any.isRequired, //TO DO validate
+  comments: PropTypes.arrayOf(commentPropType).isRequired,
 };
 
 const mapStateToProps = state => ({
