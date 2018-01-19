@@ -3,7 +3,7 @@
 exports[`Post card should render correctly post with featured image 1`] = `
 <Link
   replace={false}
-  to="/post/mock-slug/1"
+  to="/category/some-slug/32/post/mock-slug/1"
 >
   <Item
     className="posts"
@@ -41,7 +41,7 @@ exports[`Post card should render correctly post with featured image 1`] = `
 exports[`Post card should render correctly post with placeholder image 1`] = `
 <Link
   replace={false}
-  to="/post/mock-slug/1"
+  to="/category/some-slug/32/post/mock-slug/1"
 >
   <Item
     className="posts"

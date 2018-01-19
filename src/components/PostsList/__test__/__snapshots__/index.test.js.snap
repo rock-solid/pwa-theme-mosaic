@@ -11,6 +11,14 @@ exports[`Posts list should render correctly even number of posts 1`] = `
     >
       <GridRow>
         <PostCard
+          category={
+            Object {
+              "params": Object {
+                "categoryId": "32",
+                "categorySlug": "some-slug",
+              },
+            }
+          }
           key="1"
           post={
             Object {
@@ -44,6 +52,14 @@ exports[`Posts list should render correctly even number of posts 1`] = `
       <hr />
       <GridRow>
         <PostCard
+          category={
+            Object {
+              "params": Object {
+                "categoryId": "32",
+                "categorySlug": "some-slug",
+              },
+            }
+          }
           key="2"
           post={
             Object {
@@ -86,6 +102,14 @@ exports[`Posts list should render correctly odd number of posts 1`] = `
       <GridRow>
         <Card>
           <PostCard
+            category={
+              Object {
+                "params": Object {
+                  "categoryId": "32",
+                  "categorySlug": "some-slug",
+                },
+              }
+            }
             key="1"
             post={
               Object {

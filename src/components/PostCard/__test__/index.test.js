@@ -28,7 +28,13 @@ describe('Post card', () => {
         'wp:featuredmedia': 'someMockImageUrl',
       },
     };
-    const output = shallow(<PostCard post={mockPost} />);
+    const category = {
+      params: {
+        categoryId: '32',
+        categorySlug: 'some-slug',
+      },
+    };
+    const output = shallow(<PostCard post={mockPost} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
   it('should render correctly post with placeholder image', () => {
@@ -51,7 +57,13 @@ describe('Post card', () => {
       featured_media: 0,
       date: 'some mock date',
     };
-    const output = shallow(<PostCard post={mockPost} />);
+    const category = {
+      params: {
+        categoryId: '32',
+        categorySlug: 'some-slug',
+      },
+    };
+    const output = shallow(<PostCard post={mockPost} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

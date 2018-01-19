@@ -29,7 +29,15 @@ describe('Post card', () => {
       date: 'someMockDate', //TO DO : date validation => class Date
       // TO DO : proptype for image src
     };
-    const output = shallow(<PostView post={mockPost} />);
+    const category = {
+      match: {
+        params: {
+          categoryId: '32',
+          categorySlug: 'some-slug',
+        },
+      },
+    };
+    const output = shallow(<PostView post={mockPost} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 
@@ -58,7 +66,15 @@ describe('Post card', () => {
       date: 'someMockDate', //TO DO : date validation => class Date
       // TO DO : proptype for image src
     };
-    const output = shallow(<PostView post={mockPost} />);
+    const category = {
+      match: {
+        params: {
+          categoryId: '32',
+          categorySlug: 'some-slug',
+        },
+      },
+    };
+    const output = shallow(<PostView post={mockPost} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });
