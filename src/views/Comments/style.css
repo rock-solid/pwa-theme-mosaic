@@ -52,3 +52,8 @@
 .no-comments {
   padding-top: 20%;
 }
+
+/* Pull to refresh  */
+.ui.comments .ui.block.header + div {
+  height: unset;
+}
