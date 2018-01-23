@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page list renders page list in side menu 1`] = `
+<List
+  divided={true}
+  relaxed={true}
+>
+  <Header>
+    Go to
+  </Header>
+</List>
+`;
