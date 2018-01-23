@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments view renders comments, allows adding new comments 1`] = `
+<CommentGroup>
+  <Comment
+    key="6715"
+  >
+    <CommentAvatar
+      src="some-rurl"
+    />
+    <CommentContent>
+      <CommentAuthor
+        as="a"
+      >
+        Comment Author
+      </CommentAuthor>
+      <CommentMetadata>
+        <div>
+          d date
+        </div>
+      </CommentMetadata>
+      <CommentText
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Comment content",
+          }
+        }
+      />
+      <CommentActions>
+        <CommentAction
+          as="a"
+          onClick={[Function]}
+        >
+          Reply
+        </CommentAction>
+      </CommentActions>
+    </CommentContent>
+  </Comment>
+  <Button
+    as="button"
+    onClick={[Function]}
+  >
+    Leave a comment
+  </Button>
+</CommentGroup>
+`;
+
+exports[`Comments view renders comments, does not allow adding new comments 1`] = `
+<CommentGroup>
+  <Comment
+    key="6715"
+  >
+    <CommentAvatar
+      src="some-rurl"
+    />
+    <CommentContent>
+      <CommentAuthor
+        as="a"
+      >
+        Comment Author
+      </CommentAuthor>
+      <CommentMetadata>
+        <div>
+          d date
+        </div>
+      </CommentMetadata>
+      <CommentText
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Comment content",
+          }
+        }
+      />
+      <CommentActions>
+        <CommentAction
+          as="a"
+          onClick={[Function]}
+        >
+          Reply
+        </CommentAction>
+      </CommentActions>
+    </CommentContent>
+  </Comment>
+</CommentGroup>
+`;
+
+exports[`Comments view renders no comments, allows adding new comments 1`] = `
+<CommentGroup>
+  <Container
+    className="no-comments"
+  >
+    There are no comments for this article. Be the first one to comment about this!
+  </Container>
+  <Button
+    as="button"
+    onClick={[Function]}
+  >
+    Leave a comment
+  </Button>
+</CommentGroup>
+`;
+
+exports[`Comments view renders no comments, does not allow adding new comments 1`] = `
+<CommentGroup>
+  <Container
+    className="no-comments"
+  >
+    There are no comments for this article. Be the first one to comment about this!
+  </Container>
+</CommentGroup>
+`;
