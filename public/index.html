@@ -21,6 +21,30 @@
   <!-- FONTS TO DO:font files -->
   <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
 
+  <!-- config JSON app settings -->
+  <script>
+    window.__INITIAL_CONFIG__ = {
+      "export": {
+        "categories": 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/categories',
+        "posts": 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/posts?_embed=users?_embed=media',
+        "pages": 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/pages?_embed=media',
+        "comments": 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/comments',
+        "media": 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/media'
+      },
+
+      // "translate": {
+      //   "path": "http:\/\/localhost\/wordpress-4.8.3\/wordpress\/wp-content\/plugins\/wordpress-mobile-pack\/export\/content.php?content=apptexts&locale=en_US&format=json",
+      //   "language": "en"
+      // },
+      "socialMedia": {
+        "facebook": true,
+        "twitter": true,
+        "google": true
+      },
+      "websiteUrl": "http:\/\/localhost\/wordpress-4.8.3\/wordpress?wmp_theme_mode=desktop",
+      "logo": "http:\/\/localhost\/wordpress-4.8.3\/wordpress\/wp-content\/uploads\/wordpress-mobile-pack\/logo_1516880924.png",
+    }
+  </script>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
