@@ -13,8 +13,8 @@ describe('Side menu', () => {
       pages: {
         items: [],
         isFetching: 1,
-        sideMenuVisible: true,
       },
+      sideMenuVisible: true,
     });
     const loading = 1;
     expect(renderer.create(<SideMenu store={store} loading={loading} fetchPages={jest.fn()} />)).toMatchSnapshot();
@@ -24,8 +24,8 @@ describe('Side menu', () => {
       pages: {
         items: [],
         isFetching: 0,
-        sideMenuVisible: true,
       },
+      sideMenuVisible: true,
     });
     const loading = 1;
     expect(renderer.create(<SideMenu store={store} loading={loading} fetchPages={jest.fn()} />)).toMatchSnapshot();
