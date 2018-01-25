@@ -21,7 +21,7 @@ let CommentForm = (props) => {
         <label htmlFor="content">Leave a comment</label>
         <Field name="content" component="textarea" type="text" placeholder="Tell us what you think..." required />
       </div>
-      <Button type="submit" color="teal" compact>
+      <Button id="submit" type="submit" color="teal" compact>
         Submit
       </Button>
     </Form>
