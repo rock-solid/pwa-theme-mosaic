@@ -14,7 +14,6 @@ export const receivePosts = posts => ({
 
 export const fetchPosts = (params = {}) => (dispatch) => {
   dispatch(requestPosts());
-  config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
   let url;
   if (params && params.id) {
