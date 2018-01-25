@@ -271,18 +271,6 @@ exports[`Post card should render post with image placeholder 1`] = `
         />
       </Link>
       <a
-        href="https://m.facebook.com/sharer.php?u=undefined"
-      >
-        <Icon
-          as="i"
-          circular={true}
-          color="blue"
-          inverted={true}
-          name="facebook f"
-          size="large"
-        />
-      </a>
-      <a
         href="https://twitter.com/intent/tweet?text=Mock%20title undefined"
       >
         <Icon
