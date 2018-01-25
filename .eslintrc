@@ -18,6 +18,18 @@
     "jsx-a11y/no-static-element-interactions": 0,
     "prefer-template": 0,
     "no-prototype-builtins": 0,
-    "no-underscore-dangle": ["error", { "allow": ["page._embedded", "props.post._embedded", "post._embedded"] }]
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "page._embedded",
+          "props.post._embedded",
+          "post._embedded",
+          "post._embedded['wp:term']",
+          "post._embedded['wp:featuredmedia']",
+          "window.__INITIAL_CONFIG__"
+        ]
+      }
+    ]
   }
 }
