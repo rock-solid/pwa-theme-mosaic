@@ -1,7 +1,11 @@
 .carousel-container {
   height: 100vh;
 }
-
+.carousel-container img.ui.tiny.image {
+  position: absolute;
+  z-index: 1;
+  margin: 10px 0 0 10px;
+}
 .carousel-container + div {
   height: unset;
 }
