@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { List, Header, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'react-global-configuration';
 
 import { pagePropType } from './reducer';
 
@@ -88,6 +89,16 @@ class PageList extends Component {
             )}
           </List.Item>
         ))}
+        {this.state.parentId === 0 && config.get('websiteUrl') ? (
+          <List.Item>
+            <List.Icon name="linkify" size="large" verticalAlign="middle" />
+            <List.Content>
+              <Link to={config.get('websiteUrl')}>
+                <List.Header>Visit Website</List.Header>
+              </Link>
+            </List.Content>
+          </List.Item>
+        ) : null}
       </List>
     );
   }
