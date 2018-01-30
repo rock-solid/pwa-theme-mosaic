@@ -14,6 +14,7 @@ export const receivePages = pages => ({
 
 export const fetchPages = (params = {}) => (dispatch) => {
   dispatch(requestPages());
+  config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
   let url;
   if (params && params.id) {

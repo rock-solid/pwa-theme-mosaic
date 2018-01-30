@@ -14,6 +14,7 @@ export const receiveComments = comments => ({
 
 export const fetchComments = (params = {}) => (dispatch) => {
   dispatch(requestComments());
+  config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
   let url;
   if (params) {

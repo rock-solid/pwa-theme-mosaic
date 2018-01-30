@@ -14,14 +14,15 @@ export const receivePosts = posts => ({
 
 export const fetchPosts = (params = {}) => (dispatch) => {
   dispatch(requestPosts());
+  config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
   let url;
   if (params && params.id) {
-    url = config.get('export').posts + '/' + String(params.id);
+    url = config.get('export').posts + '&categories=' + String(params.id);
   } else {
     url =
       config.get('export').posts +
-      '?' +
+      '&' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
         .join('&');
