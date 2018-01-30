@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Sidebar, Loader } from 'semantic-ui-react';
+import { Sidebar, Loader, Image } from 'semantic-ui-react';
 import config from 'react-global-configuration';
 
 import { fetchCategories } from './action';
@@ -16,7 +16,6 @@ import { closeMenu } from '../../components/NavBar/action';
 
 import CategoriesList from '../../components/CategoriesList/index';
 import './style.css';
-import Image from 'semantic-ui-react/dist/commonjs/elements/Image/Image';
 
 class CategoriesCarousel extends Component {
   constructor(props) {
@@ -61,10 +60,10 @@ class CategoriesCarousel extends Component {
 
     return (
       <div className="carousel-container">
-        <Image src={config.get('logo')} size="tiny" />
         <Sidebar.Pushable>
           <SideMenu />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
+            <Image src={config.get('logo')} size="tiny" />
             <NavBar />
             {this.props.loading === 1 ? <Loader active /> : ''}
             <Slider {...settings}>
