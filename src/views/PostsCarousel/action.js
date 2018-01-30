@@ -18,7 +18,7 @@ export const fetchPosts = (params = {}) => (dispatch) => {
 
   let url;
   if (params && params.id) {
-    url = config.get('export').posts + '&categories=' + String(params.id);
+    url = config.get('export').posts + '/' + String(params.id);
   } else {
     url =
       config.get('export').posts +
