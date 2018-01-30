@@ -15,7 +15,7 @@ import './style.css';
 class PostsCarousel extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchPosts({ categoryId: this.props.match.params.categoryId }));
+    dispatch(fetchPosts({ categories: this.props.match.params.categoryId }));
   }
   createPostsList(chunkSize) {
     const postsList = [];
