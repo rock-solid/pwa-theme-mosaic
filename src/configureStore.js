@@ -10,6 +10,7 @@ import categories from './views/CategoriesCarousel/reducer';
 import posts from './views/PostsCarousel/reducer';
 import pages from './views/SideMenu/reducer';
 import comments from './views/Comments/reducers';
+import translations from './translations/reducers';
 
 const history = createHistory();
 
@@ -36,6 +37,9 @@ const defaultState = {
       },
     },
   },
+  translations: {
+    items: [],
+  },
 };
 
 const rootReducer = combineReducers({
@@ -45,6 +49,7 @@ const rootReducer = combineReducers({
   pages,
   comments,
   form: formReducer,
+  translations,
 });
 
 const store = createStore(rootReducer, defaultState, compose(applyMiddleware(thunk, logger, routerMiddleware(history))));
