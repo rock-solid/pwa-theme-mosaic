@@ -14,6 +14,10 @@ import { getComments, getCommentsFetching, commentPropType } from './reducers';
 import NotFound from '../../components/NotFound/index';
 import CommentsView from './CommentsView';
 
+// translations
+import { fetchTranslations } from '../../translations/actions';
+import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
+
 class Comments extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +26,7 @@ class Comments extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(fetchComments({ postId: this.props.match.params.postId }));
+    dispatch(fetchTranslations);
   }
 
   handleRefresh(resolve, reject) {
@@ -52,11 +57,11 @@ class Comments extends Component {
         this.props.match.params.postId;
     }
 
-    if (this.props.loading === 1) {
+    if (this.props.loading === 1 && this.props.loadingTranslations === 1) {
       return (
         <Comment.Group>
           <Header as="h3" block>
-            Comments
+            {this.props.translations.TEXTS && this.props.translations.TEXTS.COMMENTS}
             <Link to={path}>
               <Icon name="close" />
             </Link>
@@ -71,19 +76,25 @@ class Comments extends Component {
     return (
       <Comment.Group>
         <Header as="h3" block>
-          Comments
+          {this.props.translations.TEXTS && this.props.translations.TEXTS.COMMENTS}
           <Link to={path}>
             <Icon name="close" />
           </Link>
         </Header>
         <ReactPullToRefresh onRefresh={this.handleRefresh}>
-          <CommentsView comments={comm} match={this.props.match} />
+          <CommentsView comments={comm} match={this.props.match} texts={this.props.translations} />
         </ReactPullToRefresh>
       </Comment.Group>
     );
   }
 }
-
+Comments.defaultProps = {
+  translations: {
+    TEXTS: {
+      COMMENTS: 'Comments',
+    },
+  },
+};
 Comments.propTypes = {
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.shape({
@@ -96,14 +107,22 @@ Comments.propTypes = {
   }).isRequired,
   loading: PropTypes.number.isRequired,
   comments: PropTypes.arrayOf(commentPropType).isRequired,
+  loadingTranslations: PropTypes.number.isRequired,
+  translations: PropTypes.shape({
+    TEXTS: PropTypes.shape({
+      COMMENTS: PropTypes.string,
+    }),
+  }),
 };
 
 const mapStateToProps = state => ({
   comments: getComments(state.comments),
   loading: getCommentsFetching(state.comments),
+  translations: getTranslations(state.translations),
+  loadingTranslations: getTranslationsFetching(state.translations),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchComments }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchComments, fetchTranslations }, dispatch));
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);

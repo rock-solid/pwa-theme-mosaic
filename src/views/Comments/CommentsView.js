@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { addComment } from './actions';
 import { commentPropType } from './reducers';
 import CommentForm from '../../components/Form/index';
+
 import './style.css';
 
 export default class CommentsView extends Component {
@@ -53,14 +54,18 @@ export default class CommentsView extends Component {
                       this.setState({ isOpen: !this.state.isOpen });
                     }}
                   >
-                    Reply
+                    {this.props.texts.FORMS && this.props.texts.FORMS.REPLY}
                   </Comment.Action>
                 </Comment.Actions>
               </Comment.Content>
             </Comment>
           ))
         ) : (
-          <Container className="no-comments">There are no comments for this article. Be the first one to comment about this!</Container>
+          <Container className="no-comments">
+            {this.props.match.params.comment_status === 'open'
+              ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
+              : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
+          </Container>
         )}
         {this.props.match.params.comment_status === 'open' ? (
           <Button
@@ -68,15 +73,15 @@ export default class CommentsView extends Component {
               this.setState({ isOpen: !this.state.isOpen });
             }}
           >
-            Leave a comment
+            {this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}
           </Button>
         ) : null}
         {this.state.isOpen === true ? (
           <Modal open>
             <Icon name="close" onClick={this.showModal} />
-            <Header icon="commenting" content="Leave a comment" />
+            <Header icon="commenting" content={this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS} />
             <Modal.Content>
-              <CommentForm onSubmit={this.submit} />
+              <CommentForm onSubmit={this.submit} texts={this.props.texts} />
             </Modal.Content>
           </Modal>
         ) : null}
@@ -85,6 +90,18 @@ export default class CommentsView extends Component {
   }
 }
 
+CommentsView.defaultProps = {
+  texts: {
+    FORMS: {
+      REPLY: 'Reply',
+    },
+    TEXTS: {
+      NO_COMMENTS: 'No comments',
+      NO_COMMENTS_SHORT: 'No comments',
+      LEAVE_COMMENTS: 'Leave comment',
+    },
+  },
+};
 CommentsView.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -96,4 +113,14 @@ CommentsView.propTypes = {
     }).isRequired,
   }).isRequired,
   comments: PropTypes.arrayOf(commentPropType).isRequired,
+  texts: PropTypes.shape({
+    FORMS: PropTypes.shape({
+      REPLY: PropTypes.string,
+    }),
+    TEXTS: PropTypes.shape({
+      NO_COMMENTS: PropTypes.string,
+      NO_COMMENTS_SHORT: PropTypes.string,
+      LEAVE_COMMENTS: PropTypes.string,
+    }),
+  }),
 };
