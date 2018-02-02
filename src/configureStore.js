@@ -38,7 +38,7 @@ const defaultState = {
     },
   },
   translations: {
-    items: [],
+    items: {},
   },
 };
 

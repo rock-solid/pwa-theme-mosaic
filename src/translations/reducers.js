@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable';
 import { REQUEST_TRANSLATIONS, RECEIVE_TRANSLATIONS } from './actions';
 
 export const INITIAL_STATE = Immutable({
-  items: [],
+  items: {},
   isFetching: 0,
 });
 
