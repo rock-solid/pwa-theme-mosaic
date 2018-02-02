@@ -8,7 +8,7 @@ import { pagePropType } from './reducer';
 
 import './style.css';
 
-class PageList extends Component {
+export default class PageList extends Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
@@ -16,7 +16,7 @@ class PageList extends Component {
     this.getImage = this.getImage.bind(this);
     this.state = {
       parentId: 0,
-      parentPageTitle: ['Go to'],
+      parentPageTitle: [],
       visible: true,
       pages: [],
     };
@@ -61,7 +61,7 @@ class PageList extends Component {
     return (
       <List divided relaxed>
         {this.state.parentId === 0 ? (
-          <Header>{this.state.parentPageTitle[this.state.parentPageTitle.length - 1]}</Header>
+          <Header>{this.props.text && this.props.text.GO_TO}</Header>
         ) : (
           <Header>
             <Icon name="caret left" onClick={this.goBack} />
@@ -84,9 +84,7 @@ class PageList extends Component {
                 verticalAlign="middle"
                 onClick={() => this.openSubmenu(page.id, page.title.rendered)}
               />
-            ) : (
-              ''
-            )}
+            ) : null}
           </List.Item>
         ))}
         {this.state.parentId === 0 && config.get('websiteUrl') ? (
@@ -94,7 +92,7 @@ class PageList extends Component {
             <List.Icon name="linkify" size="large" verticalAlign="middle" />
             <List.Content>
               <Link to={config.get('websiteUrl')}>
-                <List.Header>Visit Website</List.Header>
+                <List.Header>{this.props.text && this.props.text.VISIT_WEBSITE}</List.Header>
               </Link>
             </List.Content>
           </List.Item>
@@ -104,8 +102,16 @@ class PageList extends Component {
   }
 }
 
+PageList.defaultProps = {
+  text: {
+    GO_TO: 'Go to',
+    VISIT_WEBSITE: 'Visit website',
+  },
+};
 PageList.propTypes = {
   pages: PropTypes.arrayOf(pagePropType).isRequired,
+  text: PropTypes.shape({
+    GO_TO: PropTypes.string,
+    VISIT_WEBSITE: PropTypes.string,
+  }),
 };
-
-export default PageList;
