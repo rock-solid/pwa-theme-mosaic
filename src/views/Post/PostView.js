@@ -85,7 +85,9 @@ export default class PostView extends Component {
             <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           </Header>
           <Header.Subheader>
-            &nbsp;by&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">{post.date}</Moment>
+            &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">
+              {post.date}
+            </Moment>
           </Header.Subheader>
           <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
         </Container>
@@ -125,10 +127,23 @@ export default class PostView extends Component {
     );
   }
 }
+
+PostView.defaultProps = {
+  texts: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+    },
+  },
+};
 PostView.propTypes = {
   post: postPropType.isRequired,
   category: PropTypes.shape({
     categorySlug: PropTypes.string,
     categoryId: PropTypes.string,
   }).isRequired,
+  texts: PropTypes.shape({
+    TEXTS: PropTypes.shape({
+      BY_AUTHOR: PropTypes.string,
+    }),
+  }),
 };
