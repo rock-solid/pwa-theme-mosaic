@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Comment, Icon, Container, Button, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 
 import { addComment } from './actions';
 import { commentPropType } from './reducers';
@@ -45,7 +46,9 @@ export default class CommentsView extends Component {
               <Comment.Content>
                 <Comment.Author as="a">{comment.author_name}</Comment.Author>
                 <Comment.Metadata>
-                  <div>{comment.date}</div>
+                  <div>
+                    <Moment format="MMMM DD, YYYY">{comment.date}</Moment>
+                  </div>
                 </Comment.Metadata>
                 <Comment.Text dangerouslySetInnerHTML={{ __html: comment.content.rendered }} />
                 <Comment.Actions>
