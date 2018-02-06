@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { ModalContainer, ModalRoute } from 'react-router-modal';
+import ReactGA from 'react-ga';
+import config from 'react-global-configuration';
 
 import store from './configureStore';
 import registerServiceWorker from './registerServiceWorker';
@@ -14,6 +16,11 @@ import PageView from './views/Page/index';
 import Comments from './views/Comments/index';
 
 import './index.css';
+
+if (config.get('ga-id')) {
+  ReactGA.initialize(config.get('ga-id'), { debug: true });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 render(
   <Provider store={store}>
