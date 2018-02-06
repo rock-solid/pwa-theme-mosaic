@@ -10,3 +10,7 @@ hr {
 .slick-initialized.slick-slider + div {
   display: none;
 }
+/* FIX extra div carousel container */
+.posts-carousel-container + div {
+  display: none;
+}

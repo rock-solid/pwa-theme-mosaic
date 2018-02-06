@@ -11,7 +11,6 @@ import ReactPullToRefresh from 'react-pull-to-refresh';
 
 import { fetchComments } from './actions';
 import { getComments, getCommentsFetching, commentPropType } from './reducers';
-import NotFound from '../../components/NotFound/index';
 import CommentsView from './CommentsView';
 
 // translations
