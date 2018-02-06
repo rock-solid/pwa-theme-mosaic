@@ -66,7 +66,7 @@ class CategoriesCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      afterChange: index => (index === categoriesList.length - 1 ? this.loadMore() : null),
+      afterChange: index => (index === categoriesList.length - 1 && this.props.categories.length % 10 === 0 ? this.loadMore() : null),
     };
 
     return (

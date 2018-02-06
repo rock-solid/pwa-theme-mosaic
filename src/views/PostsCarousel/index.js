@@ -59,7 +59,7 @@ class PostsCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      afterChange: index => (index === listedPosts.length - 1 ? this.loadMore() : null),
+      afterChange: index => (index === listedPosts.length - 1 && this.props.posts.length % 10 === 0 ? this.loadMore() : null),
     };
 
     return (
