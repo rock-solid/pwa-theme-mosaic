@@ -21,11 +21,15 @@ class CategoriesCarousel extends Component {
   constructor(props) {
     super(props);
     this.hideSidebar = this.hideSidebar.bind(this);
+    this.state = {
+      pageNumber: 1,
+    };
   }
 
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories({ page: 1 }));
+    dispatch(fetchCategories({ page: this.state.pageNumber }));
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
   }
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
@@ -39,9 +43,10 @@ class CategoriesCarousel extends Component {
     return categoriesList;
   }
 
-  loadMore(x) {
+  loadMore() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories({ page: x }));
+    dispatch(fetchCategories({ page: this.state.pageNumber }));
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
   }
 
   hideSidebar() {
@@ -61,7 +66,7 @@ class CategoriesCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      afterChange: index => (index === categoriesList.length - 1 ? this.loadMore(Math.round(categoriesList.length / 2)) : null),
+      afterChange: index => (index === categoriesList.length - 1 ? this.loadMore() : null),
     };
 
     return (
@@ -71,7 +76,7 @@ class CategoriesCarousel extends Component {
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
             {config.get('logo') && <Image src={config.get('logo')} size="tiny" />}
             <NavBar />
-            {this.props.loading === 1 ? <Loader active /> : ''}
+            {this.props.loading === 1 ? <Loader active /> : null}
             <Slider {...settings}>
               {categoriesList.map((categoriesChunk, k) => (
                 <div key={Math.random(k)} className="categories">
