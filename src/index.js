@@ -17,6 +17,7 @@ import Comments from './views/Comments/index';
 
 import './index.css';
 
+config.set(window.__INITIAL_CONFIG__, { freeze: false });
 if (config.get('ga-id')) {
   ReactGA.initialize(config.get('ga-id'), { debug: true });
   ReactGA.pageview(window.location.pathname + window.location.search);
