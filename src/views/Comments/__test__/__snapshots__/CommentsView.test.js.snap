@@ -16,7 +16,21 @@ exports[`Comments view renders comments, allows adding new comments 1`] = `
       </CommentAuthor>
       <CommentMetadata>
         <div>
-          d date
+          <t
+            ago={false}
+            calendar={false}
+            element="time"
+            filter={[Function]}
+            format="MMMM DD, YYYY"
+            fromNow={false}
+            interval={60000}
+            onChange={[Function]}
+            toNow={false}
+            unix={false}
+            utc={false}
+          >
+            d date
+          </t>
         </div>
       </CommentMetadata>
       <CommentText
@@ -40,7 +54,7 @@ exports[`Comments view renders comments, allows adding new comments 1`] = `
     as="button"
     onClick={[Function]}
   >
-    Leave a comment
+    Leave comment
   </Button>
 </CommentGroup>
 `;
@@ -61,7 +75,21 @@ exports[`Comments view renders comments, does not allow adding new comments 1`] 
       </CommentAuthor>
       <CommentMetadata>
         <div>
-          d date
+          <t
+            ago={false}
+            calendar={false}
+            element="time"
+            filter={[Function]}
+            format="MMMM DD, YYYY"
+            fromNow={false}
+            interval={60000}
+            onChange={[Function]}
+            toNow={false}
+            unix={false}
+            utc={false}
+          >
+            d date
+          </t>
         </div>
       </CommentMetadata>
       <CommentText
@@ -89,13 +117,13 @@ exports[`Comments view renders no comments, allows adding new comments 1`] = `
   <Container
     className="no-comments"
   >
-    There are no comments for this article. Be the first one to comment about this!
+    No comments
   </Container>
   <Button
     as="button"
     onClick={[Function]}
   >
-    Leave a comment
+    Leave comment
   </Button>
 </CommentGroup>
 `;
@@ -105,7 +133,7 @@ exports[`Comments view renders no comments, does not allow adding new comments 1
   <Container
     className="no-comments"
   >
-    There are no comments for this article. Be the first one to comment about this!
+    No comments
   </Container>
 </CommentGroup>
 `;
