@@ -6,7 +6,9 @@
   height: unset;
 }
 
-.ui.container h1.ui.header {
+.ui.container .ui.header {
   color: #000000;
-  position: static;
+  display: flex;
+  align-items: center;
+  padding: 10%;
 }

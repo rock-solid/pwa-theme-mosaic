@@ -4,10 +4,9 @@ exports[`Not found component should render correctly 1`] = `
 <Container
   className="not-found"
 >
-  <Header
-    as="h1"
-  >
-     Not found
+  <Header>
+     
+    Sorry, we could not find what you were looking for.
   </Header>
 </Container>
 `;
