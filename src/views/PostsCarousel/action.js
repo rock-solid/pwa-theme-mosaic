@@ -29,7 +29,12 @@ export const fetchPosts = (params = {}) => (dispatch) => {
   }
   return fetch(url)
     .then(response => response.json())
-    .then(json => dispatch(receivePosts(json)))
+    .then((json) => {
+      if (json.code) {
+        return dispatch(receivePosts([]));
+      }
+      return dispatch(receivePosts(json));
+    })
     .catch(() => {
       dispatch(receivePosts([]));
     });
