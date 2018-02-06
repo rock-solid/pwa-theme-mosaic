@@ -25,7 +25,7 @@ class CategoriesCarousel extends Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories());
+    dispatch(fetchCategories({ page: 1 }));
   }
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
@@ -39,6 +39,11 @@ class CategoriesCarousel extends Component {
     return categoriesList;
   }
 
+  loadMore(x) {
+    const { dispatch } = this.props;
+    dispatch(fetchCategories({ page: x }));
+  }
+
   hideSidebar() {
     if (this.props.sideMenuVisible) {
       this.props.closeMenu();
@@ -46,6 +51,8 @@ class CategoriesCarousel extends Component {
   }
 
   render() {
+    const categoriesList = this.createCategoriesList(3, 5);
+
     const settings = {
       arrows: false,
       centerPadding: '50px',
@@ -54,9 +61,8 @@ class CategoriesCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      afterChange: index => (index === categoriesList.length - 1 ? this.loadMore(Math.round(categoriesList.length / 2)) : null),
     };
-
-    const categoriesList = this.createCategoriesList(3, 5);
 
     return (
       <div className="carousel-container">
