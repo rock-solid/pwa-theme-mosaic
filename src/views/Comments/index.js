@@ -69,8 +69,6 @@ class Comments extends Component {
           <Loader active />
         </Comment.Group>
       );
-    } else if (_.isNil(comm)) {
-      return <NotFound />;
     }
 
     return (

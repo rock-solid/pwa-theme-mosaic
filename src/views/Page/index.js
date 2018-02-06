@@ -41,7 +41,7 @@ class PageView extends Component {
     }
 
     if (_.isNil(page)) {
-      return <NotFound />;
+      return <NotFound content={this.props.translations.TEXTS.NO_PAGES} />;
     }
 
     return <PageDetails page={page} texts={this.props.translations} />;
@@ -52,6 +52,7 @@ PageView.defaultProps = {
   translations: {
     TEXTS: {
       BY_AUTHOR: 'by',
+      NO_PAGES: 'There are no pages!',
     },
   },
 };
@@ -67,6 +68,7 @@ PageView.propTypes = {
   translations: PropTypes.shape({
     TEXTS: PropTypes.shape({
       BY_AUTHOR: PropTypes.string,
+      NO_PAGES: PropTypes.string,
     }),
   }),
 };

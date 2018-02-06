@@ -41,7 +41,7 @@ class Post extends Component {
     }
 
     if (_.isNil(post)) {
-      return <NotFound texts={this.props.translations} />;
+      return <NotFound texts={this.props.translations.TEXTS.NO_ARTICLES} />;
     }
 
     return <PostDetails post={post} category={this.props.match.params} texts={this.props.translations} />;
@@ -51,6 +51,7 @@ Post.defaultProps = {
   translations: {
     TEXTS: {
       BY_AUTHOR: 'by',
+      NO_ARTICLES: 'There are no articles!',
     },
   },
 };
@@ -67,6 +68,7 @@ Post.propTypes = {
   translations: PropTypes.shape({
     TEXTS: PropTypes.shape({
       BY_AUTHOR: PropTypes.string,
+      NO_ARTICLES: PropTypes.string,
     }),
   }),
 };
