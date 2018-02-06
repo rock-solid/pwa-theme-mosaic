@@ -12,6 +12,10 @@ import NotFound from '../../components/NotFound/index';
 
 import PageDetails from './PageDetails';
 
+// translations
+import { fetchTranslations } from '../../translations/actions';
+import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
+
 class PageView extends Component {
   componentWillMount() {
     this.readPage(this.props.match.params.pageId);
@@ -26,6 +30,7 @@ class PageView extends Component {
   readPage(pageId) {
     const { dispatch } = this.props;
     dispatch(fetchPages({ id: pageId }));
+    dispatch(fetchTranslations);
   }
 
   render() {
@@ -39,10 +44,17 @@ class PageView extends Component {
       return <NotFound />;
     }
 
-    return <PageDetails page={page} />;
+    return <PageDetails page={page} texts={this.props.translations} />;
   }
 }
 
+PageView.defaultProps = {
+  translations: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+    },
+  },
+};
 PageView.propTypes = {
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.shape({
@@ -52,15 +64,22 @@ PageView.propTypes = {
   }).isRequired,
   pages: PropTypes.arrayOf(pagePropType).isRequired,
   loading: PropTypes.number.isRequired,
+  translations: PropTypes.shape({
+    TEXTS: PropTypes.shape({
+      BY_AUTHOR: PropTypes.string,
+    }),
+  }),
 };
 
 const mapStateToProps = state => ({
   loading: getPagesFetching(state.pages),
   pages: getPages(state.pages),
+  loadingTranslations: getTranslationsFetching(state.translations),
+  translations: getTranslations(state.translations),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPages }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchPages, fetchTranslations }, dispatch));
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageView);

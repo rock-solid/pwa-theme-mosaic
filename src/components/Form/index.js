@@ -10,11 +10,11 @@ let CommentForm = (props) => {
   return (
     <Form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">{props.texts.FORMS.NAME && props.texts.FORMS.NAME}</label>
         <Field name="name" component="input" type="text" placeholder={props.texts.FORMS && props.texts.FORMS.YOUR_NAME} required />
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{props.texts.FORMS.EMAIL && props.texts.FORMS.EMAIL}</label>
         <Field name="email" component="input" type="email" placeholder={props.texts.FORMS && props.texts.FORMS.YOUR_EMAIL} required />
       </div>
       <div>
@@ -34,6 +34,8 @@ CommentForm.defaultProps = {
       LEAVE_COMMENTS: 'Leave comment',
     },
     FORMS: {
+      NAME: 'Name',
+      EMAIL: 'E-mail address',
       YOUR_NAME: 'Your name',
       YOUR_EMAIL: 'Your e-mail address',
       YOUR_COMMENT: 'Your comment',
@@ -48,6 +50,8 @@ CommentForm.propTypes = {
       LEAVE_COMMENTS: PropTypes.string,
     }),
     FORMS: PropTypes.shape({
+      NAME: PropTypes.string,
+      EMAIL: PropTypes.string,
       YOUR_NAME: PropTypes.string,
       YOUR_EMAIL: PropTypes.string,
       YOUR_COMMENT: PropTypes.string,
