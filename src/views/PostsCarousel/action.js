@@ -22,7 +22,7 @@ export const fetchPosts = (params = {}) => (dispatch) => {
   } else {
     url =
       config.get('export').posts +
-      '&' +
+      '?' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
         .join('&');

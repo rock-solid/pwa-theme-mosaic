@@ -20,16 +20,27 @@ class PostsCarousel extends Component {
     };
   }
   componentWillMount() {
+    this.readPosts(this.props.match.params.categoryId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
+      this.readPost(nextProps.match.params.categoryId);
+    }
+  }
+
+  readPosts(categoryId) {
     const { dispatch } = this.props;
     dispatch(
       fetchPosts({
-        categories: this.props.match.params.categoryId,
+        categories: categoryId,
         page: this.state.pageNumber,
-        per_page: 10,
+        status: 'publish',
       }),
     );
     this.setState({ pageNumber: this.state.pageNumber + 1 });
   }
+
   createPostsList(chunkSize) {
     const postsList = [];
     let i;
@@ -40,18 +51,6 @@ class PostsCarousel extends Component {
     return postsList;
   }
 
-  loadMore() {
-    const { dispatch } = this.props;
-    dispatch(
-      fetchPosts({
-        categories: this.props.match.params.categoryId,
-        page: this.state.pageNumber,
-        per_page: 10,
-      }),
-    );
-    this.setState({ pageNumber: this.state.pageNumber + 1 });
-  }
-
   render() {
     const listedPosts = this.createPostsList(2);
     const settings = {
@@ -59,12 +58,13 @@ class PostsCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      afterChange: index => (index === listedPosts.length - 1 && this.props.posts.length % 10 === 0 ? this.loadMore() : null),
+      afterChange: index =>
+        index === listedPosts.length - 1 && this.props.posts.length % 10 === 0 ? this.readPosts(this.props.match.params.categoryId) : null,
     };
 
     return (
       <div className="posts-carousel-container">
-        {this.props.loading === 1 ? <Loader /> : null}
+        {this.props.loading === 1 && listedPosts.length < 1 ? <Loader active /> : null}
         <Slider {...settings}>
           {listedPosts.map(postsList => (
             <div key={Math.random()}>
