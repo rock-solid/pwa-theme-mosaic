@@ -33,6 +33,7 @@ class PostsCarousel extends Component {
     const { dispatch } = this.props;
     dispatch(
       fetchPosts({
+        _embed: 1,
         categories: categoryId,
         page: this.state.pageNumber,
         status: 'publish',
