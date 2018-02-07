@@ -36,11 +36,9 @@ class Post extends Component {
   render() {
     const post = this.props.posts.find(obj => obj.id === Number(this.props.match.params.postId));
 
-    if (this.props.loading === 1 && this.props.loadTranslations === 1) {
+    if (this.props.loading === 1 || _.isNil(this.props.translations.TEXTS)) {
       return <Loader active />;
-    }
-
-    if (_.isNil(post)) {
+    } else if (_.isNil(post)) {
       return <NotFound texts={this.props.translations.TEXTS.NO_ARTICLES} />;
     }
 
@@ -64,7 +62,6 @@ Post.propTypes = {
   }).isRequired,
   posts: PropTypes.arrayOf(postPropType).isRequired,
   loading: PropTypes.number.isRequired,
-  loadTranslations: PropTypes.number.isRequired,
   translations: PropTypes.shape({
     TEXTS: PropTypes.shape({
       BY_AUTHOR: PropTypes.string,
