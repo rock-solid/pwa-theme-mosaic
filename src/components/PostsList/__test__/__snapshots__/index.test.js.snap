@@ -97,7 +97,9 @@ exports[`Posts list should render correctly even number of posts 1`] = `
 
 exports[`Posts list should render correctly odd number of posts 1`] = `
 <div>
-  <Grid>
+  <Grid
+    className="single-post"
+  >
     <GridColumn>
       <GridRow>
         <Card>
