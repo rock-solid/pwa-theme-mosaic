@@ -24,7 +24,7 @@ const PostsList = (props) => {
       );
     }
     return (
-      <Grid>
+      <Grid className="single-post">
         <GridColumn>
           <GridRow>
             <Card>

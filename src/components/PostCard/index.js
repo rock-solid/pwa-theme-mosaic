@@ -10,7 +10,7 @@ import './style.css';
 const PostCard = (props) => {
   function getImage(sourceImg) {
     let image;
-    if (sourceImg !== 0) {
+    if (_.isNil(sourceImg) && sourceImg !== 0) {
       image = props.post._embedded['wp:featuredmedia'][0].source_url;
       return image;
     }
@@ -29,9 +29,7 @@ const PostCard = (props) => {
   return (
     <Link to={path}>
       <Item className="posts">
-        <Item.Header>
-          <div dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />
-        </Item.Header>
+        {props.post.title && <Item.Header dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />}
         <Item.Content>
           <div
             className="image"

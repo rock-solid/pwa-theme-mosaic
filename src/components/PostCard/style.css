@@ -13,16 +13,27 @@
   text-align: start;
 }
 .posts .header {
-  height: 10%;
+  height: 8.2%;
   margin: 10px 0;
   font-size: 1.6rem;
   font-weight: 100;
-  line-height: 19px;
+  line-height: 23px;
   color: #000000;
   text-align: start;
   text-transform: uppercase;
 }
 
+.posts .header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .ui.card a {
   height: 100%;
+}
+
+.item.posts .description {
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  word-break: break-word;
 }

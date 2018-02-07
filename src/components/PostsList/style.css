@@ -10,3 +10,18 @@
   padding: 27px;
   border-radius: 0;
 }
+
+/* single post styling */
+.ui.grid.single-post .column {
+  height: 90%;
+  padding-top: 3rem;
+}
+.ui.grid.single-post .ui.card .item.posts .header {
+  text-align: center;
+  height: 9%;
+}
+.ui.grid.single-post .ui.card .item.posts div.image {
+  height: 23vh;
+  width: 100%;
+  margin: 10px 0;
+}

@@ -35,6 +35,8 @@
 }
 .categories .ui.header.header > div {
   height: unset;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .categories .item {
