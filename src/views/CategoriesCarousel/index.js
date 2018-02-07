@@ -31,6 +31,7 @@ class CategoriesCarousel extends Component {
     dispatch(fetchCategories({ page: this.state.pageNumber }));
     this.setState({ pageNumber: this.state.pageNumber + 1 });
   }
+
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
     const categoriesList = [];
@@ -45,7 +46,7 @@ class CategoriesCarousel extends Component {
 
   loadMore() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories({ page: this.state.pageNumber }));
+    dispatch(fetchCategories({ page: this.state.pageNumber, per_page: 15 }));
     this.setState({ pageNumber: this.state.pageNumber + 1 });
   }
 
@@ -66,7 +67,7 @@ class CategoriesCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      afterChange: index => (index === categoriesList.length - 1 && this.props.categories.length % 10 === 0 ? this.loadMore() : null),
+      afterChange: index => (index === categoriesList.length - 1 && this.props.categories.length % 5 === 0 ? this.loadMore() : null),
     };
 
     return (
