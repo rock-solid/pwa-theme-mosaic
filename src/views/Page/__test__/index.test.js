@@ -26,7 +26,7 @@ describe('Page screen', () => {
         pageId: '1',
       },
     };
-    expect(renderer.create(<PageView store={store} fetchPages={jest.fn(match)} match={match} />)).toMatchSnapshot();
+    expect(renderer.create(<PageView store={store} fetchPages={jest.fn()} match={match} />)).toMatchSnapshot();
   });
 
   it('renders loader', () => {
