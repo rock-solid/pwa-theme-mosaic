@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories carousel renders categories 1`] = `
+<div
+  className="carousel-container"
+>
+  <div
+    className="pushable"
+  >
+    <Page side menu mock />
+    <div
+      className="pusher"
+      onClick={[Function]}
+    >
+      <img
+        alt={undefined}
+        className="ui tiny image"
+        height={undefined}
+        src={Promise {}}
+        width={undefined}
+      />
+      <Navbar mock />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Categories carousel renders loader 1`] = `
+<div
+  className="carousel-container"
+>
+  <div
+    className="pushable"
+  >
+    <Page side menu mock />
+    <div
+      className="pusher"
+      onClick={[Function]}
+    >
+      <img
+        alt={undefined}
+        className="ui tiny image"
+        height={undefined}
+        src={Promise {}}
+        width={undefined}
+      />
+      <Navbar mock />
+      <div
+        className="ui active loader"
+      />
+    </div>
+  </div>
+</div>
+`;
