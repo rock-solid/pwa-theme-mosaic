@@ -8,5 +8,22 @@ exports[`Page list renders page list in side menu 1`] = `
   <Header>
     Go to
   </Header>
+  <ListItem>
+    <ListIcon
+      name="linkify"
+      size="large"
+      verticalAlign="middle"
+    />
+    <ListContent>
+      <Link
+        replace={false}
+        to={Promise {}}
+      >
+        <ListHeader>
+          Visit website
+        </ListHeader>
+      </Link>
+    </ListContent>
+  </ListItem>
 </List>
 `;

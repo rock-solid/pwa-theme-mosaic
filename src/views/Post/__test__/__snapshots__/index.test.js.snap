@@ -37,17 +37,19 @@ exports[`Post screen should render correctly an existing post 1`] = `
       },
     }
   }
+  texts={
+    Object {
+      "TEXTS": Object {
+        "BY_AUTHOR": "by",
+        "NO_ARTICLES": "There are no articles!",
+      },
+    }
+  }
 />
 `;
 
 exports[`Post screen should render correctly that a post does not exist 1`] = `
 <div
-  className="ui container not-found"
->
-  <h1
-    className="ui header"
-  >
-     Not found
-  </h1>
-</div>
+  className="ui active loader"
+/>
 `;
