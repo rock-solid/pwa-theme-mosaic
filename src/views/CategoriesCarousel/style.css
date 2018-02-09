@@ -26,13 +26,7 @@ div {
   width: 90%;
   left: 5%;
   border-radius: 50px;
-  opacity: 0.25;
-  /* bottom: 35px;
-  width: 64%;
-  left: 18%;
-  background-color: #000000;
-  border-radius: 50px;
-  opacity: 0.25; */
+  opacity: 1;
 }
 .slick-dots li {
   margin: 0 10px;
