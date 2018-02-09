@@ -8,21 +8,19 @@ exports[`Post card should render correctly post with featured image 1`] = `
   <Item
     className="posts"
   >
-    <ItemHeader>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Mock title",
-          }
+    <ItemHeader
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Mock title",
         }
-      />
-    </ItemHeader>
+      }
+    />
     <ItemContent>
       <div
         className="image"
         style={
           Object {
-            "backgroundImage": "url(undefined)",
+            "backgroundImage": "url(http://via.placeholder.com/177x119)",
           }
         }
       />
@@ -46,15 +44,13 @@ exports[`Post card should render correctly post with placeholder image 1`] = `
   <Item
     className="posts"
   >
-    <ItemHeader>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Mock title",
-          }
+    <ItemHeader
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Mock title",
         }
-      />
-    </ItemHeader>
+      }
+    />
     <ItemContent>
       <div
         className="image"
