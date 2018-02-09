@@ -46,7 +46,7 @@ class PostsCarousel extends Component {
     const postsList = [];
     let i;
 
-    for (i = chunkSize; i < this.props.posts.length; i += chunkSize) {
+    for (i = 0; i < this.props.posts.length; i += chunkSize) {
       postsList.push(this.props.posts.slice(i, i + chunkSize));
     }
     return postsList;
@@ -65,7 +65,7 @@ class PostsCarousel extends Component {
 
     return (
       <div className="posts-carousel-container">
-        {this.props.loading === 1 && listedPosts.length < 1 ? <Loader active /> : null}
+        {this.props.loading === 1 || listedPosts.length === 0 ? <Loader active /> : null}
         <Slider {...settings}>
           {listedPosts.map(postsList => (
             <div key={Math.random()}>
