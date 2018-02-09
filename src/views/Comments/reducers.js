@@ -7,6 +7,12 @@ import { REQUEST_COMMENTS, RECEIVE_COMMENTS } from './actions';
 
 export const commentPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
+  post: PropTypes.number.isRequired,
+  author_name: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+    rendered: PropTypes.string.isRequired,
+  }).isRequired,
+  date: PropTypes.string.isRequired,
 });
 
 export const INITIAL_STATE = Immutable({

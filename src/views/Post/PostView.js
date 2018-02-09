@@ -4,6 +4,7 @@ import { Container, Image, Header, Label, Icon, Modal, Transition } from 'semant
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import config from 'react-global-configuration';
 
 import { postPropType } from '../PostsCarousel/reducer';
 import './style.css';
@@ -46,13 +47,26 @@ export default class PostView extends Component {
     // set path routes
     let goBack = {};
     let path = {};
+
+    // social media app configuration
+    const socialMedia = config.get('socialMedia');
+
     if (_.isNil(this.props.category.categorySlug) || _.isNil(this.props.category.categoryId)) {
       goBack = '/';
-      path = '/post/' + post.slug + '/' + post.id + '/comments';
+      path = '/post/' + post.slug + '/' + post.id + '/comments/' + post.comment_status;
     } else {
       goBack = '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId;
       path =
-        '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId + '/post/' + post.slug + '/' + post.id + '/comments';
+        '/category/' +
+        this.props.category.categorySlug +
+        '/' +
+        this.props.category.categoryId +
+        '/post/' +
+        post.slug +
+        '/' +
+        post.id +
+        '/comments/' +
+        post.comment_status;
     }
 
     return (
@@ -71,11 +85,14 @@ export default class PostView extends Component {
             <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           </Header>
           <Header.Subheader>
-            &nbsp;by&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">{post.date}</Moment>
+            &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">
+              {post.date}
+            </Moment>
           </Header.Subheader>
           <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
         </Container>
         <Modal
+          className="share"
           open={this.state.modalOpen}
           onClick={this.handleClose}
           trigger={
@@ -89,25 +106,44 @@ export default class PostView extends Component {
             <Link to={path}>
               <Icon name="comment" size="large" circular inverted color="grey" />
             </Link>
-            <a href={'https://m.facebook.com/sharer.php?u=' + post.link}>
-              <Icon name="facebook f" size="large" circular inverted color="blue" />
-            </a>
-            <a href={'https://twitter.com/intent/tweet?text=' + encodeURIComponent(post.title.rendered) + ' ' + post.link}>
-              <Icon name="twitter" size="large" circular inverted color="teal" />
-            </a>
-            <a href={'https://plus.google.com/share?url=' + post.link}>
-              <Icon name="google plus" size="large" circular inverted color="red" />
-            </a>
+            {socialMedia.facebook ? (
+              <a href={'https://m.facebook.com/sharer.php?u=' + post.link}>
+                <Icon name="facebook f" size="large" circular inverted color="blue" />
+              </a>
+            ) : null}
+            {socialMedia.twitter ? (
+              <a href={'https://twitter.com/intent/tweet?text=' + encodeURIComponent(post.title.rendered) + ' ' + post.link}>
+                <Icon name="twitter" size="large" circular inverted color="teal" />
+              </a>
+            ) : null}
+            {socialMedia.google ? (
+              <a href={'https://plus.google.com/share?url=' + post.link}>
+                <Icon name="google plus" size="large" circular inverted color="red" />
+              </a>
+            ) : null}
           </Modal.Actions>
         </Modal>
       </Container>
     );
   }
 }
+
+PostView.defaultProps = {
+  texts: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+    },
+  },
+};
 PostView.propTypes = {
   post: postPropType.isRequired,
   category: PropTypes.shape({
     categorySlug: PropTypes.string,
     categoryId: PropTypes.string,
   }).isRequired,
+  texts: PropTypes.shape({
+    TEXTS: PropTypes.shape({
+      BY_AUTHOR: PropTypes.string,
+    }),
+  }),
 };

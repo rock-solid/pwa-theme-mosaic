@@ -1,4 +1,4 @@
-import config from '../../config/config';
+import config from 'react-global-configuration';
 
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
@@ -14,13 +14,14 @@ export const receivePosts = posts => ({
 
 export const fetchPosts = (params = {}) => (dispatch) => {
   dispatch(requestPosts());
+  config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
   let url;
   if (params && params.id) {
-    url = config.API_POSTS_URL + '/' + String(params.id);
+    url = config.get('export').posts + '/' + String(params.id) + '?_embed=1';
   } else {
     url =
-      config.API_POSTS_URL +
+      config.get('export').posts +
       '?' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
@@ -28,7 +29,12 @@ export const fetchPosts = (params = {}) => (dispatch) => {
   }
   return fetch(url)
     .then(response => response.json())
-    .then(json => dispatch(receivePosts(json)))
+    .then((json) => {
+      if (json.code) {
+        return dispatch(receivePosts([]));
+      }
+      return dispatch(receivePosts(json));
+    })
     .catch(() => {
       dispatch(receivePosts([]));
     });

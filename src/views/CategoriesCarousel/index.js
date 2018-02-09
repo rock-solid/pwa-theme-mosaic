@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Sidebar, Loader } from 'semantic-ui-react';
+import { Sidebar, Loader, Image } from 'semantic-ui-react';
+import config from 'react-global-configuration';
 
 import { fetchCategories } from './action';
 import { getCategories, getCategoriesFetching, categoryPropType } from './reducer';
@@ -20,12 +21,17 @@ class CategoriesCarousel extends Component {
   constructor(props) {
     super(props);
     this.hideSidebar = this.hideSidebar.bind(this);
+    this.state = {
+      pageNumber: 1,
+    };
   }
 
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories());
+    dispatch(fetchCategories({ page: this.state.pageNumber }));
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
   }
+
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
     const categoriesList = [];
@@ -38,6 +44,12 @@ class CategoriesCarousel extends Component {
     return categoriesList;
   }
 
+  loadMore() {
+    const { dispatch } = this.props;
+    dispatch(fetchCategories({ page: this.state.pageNumber, per_page: 15 }));
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
+  }
+
   hideSidebar() {
     if (this.props.sideMenuVisible) {
       this.props.closeMenu();
@@ -45,6 +57,8 @@ class CategoriesCarousel extends Component {
   }
 
   render() {
+    const categoriesList = this.createCategoriesList(3, 5);
+
     const settings = {
       arrows: false,
       centerPadding: '50px',
@@ -53,17 +67,17 @@ class CategoriesCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      afterChange: index => (index === categoriesList.length - 1 && this.props.categories.length % 5 === 0 ? this.loadMore() : null),
     };
-
-    const categoriesList = this.createCategoriesList(3, 5);
 
     return (
       <div className="carousel-container">
         <Sidebar.Pushable>
           <SideMenu />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
+            {config.get('logo') && <Image src={config.get('logo')} size="tiny" />}
             <NavBar />
-            {this.props.loading === 1 ? <Loader active /> : ''}
+            {this.props.loading === 1 ? <Loader active /> : null}
             <Slider {...settings}>
               {categoriesList.map((categoriesChunk, k) => (
                 <div key={Math.random(k)} className="categories">

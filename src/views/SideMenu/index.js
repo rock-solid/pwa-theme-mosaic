@@ -8,39 +8,58 @@ import { fetchPages } from './action';
 import { getPages, pagePropType, getPagesFetching } from './reducer';
 import PageList from './PageList';
 
+// translations
+import { fetchTranslations } from '../../translations/actions';
+import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
+
 import './style.css';
 
 class SideMenu extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(fetchPages({}));
+    dispatch(fetchTranslations);
   }
 
   render() {
-    const { pages } = this.props;
+    const { pages, translations } = this.props;
 
     return (
       <Sidebar visible={this.props.sideMenuVisible} direction="right">
-        {this.props.loading === 1 ? <Loader active /> : ''}
-        <PageList pages={pages} />
+        {this.props.loadingPages === 1 && this.props.loadingTranslations === 1 ? <Loader active /> : ''}
+        <PageList text={translations.LINKS} pages={pages} />
       </Sidebar>
     );
   }
 }
+
+SideMenu.defaultProps = {
+  translations: {
+    LINKS: 'Visit website',
+    GO_TO: 'Go to',
+  },
+};
 SideMenu.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  loading: PropTypes.number.isRequired,
+  loadingPages: PropTypes.number.isRequired,
   sideMenuVisible: PropTypes.bool.isRequired,
   pages: PropTypes.arrayOf(pagePropType).isRequired,
+  translations: PropTypes.shape({
+    LINKS: PropTypes.any,
+    GO_TO: PropTypes.any,
+  }),
+  loadingTranslations: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
   pages: getPages(state.pages),
-  loading: getPagesFetching(state.pages),
+  loadingPages: getPagesFetching(state.pages),
   sideMenuVisible: state.sideMenuVisible,
+  loadingTranslations: getTranslationsFetching(state.translations),
+  translations: getTranslations(state.translations),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPages }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchPages, fetchTranslations }, dispatch));
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

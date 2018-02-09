@@ -33,12 +33,32 @@
   text-align: start;
 }
 
-/* FIX MODAL */
+/* MODAL */
+/* FIX */
 .ui.comments + div {
   display: none;
+}
+/* override styling */
+.dimmed.dimmable > .ui.animating.dimmer,
+.dimmed.dimmable > .ui.visible.dimmer,
+.ui.active.dimmer {
+  opacity: 1;
+}
+.ui.modal.transition.visible.active:not(.share) {
+  height: unset;
 }
 
 /* text */
 .no-comments {
   padding-top: 20%;
+}
+
+/* Pull to refresh  */
+.ui.comments .ui.block.header + div {
+  height: unset;
+}
+
+/* Button */
+.ui.comments button {
+  margin: 5% 0 3% 0;
 }

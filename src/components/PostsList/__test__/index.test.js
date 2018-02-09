@@ -50,7 +50,13 @@ describe('Posts list', () => {
         },
       },
     ];
-    const output = shallow(<PostsList postsList={mockEvenPosts} />);
+    const category = {
+      params: {
+        categoryId: '32',
+        categorySlug: 'some-slug',
+      },
+    };
+    const output = shallow(<PostsList postsList={mockEvenPosts} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 
@@ -78,7 +84,13 @@ describe('Posts list', () => {
         },
       },
     ];
-    const output = shallow(<PostsList postsList={mockOddPosts} />);
+    const category = {
+      params: {
+        categoryId: '32',
+        categorySlug: 'some-slug',
+      },
+    };
+    const output = shallow(<PostsList postsList={mockOddPosts} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

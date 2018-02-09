@@ -11,8 +11,14 @@ import { getPosts, getPostsFetching, postPropType } from '../PostsCarousel/reduc
 import NotFound from '../../components/NotFound/index';
 import PostDetails from './PostView';
 
+// translations
+import { fetchTranslations } from '../../translations/actions';
+import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
+
 class Post extends Component {
   componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchTranslations);
     this.readPost(this.props.match.params.postId);
   }
 
@@ -30,18 +36,23 @@ class Post extends Component {
   render() {
     const post = this.props.posts.find(obj => obj.id === Number(this.props.match.params.postId));
 
-    if (this.props.loading === 1) {
+    if (this.props.loading === 1 || _.isNil(this.props.translations.TEXTS)) {
       return <Loader active />;
+    } else if (_.isNil(post)) {
+      return <NotFound texts={this.props.translations.TEXTS.NO_ARTICLES} />;
     }
 
-    if (_.isNil(post)) {
-      return <NotFound />;
-    }
-
-    return <PostDetails post={post} category={this.props.match.params} />;
+    return <PostDetails post={post} category={this.props.match.params} texts={this.props.translations} />;
   }
 }
-
+Post.defaultProps = {
+  translations: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+      NO_ARTICLES: 'There are no articles!',
+    },
+  },
+};
 Post.propTypes = {
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.shape({
@@ -51,15 +62,23 @@ Post.propTypes = {
   }).isRequired,
   posts: PropTypes.arrayOf(postPropType).isRequired,
   loading: PropTypes.number.isRequired,
+  translations: PropTypes.shape({
+    TEXTS: PropTypes.shape({
+      BY_AUTHOR: PropTypes.string,
+      NO_ARTICLES: PropTypes.string,
+    }),
+  }),
 };
 
 const mapStateToProps = state => ({
   loading: getPostsFetching(state.posts),
   posts: getPosts(state.posts),
+  loadTranslations: getTranslationsFetching(state.translations),
+  translations: getTranslations(state.translations),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchTranslations }, dispatch));
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

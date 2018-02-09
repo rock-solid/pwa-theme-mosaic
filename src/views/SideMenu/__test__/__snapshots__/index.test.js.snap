@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Side menu renders hidden side menu 1`] = `
+<div
+  className="ui right visible sidebar"
+>
+  
+  <Page list test
+    pages={Array []}
+  />
+</div>
+`;
+
+exports[`Side menu renders side menu 1`] = `
+<div
+  className="ui right visible sidebar"
+>
+  <div
+    className="ui active loader"
+  />
+  <Page list test
+    pages={Array []}
+  />
+</div>
+`;
+
+exports[`Side menu renders side menu 2`] = `
+<div
+  className="ui right visible sidebar"
+>
+  
+  <Page list test
+    pages={
+      Array [
+        Object {
+          "author": 68,
+          "comment_status": "open",
+          "content": Object {
+            "rendered": "Page content",
+          },
+          "featured_media": 36,
+          "id": 53,
+          "link": "page-link",
+          "parent": 5,
+          "slug": "page-slug",
+          "status": "status",
+          "title": Object {
+            "rendered": "Page Title",
+          },
+        },
+      ]
+    }
+  />
+</div>
+`;

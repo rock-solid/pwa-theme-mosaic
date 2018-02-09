@@ -1,7 +1,11 @@
 .carousel-container {
   height: 100vh;
 }
-
+.carousel-container .ui.tiny.image {
+  position: absolute;
+  z-index: 1;
+  margin: 10px 0 0 10px;
+}
 .carousel-container + div {
   height: unset;
 }
@@ -18,15 +22,17 @@ div {
 }
 
 .slick-dots {
-  bottom: 35px;
-  width: 30%;
-  left: 35%;
-  background-color: #000000;
+  bottom: 9%;
+  width: 90%;
+  left: 5%;
   border-radius: 50px;
-  opacity: 0.25;
+  opacity: 1;
+}
+.slick-dots li {
+  margin: 0 10px;
 }
 .slick-dots li button::before {
-  font-size: 13px;
+  font-size: 17px;
   color: #ffffff;
 }
 .slick-dots li.slick-active button::before {

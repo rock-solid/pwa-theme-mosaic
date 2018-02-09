@@ -13,13 +13,39 @@ import Footer from '../../components/Footer/index';
 import './style.css';
 
 class PostsCarousel extends Component {
-  componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchPosts({ categoryId: this.props.match.params.categoryId }));
+  constructor(props) {
+    super(props);
+    this.state = {
+      pageNumber: 1,
+    };
   }
+  componentWillMount() {
+    this.readPosts(this.props.match.params.categoryId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
+      this.readPost(nextProps.match.params.categoryId);
+    }
+  }
+
+  readPosts(categoryId) {
+    const { dispatch } = this.props;
+    dispatch(
+      fetchPosts({
+        _embed: 1,
+        categories: categoryId,
+        page: this.state.pageNumber,
+        status: 'publish',
+      }),
+    );
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
+  }
+
   createPostsList(chunkSize) {
     const postsList = [];
     let i;
+
     for (i = 0; i < this.props.posts.length; i += chunkSize) {
       postsList.push(this.props.posts.slice(i, i + chunkSize));
     }
@@ -27,28 +53,28 @@ class PostsCarousel extends Component {
   }
 
   render() {
+    const listedPosts = this.createPostsList(2);
     const settings = {
       infinite: false,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      afterChange: index =>
+        index === listedPosts.length - 1 && this.props.posts.length % 10 === 0 ? this.readPosts(this.props.match.params.categoryId) : null,
     };
 
-    const listedPosts = this.createPostsList(2);
-
-    if (this.props.loading === 1) {
-      return <Loader active />;
-    }
-
     return (
-      <Slider {...settings}>
-        {listedPosts.map(postsList => (
-          <div key={Math.random()}>
-            <PostsList postsList={postsList} category={this.props.match} />
-            <Footer />
-          </div>
-        ))}
-      </Slider>
+      <div className="posts-carousel-container">
+        {this.props.loading === 1 || listedPosts.length === 0 ? <Loader active /> : null}
+        <Slider {...settings}>
+          {listedPosts.map(postsList => (
+            <div key={Math.random()}>
+              <PostsList postsList={postsList} category={this.props.match} />
+              <Footer />
+            </div>
+          ))}
+        </Slider>
+      </div>
     );
   }
 }

@@ -1,0 +1,8 @@
+.ui.form > div {
+  padding: 10px 0;
+}
+
+.ui.modal.transition.visible.active .content .ui.form > div input,
+.ui.modal.transition.visible.active .content .ui.form > div textarea {
+  margin: 5px 0 0 0;
+}

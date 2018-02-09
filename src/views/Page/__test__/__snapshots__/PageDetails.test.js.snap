@@ -26,7 +26,9 @@ exports[`Page details renders page details 1`] = `
     />
   </Header>
   <HeaderSubheader>
-     by 
+     
+    by
+     
     <b />
     , 
     <t

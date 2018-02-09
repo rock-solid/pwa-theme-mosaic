@@ -4,12 +4,16 @@ exports[`Post card should render post with featured image 1`] = `
 <Container
   className="post"
 >
-  <Icon
-    as="i"
-    name="chevron left"
-    onClick={[Function]}
-    size="big"
-  />
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Icon
+      as="i"
+      name="chevron left"
+      size="big"
+    />
+  </Link>
   <Image
     as="img"
     ui={true}
@@ -74,6 +78,7 @@ exports[`Post card should render post with featured image 1`] = `
   </Container>
   <Modal
     basic={true}
+    className="share"
     closeOnDimmerClick={true}
     closeOnDocumentClick={false}
     dimmer={true}
@@ -95,17 +100,10 @@ exports[`Post card should render post with featured image 1`] = `
       </TransitionGroup>
     }
   >
-    <Icon
-      as="i"
-      inverted={true}
-      name="close"
-      onClick={[Function]}
-      size="large"
-    />
     <ModalActions>
       <Link
         replace={false}
-        to="/post/mock-slug/1/comments"
+        to="/post/mock-slug/1/comments/undefined"
       >
         <Icon
           as="i"
@@ -161,12 +159,16 @@ exports[`Post card should render post with image placeholder 1`] = `
 <Container
   className="post"
 >
-  <Icon
-    as="i"
-    name="chevron left"
-    onClick={[Function]}
-    size="big"
-  />
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Icon
+      as="i"
+      name="chevron left"
+      size="big"
+    />
+  </Link>
   <Image
     as="img"
     src="https://placeholdit.co//i/555x650"
@@ -232,6 +234,7 @@ exports[`Post card should render post with image placeholder 1`] = `
   </Container>
   <Modal
     basic={true}
+    className="share"
     closeOnDimmerClick={true}
     closeOnDocumentClick={false}
     dimmer={true}
@@ -253,17 +256,10 @@ exports[`Post card should render post with image placeholder 1`] = `
       </TransitionGroup>
     }
   >
-    <Icon
-      as="i"
-      inverted={true}
-      name="close"
-      onClick={[Function]}
-      size="large"
-    />
     <ModalActions>
       <Link
         replace={false}
-        to="/post/mock-slug/1/comments"
+        to="/post/mock-slug/1/comments/undefined"
       >
         <Icon
           as="i"
@@ -274,18 +270,6 @@ exports[`Post card should render post with image placeholder 1`] = `
           size="large"
         />
       </Link>
-      <a
-        href="https://m.facebook.com/sharer.php?u=undefined"
-      >
-        <Icon
-          as="i"
-          circular={true}
-          color="blue"
-          inverted={true}
-          name="facebook f"
-          size="large"
-        />
-      </a>
       <a
         href="https://twitter.com/intent/tweet?text=Mock%20title undefined"
       >

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment form should render correctly 1`] = `
+<Connect(Form(CommentForm))
+  destroyOnUnmount={true}
+  enableReinitialize={false}
+  forceUnregisterOnUnmount={false}
+  form="comment"
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  onSubmit={[Function]}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+/>
+`;
