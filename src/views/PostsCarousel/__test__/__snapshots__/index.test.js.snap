@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Posts carousel renders loader 1`] = `
+<div
+  className="posts-carousel-container"
+>
+  <div
+    className="ui active loader"
+  />
+</div>
+`;
+
+exports[`Posts carousel renders posts 1`] = `
+<div
+  className="posts-carousel-container"
+/>
+`;
