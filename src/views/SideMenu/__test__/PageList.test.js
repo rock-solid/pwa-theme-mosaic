@@ -24,7 +24,14 @@ describe('Page list', () => {
         status: 'status',
       },
     ];
-    const output = shallow(<PageList pages={pages} />);
+    const text = {
+      GO_TO: 'Go to',
+      VISIT_WEBSITE: 'Visit website',
+    };
+    const jsonSettings = {
+      websiteUrl: 'some-website-url',
+    };
+    const output = shallow(<PageList pages={pages} text={text} websiteUrl={jsonSettings} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

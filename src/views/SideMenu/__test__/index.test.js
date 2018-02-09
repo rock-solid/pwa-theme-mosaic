@@ -14,10 +14,13 @@ describe('Side menu', () => {
         items: [],
         isFetching: 1,
       },
+      translations: {
+        items: {},
+        isFetching: 1,
+      },
       sideMenuVisible: true,
     });
-    const loading = 1;
-    expect(renderer.create(<SideMenu store={store} loading={loading} fetchPages={jest.fn()} />)).toMatchSnapshot();
+    expect(renderer.create(<SideMenu store={store} fetchPages={jest.fn()} />)).toMatchSnapshot();
   });
   it('renders hidden side menu', () => {
     const store = mockStore({
@@ -25,10 +28,13 @@ describe('Side menu', () => {
         items: [],
         isFetching: 0,
       },
+      translations: {
+        items: {},
+        isFetching: 1,
+      },
       sideMenuVisible: true,
     });
-    const loading = 1;
-    expect(renderer.create(<SideMenu store={store} loading={loading} fetchPages={jest.fn()} />)).toMatchSnapshot();
+    expect(renderer.create(<SideMenu store={store} fetchPages={jest.fn()} />)).toMatchSnapshot();
   });
   it('renders side menu', () => {
     const store = mockStore({
@@ -53,9 +59,15 @@ describe('Side menu', () => {
         ],
         isFetching: 0,
       },
+      translations: {
+        items: {
+          LINKS: 'Visit website',
+          GO_TO: 'Go to',
+        },
+        isFetching: 1,
+      },
       sideMenuVisible: true,
     });
-    const loading = 1;
-    expect(renderer.create(<SideMenu store={store} loading={loading} fetchPages={jest.fn()} />)).toMatchSnapshot();
+    expect(renderer.create(<SideMenu store={store} fetchPages={jest.fn()} />)).toMatchSnapshot();
   });
 });
