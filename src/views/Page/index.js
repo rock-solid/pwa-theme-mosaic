@@ -36,7 +36,7 @@ class PageView extends Component {
   render() {
     const page = this.props.pages.find(obj => obj.id === Number(this.props.match.params.pageId));
 
-    if (this.props.loading === 1) {
+    if (this.props.loading === 1 || _.isNil(this.props.translations.TEXTS)) {
       return <Loader active />;
     }
 
