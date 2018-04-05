@@ -4,31 +4,20 @@ import { Container, Image, Header, Label, Icon, Modal, Transition } from 'semant
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import config from 'react-global-configuration';
-
+import SocialMedia from './components/SocialMedia';
 import { postPropType } from '../PostsCarousel/reducer';
 import './style.css';
 
 export default class PostView extends Component {
   constructor(props) {
     super(props);
-    this.getImage = this.getImage.bind(this);
+
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.state = {
       modalOpen: false,
       visible: true,
     };
-  }
-
-  getImage(sourceImg) {
-    let imageSource;
-    if (sourceImg) {
-      imageSource = sourceImg[0].source_url;
-      return imageSource;
-    }
-    imageSource = 'https://placeholdit.co//i/555x650';
-    return imageSource;
   }
 
   handleOpen() {
@@ -47,9 +36,6 @@ export default class PostView extends Component {
     // set path routes
     let goBack = {};
     let path = {};
-
-    // social media app configuration
-    const socialMedia = config.get('socialMedia');
 
     if (_.isNil(this.props.category.categorySlug) || _.isNil(this.props.category.categoryId)) {
       goBack = '/';
@@ -74,7 +60,7 @@ export default class PostView extends Component {
         <Link to={goBack}>
           <Icon size="big" name="chevron left" />
         </Link>
-        <Image src={this.getImage(featuredMedia)} />
+        {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : null}
         <Container textAlign="justified">
           {categoriesList[0].map(category => (
             <Label color="teal" key={category.name}>
@@ -106,21 +92,7 @@ export default class PostView extends Component {
             <Link to={path}>
               <Icon name="comment" size="large" circular inverted color="grey" />
             </Link>
-            {socialMedia.facebook ? (
-              <a href={'https://m.facebook.com/sharer.php?u=' + post.link}>
-                <Icon name="facebook f" size="large" circular inverted color="blue" />
-              </a>
-            ) : null}
-            {socialMedia.twitter ? (
-              <a href={'https://twitter.com/intent/tweet?text=' + encodeURIComponent(post.title.rendered) + ' ' + post.link}>
-                <Icon name="twitter" size="large" circular inverted color="teal" />
-              </a>
-            ) : null}
-            {socialMedia.google ? (
-              <a href={'https://plus.google.com/share?url=' + post.link}>
-                <Icon name="google plus" size="large" circular inverted color="red" />
-              </a>
-            ) : null}
+            <SocialMedia title={post.title.rendered} link={post.link} />
           </Modal.Actions>
         </Modal>
       </Container>
