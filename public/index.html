@@ -3,8 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+  />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#a333c8">
+
   <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
@@ -30,7 +36,19 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>React App</title>
+  <title>PWA Theme Mosaic</title>
+  <script type="text/javascript">
+    window.appticles = {
+      config: {
+        API_CATEGORIES_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/categories/',
+        API_POSTS_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/posts?_embed=users?_embed=media',
+        API_PAGES_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/pages?_embed=media',
+        API_COMMENTS_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/comments',
+        API_MEDIA_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/media'
+      }
+    }
+  </script>
+
 </head>
 
 <body>
