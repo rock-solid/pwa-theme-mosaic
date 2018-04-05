@@ -18,7 +18,10 @@ import NotFound from './components/NotFound/index';
 
 import './index.css';
 
+// load config variables
 config.set(window.__INITIAL_CONFIG__, { freeze: false });
+
+// set up google analytics tracking
 if (config.get('ga-id')) {
   ReactGA.initialize(config.get('ga-id'), { debug: true });
   ReactGA.pageview(window.location.pathname + window.location.search);
