@@ -2,3 +2,15 @@ hr {
   margin-bottom: 5% !important;
   font-size: 2px !important;
 }
+.slick-slide {
+  position: relative;
+}
+
+/* FIX FOR EXTRA DIV FROM react-router-modal */
+.slick-initialized.slick-slider + div {
+  display: none;
+}
+/* FIX extra div carousel container */
+.posts-carousel-container + div {
+  display: none;
+}

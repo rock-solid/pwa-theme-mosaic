@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post card should render post with featured image 1`] = `
+<Container
+  className="post"
+>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Icon
+      as="i"
+      name="chevron left"
+      size="big"
+    />
+  </Link>
+  <Image
+    as="img"
+    ui={true}
+  />
+  <Container
+    textAlign="justified"
+  >
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Header>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Mock title",
+          }
+        }
+      />
+    </Header>
+    <HeaderSubheader>
+       
+      by
+       
+      <b />
+      , 
+      <t
+        ago={false}
+        calendar={false}
+        element="time"
+        filter={[Function]}
+        format="MMMM DD, YYYY"
+        fromNow={false}
+        interval={60000}
+        onChange={[Function]}
+        toNow={false}
+        unix={false}
+        utc={false}
+      >
+        someMockDate
+      </t>
+    </HeaderSubheader>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some content that should be rendered",
+        }
+      }
+    />
+  </Container>
+  <Modal
+    basic={true}
+    className="share"
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClick={[Function]}
+    open={false}
+    trigger={
+      <TransitionGroup
+        animation="fade up"
+        className="transition-container"
+        duration="500"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          name="share alternate"
+          onClick={[Function]}
+          size="large"
+        />
+      </TransitionGroup>
+    }
+  >
+    <ModalActions>
+      <Link
+        replace={false}
+        to="/post/mock-slug/1/comments/undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="grey"
+          inverted={true}
+          name="comment"
+          size="large"
+        />
+      </Link>
+    </ModalActions>
+  </Modal>
+</Container>
+`;
+
+exports[`Post card should render post with image placeholder 1`] = `
+<Container
+  className="post"
+>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Icon
+      as="i"
+      name="chevron left"
+      size="big"
+    />
+  </Link>
+  <Image
+    as="img"
+    src="https://placeholdit.co//i/555x650"
+    ui={true}
+  />
+  <Container
+    textAlign="justified"
+  >
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Label
+      color="teal"
+      key="Some category"
+    >
+      Some category
+    </Label>
+    <Header>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Mock title",
+          }
+        }
+      />
+    </Header>
+    <HeaderSubheader>
+       
+      by
+       
+      <b />
+      , 
+      <t
+        ago={false}
+        calendar={false}
+        element="time"
+        filter={[Function]}
+        format="MMMM DD, YYYY"
+        fromNow={false}
+        interval={60000}
+        onChange={[Function]}
+        toNow={false}
+        unix={false}
+        utc={false}
+      >
+        someMockDate
+      </t>
+    </HeaderSubheader>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some content that should be rendered",
+        }
+      }
+    />
+  </Container>
+  <Modal
+    basic={true}
+    className="share"
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClick={[Function]}
+    open={false}
+    trigger={
+      <TransitionGroup
+        animation="fade up"
+        className="transition-container"
+        duration="500"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          name="share alternate"
+          onClick={[Function]}
+          size="large"
+        />
+      </TransitionGroup>
+    }
+  >
+    <ModalActions>
+      <Link
+        replace={false}
+        to="/post/mock-slug/1/comments/undefined"
+      >
+        <Icon
+          as="i"
+          circular={true}
+          color="grey"
+          inverted={true}
+          name="comment"
+          size="large"
+        />
+      </Link>
+    </ModalActions>
+  </Modal>
+</Container>
+`;

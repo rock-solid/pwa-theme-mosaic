@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page screen renders a message if the page does not exist 1`] = `
+<div
+  className="ui active loader"
+/>
+`;
+
+exports[`Page screen renders existing pages 1`] = `
+<Page details test
+  page={
+    Object {
+      "author": 54,
+      "comment_status": "dunno",
+      "content": Object {
+        "rendered": "Some page content ot be rendered",
+      },
+      "featured_media": 43,
+      "id": 1,
+      "link": "some-page-link",
+      "parent": 32,
+      "slug": "some-page-slug",
+      "status": "some-status",
+      "title": Object {
+        "rendered": "Some page tile",
+      },
+    }
+  }
+  texts={
+    Object {
+      "TEXTS": Object {
+        "BY_AUTHOR": "by",
+        "NO_PAGES": "There are no pages!",
+      },
+    }
+  }
+/>
+`;
+
+exports[`Page screen renders loader 1`] = `
+<div
+  className="ui active loader"
+/>
+`;

@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments screen renders a message if the page does not exist 1`] = `
+<div
+  className="ui comments"
+>
+  <h3
+    className="ui block header"
+  >
+    <a
+      href="/category/category-slug/42/post/post-slug/54"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="close icon"
+      />
+    </a>
+  </h3>
+  <div>
+    <div
+      className="ptr-element"
+    >
+      <span
+        className="genericon genericon-next"
+      />
+      <div
+        className="loading"
+      >
+        <span
+          className="loading-ptr-1"
+        />
+        <span
+          className="loading-ptr-2"
+        />
+        <span
+          className="loading-ptr-3"
+        />
+      </div>
+    </div>
+    <div
+      className="refresh-view"
+    >
+      <Comments view test
+        comments={Array []}
+        match={
+          Object {
+            "params": Object {
+              "categoryId": "42",
+              "categorySlug": "category-slug",
+              "postId": "54",
+              "postSlug": "post-slug",
+            },
+          }
+        }
+        texts={Object {}}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Comments screen renders comments list 1`] = `
+<div
+  className="ui comments"
+>
+  <h3
+    className="ui block header"
+  >
+    Comments
+    <a
+      href="/category/category-slug/42/post/post-slug/54"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="close icon"
+      />
+    </a>
+  </h3>
+  <div>
+    <div
+      className="ptr-element"
+    >
+      <span
+        className="genericon genericon-next"
+      />
+      <div
+        className="loading"
+      >
+        <span
+          className="loading-ptr-1"
+        />
+        <span
+          className="loading-ptr-2"
+        />
+        <span
+          className="loading-ptr-3"
+        />
+      </div>
+    </div>
+    <div
+      className="refresh-view"
+    >
+      <Comments view test
+        comments={
+          Array [
+            Object {
+              "author_avatar_urls": Object {
+                "24": "some-rurl",
+              },
+              "author_name": "Comment Author",
+              "content": Object {
+                "rendered": "Comment content",
+              },
+              "date": "d date",
+              "id": 67,
+              "post": 54,
+            },
+          ]
+        }
+        match={
+          Object {
+            "params": Object {
+              "categoryId": "42",
+              "categorySlug": "category-slug",
+              "postId": "54",
+              "postSlug": "post-slug",
+            },
+          }
+        }
+        texts={
+          Object {
+            "TEXTS": Object {
+              "COMMENTS": "Comments",
+            },
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

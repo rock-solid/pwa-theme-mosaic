@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments view renders comments, allows adding new comments 1`] = `
+<CommentGroup>
+  <Comment
+    key="6715"
+  >
+    <CommentAvatar
+      src="some-rurl"
+    />
+    <CommentContent>
+      <CommentAuthor
+        as="a"
+      >
+        Comment Author
+      </CommentAuthor>
+      <CommentMetadata>
+        <div>
+          <t
+            ago={false}
+            calendar={false}
+            element="time"
+            filter={[Function]}
+            format="MMMM DD, YYYY"
+            fromNow={false}
+            interval={60000}
+            onChange={[Function]}
+            toNow={false}
+            unix={false}
+            utc={false}
+          >
+            d date
+          </t>
+        </div>
+      </CommentMetadata>
+      <CommentText
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Comment content",
+          }
+        }
+      />
+      <CommentActions>
+        <CommentAction
+          as="a"
+          onClick={[Function]}
+        >
+          Reply
+        </CommentAction>
+      </CommentActions>
+    </CommentContent>
+  </Comment>
+  <Button
+    as="button"
+    onClick={[Function]}
+  >
+    Leave comment
+  </Button>
+</CommentGroup>
+`;
+
+exports[`Comments view renders comments, does not allow adding new comments 1`] = `
+<CommentGroup>
+  <Comment
+    key="6715"
+  >
+    <CommentAvatar
+      src="some-rurl"
+    />
+    <CommentContent>
+      <CommentAuthor
+        as="a"
+      >
+        Comment Author
+      </CommentAuthor>
+      <CommentMetadata>
+        <div>
+          <t
+            ago={false}
+            calendar={false}
+            element="time"
+            filter={[Function]}
+            format="MMMM DD, YYYY"
+            fromNow={false}
+            interval={60000}
+            onChange={[Function]}
+            toNow={false}
+            unix={false}
+            utc={false}
+          >
+            d date
+          </t>
+        </div>
+      </CommentMetadata>
+      <CommentText
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Comment content",
+          }
+        }
+      />
+      <CommentActions>
+        <CommentAction
+          as="a"
+          onClick={[Function]}
+        >
+          Reply
+        </CommentAction>
+      </CommentActions>
+    </CommentContent>
+  </Comment>
+</CommentGroup>
+`;
+
+exports[`Comments view renders no comments, allows adding new comments 1`] = `
+<CommentGroup>
+  <Container
+    className="no-comments"
+  >
+    No comments
+  </Container>
+  <Button
+    as="button"
+    onClick={[Function]}
+  >
+    Leave comment
+  </Button>
+</CommentGroup>
+`;
+
+exports[`Comments view renders no comments, does not allow adding new comments 1`] = `
+<CommentGroup>
+  <Container
+    className="no-comments"
+  >
+    No comments
+  </Container>
+</CommentGroup>
+`;

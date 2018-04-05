@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component should render correctly 1`] = `
+<button
+  className="ui teal tiny right floated button navbar"
+  disabled={undefined}
+  onClick={[Function]}
+  role="button"
+  tabIndex={undefined}
+>
+  <i
+    aria-hidden="true"
+    className="content large icon"
+    onClick={[Function]}
+  />
+</button>
+`;

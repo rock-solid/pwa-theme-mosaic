@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Two cards should render correctly 1`] = `
+<Grid
+  className="half-row"
+  columns={1}
+  divided={true}
+>
+  <GridRow>
+    <GridColumn>
+      <CategoryCard
+        category={
+          Object {
+            "id": 1,
+            "name": "Some mock name",
+            "slug": "mock-slug",
+          }
+        }
+        key="1"
+      />
+    </GridColumn>
+  </GridRow>
+  <GridRow>
+    <GridColumn>
+      <CategoryCard
+        category={
+          Object {
+            "id": 2,
+            "name": "Some other mock name",
+            "slug": "mock-slug",
+          }
+        }
+        key="2"
+      />
+    </GridColumn>
+  </GridRow>
+</Grid>
+`;

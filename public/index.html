@@ -21,12 +21,34 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
   />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 
   <!-- FONTS TO DO:font files -->
   <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
 
+  <!-- config JSON app settings -->
+  <script>
+    window.__INITIAL_CONFIG__ = {
+      "export": {
+        "API_CATEGORIES_URL": 'https://pwathemes.com/demo-api/wp-json/wp/v2/categories/',
+        "API_POSTS_URL": 'https://pwathemes.com/demo-api/wp-json/wp/v2/posts?_embed=users?_embed=media',
+        "API_PAGES_URL": 'https://pwathemes.com/demo-api/wp-json/wp/v2/pages?_embed=media',
+        "API_COMMENTS_URL": 'https://pwathemes.com/demo-api/wp-json/wp/v2/comments',
+        "API_MEDIA_URL": 'https://pwathemes.com/demo-api/wp-json/wp/v2/media'
+      },
+      "translate": {
+        "path": "https://s3-eu-west-1.amazonaws.com/appticles-kit/others/locales3/en_EN.json",
+        "language": "en"
+      },
+      "socialMedia": {
+        "facebook": true,
+        "twitter": true,
+        "google": true
+      },
+      "ga-id": "UA-000000-01",
+      "websiteUrl": "http:\/\/localhost\/wordpress-4.8.3\/wordpress?wmp_theme_mode=desktop",
+      "logo": "http:\/\/localhost\/wordpress-4.8.3\/wordpress\/wp-content\/uploads\/wordpress-mobile-pack\/logo_1516880924.png",
+    }
+  </script>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -37,17 +59,8 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>PWA Theme Mosaic</title>
-  <script type="text/javascript">
-    window.appticles = {
-      config: {
-        API_CATEGORIES_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/categories/',
-        API_POSTS_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/posts?_embed=users?_embed=media',
-        API_PAGES_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/pages?_embed=media',
-        API_COMMENTS_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/comments',
-        API_MEDIA_URL: 'https://pwathemes.com/demo-api/wp-json/wp/v2/media'
-      }
-    }
-  </script>
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 
 </head>
 

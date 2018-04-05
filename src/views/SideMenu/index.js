@@ -8,66 +8,58 @@ import { fetchPages } from './action';
 import { getPages, pagePropType, getPagesFetching } from './reducer';
 import PageList from './PageList';
 
+// translations
+import { fetchTranslations } from '../../translations/actions';
+import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
+
 import './style.css';
 
 class SideMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.placeChildren = this.placeChildren.bind(this);
-    this.makePagesList = this.makePagesList.bind(this);
-  }
-
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(fetchPages({}));
-  }
-
-  placeChildren(currentLevel, nextLevel) {
-    currentLevel.map((parent) => {
-      nextLevel.map((child) => {
-        if (child.parent === parent.id) {
-          parent.children.push(child);
-        }
-        return nextLevel;
-      });
-      return currentLevel;
-    });
-  }
-
-  makePagesList() {
-    const { pages } = this.props;
-    pages.map((page) => {
-      page.children = [];
-      return page;
-    });
-    this.placeChildren(pages, pages);
+    dispatch(fetchTranslations);
   }
 
   render() {
-    const { pages } = this.props;
-    this.makePagesList();
+    const { pages, translations } = this.props;
 
     return (
-      <Sidebar visible={this.props.isVisible} direction="right">
-        {this.props.loading === 1 ? <Loader /> : ''}
-        <PageList visible={this.props.isVisible} pages={pages} />
+      <Sidebar visible={this.props.sideMenuVisible} direction="right">
+        {this.props.loadingPages === 1 && this.props.loadingTranslations === 1 ? <Loader active /> : ''}
+        <PageList text={translations.LINKS} pages={pages} />
       </Sidebar>
     );
   }
 }
+
+SideMenu.defaultProps = {
+  translations: {
+    LINKS: 'Visit website',
+    GO_TO: 'Go to',
+  },
+};
 SideMenu.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  loading: PropTypes.number.isRequired,
-  isVisible: PropTypes.bool.isRequired,
+  loadingPages: PropTypes.number.isRequired,
+  sideMenuVisible: PropTypes.bool.isRequired,
   pages: PropTypes.arrayOf(pagePropType).isRequired,
+  translations: PropTypes.shape({
+    LINKS: PropTypes.any,
+    GO_TO: PropTypes.any,
+  }),
+  loadingTranslations: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
   pages: getPages(state.pages),
-  loading: getPagesFetching(state.pages),
+  loadingPages: getPagesFetching(state.pages),
+  sideMenuVisible: state.sideMenuVisible,
+  loadingTranslations: getTranslationsFetching(state.translations),
+  translations: getTranslations(state.translations),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPages }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchPages, fetchTranslations }, dispatch));
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

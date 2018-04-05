@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments reducer handles RECEIVE_COMMENTS action case 1 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "author_name": "Some Author",
+      "content": Object {
+        "rendered": "Some comment content",
+      },
+      "date": "some-date",
+      "id": 43,
+      "post": 63,
+    },
+  ],
+}
+`;
+
+exports[`Comments reducer handles RECEIVE_COMMENTS action case 2 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "author_name": "Some Author",
+      "content": Object {
+        "rendered": "Some comment content",
+      },
+      "date": "some-date",
+      "id": 43,
+      "post": 63,
+    },
+  ],
+}
+`;
+
+exports[`Comments reducer handles REQUEST_COMMENTS action 1`] = `
+Object {
+  "isFetching": 1,
+  "items": Array [
+    Object {
+      "author_name": "Some Author",
+      "content": Object {
+        "rendered": "Some comment content",
+      },
+      "date": "some-date",
+      "id": 43,
+      "post": 63,
+    },
+    Object {
+      "author_name": "Some Author",
+      "content": Object {
+        "rendered": "Some comment content",
+      },
+      "date": "some-date",
+      "id": 43,
+      "post": 63,
+    },
+  ],
+}
+`;
+
+exports[`Comments reducer returns same state on an unhandled action 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [],
+}
+`;

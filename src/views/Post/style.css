@@ -18,10 +18,15 @@
 .post.container .sub.header {
   height: 6%;
   color: #999;
+  margin: -3% 0% 5% 7%;
 }
 .post.container .sub.header b {
   font-size: 15px;
   color: #000000;
+}
+
+.ui.justified.container {
+  height: unset;
 }
 
 .post.container .container .label {
@@ -31,4 +36,54 @@
   font-weight: 100;
   padding: 10px 5px;
   margin: 15px 10px -10px 0;
+}
+
+/* ICON */
+.ui.container.post i.icon {
+  color: #ffffff;
+}
+
+.ui.container.post i.icon.big.chevron.left {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 0;
+}
+
+.ui.container.post i.icon.circular.share {
+  background-color: rgba(116, 116, 116, 0.59);
+  font-size: 1.4em;
+  margin: 0 10px 0 0;
+  box-shadow: none;
+}
+
+.transition-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* FIX FOR EXTRA DIV FORM react-router-modal */
+.ui.container.post + div {
+  display: none;
+}
+
+/* MODAL */
+.scrolling.dimmable.dimmed > .dimmer {
+  overflow: hidden;
+}
+.dimmed.dimmable > .ui.animating.dimmer,
+.dimmed.dimmable > .ui.visible.dimmer,
+.ui.active.dimmer {
+  opacity: 0.9;
+}
+
+.ui.page.modals.dimmer.transition.visible.active .actions {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  height: 93%;
+}
+.ui.page.modals.dimmer.transition.visible.active .social {
+  justify-content: space-evenly;
+  display: flex;
 }

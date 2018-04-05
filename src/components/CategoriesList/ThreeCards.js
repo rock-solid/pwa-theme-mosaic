@@ -9,15 +9,15 @@ const ThreeCards = props => (
   <Grid columns={2} divided className="half-row">
     <GridRow>
       <GridColumn>
-        <CategoryCard category={props.categoriesList[0]} key={Math.random()} />
+        <CategoryCard category={props.categoriesList[0]} key={props.categoriesList[0].id} />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn>
-        <CategoryCard category={props.categoriesList[1]} tall={1} key={Math.random()} />
+        <CategoryCard category={props.categoriesList[1]} key={props.categoriesList[1].id} />
       </GridColumn>
       <GridColumn>
-        <CategoryCard category={props.categoriesList[2]} tall={1} key={Math.random()} />
+        <CategoryCard category={props.categoriesList[2]} key={props.categoriesList[2].id} />
       </GridColumn>
     </GridRow>
   </Grid>

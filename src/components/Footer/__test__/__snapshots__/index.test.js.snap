@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render correctly 1`] = `
+<div
+  className="footer"
+>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Icon
+      as="i"
+      name="grid layout"
+      size="big"
+    />
+  </Link>
+</div>
+`;

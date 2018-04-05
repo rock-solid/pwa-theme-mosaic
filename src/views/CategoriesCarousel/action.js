@@ -1,4 +1,4 @@
-import config from '../../config/config';
+import config from 'react-global-configuration';
 
 export const REQUEST_CATEGORIES = 'REQUEST_CATEGORIES';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
@@ -17,10 +17,10 @@ export const fetchCategories = (params = {}) => (dispatch) => {
 
   let url;
   if (params && params.post) {
-    url = config.API_CATEGORIES_URL + '?post=' + String(params.post);
+    url = config.get('export').categories + '?post=' + String(params.post);
   } else {
     url =
-      config.API_CATEGORIES_URL +
+      config.get('export').categories +
       '?' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))

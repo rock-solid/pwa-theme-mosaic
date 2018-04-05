@@ -1,0 +1,15 @@
+.slick-slider .footer {
+  position: absolute;
+  bottom: 0;
+  height: unset;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: #fafafa;
+  padding: 5px;
+  border: solid 1px #e5d5d0;
+}
+
+.footer i.icon {
+  color: #747474;
+}

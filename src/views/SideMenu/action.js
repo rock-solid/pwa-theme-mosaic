@@ -1,4 +1,4 @@
-import config from '../../config/config';
+import config from 'react-global-configuration';
 
 export const REQUEST_PAGES = 'REQUEST_PAGES';
 export const RECEIVE_PAGES = 'RECEIVE_PAGES';
@@ -17,10 +17,10 @@ export const fetchPages = (params = {}) => (dispatch) => {
 
   let url;
   if (params && params.id) {
-    url = config.API_PAGES_URL + '/' + String(params.id);
+    url = config.get('export').pages + '/' + String(params.id);
   } else {
     url =
-      config.API_PAGES_URL +
+      config.get('export').pages +
       '?' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
