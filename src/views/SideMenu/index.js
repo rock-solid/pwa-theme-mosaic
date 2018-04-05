@@ -6,7 +6,7 @@ import { Sidebar, Loader } from 'semantic-ui-react';
 
 import { fetchPages } from './action';
 import { getPages, pagePropType, getPagesFetching } from './reducer';
-import PageList from './PageList';
+import PageList from './components/PageList';
 
 // translations
 import { fetchTranslations } from '../../translations/actions';
@@ -33,12 +33,6 @@ class SideMenu extends Component {
   }
 }
 
-SideMenu.defaultProps = {
-  translations: {
-    LINKS: 'Visit website',
-    GO_TO: 'Go to',
-  },
-};
 SideMenu.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loadingPages: PropTypes.number.isRequired,
@@ -49,6 +43,13 @@ SideMenu.propTypes = {
     GO_TO: PropTypes.any,
   }),
   loadingTranslations: PropTypes.number.isRequired,
+};
+
+SideMenu.defaultProps = {
+  translations: {
+    LINKS: 'Visit website',
+    GO_TO: 'Go to',
+  },
 };
 
 const mapStateToProps = state => ({

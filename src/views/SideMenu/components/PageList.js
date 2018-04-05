@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'react-global-configuration';
 
-import { pagePropType } from './reducer';
+import { pagePropType } from '../reducer';
 
-import './style.css';
+import '../style.css';
 
 export default class PageList extends Component {
   constructor(props) {
     super(props);
+
     this.goBack = this.goBack.bind(this);
     this.openSubmenu = this.openSubmenu.bind(this);
-    this.getImage = this.getImage.bind(this);
+
     this.state = {
       parentId: 0,
       parentPageTitle: [],
@@ -22,22 +23,16 @@ export default class PageList extends Component {
     };
   }
 
+  /**
+   * Add a children property to each page - does/not have kids.
+   * @param {Object} nextProps
+   */
   componentWillReceiveProps(nextProps) {
-    // add a children property to each page - does/not have kids
     const pages = nextProps.pages.map((item) => {
       const children = this.props.pages.filter(child => child.parent === item.id);
-      const aux = item;
-      aux.children = children.length > 0;
-      return aux;
+      return Object.assign(item, { children: children.length > 0 });
     });
     this.setState({ pages });
-  }
-
-  getImage(sourceImg) {
-    if (sourceImg) {
-      return sourceImg[0].source_url;
-    }
-    return null;
   }
 
   filterPages() {
@@ -63,11 +58,11 @@ export default class PageList extends Component {
         {this.state.parentId === 0 ? (
           <Header>{this.props.text && this.props.text.GO_TO}</Header>
         ) : (
-          <Header>
-            <Icon name="caret left" onClick={this.goBack} />
-            {this.state.parentPageTitle[this.state.parentPageTitle.length - 1]}
-          </Header>
-        )}
+            <Header>
+              <Icon name="caret left" onClick={this.goBack} />
+              {this.state.parentPageTitle[this.state.parentPageTitle.length - 1]}
+            </Header>
+          )}
         {pages.map(page => (
           <List.Item key={Math.random()}>
             <List.Icon name="linkify" size="large" verticalAlign="middle" />
