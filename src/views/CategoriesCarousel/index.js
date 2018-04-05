@@ -31,6 +31,11 @@ class CategoriesCarousel extends Component {
     this.setState({ pageNumber: this.state.pageNumber + 1 });
   }
 
+  /**
+   * Split the categories list into chunks.
+   * @param {Number} homeChunkSize
+   * @param {Number} regularChunkSize
+   */
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
     const categoriesList = [];
