@@ -14,7 +14,6 @@ export const receiveCategories = categories => ({
 
 export const fetchCategories = (params = {}) => (dispatch) => {
   dispatch(requestCategories());
-  config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
   let url;
   if (params && params.post) {

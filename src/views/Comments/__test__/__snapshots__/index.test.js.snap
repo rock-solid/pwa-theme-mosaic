@@ -7,7 +7,6 @@ exports[`Comments screen renders a message if the page does not exist 1`] = `
   <h3
     className="ui block header"
   >
-    Comments
     <a
       href="/category/category-slug/42/post/post-slug/54"
       onClick={[Function]}
@@ -54,6 +53,7 @@ exports[`Comments screen renders a message if the page does not exist 1`] = `
             },
           }
         }
+        texts={Object {}}
       />
     </div>
   </div>
@@ -126,6 +126,13 @@ exports[`Comments screen renders comments list 1`] = `
               "categorySlug": "category-slug",
               "postId": "54",
               "postSlug": "post-slug",
+            },
+          }
+        }
+        texts={
+          Object {
+            "TEXTS": Object {
+              "COMMENTS": "Comments",
             },
           }
         }

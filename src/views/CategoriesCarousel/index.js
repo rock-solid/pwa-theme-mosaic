@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { Sidebar, Loader, Image } from 'semantic-ui-react';
 import config from 'react-global-configuration';
 
@@ -107,4 +106,4 @@ const mapStateToProps = state => ({
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchCategories, closeMenu }, dispatch));
 }
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoriesCarousel));
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesCarousel);

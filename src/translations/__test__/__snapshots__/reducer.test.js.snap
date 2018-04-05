@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Translations reducer handles RECEIVE_TRANSLATIONS action 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Object {
+    "isFetching": 1,
+    "items": Object {
+      "FORM": "Some text",
+      "TEXTS": "Some text",
+    },
+  },
+}
+`;
+
+exports[`Translations reducer handles REQUEST_TRANSLATIONS action 1`] = `
+Object {
+  "isFetching": 1,
+  "items": Object {
+    "FORM": "Some text",
+    "TEXTS": "Some text",
+  },
+}
+`;
+
+exports[`Translations reducer returns the same state on an unhandled action 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Object {},
+}
+`;

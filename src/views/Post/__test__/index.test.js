@@ -13,6 +13,10 @@ describe('Post screen', () => {
         items: [],
         isFetching: 0,
       },
+      translations: {
+        items: {},
+        isFetching: 0,
+      },
     });
     const match = {
       params: { postId: 'some-post-id' },
@@ -24,6 +28,10 @@ describe('Post screen', () => {
     const store = mockStore({
       posts: {
         items: [],
+        isFetching: 1,
+      },
+      translations: {
+        items: {},
         isFetching: 1,
       },
     });
@@ -56,6 +64,15 @@ describe('Post screen', () => {
             date: 'some mock date',
           },
         ],
+        isFetching: 0,
+      },
+      translations: {
+        items: {
+          TEXTS: {
+            BY_AUTHOR: 'by',
+            NO_ARTICLES: 'There are no articles!',
+          },
+        },
         isFetching: 0,
       },
     });

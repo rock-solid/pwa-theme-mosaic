@@ -16,6 +16,10 @@ describe('Comments screen', () => {
         items: [],
         isFetching: 0,
       },
+      translations: {
+        items: {},
+        isFetching: 0,
+      },
     });
     const match = {
       params: {
@@ -50,6 +54,14 @@ describe('Comments screen', () => {
             },
           },
         ],
+        isFetching: 0,
+      },
+      translations: {
+        items: {
+          TEXTS: {
+            COMMENTS: 'Comments',
+          },
+        },
         isFetching: 0,
       },
     });

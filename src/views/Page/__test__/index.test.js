@@ -6,12 +6,18 @@ import mockStore from '../../../__mocks__/redux-mock-store';
 import PageView from '../index';
 
 jest.mock('../PageDetails', () => 'Page details test');
+jest.mock('../../../components/NotFound/', () => 'Not found component test');
+jest.mock('react-global-configuration', () => require.requireActual('../../../__mocks__/react-global-configuration').default);
 
 describe('Page screen', () => {
   it('renders a message if the page does not exist', () => {
     const store = mockStore({
       pages: {
         items: [],
+        isFetching: 0,
+      },
+      translations: {
+        items: {},
         isFetching: 0,
       },
     });
@@ -28,6 +34,10 @@ describe('Page screen', () => {
       pages: {
         items: [],
         isFetching: 1,
+      },
+      translations: {
+        items: {},
+        isFetching: 0,
       },
     });
     const match = {
@@ -75,6 +85,15 @@ describe('Page screen', () => {
             status: 'some-status',
           },
         ],
+        isFetching: 0,
+      },
+      translations: {
+        items: {
+          TEXTS: {
+            BY_AUTHOR: 'by',
+            NO_PAGES: 'There are no pages!',
+          },
+        },
         isFetching: 0,
       },
     });

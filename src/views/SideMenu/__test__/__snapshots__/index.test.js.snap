@@ -7,6 +7,7 @@ exports[`Side menu renders hidden side menu 1`] = `
   
   <Page list test
     pages={Array []}
+    text={undefined}
   />
 </div>
 `;
@@ -20,6 +21,7 @@ exports[`Side menu renders side menu 1`] = `
   />
   <Page list test
     pages={Array []}
+    text={undefined}
   />
 </div>
 `;
@@ -50,6 +52,7 @@ exports[`Side menu renders side menu 2`] = `
         },
       ]
     }
+    text="Visit website"
   />
 </div>
 `;

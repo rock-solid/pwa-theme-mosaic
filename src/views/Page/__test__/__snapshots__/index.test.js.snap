@@ -2,14 +2,8 @@
 
 exports[`Page screen renders a message if the page does not exist 1`] = `
 <div
-  className="ui container not-found"
->
-  <h1
-    className="ui header"
-  >
-     Not found
-  </h1>
-</div>
+  className="ui active loader"
+/>
 `;
 
 exports[`Page screen renders existing pages 1`] = `
@@ -29,6 +23,14 @@ exports[`Page screen renders existing pages 1`] = `
       "status": "some-status",
       "title": Object {
         "rendered": "Some page tile",
+      },
+    }
+  }
+  texts={
+    Object {
+      "TEXTS": Object {
+        "BY_AUTHOR": "by",
+        "NO_PAGES": "There are no pages!",
       },
     }
   }
