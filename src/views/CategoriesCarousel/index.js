@@ -13,7 +13,7 @@ import SideMenu from '../SideMenu/index';
 import NavBar from '../../components/NavBar/index';
 import { closeMenu } from '../../components/NavBar/action';
 
-import CategoriesList from '../../components/CategoriesList/index';
+import CategoriesList from './components/CategoriesList/index';
 import './style.css';
 
 class CategoriesCarousel extends Component {
@@ -98,11 +98,13 @@ CategoriesCarousel.propTypes = {
   sideMenuVisible: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
 };
+
 const mapStateToProps = state => ({
   loading: getCategoriesFetching(state.categories),
   categories: getCategories(state.categories),
   sideMenuVisible: state.sideMenuVisible,
 });
+
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchCategories, closeMenu }, dispatch));
 }

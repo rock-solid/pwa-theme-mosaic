@@ -2,7 +2,7 @@ import React from 'react';
 import { Item, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { categoryPropType } from '../../views/CategoriesCarousel/reducer';
+import { categoryPropType } from '../../reducer';
 import './style.css';
 
 const CategoryCard = props => (
