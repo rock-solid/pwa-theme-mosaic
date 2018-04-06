@@ -6,14 +6,16 @@ import './style.css';
 
 const NotFound = props => (
   <Container className="not-found">
-    <Header> {props.content}</Header>
+    <Header>{props.content}</Header>
   </Container>
 );
+
+NotFound.propTypes = {
+  content: PropTypes.string,
+};
 
 NotFound.defaultProps = {
   content: 'Sorry, we could not find what you were looking for.',
 };
-NotFound.propTypes = {
-  content: PropTypes.string,
-};
+
 export default NotFound;
