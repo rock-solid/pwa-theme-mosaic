@@ -9,7 +9,7 @@ import { fetchPosts } from '../PostsCarousel/action';
 import { getPosts, getPostsFetching, postPropType } from '../PostsCarousel/reducer';
 
 import NotFound from '../../components/NotFound/index';
-import PostDetails from './PostView';
+import PostDetails from './PostDetails';
 
 // translations
 import { fetchTranslations } from '../../translations/actions';
@@ -38,21 +38,20 @@ class Post extends Component {
 
     if (this.props.loading === 1 || _.isNil(this.props.translations.TEXTS)) {
       return <Loader active />;
-    } else if (_.isNil(post)) {
-      return <NotFound texts={this.props.translations.TEXTS.NO_ARTICLES} />;
     }
 
-    return <PostDetails post={post} category={this.props.match.params} texts={this.props.translations} />;
+    if (_.isNil(post)) {
+      return <NotFound />;
+    }
+
+    return (<PostDetails
+      post={post}
+      category={this.props.match.params}
+      texts={this.props.translations}
+    />);
   }
 }
-Post.defaultProps = {
-  translations: {
-    TEXTS: {
-      BY_AUTHOR: 'by',
-      NO_ARTICLES: 'There are no articles!',
-    },
-  },
-};
+
 Post.propTypes = {
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.shape({
@@ -68,6 +67,15 @@ Post.propTypes = {
       NO_ARTICLES: PropTypes.string,
     }),
   }),
+};
+
+Post.defaultProps = {
+  translations: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+      NO_ARTICLES: 'There are no articles!',
+    },
+  },
 };
 
 const mapStateToProps = state => ({

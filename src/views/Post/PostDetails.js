@@ -8,12 +8,13 @@ import SocialMedia from './components/SocialMedia';
 import { postPropType } from '../PostsCarousel/reducer';
 import './style.css';
 
-export default class PostView extends Component {
+class PostDetails extends Component {
   constructor(props) {
     super(props);
 
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+
     this.state = {
       modalOpen: false,
       visible: true,
@@ -33,27 +34,17 @@ export default class PostView extends Component {
     const { author } = post._embedded;
     const categoriesList = post._embedded['wp:term'];
     const featuredMedia = post._embedded['wp:featuredmedia'];
-    // set path routes
-    let goBack = {};
-    let path = {};
 
-    if (_.isNil(this.props.category.categorySlug) || _.isNil(this.props.category.categoryId)) {
-      goBack = '/';
-      path = '/post/' + post.slug + '/' + post.id + '/comments/' + post.comment_status;
-    } else {
-      goBack = '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId;
-      path =
-        '/category/' +
-        this.props.category.categorySlug +
-        '/' +
-        this.props.category.categoryId +
-        '/post/' +
-        post.slug +
-        '/' +
-        post.id +
-        '/comments/' +
-        post.comment_status;
+    // set path routes
+    let goBack = '/';
+    let path = '';
+
+    if (!_.isNil(this.props.category.categorySlug) && !_.isNil(this.props.category.categoryId)) {
+      path = '/category/' + this.props.category.categorySlug + '/' + this.props.category.categoryId;
+      goBack = path;
     }
+
+    path = path + '/post/' + post.slug + '/' + post.id + '/comments/' + post.comment_status;
 
     return (
       <Container className="post">
@@ -62,14 +53,14 @@ export default class PostView extends Component {
         </Link>
         {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : null}
         <Container textAlign="justified">
+          <Header>
+            <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+          </Header>
           {categoriesList[0].map(category => (
             <Label color="teal" key={category.name}>
               {category.name}
             </Label>
           ))}
-          <Header>
-            <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-          </Header>
           <Header.Subheader>
             &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">
               {post.date}
@@ -100,14 +91,15 @@ export default class PostView extends Component {
   }
 }
 
-PostView.defaultProps = {
+PostDetails.defaultProps = {
   texts: {
     TEXTS: {
       BY_AUTHOR: 'by',
     },
   },
 };
-PostView.propTypes = {
+
+PostDetails.propTypes = {
   post: postPropType.isRequired,
   category: PropTypes.shape({
     categorySlug: PropTypes.string,
@@ -119,3 +111,5 @@ PostView.propTypes = {
     }),
   }),
 };
+
+export default PostDetails;
