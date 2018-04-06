@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, GridColumn, GridRow, Card } from 'semantic-ui-react';
 
-import { postPropType } from '../../views/PostsCarousel/reducer';
-import PostCard from '../PostCard/index';
+import { postPropType } from '../../reducer';
+import PostCard from '../PostCard';
 import './style.css';
 
 const PostsList = (props) => {

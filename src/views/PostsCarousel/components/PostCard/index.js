@@ -4,18 +4,16 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import { postPropType } from '../../views/PostsCarousel/reducer';
+import { postPropType } from '../../reducer';
 import './style.css';
 
 const PostCard = (props) => {
   function getImage(sourceImg) {
-    let image;
     if (_.isNil(sourceImg) && sourceImg !== 0) {
-      image = props.post._embedded['wp:featuredmedia'][0].source_url;
-      return image;
+      return props.post._embedded['wp:featuredmedia'][0].source_url;
     }
-    image = 'http://via.placeholder.com/177x119';
-    return image;
+
+    return null;
   }
 
   let path = {};
