@@ -117,7 +117,6 @@ class CategoriesCarousel extends Component {
 
     const settings = {
       arrows: false,
-      centerPadding: '50px',
       dots: true,
       infinite: false,
       speed: 500,
@@ -136,7 +135,7 @@ class CategoriesCarousel extends Component {
             {this.props.loading === 1 ? <Loader active /> : null}
             <Slider {...settings}>
               {categoriesList.map((categoriesChunk, k) => (
-                <div key={Math.random(k)} className="categories">
+                <div key={Math.random(k)} className="categories-card">
                   <CategoriesList categoriesChunk={categoriesChunk} />
                 </div>
               ))}
