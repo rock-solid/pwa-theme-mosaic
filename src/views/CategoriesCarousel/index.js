@@ -19,16 +19,56 @@ import './style.css';
 class CategoriesCarousel extends Component {
   constructor(props) {
     super(props);
-    this.hideSidebar = this.hideSidebar.bind(this);
+
     this.state = {
+      itemsPerHome: 3,
+      itemsPerCard: 5,
       pageNumber: 1,
+
+      // if load more is enabled for loading more items
+      loadMore: false,
     };
+
+    this.hideSidebar = this.hideSidebar.bind(this);
+    this.loadMore = this.loadMore.bind(this);
   }
 
+  /**
+   * Make request to load the initial data set.
+   */
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCategories({ page: this.state.pageNumber }));
+
+    // calculate the no of items for one home card and two regular cards
+    const noItems = this.state.itemsPerHome + (this.state.itemsPerCard * 2);
+    dispatch(fetchCategories({ page: this.state.pageNumber, per_page: noItems }));
     this.setState({ pageNumber: this.state.pageNumber + 1 });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // If we receive more items, load more should be enable for the next request
+    if (nextProps.categories.length > this.props.categories.length) {
+      this.setState({ loadMore: true });
+    }
+  }
+
+  /**
+   * Calculate the no of pages considering that the 1st card is the home card.
+   */
+  getNoPages() {
+    if (this.props.categories.length === 0) {
+      return 0;
+    }
+
+    const lengthWithoutHome = this.props.categories.length - this.state.itemsPerHome;
+    if (lengthWithoutHome <= 0) {
+      return 1;
+    }
+
+    // Add +1 if the items are not exactly split over cards (last card is incomplete).
+    // Add +1 for the home card.
+    return Math.round(lengthWithoutHome / this.state.itemsPerCard) +
+      (lengthWithoutHome % this.state.itemsPerCard === 0 ? 0 : 1) + 1;
   }
 
   /**
@@ -48,10 +88,22 @@ class CategoriesCarousel extends Component {
     return categoriesList;
   }
 
-  loadMore() {
-    const { dispatch } = this.props;
-    dispatch(fetchCategories({ page: this.state.pageNumber, per_page: 15 }));
-    this.setState({ pageNumber: this.state.pageNumber + 1 });
+  /**
+   * Load more items when the carousel is swiped.
+   * @param {Number} index = The index of the card.
+   */
+  loadMore(index) {
+    if (this.state.loadMore === false) {
+      return;
+    }
+
+    const noPages = this.getNoPages();
+
+    if (index === noPages - 1) {
+      const { dispatch } = this.props;
+      dispatch(fetchCategories({ page: this.state.pageNumber, per_page: this.state.itemsPerCard * 3 }));
+      this.setState({ pageNumber: this.state.pageNumber + 1, loadMore: false });
+    }
   }
 
   hideSidebar() {
@@ -71,7 +123,7 @@ class CategoriesCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      afterChange: index => (index === categoriesList.length - 1 && this.props.categories.length % 5 === 0 ? this.loadMore() : null),
+      afterChange: this.loadMore,
     };
 
     return (
