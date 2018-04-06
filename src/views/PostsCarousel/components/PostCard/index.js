@@ -8,33 +8,27 @@ import { postPropType } from '../../reducer';
 import './style.css';
 
 const PostCard = (props) => {
-  function getImage(sourceImg) {
-    if (_.isNil(sourceImg) && sourceImg !== 0) {
-      return props.post._embedded['wp:featuredmedia'][0].source_url;
-    }
+  let path = '';
 
-    return null;
+  if (!_.isNil(props.category)) {
+    path = path +
+      '/category/' + props.category.params.categorySlug + '/' + props.category.params.categoryId;
   }
 
-  let path = {};
-
-  if (_.isNil(props.category)) {
-    path = '/post/' + props.post.slug + '/' + props.post.id;
-  }
-  path =
-    '/category/' + props.category.params.categorySlug + '/' + props.category.params.categoryId + '/post/' + props.post.slug + '/' + props.post.id;
+  path = path + '/post/' + props.post.slug + '/' + props.post.id;
 
   return (
     <Link to={path}>
       <Item className="posts">
         {props.post.title && <Item.Header dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />}
         <Item.Content>
-          <div
-            className="image"
-            style={{
-              backgroundImage: 'url(' + getImage(props.post.featured_media) + ')',
-            }}
-          />
+          {props.post.featured_media ?
+            <div
+              className="image"
+              style={{
+                backgroundImage: 'url(' + props.post._embedded['wp:featuredmedia'][0].source_url + ')',
+              }}
+            /> : null}
           <Item.Description dangerouslySetInnerHTML={{ __html: props.post.excerpt.rendered }} />
         </Item.Content>
       </Item>

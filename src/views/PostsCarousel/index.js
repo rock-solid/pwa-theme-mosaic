@@ -8,7 +8,7 @@ import { Loader } from 'semantic-ui-react';
 import { fetchPosts } from './action';
 import { getPosts, postPropType, getPostsFetching } from './reducer';
 
-import PostsList from '../../components/PostsList/index';
+import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
 import './style.css';
 
