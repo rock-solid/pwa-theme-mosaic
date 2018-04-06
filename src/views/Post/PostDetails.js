@@ -49,7 +49,7 @@ class PostDetails extends Component {
     return (
       <Container className="post">
         <Link to={goBack}>
-          <Icon size="big" name="chevron left" />
+          <Icon circular name="chevron left" />
         </Link>
         {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : null}
         <Container textAlign="justified">
@@ -66,7 +66,7 @@ class PostDetails extends Component {
               {post.date}
             </Moment>
           </Header.Subheader>
-          <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
         </Container>
         <Modal
           className="share"
