@@ -16,32 +16,82 @@ class PostsCarousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      itemsPerCard: 2,
       pageNumber: 1,
+
+      // if load more is enabled for loading more items
+      loadMore: false,
     };
+
+    this.loadMore = this.loadMore.bind(this);
   }
+
   componentWillMount() {
     this.readPosts(this.props.match.params.categoryId);
   }
 
   componentWillReceiveProps(nextProps) {
+    // If the category has changed, get the posts for the new category
     if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
-      this.readPost(nextProps.match.params.categoryId);
+      this.readPosts(nextProps.match.params.categoryId);
+      return;
+    }
+
+    // If we receive more items, load more should be enabled for the next request
+    if (nextProps.posts.length > this.props.posts.length) {
+      this.setState({ loadMore: true });
     }
   }
 
+  /**
+   * Calculate the no of pages.
+   */
+  getNoPages() {
+    const noPosts = this.props.posts.length;
+
+    // Add +1 if the items are not exactly split over cards (last card is incomplete).
+    return Math.round(noPosts / this.state.itemsPerCard) +
+      (noPosts % this.state.itemsPerCard === 0 ? 0 : 1);
+  }
+
+  /**
+   * Make request to load posts.
+   * @param {Number} categoryId
+   */
   readPosts(categoryId) {
     const { dispatch } = this.props;
     dispatch(
       fetchPosts({
-        _embed: 1,
         categories: categoryId,
         page: this.state.pageNumber,
         status: 'publish',
+        per_page: this.state.itemsPerCard * 5,
       }),
     );
-    this.setState({ pageNumber: this.state.pageNumber + 1 });
+
+    this.setState({ pageNumber: this.state.pageNumber + 1, loadMore: false });
   }
 
+  /**
+   * Load more items when the carousel is swiped.
+   * @param {Number} index = The index of the card.
+   */
+  loadMore(index) {
+    if (this.state.loadMore === false) {
+      return;
+    }
+
+    const noPages = this.getNoPages();
+
+    if (index === noPages - 1) {
+      this.readPosts(this.props.match.params.categoryId);
+    }
+  }
+
+  /**
+   * Split the posts on cards.
+   * @param {Number} chunkSize
+   */
   createPostsList(chunkSize) {
     const postsList = [];
     let i;
@@ -59,8 +109,7 @@ class PostsCarousel extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      afterChange: index =>
-        index === listedPosts.length - 1 && this.props.posts.length % 10 === 0 ? this.readPosts(this.props.match.params.categoryId) : null,
+      afterChange: this.loadMore,
     };
 
     return (

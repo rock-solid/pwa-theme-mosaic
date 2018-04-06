@@ -21,11 +21,12 @@ export const fetchPosts = (params = {}) => (dispatch) => {
   } else {
     url =
       config.get('export').posts +
-      '?' +
+      '?_embed=1&' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
         .join('&');
   }
+
   return fetch(url)
     .then(response => response.json())
     .then((json) => {
