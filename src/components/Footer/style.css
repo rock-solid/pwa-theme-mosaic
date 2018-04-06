@@ -1,4 +1,4 @@
-.slick-slider .footer {
+.posts-carousel-container .slick-slider .footer {
   position: absolute;
   bottom: 0;
   height: unset;
@@ -10,6 +10,6 @@
   border: solid 1px #e5d5d0;
 }
 
-.footer i.icon {
+.posts-carousel-container .footer i.icon {
   color: #747474;
 }
