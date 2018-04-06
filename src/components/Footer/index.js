@@ -7,7 +7,7 @@ import './style.css';
 const Footer = () => (
   <div className="footer">
     <Link to="/">
-      <Icon name="grid layout" size="big" />
+      <Icon name="home" size="big" />
     </Link>
   </div>
 );
