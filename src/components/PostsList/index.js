@@ -7,9 +7,9 @@ import PostCard from '../PostCard/index';
 import './style.css';
 
 const PostsList = (props) => {
-  function getPosts() {
-    if (props.postsList.length % 2 === 0) {
-      return (
+  if (props.postsList.length % 2 === 0) {
+    return (
+      <div>
         <Grid columns={1} divided>
           <GridColumn className="double-post">
             <GridRow>
@@ -21,9 +21,12 @@ const PostsList = (props) => {
             </GridRow>
           </GridColumn>
         </Grid>
-      );
-    }
-    return (
+      </div>
+    );
+  }
+
+  return (
+    <div>
       <Grid className="single-post">
         <GridColumn>
           <GridRow>
@@ -33,9 +36,8 @@ const PostsList = (props) => {
           </GridRow>
         </GridColumn>
       </Grid>
-    );
-  }
-  return <div>{getPosts()}</div>;
+    </div>
+  );
 };
 
 PostsList.propTypes = {
