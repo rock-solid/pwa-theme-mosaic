@@ -19,7 +19,7 @@ const PostCard = (props) => {
 
   return (
     <Link to={path}>
-      <Item className="posts">
+      <Item className="post-item">
         {props.post.title && <Item.Header dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />}
         <Item.Content>
           {props.post.featured_media ?

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridColumn, GridRow, Card } from 'semantic-ui-react';
 
 import { postPropType } from '../../reducer';
 import PostCard from '../PostCard';
@@ -9,33 +8,16 @@ import './style.css';
 const PostsList = (props) => {
   if (props.postsList.length % 2 === 0) {
     return (
-      <div>
-        <Grid columns={1} divided>
-          <GridColumn className="double-post">
-            <GridRow>
-              <PostCard post={props.postsList[0]} key={props.postsList[0].id} category={props.category} />
-            </GridRow>
-            <hr />
-            <GridRow>
-              <PostCard post={props.postsList[1]} key={props.postsList[1].id} category={props.category} />
-            </GridRow>
-          </GridColumn>
-        </Grid>
+      <div className="double-post">
+        <PostCard post={props.postsList[0]} key={props.postsList[0].id} category={props.category} />
+        <PostCard post={props.postsList[1]} key={props.postsList[1].id} category={props.category} />
       </div>
     );
   }
 
   return (
-    <div>
-      <Grid className="single-post">
-        <GridColumn>
-          <GridRow>
-            <Card>
-              <PostCard post={props.postsList[0]} key={props.postsList[0].id} category={props.category} />
-            </Card>
-          </GridRow>
-        </GridColumn>
-      </Grid>
+    <div className="single-post">
+      <PostCard post={props.postsList[0]} key={props.postsList[0].id} category={props.category} />
     </div>
   );
 };
