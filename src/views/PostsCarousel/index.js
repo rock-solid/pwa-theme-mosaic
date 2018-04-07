@@ -93,15 +93,20 @@ class PostsCarousel extends Component {
    * @param {Number} chunkSize
    */
   createPostsList(chunkSize) {
-    const postsList = [];
-    let i;
+    // select only the posts from the current category
+    const categoryId = this.props.match.params.categoryId;
+    const postsFromCategory = this.props.posts.filter(
+      post => post.categories.indexOf(Number(categoryId)) !== -1,
+    );
 
-    for (i = 0; i < this.props.posts.length; i += chunkSize) {
-      postsList.push(this.props.posts.slice(i, i + chunkSize));
+    const postsList = [];
+    for (let i = 0; i < postsFromCategory.length; i += chunkSize) {
+      postsList.push(postsFromCategory.slice(i, i + chunkSize));
     }
     return postsList;
   }
 
+  // @todo add empty message if posts are not found!
   render() {
     const listedPosts = this.createPostsList(2);
     const settings = {
@@ -114,7 +119,7 @@ class PostsCarousel extends Component {
 
     return (
       <div className="posts-carousel-container">
-        {this.props.loading === 1 || listedPosts.length === 0 ? <Loader active /> : null}
+        {this.props.loading === 1 ? <Loader active /> : null}
         <Slider {...settings}>
           {listedPosts.map(postsList => (
             <div key={Math.random()}>
