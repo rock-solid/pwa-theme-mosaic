@@ -91,14 +91,6 @@ class PostDetails extends Component {
   }
 }
 
-PostDetails.defaultProps = {
-  texts: {
-    TEXTS: {
-      BY_AUTHOR: 'by',
-    },
-  },
-};
-
 PostDetails.propTypes = {
   post: postPropType.isRequired,
   category: PropTypes.shape({
@@ -110,6 +102,14 @@ PostDetails.propTypes = {
       BY_AUTHOR: PropTypes.string,
     }),
   }),
+};
+
+PostDetails.defaultProps = {
+  texts: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+    },
+  },
 };
 
 export default PostDetails;
