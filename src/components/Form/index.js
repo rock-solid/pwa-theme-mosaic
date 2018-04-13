@@ -8,7 +8,7 @@ import './style.css';
 let CommentForm = (props) => {
   const { handleSubmit } = props;
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="comments-form">
       <div>
         <label htmlFor="name">{props.texts.FORMS.NAME && props.texts.FORMS.NAME}</label>
         <Field name="name" component="input" type="text" placeholder={props.texts.FORMS && props.texts.FORMS.YOUR_NAME} required />
