@@ -17,7 +17,7 @@ import './style.css';
 class SideMenu extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchPages({}));
+    dispatch(fetchPages({ per_page: 100 }));
     dispatch(fetchTranslations);
   }
 
@@ -25,7 +25,7 @@ class SideMenu extends Component {
     const { pages, translations } = this.props;
 
     return (
-      <Sidebar visible={this.props.sideMenuVisible} direction="right">
+      <Sidebar visible={this.props.sideMenuVisible} direction="right" className="menu-pages">
         {this.props.loadingPages === 1 && this.props.loadingTranslations === 1 ? <Loader active /> : ''}
         <PageList text={translations.LINKS} pages={pages} />
       </Sidebar>
