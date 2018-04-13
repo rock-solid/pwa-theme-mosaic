@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 
 import { fetchPosts } from './action';
-import { getPosts, postPropType, getPostsFetching } from './reducer';
+import { postPropType, getPostsFetching, getPostsByCategory } from './reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
@@ -17,10 +17,12 @@ class PostsCarousel extends Component {
     super(props);
     this.state = {
       itemsPerCard: 2,
-      pageNumber: 1,
 
       // if load more is enabled for loading more items
-      loadMore: false,
+      loadMore: true,
+
+      // if we have a load more request in progress
+      requestMoreItems: false,
     };
 
     this.loadMore = this.loadMore.bind(this);
@@ -33,20 +35,32 @@ class PostsCarousel extends Component {
   componentWillReceiveProps(nextProps) {
     // If the category has changed, get the posts for the new category
     if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
+      this.setState({ loadMore: true });
       this.readPosts(nextProps.match.params.categoryId);
       return;
     }
 
-    // If we receive more items, load more should be enabled for the next request
-    if (nextProps.posts.length > this.props.posts.length) {
-      this.setState({ loadMore: true });
+    // If we have requested more items and we don't get them - disable load more
+    if (this.state.requestMoreItems === true) {
+      if (nextProps.posts.length > 0 && nextProps.posts.length === this.props.posts.length) {
+        this.setState({ loadMore: false });
+      }
+
+      this.setState({ requestMoreItems: false });
     }
   }
 
   /**
-   * Calculate the no of pages.
+   * Calculate the page number for the next request.
    */
-  getNoPages() {
+  getPageNumber() {
+    return Math.round(this.props.posts.length / (this.state.itemsPerCard * 5));
+  }
+
+  /**
+   * Calculate the no of cards.
+   */
+  getNoCards() {
     const noPosts = this.props.posts.length;
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
@@ -63,13 +77,13 @@ class PostsCarousel extends Component {
     dispatch(
       fetchPosts({
         categories: categoryId,
-        page: this.state.pageNumber,
+        page: this.getPageNumber() + 1,
         status: 'publish',
         per_page: this.state.itemsPerCard * 5,
       }),
     );
 
-    this.setState({ pageNumber: this.state.pageNumber + 1, loadMore: false });
+    this.setState({ requestMoreItems: true });
   }
 
   /**
@@ -81,9 +95,10 @@ class PostsCarousel extends Component {
       return;
     }
 
-    const noPages = this.getNoPages();
+    const noCards = this.getNoCards();
 
-    if (index === noPages - 1) {
+    if (index === noCards - 1) {
+      this.setState({ requestMoreItems: true });
       this.readPosts(this.props.match.params.categoryId);
     }
   }
@@ -93,15 +108,9 @@ class PostsCarousel extends Component {
    * @param {Number} chunkSize
    */
   createPostsList(chunkSize) {
-    // select only the posts from the current category
-    const categoryId = this.props.match.params.categoryId;
-    const postsFromCategory = this.props.posts.filter(
-      post => post.categories.indexOf(Number(categoryId)) !== -1,
-    );
-
     const postsList = [];
-    for (let i = 0; i < postsFromCategory.length; i += chunkSize) {
-      postsList.push(postsFromCategory.slice(i, i + chunkSize));
+    for (let i = 0; i < this.props.posts.length; i += chunkSize) {
+      postsList.push(this.props.posts.slice(i, i + chunkSize));
     }
     return postsList;
   }
@@ -144,10 +153,12 @@ PostsCarousel.propTypes = {
     }).isRequired,
   }).isRequired,
 };
-const mapStateToProps = state => ({
-  posts: getPosts(state.posts),
+
+const mapStateToProps = (state, props) => ({
+  posts: getPostsByCategory(state.posts, props.match.params.categoryId),
   loading: getPostsFetching(state.posts),
 });
+
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchPosts }, dispatch));
 }

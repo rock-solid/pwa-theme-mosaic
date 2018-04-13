@@ -23,10 +23,12 @@ class CategoriesCarousel extends Component {
     this.state = {
       itemsPerHome: 3,
       itemsPerCard: 5,
-      pageNumber: 1,
 
       // if load more is enabled for loading more items
-      loadMore: false,
+      loadMore: true,
+
+      // if we have a load more request in progress
+      requestMoreItems: false,
     };
 
     this.hideSidebar = this.hideSidebar.bind(this);
@@ -41,21 +43,32 @@ class CategoriesCarousel extends Component {
 
     // calculate the no of items for one home card and two regular cards
     const noItems = this.state.itemsPerHome + (this.state.itemsPerCard * 2);
-    dispatch(fetchCategories({ page: this.state.pageNumber, per_page: noItems }));
-    this.setState({ pageNumber: this.state.pageNumber + 1 });
+    dispatch(fetchCategories({ page: 1, per_page: noItems }));
   }
 
   componentWillReceiveProps(nextProps) {
-    // If we receive more items, load more should be enable for the next request
-    if (nextProps.categories.length > this.props.categories.length) {
-      this.setState({ loadMore: true });
+    // If we have requested more items and we don't get them - disable load more
+    if (this.state.requestMoreItems === true) {
+      if (nextProps.categories.length > 0 &&
+        nextProps.categories.length === this.props.categories.length) {
+        this.setState({ loadMore: false });
+      }
+
+      this.setState({ requestMoreItems: false });
     }
+  }
+
+  /**
+   * Calculate the page number for the next request.
+   */
+  getPageNumber() {
+    return Math.round(this.props.categories.length / (this.state.itemsPerCard * 3));
   }
 
   /**
    * Calculate the no of pages considering that the 1st card is the home card.
    */
-  getNoPages() {
+  getNoCards() {
     if (this.props.categories.length === 0) {
       return 0;
     }
@@ -97,12 +110,12 @@ class CategoriesCarousel extends Component {
       return;
     }
 
-    const noPages = this.getNoPages();
+    const noCards = this.getNoCards();
 
-    if (index === noPages - 1) {
+    if (index === noCards - 1) {
       const { dispatch } = this.props;
-      dispatch(fetchCategories({ page: this.state.pageNumber, per_page: this.state.itemsPerCard * 3 }));
-      this.setState({ pageNumber: this.state.pageNumber + 1, loadMore: false });
+      dispatch(fetchCategories({ page: this.getPageNumber() + 1, per_page: this.state.itemsPerCard * 3 }));
+      this.setState({ requestMoreItems: true });
     }
   }
 
