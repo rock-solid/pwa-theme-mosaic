@@ -1,24 +1,36 @@
 /* override semantic ui styles */
 /* GRID */
-.ui.grid {
+
+.categories-card .ui.grid {
   margin: 0;
 }
-.ui.grid > .row {
+
+.categories-card .ui.grid > .row {
   justify-content: center;
   padding-top: 0;
   padding-bottom: 0;
 }
-.ui.grid > .row > .column {
+.categories-card .ui.grid > .row > .column {
   padding-left: 0;
   padding-right: 0;
 }
-.ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
+
+.categories-card .ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
   box-shadow: none;
 }
-.slick-next,
-.slick-prev {
-  display: none !important;
-}
-.divided.two > .row > .column:only-child {
+
+.categories-card .divided.two > .row > .column:only-child {
   width: 100vw;
+}
+
+.categories-card .full-row .row {
+  height: 100%;
+}
+
+.categories-card .half-row .row {
+  height: 50.2%;
+}
+
+.categories-card .one-third-row .row {
+  height: 33.7%;
 }

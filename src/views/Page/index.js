@@ -48,14 +48,6 @@ class PageView extends Component {
   }
 }
 
-PageView.defaultProps = {
-  translations: {
-    TEXTS: {
-      BY_AUTHOR: 'by',
-      NO_PAGES: 'There are no pages!',
-    },
-  },
-};
 PageView.propTypes = {
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.shape({
@@ -71,6 +63,15 @@ PageView.propTypes = {
       NO_PAGES: PropTypes.string,
     }),
   }),
+};
+
+PageView.defaultProps = {
+  translations: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+      NO_PAGES: 'There are no pages!',
+    },
+  },
 };
 
 const mapStateToProps = state => ({

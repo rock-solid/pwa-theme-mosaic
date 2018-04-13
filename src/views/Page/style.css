@@ -21,11 +21,6 @@
   background: none;
 }
 
-.react-router-modal__modal {
-  width: 94%;
-  height: 98%;
-}
-
 /* IMAGE */
 .ui.container.page .image {
   margin-bottom: 10px;
@@ -37,12 +32,18 @@
   right: 5px;
   top: 20px;
 }
+
 button.ui.icon.button {
   background: none;
   padding: 10px 0 0 0;
 }
 
 /* MODAL */
+.react-router-modal__modal-open {
+  position: relative;
+}
 .react-router-modal__modal {
+  width: 94%;
+  height: 98%;
   overflow-y: scroll;
 }

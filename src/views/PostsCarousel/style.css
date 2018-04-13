@@ -1,16 +1,9 @@
-hr {
-  margin-bottom: 5% !important;
-  font-size: 2px !important;
-}
-.slick-slide {
-  position: relative;
+.posts-carousel-container {
+  height: 100vh;
 }
 
-/* FIX FOR EXTRA DIV FROM react-router-modal */
-.slick-initialized.slick-slider + div {
-  display: none;
-}
-/* FIX extra div carousel container */
-.posts-carousel-container + div {
-  display: none;
+.posts-carousel-container .slick-slider,
+.posts-carousel-container .slick-list,
+.posts-carousel-container .slick-track {
+  height: 100%;
 }

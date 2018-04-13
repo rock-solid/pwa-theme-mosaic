@@ -1,27 +1,30 @@
-/* OVER RIDE semantic UI styles */
-/* GRID row */
-.double-post .row {
-  height: 50%;
-}
-/* CARD */
-.row .ui.card {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 27px;
-  border-radius: 0;
+.double-post, .single-post  {
+  display: flex;
+  flex-direction: column;
 }
 
-/* single post styling */
-.ui.grid.single-post .column {
+.double-post {
+  height: 93%;
+}
+
+.single-post {
   height: 90%;
-  padding-top: 3rem;
 }
-.ui.grid.single-post .ui.card .item.posts .header {
-  text-align: center;
-  height: 9%;
+
+.double-post a, .single-post a {
+  flex: 1;
+  max-height: 50%;
+  overflow: hidden;
 }
-.ui.grid.single-post .ui.card .item.posts div.image {
-  height: 23vh;
-  width: 100%;
-  margin: 10px 0;
+
+.single-post a {
+  width: 90%;
+  max-height: 100%;
+  overflow: hidden;
+  margin: 2rem auto 0 auto;
+  border: 1px solid #e5d5d0;
+}
+
+.double-post a:first-child {
+  border-bottom: 1px solid #e5d5d0;
 }
