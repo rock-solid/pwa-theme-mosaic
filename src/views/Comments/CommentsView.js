@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Comment, Icon, Container, Button, Modal } from 'semantic-ui-react';
+import { Header, Comment, Icon, Container, Button, Modal, Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
@@ -9,14 +9,15 @@ import CommentForm from '../../components/Form/index';
 
 import './style.css';
 
-export default class CommentsView extends Component {
+class CommentsView extends Component {
   constructor(props) {
     super(props);
-    this.submit = this.submit.bind(this);
-    this.showModal = this.showModal.bind(this);
     this.state = {
       isOpen: false,
     };
+
+    this.submit = this.submit.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   submit(values) {
@@ -27,7 +28,7 @@ export default class CommentsView extends Component {
         rendered: values.content,
       },
       date: new Date(),
-      post: this.props.match.params.postId,
+      post: this.props.postId,
     };
     addComment(params);
   }
@@ -37,8 +38,16 @@ export default class CommentsView extends Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return (
+        <Comment.Group className="post-comments">
+          <Loader active />
+        </Comment.Group>
+      );
+    }
+
     return (
-      <Comment.Group>
+      <Comment.Group className="post-comments">
         {this.props.comments.length > 0 ? (
           this.props.comments.map(comment => (
             <Comment key={String(comment.id) + String(comment.content.rendered.length)}>
@@ -52,11 +61,7 @@ export default class CommentsView extends Component {
                 </Comment.Metadata>
                 <Comment.Text dangerouslySetInnerHTML={{ __html: comment.content.rendered }} />
                 <Comment.Actions>
-                  <Comment.Action
-                    onClick={() => {
-                      this.setState({ isOpen: !this.state.isOpen });
-                    }}
-                  >
+                  <Comment.Action onClick={this.showModal}>
                     {this.props.texts.FORMS && this.props.texts.FORMS.REPLY}
                   </Comment.Action>
                 </Comment.Actions>
@@ -64,21 +69,19 @@ export default class CommentsView extends Component {
             </Comment>
           ))
         ) : (
-          <Container className="no-comments">
-            {this.props.match.params.comment_status === 'open'
-              ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
-              : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
-          </Container>
-        )}
-        {this.props.match.params.comment_status === 'open' ? (
-          <Button
-            onClick={() => {
-              this.setState({ isOpen: !this.state.isOpen });
-            }}
-          >
+            <Container className="no-comments">
+              {this.props.commentStatus === 'open'
+                ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
+                : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
+            </Container>
+          )}
+
+        {this.props.commentStatus === 'open' ? (
+          <Button onClick={this.showModal}>
             {this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}
           </Button>
         ) : null}
+
         {this.state.isOpen === true ? (
           <Modal open>
             <Icon name="close" onClick={this.showModal} />
@@ -88,10 +91,28 @@ export default class CommentsView extends Component {
             </Modal.Content>
           </Modal>
         ) : null}
+
       </Comment.Group>
     );
   }
 }
+
+CommentsView.propTypes = {
+  postId: PropTypes.string.isRequired,
+  commentStatus: PropTypes.oneOf(['open', 'closed', 'disabled']).isRequired,
+  comments: PropTypes.arrayOf(commentPropType).isRequired,
+  loading: PropTypes.number.isRequired,
+  texts: PropTypes.shape({
+    FORMS: PropTypes.shape({
+      REPLY: PropTypes.string,
+    }),
+    TEXTS: PropTypes.shape({
+      NO_COMMENTS: PropTypes.string,
+      NO_COMMENTS_SHORT: PropTypes.string,
+      LEAVE_COMMENTS: PropTypes.string,
+    }),
+  }),
+};
 
 CommentsView.defaultProps = {
   texts: {
@@ -105,25 +126,5 @@ CommentsView.defaultProps = {
     },
   },
 };
-CommentsView.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      postSlug: PropTypes.string.isRequired,
-      postId: PropTypes.string.isRequired,
-      categorySlug: PropTypes.string,
-      categoryId: PropTypes.string,
-      comment_status: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  comments: PropTypes.arrayOf(commentPropType).isRequired,
-  texts: PropTypes.shape({
-    FORMS: PropTypes.shape({
-      REPLY: PropTypes.string,
-    }),
-    TEXTS: PropTypes.shape({
-      NO_COMMENTS: PropTypes.string,
-      NO_COMMENTS_SHORT: PropTypes.string,
-      LEAVE_COMMENTS: PropTypes.string,
-    }),
-  }),
-};
+
+export default CommentsView;

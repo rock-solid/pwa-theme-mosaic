@@ -89,11 +89,6 @@
 .scrolling.dimmable.dimmed > .dimmer {
   overflow: hidden;
 }
-.dimmed.dimmable > .ui.animating.dimmer,
-.dimmed.dimmable > .ui.visible.dimmer,
-.ui.active.dimmer {
-  opacity: 0.9;
-}
 
 .ui.modal.share .actions {
   text-align: center;
