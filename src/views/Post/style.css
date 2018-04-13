@@ -86,7 +86,6 @@
 }
 
 /* MODAL */
-
 .scrolling.dimmable.dimmed > .dimmer {
   overflow: hidden;
 }
@@ -96,13 +95,11 @@
   opacity: 0.9;
 }
 
-.ui.page.modals.dimmer.transition.visible.active .actions {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-end;
+.ui.modal.share .actions {
+  text-align: center;
   height: 93%;
 }
-.ui.page.modals.dimmer.transition.visible.active .social {
-  justify-content: space-evenly;
-  display: flex;
+
+.ui.modal.share .actions .social-media {
+  display: inline-block;
 }
