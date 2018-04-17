@@ -21,7 +21,10 @@ const items = (state = INITIAL_STATE.items, action) => {
   case REQUEST_CATEGORIES:
     return state;
   case RECEIVE_CATEGORIES:
-    return _.unionBy(state, action.categories, 'id');
+    if (Array.isArray(action.categories)) {
+      return _.unionBy(state, action.categories, 'id');
+    }
+    return _.unionBy(state, [action.categories], 'id');
   default:
     return state;
   }

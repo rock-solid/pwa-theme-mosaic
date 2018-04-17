@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom';
 import { categoryPropType } from '../../reducer';
 import './style.css';
 
-const CategoryCard = props => (
-  <Link to={'/category/' + props.category.slug + '/' + props.category.id}>
-    <Item>
-      <Item.Header as={Header}>
-        <div dangerouslySetInnerHTML={{ __html: props.category.name }} />
-      </Item.Header>
-    </Item>
-  </Link>
-);
+const CategoryCard = (props) => {
+  const { slug, id, name } = props.category;
+  return (
+    <Link to={'/category/' + slug + '/' + id}>
+      <Item>
+        <Item.Header as={Header}>
+          <div dangerouslySetInnerHTML={{ __html: name }} />
+        </Item.Header>
+      </Item>
+    </Link>
+  );
+};
 
 CategoryCard.propTypes = {
   category: categoryPropType.isRequired,

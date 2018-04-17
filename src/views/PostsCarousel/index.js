@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Loader, Header, Icon } from 'semantic-ui-react';
+import Helmet from 'react-helmet';
 
 import { fetchPosts } from './action';
 import { getPosts, postPropType, getPostsFetching } from './reducer';
+import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
+import { getCategories as getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
@@ -67,6 +70,7 @@ class PostsCarousel extends Component {
         per_page: this.state.itemsPerCard * 5,
       }),
     );
+    dispatch(fetchCategory({ id: categoryId }));
 
     this.setState({ pageNumber: this.state.pageNumber + 1, loadMore: false });
   }
@@ -110,9 +114,12 @@ class PostsCarousel extends Component {
       slidesToScroll: 1,
       afterChange: this.loadMore,
     };
-    console.log('posts props', this.props, listedPosts.length);
+
     return (
       <div className="posts-carousel-container">
+        <Helmet>
+          <link rel="canonical" href={this.props.category[0] && this.props.category[0].link} />
+        </Helmet>
         {this.props.loading === 1 ? <Loader active /> : null}
         <Slider {...settings}>
           {this.props.loading === 0 && listedPosts.length === 0 ? (
@@ -147,12 +154,14 @@ PostsCarousel.propTypes = {
       categorySlug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  category: PropTypes.arrayOf(categoryPropType).isRequired,
 };
 const mapStateToProps = state => ({
   posts: getPosts(state.posts),
   loading: getPostsFetching(state.posts),
+  category: getCategory(state.categories),
 });
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchCategory }, dispatch));
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PostsCarousel);

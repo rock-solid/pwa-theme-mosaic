@@ -2,6 +2,7 @@ import 'react-router-modal/css/react-router-modal.css';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import { Container, Image, Header, Button } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
@@ -25,6 +26,9 @@ const PageDetails = (props) => {
 
   return (
     <Container className="page">
+      <Helmet>
+        <link rel="canonical" href={page.link} />
+      </Helmet>
       <Header dividing>
         <Link to="/">
           <Button size="huge" icon="close" />

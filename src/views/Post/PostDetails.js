@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Image, Header, Label, Icon, Modal, Transition } from 'semantic-ui-react';
+import Helmet from 'react-helmet';
+import { Container, Header, Label, Icon, Modal, Transition } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -48,6 +49,9 @@ class PostDetails extends Component {
 
     return (
       <Container className="post">
+        <Helmet>
+          <link rel="canonical" href={post.link} />
+        </Helmet>
         <Link to={goBack}>
           <Icon size="big" name="chevron left" />
         </Link>
