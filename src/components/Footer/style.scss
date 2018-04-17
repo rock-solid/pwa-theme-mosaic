@@ -1,3 +1,5 @@
+@import "../../utilities/variables";
+
 .posts-carousel-container .slick-slider .footer {
   position: absolute;
   bottom: 0;
@@ -5,9 +7,11 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background: #fafafa;
+  background: $footer-bg-color;
   padding: 5px;
-  border-top: solid 1px #dddddd; }
+  border-top: solid 1px $border-color;
+}
 
 .posts-carousel-container .footer i.icon {
-  color: #747474; }
+  color: $buttons-icon-color;
+}
