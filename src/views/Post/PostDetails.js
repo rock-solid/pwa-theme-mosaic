@@ -51,7 +51,7 @@ class PostDetails extends Component {
         <Link to={goBack}>
           <Icon size="big" name="chevron left" />
         </Link>
-        {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : null}
+        {featuredMedia ? <div className="post-image" style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }} /> : null}
         <Container textAlign="justified">
           <Header>
             <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />

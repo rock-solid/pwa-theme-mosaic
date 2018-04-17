@@ -38,6 +38,12 @@
   margin: 15px 10px -10px 0;
 }
 
+.post .post-image {
+  height: 60vh;
+  background: center no-repeat;
+  background-size: cover;
+}
+
 /* ICON */
 .ui.container.post i.icon {
   color: #ffffff;

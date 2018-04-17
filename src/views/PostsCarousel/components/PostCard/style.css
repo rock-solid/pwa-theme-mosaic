@@ -2,6 +2,7 @@
 /* Image Element */
 .item.posts div.image {
   background-size: cover;
+  background-position: center;
   height: 40%;
   width: 50%;
   float: left;
