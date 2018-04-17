@@ -1,8 +1,11 @@
-.categories-card .item {
-  position: relative; }
+@import "../../../../utilities/variables";
+
+.categories-card  .item {
+  position: relative;
+}
 
 .categories-card .ui.header {
-  color: #ffffff;
+  color: $cover-text-color;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -14,19 +17,29 @@
   font-weight: 100;
   text-transform: uppercase;
   padding: 9px 15px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.08) 55px, transparent 80px, transparent); }
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.08) 55px,
+    transparent 80px,
+    transparent
+  );
+}
 
 .categories-card .ui.header.header > div {
   height: unset;
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+}
 
 /*
 .categories .ui.image.big {
   width: 100vw;
 }
 */
+
 .categories-card .item {
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #32394a; }
+  background-color: $cover-panel-color;
+}
