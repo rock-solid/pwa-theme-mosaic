@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Loader } from 'semantic-ui-react';
+import { Loader, Header, Icon } from 'semantic-ui-react';
 
 import { fetchPosts } from './action';
 import { getPosts, postPropType, getPostsFetching } from './reducer';
@@ -50,8 +50,7 @@ class PostsCarousel extends Component {
     const noPosts = this.props.posts.length;
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
-    return Math.round(noPosts / this.state.itemsPerCard) +
-      (noPosts % this.state.itemsPerCard === 0 ? 0 : 1);
+    return Math.round(noPosts / this.state.itemsPerCard) + (noPosts % this.state.itemsPerCard === 0 ? 0 : 1);
   }
 
   /**
@@ -111,17 +110,27 @@ class PostsCarousel extends Component {
       slidesToScroll: 1,
       afterChange: this.loadMore,
     };
-
+    console.log('posts props', this.props, listedPosts.length);
     return (
       <div className="posts-carousel-container">
-        {this.props.loading === 1 || listedPosts.length === 0 ? <Loader active /> : null}
+        {this.props.loading === 1 ? <Loader active /> : null}
         <Slider {...settings}>
-          {listedPosts.map(postsList => (
+          {this.props.loading === 0 && listedPosts.length === 0 ? (
             <div key={Math.random()}>
-              <PostsList postsList={postsList} category={this.props.match} />
+              <Header as="h3" icon textAlign="center" className="not-found">
+                <Icon name="folder open" circular />
+                <Header.Content>This category does not have any posts.</Header.Content>
+              </Header>
               <Footer />
             </div>
-          ))}
+          ) : (
+            listedPosts.map(postsList => (
+              <div key={Math.random()}>
+                <PostsList postsList={postsList} category={this.props.match} />
+                <Footer />
+              </div>
+            ))
+          )}
         </Slider>
       </div>
     );
