@@ -15,6 +15,10 @@ import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
 import './style.css';
 
+// translations
+import { fetchTranslations } from '../../translations/actions';
+import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
+
 class PostsCarousel extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +37,7 @@ class PostsCarousel extends Component {
 
   componentWillMount() {
     this.readPosts(this.props.match.params.categoryId);
+    this.props.dispatch(fetchTranslations);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -140,7 +145,9 @@ class PostsCarousel extends Component {
             <div key={Math.random()}>
               <Header as="h3" icon textAlign="center" className="not-found">
                 <Icon name="folder open" circular />
-                <Header.Content>This category does not have any posts.</Header.Content>
+                <Header.Content>
+                  {this.props.loadTranslations === 0 && this.props.translations.TEXTS && this.props.translations.TEXTS.NO_ARTICLES}
+                </Header.Content>
               </Header>
               <Footer />
             </div>
@@ -168,13 +175,29 @@ PostsCarousel.propTypes = {
       categorySlug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  category: PropTypes.arrayOf(categoryPropType).isRequired,
+  category: PropTypes.arrayOf(categoryPropType),
+  loadTranslations: PropTypes.number,
+  translations: PropTypes.shape({
+    TEXTS: PropTypes.shape({
+      NO_ARTICLES: PropTypes.string,
+    }),
+  }),
 };
-
+PostsCarousel.defaultProps = {
+  category: {},
+  loadTranslations: 0,
+  translations: {
+    TEXTS: {
+      NO_ARTICLES: '',
+    },
+  },
+};
 const mapStateToProps = (state, props) => ({
   posts: getPostsByCategory(state.posts, props.match.params.categoryId),
   loading: getPostsFetching(state.posts),
   category: getCategory(state.categories),
+  loadTranslations: getTranslationsFetching(state.translations),
+  translations: getTranslations(state.translations),
 });
 
 function mapDispatchToProps(dispatch) {
