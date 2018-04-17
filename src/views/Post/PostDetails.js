@@ -61,10 +61,8 @@ class PostDetails extends Component {
             <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           </Header>
           {categoriesList[0].map(category => (
-            <Link to={`/category/${category.slug}/${category.id}`}>
-              <Label color="teal" key={category.name}>
-                {category.name}
-              </Label>
+            <Link to={`/category/${category.slug}/${category.id}`} key={category.name}>
+              <Label color="teal">{category.name}</Label>
             </Link>
           ))}
           <Header.Subheader>
