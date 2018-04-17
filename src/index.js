@@ -16,6 +16,8 @@ import PageView from './views/Page/index';
 import Comments from './views/Comments/index';
 import NotFound from './components/NotFound/index';
 
+import './index.css';
+
 // load config variables
 config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
