@@ -1,40 +1,33 @@
 .carousel-container {
   height: 100vh;
 }
-.carousel-container .ui.tiny.image {
-  position: absolute;
-  z-index: 1;
-  margin: 10px 0 0 10px;
-}
-.carousel-container + div {
-  height: unset;
-}
 
-.slick-slider,
-.slick-list,
-.slick-track,
-div {
+.carousel-container .slick-slider,
+.carousel-container .slick-list,
+.carousel-container .slick-track,
+.carousel-container div {
   height: 100%;
 }
 
-.slick-side {
+.carousel-container .slick-side {
   height: 110%;
 }
 
-.slick-dots {
+.carousel-container .slick-dots {
   bottom: 9%;
   width: 90%;
   left: 5%;
-  border-radius: 50px;
+  border-radius: 20px;
   opacity: 1;
 }
-.slick-dots li {
-  margin: 0 10px;
+
+.carousel-container .slick-dots li {
+  margin: 0 5px;
 }
-.slick-dots li button::before {
-  font-size: 17px;
+.carousel-container .slick-dots li button::before {
+  font-size: 15px;
   color: #ffffff;
 }
-.slick-dots li.slick-active button::before {
+.carousel-container .slick-dots li.slick-active button::before {
   color: #ffffff;
 }

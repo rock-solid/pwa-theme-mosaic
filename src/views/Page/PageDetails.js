@@ -1,25 +1,15 @@
-import 'react-router-modal/css/react-router-modal.css';
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { Container, Image, Header, Button } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
+import 'react-router-modal/css/react-router-modal.css';
 
 import { pagePropType } from '../SideMenu/reducer';
 import './style.css';
 
 const PageDetails = (props) => {
-  function getImage(sourceImg) {
-    let imageSource;
-    if (sourceImg) {
-      imageSource = sourceImg[0].source_url;
-      return imageSource;
-    }
-    return imageSource;
-  }
-
   const { page } = props;
   const { author } = page._embedded;
   const featuredMedia = page._embedded['wp:featuredmedia'];
@@ -36,11 +26,13 @@ const PageDetails = (props) => {
         <div dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
       </Header>
       <Header.Subheader>
-        &nbsp;{props.texts.TEXTS && props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">
+        &nbsp;{props.texts.TEXTS && props.texts.TEXTS.BY_AUTHOR}&nbsp;
+        <b>{author[0].name}</b>,&nbsp;
+        <Moment format="MMMM DD, YYYY">
           {page.date}
         </Moment>
       </Header.Subheader>
-      {featuredMedia ? <Image src={getImage(featuredMedia)} /> : ''}
+      {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : ''}
       <Container textAlign="justified">
         <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
       </Container>

@@ -37,14 +37,14 @@ render(
           <Route exact path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
           {/* post routes direct url */}
           <Route exact path="/post/:postSlug/:postId" component={PostView} />
-          <Route exact path="/post/:postSlug/:postId/comments/:comment_status" component={Comments} />
+          <Route exact path="/post/:postSlug/:postId/comments/:commentStatus" component={Comments} />
           {/* post routes from app navigation */}
           <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId" component={PostView} />
-          <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId/comments/:comment_status" component={Comments} />
+          <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId/comments/:commentStatus" component={Comments} />
           <ModalRoute exact path="/page/:pageSlug/:pageId" parentPath="/" component={PageView} />
           <Route path="*" component={NotFound} />
         </Switch>
-        <ModalContainer />
+        <ModalContainer className="page-details" />
       </div>
     </HashRouter>
   </Provider>,

@@ -53,7 +53,7 @@ class PostDetails extends Component {
           <link rel="canonical" href={post.link} />
         </Helmet>
         <Link to={goBack}>
-          <Icon size="big" name="chevron left" />
+          <Icon circular name="chevron left" />
         </Link>
         {featuredMedia ? <div className="post-image" style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }} /> : null}
         <Container textAlign="justified">
@@ -72,7 +72,7 @@ class PostDetails extends Component {
               {post.date}
             </Moment>
           </Header.Subheader>
-          <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
         </Container>
         <Modal
           className="share"
@@ -97,14 +97,6 @@ class PostDetails extends Component {
   }
 }
 
-PostDetails.defaultProps = {
-  texts: {
-    TEXTS: {
-      BY_AUTHOR: 'by',
-    },
-  },
-};
-
 PostDetails.propTypes = {
   post: postPropType.isRequired,
   category: PropTypes.shape({
@@ -116,6 +108,14 @@ PostDetails.propTypes = {
       BY_AUTHOR: PropTypes.string,
     }),
   }),
+};
+
+PostDetails.defaultProps = {
+  texts: {
+    TEXTS: {
+      BY_AUTHOR: 'by',
+    },
+  },
 };
 
 export default PostDetails;
