@@ -1,0 +1,43 @@
+@import "functions", "variables";
+
+// Body text
+// -------------------------
+
+p,
+div {
+  font-size: $base-font-size;
+}
+
+// Headings
+// -------------------------
+
+h1,
+.h1 {
+  font-size: $base-font-size * mpow($multiplying-factor, 4);
+  font-weight: normal;
+}
+h2,
+.h2 {
+  font-size: $base-font-size * mpow($multiplying-factor, 3);
+  font-weight: normal;
+}
+h3,
+.h3 {
+  font-size: $base-font-size * mpow($multiplying-factor, 2);
+  font-weight: normal;
+}
+h4,
+.h4 {
+  font-size: $base-font-size * mpow($multiplying-factor, 1);
+  font-weight: normal;
+}
+h5,
+.h5 {
+  font-size: $base-font-size;
+  font-weight: normal;
+}
+h6,
+.h6 {
+  font-size: $base-font-size / mpow($multiplying-factor, 1);
+  font-weight: normal;
+}

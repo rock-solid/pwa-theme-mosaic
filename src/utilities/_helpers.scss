@@ -1,3 +1,6 @@
+@import "variables";
+
+//centering flex
 /*
 .center-content {
   display: -webkit-box !important;
@@ -100,43 +103,3 @@
   margin: 0 auto;
 }
 */
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300");
-@import url("https://fonts.googleapis.com/css?family=Hind");
-p,
-div {
-  font-size: 1rem; }
-
-h1,
-.h1 {
-  font-size: 1.4641rem;
-  font-weight: normal; }
-
-h2,
-.h2 {
-  font-size: 1.331rem;
-  font-weight: normal; }
-
-h3,
-.h3 {
-  font-size: 1.21rem;
-  font-weight: normal; }
-
-h4,
-.h4 {
-  font-size: 1.1rem;
-  font-weight: normal; }
-
-h5,
-.h5 {
-  font-size: 1rem;
-  font-weight: normal; }
-
-h6,
-.h6 {
-  font-size: 0.90909rem;
-  font-weight: normal; }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
