@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Image, Header, Label, Icon, Modal, Transition } from 'semantic-ui-react';
+import Helmet from 'react-helmet';
+import { Container, Header, Label, Icon, Modal, Transition } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -48,18 +49,21 @@ class PostDetails extends Component {
 
     return (
       <Container className="post">
+        <Helmet>
+          <link rel="canonical" href={post.link} />
+        </Helmet>
         <Link to={goBack}>
           <Icon circular name="chevron left" />
         </Link>
-        {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : null}
+        {featuredMedia ? <div className="post-image" style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }} /> : null}
         <Container textAlign="justified">
           <Header>
             <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           </Header>
           {categoriesList[0].map(category => (
-            <Label color="teal" key={category.name}>
-              {category.name}
-            </Label>
+            <Link to={`/category/${category.slug}/${category.id}`} key={category.name}>
+              <Label color="teal">{category.name}</Label>
+            </Link>
           ))}
           <Header.Subheader>
             &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">

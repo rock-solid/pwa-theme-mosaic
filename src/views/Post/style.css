@@ -56,6 +56,12 @@
   height: auto;
 }
 
+.post .post-image {
+  height: 60vh;
+  background: center no-repeat;
+  background-size: cover;
+}
+
 /* ICON */
 .post.container i.icon {
   color: #ffffff;

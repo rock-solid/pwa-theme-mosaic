@@ -1,3 +1,13 @@
+/* OVER RIDE semantic UI styles */
+/* Image Element */
+.item.posts div.image {
+  background-size: cover;
+  background-position: center;
+  height: 40%;
+  width: 50%;
+  float: left;
+  margin: 4px 10px 5px 0;
+}
 .post-item {
   padding: 1rem;
 }

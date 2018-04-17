@@ -3,14 +3,21 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Loader } from 'semantic-ui-react';
+import { Loader, Header, Icon } from 'semantic-ui-react';
+import Helmet from 'react-helmet';
 
 import { fetchPosts } from './action';
+import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
+import { getCategories as getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
 import { postPropType, getPostsFetching, getPostsByCategory } from './reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
 import './style.css';
+
+// translations
+import { fetchTranslations } from '../../translations/actions';
+import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
 
 class PostsCarousel extends Component {
   constructor(props) {
@@ -30,6 +37,7 @@ class PostsCarousel extends Component {
 
   componentWillMount() {
     this.readPosts(this.props.match.params.categoryId);
+    this.props.dispatch(fetchTranslations);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -64,8 +72,7 @@ class PostsCarousel extends Component {
     const noPosts = this.props.posts.length;
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
-    return Math.round(noPosts / this.state.itemsPerCard) +
-      (noPosts % this.state.itemsPerCard === 0 ? 0 : 1);
+    return Math.round(noPosts / this.state.itemsPerCard) + (noPosts % this.state.itemsPerCard === 0 ? 0 : 1);
   }
 
   /**
@@ -82,6 +89,7 @@ class PostsCarousel extends Component {
         per_page: this.state.itemsPerCard * 5,
       }),
     );
+    dispatch(fetchCategory({ id: categoryId }));
 
     this.setState({ requestMoreItems: true });
   }
@@ -128,14 +136,29 @@ class PostsCarousel extends Component {
 
     return (
       <div className="posts-carousel-container">
+        <Helmet>
+          <link rel="canonical" href={this.props.category[0] && this.props.category[0].link} />
+        </Helmet>
         {this.props.loading === 1 ? <Loader active /> : null}
         <Slider {...settings}>
-          {listedPosts.map(postsList => (
+          {this.props.loading === 0 && listedPosts.length === 0 ? (
             <div key={Math.random()}>
-              <PostsList postsList={postsList} category={this.props.match} />
+              <Header as="h3" icon textAlign="center" className="not-found">
+                <Icon name="folder open" circular />
+                <Header.Content>
+                  {this.props.loadTranslations === 0 && this.props.translations.TEXTS && this.props.translations.TEXTS.NO_ARTICLES}
+                </Header.Content>
+              </Header>
               <Footer />
             </div>
-          ))}
+          ) : (
+            listedPosts.map(postsList => (
+              <div key={Math.random()}>
+                <PostsList postsList={postsList} category={this.props.match} />
+                <Footer />
+              </div>
+            ))
+          )}
         </Slider>
       </div>
     );
@@ -152,14 +175,32 @@ PostsCarousel.propTypes = {
       categorySlug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  category: PropTypes.arrayOf(categoryPropType),
+  loadTranslations: PropTypes.number,
+  translations: PropTypes.shape({
+    TEXTS: PropTypes.shape({
+      NO_ARTICLES: PropTypes.string,
+    }),
+  }),
 };
-
+PostsCarousel.defaultProps = {
+  category: {},
+  loadTranslations: 0,
+  translations: {
+    TEXTS: {
+      NO_ARTICLES: '',
+    },
+  },
+};
 const mapStateToProps = (state, props) => ({
   posts: getPostsByCategory(state.posts, props.match.params.categoryId),
   loading: getPostsFetching(state.posts),
+  category: getCategory(state.categories),
+  loadTranslations: getTranslationsFetching(state.translations),
+  translations: getTranslations(state.translations),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchCategory }, dispatch));
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PostsCarousel);
