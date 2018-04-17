@@ -57,9 +57,11 @@ class PostDetails extends Component {
             <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           </Header>
           {categoriesList[0].map(category => (
-            <Label color="teal" key={category.name}>
-              {category.name}
-            </Label>
+            <Link to={`/category/${category.slug}/${category.id}`}>
+              <Label color="teal" key={category.name}>
+                {category.name}
+              </Label>
+            </Link>
           ))}
           <Header.Subheader>
             &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">
