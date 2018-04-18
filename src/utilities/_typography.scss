@@ -48,3 +48,10 @@ h6,
   font-weight: normal;
   font-family: $base-font-family;
 }
+button.ui.button {
+  background-color: $buttons-bg-color;
+  color: $buttons-bg-color;
+}
+i {
+  color: $buttons-icon-color;
+}
