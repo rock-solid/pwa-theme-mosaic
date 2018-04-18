@@ -1,49 +1,29 @@
-/* CONTAINER */
-.ui.container.page {
-  height: unset;
-  margin-bottom: 20px;
-}
-
-/* HEADER */
-.page .ui.header {
-  margin-top: 1em;
-  height: unset;
-  position: static;
-  color: #000000;
-}
-
-.page .sub.header {
-  height: unset;
-  margin: -3% 0% 5% 7%;
-}
-
-.page .ui.header .ui.icon.button {
-  background: none;
-}
-
-/* IMAGE */
-.ui.container.page .image {
-  margin-bottom: 10px;
-}
-
-/* CLOSE BTN */
-.ui.dividing.header a {
-  position: absolute;
-  right: 5px;
-  top: 20px;
-}
-
-button.ui.icon.button {
-  background: none;
-  padding: 10px 0 0 0;
-}
-
 /* MODAL */
-.react-router-modal__modal-open {
-  position: relative;
-}
-.react-router-modal__modal {
-  width: 94%;
-  height: 98%;
-  overflow-y: scroll;
-}
+.react-router-modal__container.page-details {
+  color: #303030;
+  background-color: #ffffff;
+  border-color: #dddddd;
+  width: 100vw; }
+  .react-router-modal__container.page-details .react-router-modal__modal {
+    width: 94%;
+    height: 98%;
+    overflow-y: scroll; }
+    .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page {
+      margin-bottom: 20px; }
+      .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page a {
+        color: #4183c4; }
+      .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page .ui.dividing.header {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        margin-bottom: 10px; }
+        .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page .ui.dividing.header a {
+          margin: calc(2rem - 0.14285714em) 0 0rem; }
+          .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page .ui.dividing.header a button.ui.icon.button {
+            background: #fafafa; }
+      .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page .sub.header {
+        color: #999999;
+        padding-bottom: 10px;
+        margin-bottom: 10px; }

@@ -23,14 +23,12 @@ const PageDetails = (props) => {
         <Link to="/">
           <Button size="huge" icon="close" />
         </Link>
-        <div dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
+        <h1 dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
       </Header>
       <Header.Subheader>
         &nbsp;{props.texts.TEXTS && props.texts.TEXTS.BY_AUTHOR}&nbsp;
         <b>{author[0].name}</b>,&nbsp;
-        <Moment format="MMMM DD, YYYY">
-          {page.date}
-        </Moment>
+        <Moment format="MMMM DD, YYYY">{page.date}</Moment>
       </Header.Subheader>
       {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : ''}
       <Container textAlign="justified">
