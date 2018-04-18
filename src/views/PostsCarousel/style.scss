@@ -1,0 +1,15 @@
+@import "../../utilities/_variables.scss";
+
+.posts-carousel-container {
+  * {
+    color: $base-text-color !important;
+    background-color: $base-bg-color !important;
+    border-color: $border-color !important;
+  }
+  .slick-slide.slick-active {
+    height: 100vh;
+    .not-found.ui.header {
+      margin-top: 20%;
+    }
+  }
+}

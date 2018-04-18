@@ -1,38 +1,21 @@
-/* OVER RIDE semantic UI styles */
-/* Image Element */
-.item.posts div.image {
-  background-size: cover;
-  background-position: center;
-  height: 40%;
-  width: 50%;
-  float: left;
-  margin: 4px 10px 5px 0;
-}
-.post-item {
-  padding: 1rem;
-}
-
-.post-item .header {
-  font-size: 1.6rem;
-  font-weight: 100;
-  line-height: 1.8rem;
-  color: #000000;
-  text-align: left;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.post-item .description {
-  text-align: justify;
-  word-break: break-word;
-}
-
-.post-item .image {
-  width: 50%;
-  max-width: 200px;
-  height: 120px;
-  background-size: cover;
-  background-position: center;
-  float: left;
-  margin: 0 1rem 1rem 0;
-}
+.item.post-item {
+  padding: 1rem; }
+  .item.post-item .header {
+    text-transform: uppercase;
+    overflow: hidden; }
+  .item.post-item .content {
+    padding-top: 10px; }
+    .item.post-item .content .image {
+      background: center;
+      background-size: cover;
+      float: left;
+      height: 120px;
+      width: 50%;
+      max-width: 200px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-right: 10px;
+      margin-left: 2px; }
+    .item.post-item .content .description {
+      text-align: justify;
+      word-break: break-word; }

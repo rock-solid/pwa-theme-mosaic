@@ -1,0 +1,28 @@
+@import "../../../../utilities/_variables.scss";
+
+.item.post-item {
+  padding: 1rem;
+  .header {
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  .content {
+    padding-top: $base-spacing-xsm;
+    .image {
+      background: center;
+      background-size: cover;
+      float: left;
+      height: 120px;
+      width: 50%;
+      max-width: 200px;
+      margin-top: $base-spacing-xs;
+      margin-bottom: $base-spacing-xs;
+      margin-right: $base-spacing-xsm;
+      margin-left: $base-spacing-xxs;
+    }
+    .description {
+      text-align: justify;
+      word-break: break-word;
+    }
+  }
+}

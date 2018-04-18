@@ -1,30 +1,22 @@
-.double-post, .single-post  {
+.double-post {
   display: flex;
   flex-direction: column;
-}
-
-.double-post {
-  height: 93%;
-}
+  min-height: 93vh; }
+  .double-post a {
+    flex: 1;
+    min-height: 50vh; }
+    .double-post a:first-child {
+      border-bottom: 1px solid; }
 
 .single-post {
-  height: 90%;
-}
-
-.double-post a, .single-post a {
-  flex: 1;
-  max-height: 50%;
-  overflow: hidden;
-}
-
-.single-post a {
-  width: 90%;
-  max-height: 100%;
-  overflow: hidden;
-  margin: 2rem auto 0 auto;
-  border: 1px solid #e5d5d0;
-}
-
-.double-post a:first-child {
-  border-bottom: 1px solid #e5d5d0;
-}
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh; }
+  .single-post a {
+    flex: 1;
+    min-width: 90vw;
+    margin-top: 24px;
+    margin-bottom: 0;
+    margin-left: 16px;
+    margin-right: 16px;
+    border: 1px solid; }

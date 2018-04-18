@@ -1,17 +1,9 @@
-.posts-carousel-container {
-  height: 100vh;
-}
+.posts-carousel-container * {
+  color: #303030 !important;
+  background-color: #ffffff !important;
+  border-color: #dddddd !important; }
 
-.posts-carousel-container .slick-slider,
-.posts-carousel-container .slick-list,
-.posts-carousel-container .slick-track {
-  height: 100%;
-}
-
-.posts-carousel-container .not-found.ui.header {
-  color: unset;
-  margin-top: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.posts-carousel-container .slick-slide.slick-active {
+  height: 100vh; }
+  .posts-carousel-container .slick-slide.slick-active .not-found.ui.header {
+    margin-top: 20%; }
