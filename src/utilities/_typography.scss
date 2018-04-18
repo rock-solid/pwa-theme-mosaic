@@ -6,6 +6,7 @@
 p,
 div {
   font-size: $base-font-size;
+  font-family: $base-font-family;
 }
 
 // Headings
@@ -15,29 +16,35 @@ h1,
 .h1 {
   font-size: $base-font-size * mpow($multiplying-factor, 4);
   font-weight: normal;
+  font-family: $base-font-family;
 }
 h2,
 .h2 {
   font-size: $base-font-size * mpow($multiplying-factor, 3);
   font-weight: normal;
+  font-family: $base-font-family;
 }
 h3,
 .h3 {
   font-size: $base-font-size * mpow($multiplying-factor, 2);
   font-weight: normal;
+  font-family: $base-font-family;
 }
 h4,
 .h4 {
   font-size: $base-font-size * mpow($multiplying-factor, 1);
   font-weight: normal;
+  font-family: $base-font-family;
 }
 h5,
 .h5 {
   font-size: $base-font-size;
   font-weight: normal;
+  font-family: $base-font-family;
 }
 h6,
 .h6 {
   font-size: $base-font-size / mpow($multiplying-factor, 1);
   font-weight: normal;
+  font-family: $base-font-family;
 }
