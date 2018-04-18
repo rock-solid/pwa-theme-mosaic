@@ -104,37 +104,44 @@
 @import url("https://fonts.googleapis.com/css?family=Hind");
 p,
 div {
-  font-size: 1rem; }
+  font-size: 1rem;
+  font-family: "Roboto Condensed", sans-serif; }
 
 h1,
 .h1 {
   font-size: 1.4641rem;
-  font-weight: normal; }
+  font-weight: normal;
+  font-family: "Roboto Condensed", sans-serif; }
 
 h2,
 .h2 {
   font-size: 1.331rem;
-  font-weight: normal; }
+  font-weight: normal;
+  font-family: "Roboto Condensed", sans-serif; }
 
 h3,
 .h3 {
   font-size: 1.21rem;
-  font-weight: normal; }
+  font-weight: normal;
+  font-family: "Roboto Condensed", sans-serif; }
 
 h4,
 .h4 {
   font-size: 1.1rem;
-  font-weight: normal; }
+  font-weight: normal;
+  font-family: "Roboto Condensed", sans-serif; }
 
 h5,
 .h5 {
   font-size: 1rem;
-  font-weight: normal; }
+  font-weight: normal;
+  font-family: "Roboto Condensed", sans-serif; }
 
 h6,
 .h6 {
   font-size: 0.90909rem;
-  font-weight: normal; }
+  font-weight: normal;
+  font-family: "Roboto Condensed", sans-serif; }
 
 * {
   margin: 0;
