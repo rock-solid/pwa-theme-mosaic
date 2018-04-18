@@ -44,7 +44,7 @@ render(
           <ModalRoute exact path="/page/:pageSlug/:pageId" parentPath="/" component={PageView} />
           <Route path="*" component={NotFound} />
         </Switch>
-        <ModalContainer className="page-details" />
+        <ModalContainer containerClassName="react-router-modal__container page-details" />
       </div>
     </HashRouter>
   </Provider>,
