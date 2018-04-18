@@ -2,8 +2,8 @@
 
 .posts-carousel-container {
   * {
-    color: $base-text-color !important;
-    background-color: $base-bg-color !important;
+    color: $base-text-color;
+    background-color: $base-bg-color;
     border-color: $border-color !important;
   }
   .slick-slide.slick-active {
