@@ -11,8 +11,7 @@ const PostCard = (props) => {
   let path = '';
 
   if (!_.isNil(props.category)) {
-    path = path +
-      '/category/' + props.category.params.categorySlug + '/' + props.category.params.categoryId;
+    path = path + '/category/' + props.category.params.categorySlug + '/' + props.category.params.categoryId;
   }
 
   path = path + '/post/' + props.post.slug + '/' + props.post.id;
@@ -20,15 +19,16 @@ const PostCard = (props) => {
   return (
     <Link to={path}>
       <Item className="post-item">
-        {props.post.title && <Item.Header dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />}
+        {props.post.title && <Item.Header as="h1" dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />}
         <Item.Content>
-          {props.post.featured_media ?
+          {props.post.featured_media ? (
             <div
               className="image"
               style={{
                 backgroundImage: 'url(' + props.post._embedded['wp:featuredmedia'][0].source_url + ')',
               }}
-            /> : null}
+            />
+          ) : null}
           <Item.Description dangerouslySetInnerHTML={{ __html: props.post.excerpt.rendered }} />
         </Item.Content>
       </Item>
