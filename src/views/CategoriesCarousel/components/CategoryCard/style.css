@@ -2,7 +2,6 @@
   position: relative; }
 
 .categories-card .ui.header {
-  color: #ffffff;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -15,6 +14,8 @@
   text-transform: uppercase;
   padding: 9px 15px;
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.08) 55px, transparent 80px, transparent); }
+  .categories-card .ui.header h1 {
+    color: #ffffff; }
 
 .categories-card .ui.header.header > div {
   height: unset;
