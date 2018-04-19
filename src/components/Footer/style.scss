@@ -1,6 +1,6 @@
 @import "../../utilities/variables";
 
-.posts-carousel-container .slick-slider .footer {
+.posts-carousel-container .footer {
   position: absolute;
   bottom: 0;
   height: unset;
@@ -8,10 +8,6 @@
   justify-content: space-between;
   width: 100%;
   background: $footer-bg-color;
-  padding: 5px;
+  padding: $base-spacing-xs;
   border-top: solid 1px $border-color;
-}
-
-.posts-carousel-container .footer i.icon {
-  color: $buttons-icon-color;
 }
