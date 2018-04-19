@@ -1,8 +1,6 @@
 .ui.menu-pages.sidebar.visible {
   background-color: #ffffff;
   border-color: #dddddd; }
-  .ui.menu-pages.sidebar.visible * {
-    color: #303030; }
   .ui.menu-pages.sidebar.visible i {
     color: #747474; }
   .ui.menu-pages.sidebar.visible .list {

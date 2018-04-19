@@ -1,9 +1,6 @@
 .posts-carousel-container * {
-  color: #303030;
   background-color: #ffffff;
   border-color: #dddddd !important; }
 
 .posts-carousel-container .slick-slide.slick-active {
   height: 100vh; }
-  .posts-carousel-container .slick-slide.slick-active .not-found.ui.header {
-    margin-top: 20%; }

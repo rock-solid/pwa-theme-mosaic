@@ -105,43 +105,50 @@
 p,
 div {
   font-size: 1rem;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif;
+  color: #303030 !important; }
 
 h1,
 .h1 {
   font-size: 1.4641rem;
   font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif;
+  color: #303030 !important; }
 
 h2,
 .h2 {
   font-size: 1.331rem;
   font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif;
+  color: #303030 !important; }
 
 h3,
 .h3 {
   font-size: 1.21rem;
   font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif;
+  color: #303030 !important; }
 
 h4,
 .h4 {
   font-size: 1.1rem;
   font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif;
+  color: #303030 !important; }
 
 h5,
 .h5 {
   font-size: 1rem;
   font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif;
+  color: #303030 !important; }
 
 h6,
 .h6 {
   font-size: 0.90909rem;
   font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif;
+  color: #303030 !important; }
 
 button.ui.button {
   background-color: #fafafa;

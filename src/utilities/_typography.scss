@@ -7,6 +7,7 @@ p,
 div {
   font-size: $base-font-size;
   font-family: $base-font-family;
+  color: $base-text-color !important;
 }
 
 // Headings
@@ -17,36 +18,42 @@ h1,
   font-size: $base-font-size * mpow($multiplying-factor, 4);
   font-weight: normal;
   font-family: $base-font-family;
+  color: $base-text-color !important;
 }
 h2,
 .h2 {
   font-size: $base-font-size * mpow($multiplying-factor, 3);
   font-weight: normal;
   font-family: $base-font-family;
+  color: $base-text-color !important;
 }
 h3,
 .h3 {
   font-size: $base-font-size * mpow($multiplying-factor, 2);
   font-weight: normal;
   font-family: $base-font-family;
+  color: $base-text-color !important;
 }
 h4,
 .h4 {
   font-size: $base-font-size * mpow($multiplying-factor, 1);
   font-weight: normal;
   font-family: $base-font-family;
+  color: $base-text-color !important;
 }
 h5,
 .h5 {
   font-size: $base-font-size;
   font-weight: normal;
   font-family: $base-font-family;
+  color: $base-text-color !important;
 }
 h6,
 .h6 {
   font-size: $base-font-size / mpow($multiplying-factor, 1);
   font-weight: normal;
   font-family: $base-font-family;
+  color: $base-text-color !important;
 }
 button.ui.button {
   background-color: $buttons-bg-color;
