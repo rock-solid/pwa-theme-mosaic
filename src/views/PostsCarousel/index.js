@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Loader, Header, Icon } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
 
 import { fetchPosts } from './action';
@@ -13,6 +13,7 @@ import { postPropType, getPostsFetching, getPostsByCategory } from './reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
+import NotFound from '../../components/NotFound';
 import './style.css';
 
 // translations
@@ -143,12 +144,7 @@ class PostsCarousel extends Component {
         <Slider {...settings}>
           {this.props.loading === 0 && listedPosts.length === 0 ? (
             <div key={Math.random()}>
-              <Header as="h3" icon textAlign="center" className="not-found">
-                <Icon name="folder open" circular />
-                <Header.Content>
-                  {this.props.loadTranslations === 0 && this.props.translations.TEXTS && this.props.translations.TEXTS.NO_ARTICLES}
-                </Header.Content>
-              </Header>
+              {this.props.loadTranslations === 0 && this.props.translations.TEXTS && <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />}
               <Footer />
             </div>
           ) : (

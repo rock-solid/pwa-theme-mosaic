@@ -41,14 +41,10 @@ class Post extends Component {
     }
 
     if (_.isNil(post)) {
-      return <NotFound />;
+      return <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />;
     }
 
-    return (<PostDetails
-      post={post}
-      category={this.props.match.params}
-      texts={this.props.translations}
-    />);
+    return <PostDetails post={post} category={this.props.match.params} texts={this.props.translations} />;
   }
 }
 
