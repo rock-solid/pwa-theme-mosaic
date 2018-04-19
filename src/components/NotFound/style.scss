@@ -1,0 +1,7 @@
+@import "../../utilities/variables";
+
+.not-found.ui.header {
+  display: flex;
+  align-items: center;
+  padding-top: $base-spacing-xl;
+}
