@@ -1,0 +1,15 @@
+@import "../../utilities/_variables.scss";
+
+.navbar.button.tiny.right.ui {
+  position: absolute;
+  z-index: 1;
+  top: 2%;
+  right: 3%;
+  padding-top: $base-spacing-xsm;
+  padding-bottom: $base-spacing-xsm;
+  padding-right: $base-spacing;
+  padding-left: $base-spacing;
+  .icon.content.large {
+    margin: 0;
+  }
+}
