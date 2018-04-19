@@ -1,0 +1,32 @@
+/* override semantic ui styles */
+/* GRID */
+
+.categories-card {
+  .ui.grid {
+    margin: 0;
+    > .row {
+      justify-content: center;
+      padding-top: 0;
+      padding-bottom: 0;
+      > .column {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+  .ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
+    box-shadow: none;
+  }
+  .divided.two > .row > .column:only-child {
+    width: 100vw;
+  }
+  .full-row .row {
+    height: 100%;
+  }
+  .half-row .row {
+    height: 50.2%;
+  }
+  .one-third-row .row {
+    height: 33.7%;
+  }
+}
