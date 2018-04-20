@@ -1,38 +1,12 @@
-/* HEADER */
-.ui.block.header.comments-header {
-  border: none;
-  color: black;
-  text-align: center;
-  font-size: 21px;
-  font-weight: 100;
-  margin: 0;
-}
-
-/* CLOSE ICON */
-.ui.block.header.comments-header a {
-  position: absolute;
-  right: 0;
-}
-
-/* COMMENTS */
-.ui.comments.post-comments {
-  margin: 0;
-}
-.ui.comments.post-comments .comment {
-  margin: 2em;
-  padding: 0;
-}
-
-.ui.comments.post-comments .comment > .avatar ~ .content {
-  text-align: start;
-}
-
-/* text */
-.no-comments {
-  padding-top: 20%;
-}
-
-/* Button */
-.ui.comments.post-comments button {
-  margin: 5% 0 3% 0;
-}
+.comments-container {
+  /* HEADER */ }
+  .comments-container .ui.block.header.comments-header {
+    border: none;
+    text-align: center;
+    margin: 0;
+    color: #303030;
+    font-family: "Roboto Condensed", sans-serif;
+    /* CLOSE ICON */ }
+    .comments-container .ui.block.header.comments-header a {
+      position: absolute;
+      right: 0; }

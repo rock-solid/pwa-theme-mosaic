@@ -1,0 +1,17 @@
+@import "../../utilities/variables";
+
+.comments-container {
+  /* HEADER */
+  .ui.block.header.comments-header {
+    border: none;
+    text-align: center;
+    margin: 0;
+    color: $base-text-color;
+    font-family: $base-font-family;
+    /* CLOSE ICON */
+    a {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
