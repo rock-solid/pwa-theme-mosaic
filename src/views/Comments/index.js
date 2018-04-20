@@ -26,14 +26,14 @@ class Comments extends Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchComments({ postId: this.props.match.params.postId, per_page: 100 }));
+    dispatch(fetchComments({ post: this.props.match.params.postId, per_page: 100 }));
     dispatch(fetchTranslations);
   }
 
   handleRefresh(resolve, reject) {
     const { dispatch } = this.props;
 
-    if (dispatch(fetchComments({ postId: this.props.match.params.postId, per_page: 100 }))) {
+    if (dispatch(fetchComments({ post: this.props.match.params.postId, per_page: 100 }))) {
       resolve();
     } else {
       reject();
