@@ -3,9 +3,9 @@ import { Header, Comment, Icon, Container, Button, Modal, Loader } from 'semanti
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
-import { addComment } from './actions';
-import { commentPropType } from './reducers';
-import CommentForm from '../../components/Form/index';
+import { addComment } from '../actions';
+import { commentPropType } from '../reducers';
+import CommentForm from '../../../components/Form/index';
 
 import './style.css';
 
@@ -61,25 +61,21 @@ class CommentsView extends Component {
                 </Comment.Metadata>
                 <Comment.Text dangerouslySetInnerHTML={{ __html: comment.content.rendered }} />
                 <Comment.Actions>
-                  <Comment.Action onClick={this.showModal}>
-                    {this.props.texts.FORMS && this.props.texts.FORMS.REPLY}
-                  </Comment.Action>
+                  <Comment.Action onClick={this.showModal}>{this.props.texts.FORMS && this.props.texts.FORMS.REPLY}</Comment.Action>
                 </Comment.Actions>
               </Comment.Content>
             </Comment>
           ))
         ) : (
-            <Container className="no-comments">
-              {this.props.commentStatus === 'open'
-                ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
-                : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
-            </Container>
-          )}
+          <Container className="no-comments">
+            {this.props.commentStatus === 'open'
+              ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
+              : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
+          </Container>
+        )}
 
         {this.props.commentStatus === 'open' ? (
-          <Button onClick={this.showModal}>
-            {this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}
-          </Button>
+          <Button onClick={this.showModal}>{this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}</Button>
         ) : null}
 
         {this.state.isOpen === true ? (
@@ -91,7 +87,6 @@ class CommentsView extends Component {
             </Modal.Content>
           </Modal>
         ) : null}
-
       </Comment.Group>
     );
   }

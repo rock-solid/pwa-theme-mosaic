@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import CommentsView from '../CommentsView';
+import CommentsView from '../components/CommentsView';
 
 describe('Comments view', () => {
   it('renders no comments, allows adding new comments', () => {

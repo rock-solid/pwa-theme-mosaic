@@ -10,11 +10,13 @@ import 'react-router-modal/css/react-router-modal.css';
 
 import { fetchComments } from './actions';
 import { getComments, getCommentsFetching, commentPropType } from './reducers';
-import CommentsView from './CommentsView';
+import CommentsView from './components/CommentsView';
 
 // translations
 import { fetchTranslations } from '../../translations/actions';
 import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
+
+import './style.css';
 
 class Comments extends Component {
   constructor(props) {
@@ -42,24 +44,24 @@ class Comments extends Component {
     const comm = this.props.comments.filter(comment => comment.post === Number(this.props.match.params.postId));
 
     let path = '';
-    if (!_.isNil(this.props.match.params.categorySlug) &&
-      !_.isNil(this.props.match.params.categoryId)) {
+    if (!_.isNil(this.props.match.params.categorySlug) && !_.isNil(this.props.match.params.categoryId)) {
       path = '/category/' + this.props.match.params.categorySlug + '/' + this.props.match.params.categoryId;
     }
 
     path = path + '/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId;
 
     return (
-      <div>
+      <div className="comments-container">
         <Header as="h3" block className="comments-header">
           {this.props.translations.TEXTS && this.props.translations.TEXTS.COMMENTS}
           <Link to={path}>
             <Icon name="close" />
           </Link>
         </Header>
-        {this.props.loading === 1 && this.props.loadingTranslations === 1 ?
-          <Loader active /> :
-          (<ReactPullToRefresh onRefresh={this.handleRefresh}>
+        {this.props.loading === 1 && this.props.loadingTranslations === 1 ? (
+          <Loader active />
+        ) : (
+          <ReactPullToRefresh onRefresh={this.handleRefresh}>
             <CommentsView
               comments={comm}
               loading={this.props.loading}
@@ -67,7 +69,8 @@ class Comments extends Component {
               commentStatus={this.props.match.params.commentStatus}
               texts={this.props.translations}
             />
-          </ReactPullToRefresh>)}
+          </ReactPullToRefresh>
+        )}
       </div>
     );
   }
