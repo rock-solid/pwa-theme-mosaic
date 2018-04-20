@@ -1,0 +1,16 @@
+@import "../../../utilities/variables";
+
+.share.ui.modal.visible.active.transition {
+  min-height: 97vh;
+  .actions {
+    min-height: 95vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    .social-media {
+      min-width: 66vw;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}
