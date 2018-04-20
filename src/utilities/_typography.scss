@@ -60,10 +60,10 @@ h6,
 // -------------------------
 
 button.ui.button {
-  background: $buttons-bg-color;
+  background: $buttons-bg-color !important;
 }
 i.icon {
-  color: $buttons-icon-color;
+  color: $buttons-icon-color !important;
 }
 a {
   color: $base-links-color;
