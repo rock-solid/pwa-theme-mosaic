@@ -1,0 +1,65 @@
+@import "../../utilities/variables";
+
+.post {
+  &.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 !important;
+    text-align: left;
+    .post-image {
+      height: 60vh;
+      background: center no-repeat;
+      background-size: cover;
+    }
+    .container {
+      margin: $base-spacing;
+      padding-top: $base-spacing-lg;
+      .ui.header {
+        text-align: start;
+      }
+      .sub.header {
+        margin-top: $base-spacing;
+        margin-bottom: $base-spacing;
+      }
+      .label {
+        height: unset;
+        border-radius: 2px;
+        padding: $base-spacing-xsm $base-spacing-xs;
+        margin: $base-spacing-xs;
+        background-color: $category-color;
+        color: $category-text;
+      }
+      .post-content {
+        iframe {
+          max-width: 100%;
+          height: auto;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+    /* ICON */
+    i {
+      &.icon.circular {
+        color: $buttons-icon-color;
+        background-color: $buttons-bg-color;
+        box-shadow: none;
+        &.chevron.left {
+          position: absolute;
+          z-index: 1;
+          top: $base-spacing-xsm;
+          left: $base-spacing-xsm;
+        }
+        &.share {
+          margin: $base-spacing-xsm;
+        }
+      }
+    }
+  }
+  .transition-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
