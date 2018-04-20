@@ -1,10 +1,4 @@
-.ui.container.not-found + div {
-  display: none;
-}
-
-.ui.container.not-found .ui.header {
-  color: #000000;
+.not-found.ui.header {
   display: flex;
   align-items: center;
-  padding: 10%;
-}
+  padding-top: 64px; }

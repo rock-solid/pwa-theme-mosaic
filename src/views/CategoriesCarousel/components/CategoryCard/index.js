@@ -11,7 +11,7 @@ const CategoryCard = (props) => {
     <Link to={'/category/' + slug + '/' + id}>
       <Item>
         <Item.Header as={Header}>
-          <div dangerouslySetInnerHTML={{ __html: name }} />
+          <h1 dangerouslySetInnerHTML={{ __html: name }} />
         </Item.Header>
       </Item>
     </Link>

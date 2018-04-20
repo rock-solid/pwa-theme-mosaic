@@ -6,7 +6,7 @@ import mockStore from '../../../__mocks__/redux-mock-store';
 
 import Comments from '../index';
 
-jest.mock('../CommentsView', () => 'Comments view test');
+jest.mock('../components/CommentsView', () => 'Comments view test');
 jest.mock('../../../components/NotFound/index', () => 'Not found component test');
 
 describe('Comments screen', () => {

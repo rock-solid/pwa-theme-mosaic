@@ -1,8 +1,6 @@
-.ui.form.comments-form > div {
-  padding: 10px 0;
-}
-
-.ui.modal.transition.visible.active .content .ui.form.comments-form > div input,
-.ui.modal.transition.visible.active .content .ui.form.comments-form > div textarea {
-  margin: 5px 0 0 0;
-}
+.comments-form.ui.form > div {
+  padding: 10px 0; }
+  .comments-form.ui.form > div input,
+  .comments-form.ui.form > div textarea {
+    margin: 5px 0 0 0;
+    border-color: #5c5c5c; }

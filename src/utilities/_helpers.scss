@@ -1,3 +1,6 @@
+@import "variables";
+
+//centering flex
 /*
 .center-content {
   display: -webkit-box !important;
@@ -100,66 +103,3 @@
   margin: 0 auto;
 }
 */
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300");
-@import url("https://fonts.googleapis.com/css?family=Hind");
-p,
-div {
-  font-size: 1rem;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #303030; }
-
-h1,
-.h1 {
-  font-size: 1.4641rem;
-  font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #303030; }
-
-h2,
-.h2 {
-  font-size: 1.331rem;
-  font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #303030; }
-
-h3,
-.h3 {
-  font-size: 1.21rem;
-  font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #303030; }
-
-h4,
-.h4 {
-  font-size: 1.1rem;
-  font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #303030; }
-
-h5,
-.h5 {
-  font-size: 1rem;
-  font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #303030; }
-
-h6,
-.h6 {
-  font-size: 0.90909rem;
-  font-weight: normal;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #303030; }
-
-button.ui.button {
-  background: #fafafa !important; }
-
-i.icon {
-  color: #747474 !important; }
-
-a {
-  color: #4183c4; }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }

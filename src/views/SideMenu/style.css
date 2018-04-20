@@ -1,55 +1,22 @@
-.sidebar.menu-pages .ui.header {
-  position: static;
-  color: #999;
-  font-size: 23px;
-  font-weight: 100;
-  line-height: 45px;
-  font-family: "Roboto Condensed", sans-serif;
-  margin: 1rem;
-  display: flex;
-  align-items: flex-start;
-}
-
-.sidebar.menu-pages .ui.header .icon {
-  margin-left: 0;
-  width: 1rem;
-}
-
-/* LIST OVERRIDE */
-.sidebar.menu-pages .ui.divided.relaxed.list {
-  height: unset;
-  margin: 0 1rem;
-}
-
-.sidebar.menu-pages .ui.divided.relaxed.list .item {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.sidebar.menu-pages .ui.divided.relaxed.list .item div.header {
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 1.5rem;
-  color: #000000 !important;
-  padding: 0.5rem;
-  text-align: left;
-}
-
-.sidebar.menu-pages .ui.divided.relaxed.list .item > i:nth-child(3) {
-  position: absolute;
-  right: 0;
-}
-
-/* MODAL */
-/* .ui.scrolling.modal .header {
-  border: none;
-}
-.modal .image {
-  margin: auto;
-} */
-
-.ui.modal .content {
-  position: relative;
-}
+.ui.menu-pages.sidebar.visible {
+  background-color: #ffffff;
+  border-color: #dddddd; }
+  .ui.menu-pages.sidebar.visible i {
+    color: #747474; }
+  .ui.menu-pages.sidebar.visible .list {
+    padding: 10px; }
+    .ui.menu-pages.sidebar.visible .list .header {
+      font-family: "Roboto Condensed", sans-serif;
+      margin-top: 8px; }
+    .ui.menu-pages.sidebar.visible .list .item {
+      display: flex;
+      align-items: center;
+      height: 8vh;
+      position: relative; }
+      .ui.menu-pages.sidebar.visible .list .item .content {
+        font-family: "Roboto Condensed", sans-serif;
+        display: flex;
+        align-items: center; }
+      .ui.menu-pages.sidebar.visible .list .item .icon.triangle {
+        position: absolute;
+        right: 0; }

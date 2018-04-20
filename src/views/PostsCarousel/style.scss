@@ -1,0 +1,11 @@
+@import "../../utilities/_variables.scss";
+
+.posts-carousel-container {
+  * {
+    background-color: $base-bg-color;
+    border-color: $border-color !important;
+  }
+  .slick-slide.slick-active {
+    height: 100vh;
+  }
+}

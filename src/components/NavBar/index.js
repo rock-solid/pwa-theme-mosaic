@@ -19,7 +19,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Button floated="right" size="tiny" className="navbar" color="teal">
+      <Button floated="right" size="tiny" className="navbar">
         <Icon name="content" onClick={this.showSidebar} size="large" />
       </Button>
     );

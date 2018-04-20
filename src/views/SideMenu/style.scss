@@ -1,0 +1,31 @@
+@import "../../utilities/_variables.scss";
+
+.ui.menu-pages.sidebar.visible {
+  background-color: $base-bg-color;
+  border-color: $border-color;
+  i {
+    color: $buttons-icon-color;
+  }
+  .list {
+    padding: $base-spacing-xsm;
+    .header {
+      font-family: "Roboto Condensed", sans-serif;
+      margin-top: $base-spacing-sm;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      height: 8vh;
+      position: relative;
+      .content {
+        font-family: "Roboto Condensed", sans-serif;
+        display: flex;
+        align-items: center;
+      }
+      .icon.triangle {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}

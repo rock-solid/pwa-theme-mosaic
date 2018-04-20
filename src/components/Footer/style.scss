@@ -1,3 +1,5 @@
+@import "../../utilities/variables";
+
 .posts-carousel-container .footer {
   position: absolute;
   bottom: 0;
@@ -5,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background: #fafafa;
-  padding: 5px;
-  border-top: solid 1px #dddddd; }
+  background: $footer-bg-color;
+  padding: $base-spacing-xs;
+  border-top: solid 1px $border-color;
+}

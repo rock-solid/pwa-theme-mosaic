@@ -58,11 +58,11 @@ class PostDetails extends Component {
         {featuredMedia ? <div className="post-image" style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }} /> : null}
         <Container textAlign="justified">
           <Header>
-            <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+            <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           </Header>
           {categoriesList[0].map(category => (
             <Link to={`/category/${category.slug}/${category.id}`} key={category.name}>
-              <Label color="teal">{category.name}</Label>
+              <Label>{category.name}</Label>
             </Link>
           ))}
           <Header.Subheader>

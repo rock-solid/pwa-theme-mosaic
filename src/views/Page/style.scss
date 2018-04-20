@@ -1,0 +1,38 @@
+@import "../../utilities/_variables.scss";
+/* MODAL */
+.react-router-modal__container.page-details {
+  background-color: $base-bg-color;
+  border-color: $border-color;
+  width: 100vw;
+  .react-router-modal__modal {
+    width: 94%;
+    height: 98%;
+    overflow-y: scroll;
+    .ui.container.page {
+      margin-bottom: $base-spacing-xmd;
+      a {
+        color: $base-links-color;
+      }
+      .ui.dividing.header {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: $base-spacing-xsm;
+        margin-bottom: $base-spacing-xsm;
+        // align close button to header
+        a {
+          margin: calc(2rem - 0.14285714em) 0 0rem;
+          button.ui.icon.button {
+            background: $buttons-bg-color;
+          }
+        }
+      }
+      .sub.header {
+        color: $extra-text-color;
+        padding-bottom: $base-spacing-xsm;
+        margin-bottom: $base-spacing-xsm;
+      }
+    }
+  }
+}

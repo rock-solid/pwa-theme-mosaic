@@ -1,0 +1,12 @@
+@import "../../utilities/variables";
+
+.comments-form.ui.form {
+  > div {
+    padding: $base-spacing-xsm 0;
+    input,
+    textarea {
+      margin: $base-spacing-xs 0 0 0;
+      border-color: $form-border-color;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.share.ui.modal.visible.active.transition {
+  min-height: 97vh; }
+  .share.ui.modal.visible.active.transition .actions {
+    min-height: 95vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; }
+    .share.ui.modal.visible.active.transition .actions .social-media {
+      min-width: 66vw;
+      display: flex;
+      justify-content: space-evenly; }

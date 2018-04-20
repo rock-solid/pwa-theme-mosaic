@@ -1,0 +1,15 @@
+/* COMMENTS */
+.ui.comments.post-comments {
+  margin: 0;
+  height: 90vh;
+  /* Button */
+  /* text */ }
+  .ui.comments.post-comments .comment {
+    margin: 32px;
+    padding: 0; }
+    .ui.comments.post-comments .comment > .avatar ~ .content {
+      text-align: start; }
+  .ui.comments.post-comments button {
+    margin: 20px 10px 0; }
+  .ui.comments.post-comments .no-comments {
+    padding-top: 32px; }
