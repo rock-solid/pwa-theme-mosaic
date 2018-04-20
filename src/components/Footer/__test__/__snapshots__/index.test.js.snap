@@ -10,7 +10,7 @@ exports[`Footer should render correctly 1`] = `
   >
     <Icon
       as="i"
-      name="grid layout"
+      name="home"
       size="big"
     />
   </Link>

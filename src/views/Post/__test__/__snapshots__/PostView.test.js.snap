@@ -4,43 +4,38 @@ exports[`Post card should render post with featured image 1`] = `
 <Container
   className="post"
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <link
+      href="some-post-link"
+      rel="canonical"
+    />
+  </HelmetWrapper>
   <Link
     replace={false}
     to="/"
   >
     <Icon
       as="i"
+      circular={true}
       name="chevron left"
-      size="big"
     />
   </Link>
-  <Image
-    as="img"
-    ui={true}
+  <div
+    className="post-image"
+    style={
+      Object {
+        "backgroundImage": "url(undefined)",
+      }
+    }
   />
   <Container
     textAlign="justified"
   >
-    <Label
-      color="teal"
-      key="Some category"
-    >
-      Some category
-    </Label>
-    <Label
-      color="teal"
-      key="Some category"
-    >
-      Some category
-    </Label>
-    <Label
-      color="teal"
-      key="Some category"
-    >
-      Some category
-    </Label>
     <Header>
-      <div
+      <h1
         dangerouslySetInnerHTML={
           Object {
             "__html": "Mock title",
@@ -48,6 +43,33 @@ exports[`Post card should render post with featured image 1`] = `
         }
       />
     </Header>
+    <Link
+      key="Some category"
+      replace={false}
+      to="/category/undefined/1"
+    >
+      <Label>
+        Some category
+      </Label>
+    </Link>
+    <Link
+      key="Some category"
+      replace={false}
+      to="/category/undefined/2"
+    >
+      <Label>
+        Some category
+      </Label>
+    </Link>
+    <Link
+      key="Some category"
+      replace={false}
+      to="/category/undefined/3"
+    >
+      <Label>
+        Some category
+      </Label>
+    </Link>
     <HeaderSubheader>
        
       by
@@ -71,6 +93,7 @@ exports[`Post card should render post with featured image 1`] = `
       </t>
     </HeaderSubheader>
     <div
+      className="post-content"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Some content that should be rendered",
@@ -116,6 +139,10 @@ exports[`Post card should render post with featured image 1`] = `
           size="large"
         />
       </Link>
+      <Social media test
+        link="some-post-link"
+        title="Mock title"
+      />
     </ModalActions>
   </Modal>
 </Container>
@@ -125,44 +152,30 @@ exports[`Post card should render post with image placeholder 1`] = `
 <Container
   className="post"
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <link
+      href="some-post-link"
+      rel="canonical"
+    />
+  </HelmetWrapper>
   <Link
     replace={false}
     to="/"
   >
     <Icon
       as="i"
+      circular={true}
       name="chevron left"
-      size="big"
     />
   </Link>
-  <Image
-    as="img"
-    src="https://placeholdit.co//i/555x650"
-    ui={true}
-  />
   <Container
     textAlign="justified"
   >
-    <Label
-      color="teal"
-      key="Some category"
-    >
-      Some category
-    </Label>
-    <Label
-      color="teal"
-      key="Some category"
-    >
-      Some category
-    </Label>
-    <Label
-      color="teal"
-      key="Some category"
-    >
-      Some category
-    </Label>
     <Header>
-      <div
+      <h1
         dangerouslySetInnerHTML={
           Object {
             "__html": "Mock title",
@@ -170,6 +183,33 @@ exports[`Post card should render post with image placeholder 1`] = `
         }
       />
     </Header>
+    <Link
+      key="Some category"
+      replace={false}
+      to="/category/undefined/1"
+    >
+      <Label>
+        Some category
+      </Label>
+    </Link>
+    <Link
+      key="Some category"
+      replace={false}
+      to="/category/undefined/2"
+    >
+      <Label>
+        Some category
+      </Label>
+    </Link>
+    <Link
+      key="Some category"
+      replace={false}
+      to="/category/undefined/3"
+    >
+      <Label>
+        Some category
+      </Label>
+    </Link>
     <HeaderSubheader>
        
       by
@@ -193,6 +233,7 @@ exports[`Post card should render post with image placeholder 1`] = `
       </t>
     </HeaderSubheader>
     <div
+      className="post-content"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Some content that should be rendered",
@@ -238,6 +279,10 @@ exports[`Post card should render post with image placeholder 1`] = `
           size="large"
         />
       </Link>
+      <Social media test
+        link="some-post-link"
+        title="Mock title"
+      />
     </ModalActions>
   </Modal>
 </Container>

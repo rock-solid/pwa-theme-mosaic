@@ -2,7 +2,7 @@
 
 exports[`Navbar component should render correctly 1`] = `
 <button
-  className="ui teal tiny right floated button navbar"
+  className="ui tiny right floated button navbar"
   disabled={undefined}
   onClick={[Function]}
   role="button"

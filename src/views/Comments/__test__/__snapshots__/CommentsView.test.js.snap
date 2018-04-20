@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Comments view renders comments, allows adding new comments 1`] = `
-<CommentGroup>
+<CommentGroup
+  className="post-comments"
+>
   <Comment
     key="6715"
   >
@@ -45,7 +47,7 @@ exports[`Comments view renders comments, allows adding new comments 1`] = `
           as="a"
           onClick={[Function]}
         >
-          Reply
+          reply
         </CommentAction>
       </CommentActions>
     </CommentContent>
@@ -60,7 +62,9 @@ exports[`Comments view renders comments, allows adding new comments 1`] = `
 `;
 
 exports[`Comments view renders comments, does not allow adding new comments 1`] = `
-<CommentGroup>
+<CommentGroup
+  className="post-comments"
+>
   <Comment
     key="6715"
   >
@@ -104,7 +108,7 @@ exports[`Comments view renders comments, does not allow adding new comments 1`] 
           as="a"
           onClick={[Function]}
         >
-          Reply
+          reply
         </CommentAction>
       </CommentActions>
     </CommentContent>
@@ -113,7 +117,9 @@ exports[`Comments view renders comments, does not allow adding new comments 1`] 
 `;
 
 exports[`Comments view renders no comments, allows adding new comments 1`] = `
-<CommentGroup>
+<CommentGroup
+  className="post-comments"
+>
   <Container
     className="no-comments"
   >
@@ -129,7 +135,9 @@ exports[`Comments view renders no comments, allows adding new comments 1`] = `
 `;
 
 exports[`Comments view renders no comments, does not allow adding new comments 1`] = `
-<CommentGroup>
+<CommentGroup
+  className="post-comments"
+>
   <Container
     className="no-comments"
   >

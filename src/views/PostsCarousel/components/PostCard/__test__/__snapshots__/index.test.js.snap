@@ -6,9 +6,10 @@ exports[`Post card should render correctly post with featured image 1`] = `
   to="/category/some-slug/32/post/mock-slug/1"
 >
   <Item
-    className="posts"
+    className="post-item"
   >
     <ItemHeader
+      as="h1"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Mock title",
@@ -20,7 +21,7 @@ exports[`Post card should render correctly post with featured image 1`] = `
         className="image"
         style={
           Object {
-            "backgroundImage": "url(http://via.placeholder.com/177x119)",
+            "backgroundImage": "url(undefined)",
           }
         }
       />
@@ -42,9 +43,10 @@ exports[`Post card should render correctly post with placeholder image 1`] = `
   to="/category/some-slug/32/post/mock-slug/1"
 >
   <Item
-    className="posts"
+    className="post-item"
   >
     <ItemHeader
+      as="h1"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Mock title",
@@ -52,14 +54,6 @@ exports[`Post card should render correctly post with placeholder image 1`] = `
       }
     />
     <ItemContent>
-      <div
-        className="image"
-        style={
-          Object {
-            "backgroundImage": "url(http://via.placeholder.com/177x119)",
-          }
-        }
-      />
       <ItemDescription
         dangerouslySetInnerHTML={
           Object {

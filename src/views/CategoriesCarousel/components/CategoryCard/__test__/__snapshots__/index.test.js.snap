@@ -9,7 +9,7 @@ exports[`Category card should render correctly 1`] = `
     <ItemHeader
       as={[Function]}
     >
-      <div
+      <h1
         dangerouslySetInnerHTML={
           Object {
             "__html": "Some mock name",

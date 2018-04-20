@@ -7,32 +7,40 @@ import CommentsView from '../components/CommentsView';
 describe('Comments view', () => {
   it('renders no comments, allows adding new comments', () => {
     const comments = [];
-    const match = {
-      params: {
-        postSlug: 'post-slug',
-        postId: '43',
-        categorySlug: 'category-slug',
-        categoryId: '54',
-        comment_status: 'open',
+    const translations = {
+      FORMS: {
+        REPLY: 'reply',
+      },
+      TEXTS: {
+        NO_COMMENTS: 'No comments',
+        NO_COMMENTS_SHORT: 'No comments',
+        LEAVE_COMMENTS: 'Leave comment',
       },
     };
+    const postId = '43';
+    const loading = 0;
+    const commentStatus = 'open';
 
-    const output = shallow(<CommentsView comments={comments} match={match} />);
+    const output = shallow(<CommentsView comments={comments} loading={loading} postId={postId} commentStatus={commentStatus} texts={translations} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
   it('renders no comments, does not allow adding new comments', () => {
     const comments = [];
-    const match = {
-      params: {
-        postSlug: 'post-slug',
-        postId: '43',
-        categorySlug: 'category-slug',
-        categoryId: '54',
-        comment_status: 'close',
+    const translations = {
+      FORMS: {
+        REPLY: 'reply',
+      },
+      TEXTS: {
+        NO_COMMENTS: 'No comments',
+        NO_COMMENTS_SHORT: 'No comments',
+        LEAVE_COMMENTS: 'Leave comment',
       },
     };
+    const postId = '43';
+    const loading = 0;
+    const commentStatus = 'closed';
 
-    const output = shallow(<CommentsView comments={comments} match={match} />);
+    const output = shallow(<CommentsView comments={comments} loading={loading} postId={postId} commentStatus={commentStatus} texts={translations} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
   it('renders comments, allows adding new comments', () => {
@@ -50,16 +58,20 @@ describe('Comments view', () => {
         },
       },
     ];
-    const match = {
-      params: {
-        postSlug: 'post-slug',
-        postId: '43',
-        categorySlug: 'category-slug',
-        categoryId: '54',
-        comment_status: 'open',
+    const translations = {
+      FORMS: {
+        REPLY: 'reply',
+      },
+      TEXTS: {
+        NO_COMMENTS: 'No comments',
+        NO_COMMENTS_SHORT: 'No comments',
+        LEAVE_COMMENTS: 'Leave comment',
       },
     };
-    const output = shallow(<CommentsView comments={comments} match={match} />);
+    const postId = '43';
+    const loading = 0;
+    const commentStatus = 'open';
+    const output = shallow(<CommentsView comments={comments} loading={loading} postId={postId} commentStatus={commentStatus} texts={translations} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
   it('renders comments, does not allow adding new comments', () => {
@@ -77,16 +89,20 @@ describe('Comments view', () => {
         },
       },
     ];
-    const match = {
-      params: {
-        postSlug: 'post-slug',
-        postId: '43',
-        categorySlug: 'category-slug',
-        categoryId: '54',
-        comment_status: 'close',
+    const translations = {
+      FORMS: {
+        REPLY: 'reply',
+      },
+      TEXTS: {
+        NO_COMMENTS: 'No comments',
+        NO_COMMENTS_SHORT: 'No comments',
+        LEAVE_COMMENTS: 'Leave comment',
       },
     };
-    const output = shallow(<CommentsView comments={comments} match={match} />);
+    const postId = '43';
+    const loading = 0;
+    const commentStatus = 'closed';
+    const output = shallow(<CommentsView comments={comments} loading={loading} postId={postId} commentStatus={commentStatus} texts={translations} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

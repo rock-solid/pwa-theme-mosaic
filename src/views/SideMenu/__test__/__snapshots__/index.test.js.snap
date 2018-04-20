@@ -2,7 +2,7 @@
 
 exports[`Side menu renders hidden side menu 1`] = `
 <div
-  className="ui right visible sidebar"
+  className="ui right visible sidebar menu-pages"
 >
   
   <Page list test
@@ -14,7 +14,7 @@ exports[`Side menu renders hidden side menu 1`] = `
 
 exports[`Side menu renders side menu 1`] = `
 <div
-  className="ui right visible sidebar"
+  className="ui right visible sidebar menu-pages"
 >
   <div
     className="ui active loader"
@@ -28,7 +28,7 @@ exports[`Side menu renders side menu 1`] = `
 
 exports[`Side menu renders side menu 2`] = `
 <div
-  className="ui right visible sidebar"
+  className="ui right visible sidebar menu-pages"
 >
   
   <Page list test

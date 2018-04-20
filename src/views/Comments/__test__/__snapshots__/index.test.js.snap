@@ -2,10 +2,10 @@
 
 exports[`Comments screen renders a message if the page does not exist 1`] = `
 <div
-  className="ui comments"
+  className="comments-container"
 >
   <h3
-    className="ui block header"
+    className="ui block header comments-header"
   >
     <a
       href="/category/category-slug/42/post/post-slug/54"
@@ -42,17 +42,10 @@ exports[`Comments screen renders a message if the page does not exist 1`] = `
       className="refresh-view"
     >
       <Comments view test
+        commentStatus="closed"
         comments={Array []}
-        match={
-          Object {
-            "params": Object {
-              "categoryId": "42",
-              "categorySlug": "category-slug",
-              "postId": "54",
-              "postSlug": "post-slug",
-            },
-          }
-        }
+        loading={0}
+        postId="54"
         texts={Object {}}
       />
     </div>
@@ -62,10 +55,10 @@ exports[`Comments screen renders a message if the page does not exist 1`] = `
 
 exports[`Comments screen renders comments list 1`] = `
 <div
-  className="ui comments"
+  className="comments-container"
 >
   <h3
-    className="ui block header"
+    className="ui block header comments-header"
   >
     Comments
     <a
@@ -103,6 +96,7 @@ exports[`Comments screen renders comments list 1`] = `
       className="refresh-view"
     >
       <Comments view test
+        commentStatus="open"
         comments={
           Array [
             Object {
@@ -119,16 +113,8 @@ exports[`Comments screen renders comments list 1`] = `
             },
           ]
         }
-        match={
-          Object {
-            "params": Object {
-              "categoryId": "42",
-              "categorySlug": "category-slug",
-              "postId": "54",
-              "postSlug": "post-slug",
-            },
-          }
-        }
+        loading={0}
+        postId="54"
         texts={
           Object {
             "TEXTS": Object {

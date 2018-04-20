@@ -4,6 +4,15 @@ exports[`Page details renders page details 1`] = `
 <Container
   className="page"
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <link
+      href="some-link"
+      rel="canonical"
+    />
+  </HelmetWrapper>
   <Header
     dividing={true}
   >
@@ -17,7 +26,7 @@ exports[`Page details renders page details 1`] = `
         size="huge"
       />
     </Link>
-    <div
+    <h1
       dangerouslySetInnerHTML={
         Object {
           "__html": "Some title",

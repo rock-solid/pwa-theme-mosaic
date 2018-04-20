@@ -1,12 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Not found component should render correctly 1`] = `
-<Container
+<Header
+  as="h3"
   className="not-found"
+  icon={true}
+  textAlign="center"
 >
-  <Header>
-     
+  <Icon
+    as="i"
+    circular={true}
+    name="folder open"
+  />
+  <HeaderContent>
     Sorry, we could not find what you were looking for.
-  </Header>
-</Container>
+  </HeaderContent>
+</Header>
 `;
