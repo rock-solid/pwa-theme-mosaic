@@ -16,7 +16,7 @@ exports[`Categories carousel renders categories 1`] = `
         alt={undefined}
         className="ui tiny image"
         height={undefined}
-        src={Promise {}}
+        src="logo"
         width={undefined}
       />
       <Navbar mock />
@@ -41,7 +41,7 @@ exports[`Categories carousel renders loader 1`] = `
         alt={undefined}
         className="ui tiny image"
         height={undefined}
-        src={Promise {}}
+        src="logo"
         width={undefined}
       />
       <Navbar mock />

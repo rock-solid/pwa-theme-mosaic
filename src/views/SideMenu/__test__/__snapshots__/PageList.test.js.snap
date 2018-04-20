@@ -19,7 +19,7 @@ exports[`Page list renders page list in side menu 1`] = `
     <ListContent>
       <Link
         replace={false}
-        to={Promise {}}
+        to="websiteUrl"
       >
         <ListHeader
           as="h3"

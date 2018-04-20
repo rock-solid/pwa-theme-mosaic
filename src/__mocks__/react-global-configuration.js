@@ -28,7 +28,7 @@ class ReactGlobalConfiguration extends React.Component {
   }
 }
 ReactGlobalConfiguration.set = () => new Promise(() => true);
-ReactGlobalConfiguration.get = () => new Promise(() => true);
+ReactGlobalConfiguration.get = param => param;
 ReactGlobalConfiguration.settings = settings;
 
 export default ReactGlobalConfiguration;
