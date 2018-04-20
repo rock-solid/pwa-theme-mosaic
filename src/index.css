@@ -157,6 +157,9 @@ button.ui.button {
 i.icon {
   color: #747474; }
 
+a {
+  color: #4183c4; }
+
 * {
   margin: 0;
   padding: 0;

@@ -55,10 +55,17 @@ h6,
   font-family: $base-font-family;
   color: $base-text-color;
 }
+
+// Buttons & Links
+// -------------------------
+
 button.ui.button {
   background-color: $buttons-bg-color;
   color: $buttons-bg-color;
 }
 i.icon {
   color: $buttons-icon-color;
+}
+a {
+  color: $base-links-color;
 }

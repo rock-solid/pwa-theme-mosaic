@@ -30,6 +30,7 @@
         color: $category-text;
       }
       .post-content {
+        padding: 0 $base-spacing-xsm;
         iframe {
           max-width: 100%;
           height: auto;
