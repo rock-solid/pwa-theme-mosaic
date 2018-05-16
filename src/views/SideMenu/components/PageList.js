@@ -86,9 +86,9 @@ export default class PageList extends Component {
           <List.Item>
             <List.Icon name="linkify" size="large" verticalAlign="middle" />
             <List.Content>
-              <Link to={config.get('websiteUrl')}>
+              <a href={config.get('websiteUrl')}>
                 <List.Header as="h3">{this.props.text && this.props.text.VISIT_WEBSITE}</List.Header>
-              </Link>
+              </a>
             </List.Content>
           </List.Item>
         ) : null}
