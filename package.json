@@ -30,6 +30,7 @@
     "prop-types": "^15.5.10",
     "raf": "^3.4.0",
     "react": "^16.2.0",
+    "react-adsense": "0.0.5",
     "react-dom": "^16.2.0",
     "react-ga": "^2.4.1",
     "react-global-configuration": "^1.2.1",

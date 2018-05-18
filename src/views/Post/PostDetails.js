@@ -5,6 +5,9 @@ import { Container, Header, Label, Icon, Modal, Transition } from 'semantic-ui-r
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import config from 'react-global-configuration';
+import AdSense from 'react-adsense';
+
 import SocialMedia from './components/SocialMedia';
 import { postPropType } from '../PostsCarousel/reducer';
 import './style.css';
@@ -35,6 +38,9 @@ class PostDetails extends Component {
     const { author } = post._embedded;
     const categoriesList = post._embedded['wp:term'];
     const featuredMedia = post._embedded['wp:featuredmedia'];
+
+    // adsense params
+    const googleAds = config.get('googleAds');
 
     // set path routes
     let goBack = '/';
@@ -71,6 +77,13 @@ class PostDetails extends Component {
             </Moment>
           </Header.Subheader>
           <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          <AdSense.Google
+            client={googleAds.phone.publisherID}
+            slot={googleAds.phone.networkCode}
+            style={{ display: 'block' }}
+            layout="in-article"
+            format="fluid"
+          />
         </Container>
         <Modal
           className="share"
