@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import config from 'react-global-configuration';
-import AdSense from 'react-adsense';
+import { DFPSlotsProvider, AdSlot } from 'react-dfp';
 
 import SocialMedia from './components/SocialMedia';
 import { postPropType } from '../PostsCarousel/reducer';
@@ -77,13 +77,17 @@ class PostDetails extends Component {
             </Moment>
           </Header.Subheader>
           <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-          <AdSense.Google
-            client={googleAds.phone.publisherID}
-            slot={googleAds.phone.networkCode}
-            style={{ display: 'block' }}
-            layout="in-article"
-            format="fluid"
-          />
+          <DFPSlotsProvider
+            dfpNetworkId={googleAds.phone.networkCode}
+            sizeMapping={[{ viewport: [1024, 768], sizes: googleAds.phone.sizes }, { viewport: [900, 768], sizes: googleAds.phone.sizes }]}
+          >
+            <div className="desktop-ads">
+              <AdSlot sizes={googleAds.phone.sizes} adUnit={googleAds.phone.adUnitCode} />
+            </div>
+            <div className="mobile-ads">
+              <AdSlot sizes={googleAds.phone.sizes} adUnit={googleAds.phone.adUnitCode} />
+            </div>
+          </DFPSlotsProvider>
         </Container>
         <Modal
           className="share"
