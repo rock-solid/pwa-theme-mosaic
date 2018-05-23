@@ -77,13 +77,7 @@ class PostDetails extends Component {
             </Moment>
           </Header.Subheader>
           <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-          <DFPSlotsProvider
-            dfpNetworkId={googleAds.phone.networkCode}
-            sizeMapping={[{ viewport: [1024, 768], sizes: googleAds.phone.sizes }, { viewport: [900, 768], sizes: googleAds.phone.sizes }]}
-          >
-            <div className="desktop-ads">
-              <AdSlot sizes={googleAds.phone.sizes} adUnit={googleAds.phone.adUnitCode} />
-            </div>
+          <DFPSlotsProvider dfpNetworkId={googleAds.phone.networkCode} sizeMapping={[{ viewport: [900, 768], sizes: googleAds.phone.sizes }]}>
             <div className="mobile-ads">
               <AdSlot sizes={googleAds.phone.sizes} adUnit={googleAds.phone.adUnitCode} />
             </div>
