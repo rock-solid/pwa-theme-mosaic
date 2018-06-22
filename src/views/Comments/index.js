@@ -24,7 +24,7 @@ class Comments extends Component {
     this.handleRefresh = this.handleRefresh.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchComments({ post: this.props.match.params.postId, per_page: 100 }));
     dispatch(fetchTranslations);
@@ -41,14 +41,24 @@ class Comments extends Component {
   }
 
   render() {
-    const comm = this.props.comments.filter(comment => comment.post === Number(this.props.match.params.postId));
+    const comm = this.props.comments.filter(
+      comment => comment.post === Number(this.props.match.params.postId),
+    );
 
     let path = '';
-    if (!_.isNil(this.props.match.params.categorySlug) && !_.isNil(this.props.match.params.categoryId)) {
-      path = '/category/' + this.props.match.params.categorySlug + '/' + this.props.match.params.categoryId;
+    if (
+      !_.isNil(this.props.match.params.categorySlug) &&
+      !_.isNil(this.props.match.params.categoryId)
+    ) {
+      path =
+        '/category/' +
+        this.props.match.params.categorySlug +
+        '/' +
+        this.props.match.params.categoryId;
     }
 
-    path = path + '/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId;
+    path =
+      path + '/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId;
 
     return (
       <div className="comments-container">
@@ -113,6 +123,12 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchComments, fetchTranslations }, dispatch));
+  return Object.assign(
+    { dispatch },
+    bindActionCreators({ fetchComments, fetchTranslations }, dispatch),
+  );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Comments);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Comments);

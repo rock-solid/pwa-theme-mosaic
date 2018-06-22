@@ -36,22 +36,22 @@ class PostsCarousel extends Component {
     this.loadMore = this.loadMore.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.readPosts(this.props.match.params.categoryId);
     this.props.dispatch(fetchTranslations);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(previousProps) {
     // If the category has changed, get the posts for the new category
-    if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
+    if (this.props.match.params.categoryId !== previousProps.match.params.categoryId) {
       this.setState({ loadMore: true });
-      this.readPosts(nextProps.match.params.categoryId);
+      this.readPosts(this.props.match.params.categoryId);
       return;
     }
 
     // If we have requested more items and we don't get them - disable load more
     if (this.state.requestMoreItems === true) {
-      if (nextProps.posts.length > 0 && nextProps.posts.length === this.props.posts.length) {
+      if (this.props.posts.length > 0 && this.props.posts.length === previousProps.posts.length) {
         this.setState({ loadMore: false });
       }
 
@@ -73,7 +73,10 @@ class PostsCarousel extends Component {
     const noPosts = this.props.posts.length;
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
-    return Math.round(noPosts / this.state.itemsPerCard) + (noPosts % this.state.itemsPerCard === 0 ? 0 : 1);
+    return (
+      Math.round(noPosts / this.state.itemsPerCard) +
+      (noPosts % this.state.itemsPerCard === 0 ? 0 : 1)
+    );
   }
 
   /**
@@ -144,7 +147,10 @@ class PostsCarousel extends Component {
         <Slider {...settings}>
           {this.props.loading === 0 && listedPosts.length === 0 ? (
             <div key={Math.random()}>
-              {this.props.loadTranslations === 0 && this.props.translations.TEXTS && <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />}
+              {this.props.loadTranslations === 0 &&
+                this.props.translations.TEXTS && (
+                  <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />
+                )}
               <Footer />
             </div>
           ) : (
@@ -199,4 +205,7 @@ const mapStateToProps = (state, props) => ({
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchCategory }, dispatch));
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PostsCarousel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PostsCarousel);

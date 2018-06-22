@@ -38,19 +38,21 @@ class CategoriesCarousel extends Component {
   /**
    * Make request to load the initial data set.
    */
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props;
 
     // calculate the no of items for one home card and two regular cards
-    const noItems = this.state.itemsPerHome + (this.state.itemsPerCard * 2);
+    const noItems = this.state.itemsPerHome + this.state.itemsPerCard * 2;
     dispatch(fetchCategories({ page: 1, per_page: noItems }));
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate() {
     // If we have requested more items and we don't get them - disable load more
     if (this.state.requestMoreItems === true) {
-      if (nextProps.categories.length > 0 &&
-        nextProps.categories.length === this.props.categories.length) {
+      if (
+        this.props.categories.length > 0 &&
+        this.props.categories.length === this.props.categories.length
+      ) {
         this.setState({ loadMore: false });
       }
 
@@ -80,8 +82,11 @@ class CategoriesCarousel extends Component {
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
     // Add +1 for the home card.
-    return Math.round(lengthWithoutHome / this.state.itemsPerCard) +
-      (lengthWithoutHome % this.state.itemsPerCard === 0 ? 0 : 1) + 1;
+    return (
+      Math.round(lengthWithoutHome / this.state.itemsPerCard) +
+      (lengthWithoutHome % this.state.itemsPerCard === 0 ? 0 : 1) +
+      1
+    );
   }
 
   /**
@@ -114,7 +119,9 @@ class CategoriesCarousel extends Component {
 
     if (index === noCards - 1) {
       const { dispatch } = this.props;
-      dispatch(fetchCategories({ page: this.getPageNumber() + 1, per_page: this.state.itemsPerCard * 3 }));
+      dispatch(
+        fetchCategories({ page: this.getPageNumber() + 1, per_page: this.state.itemsPerCard * 3 }),
+      );
       this.setState({ requestMoreItems: true });
     }
   }
@@ -177,4 +184,7 @@ const mapStateToProps = state => ({
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchCategories, closeMenu }, dispatch));
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesCarousel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CategoriesCarousel);

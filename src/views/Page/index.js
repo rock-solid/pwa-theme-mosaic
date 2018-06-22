@@ -17,13 +17,13 @@ import { fetchTranslations } from '../../translations/actions';
 import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
 
 class PageView extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.readPage(this.props.match.params.pageId);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.pageId !== nextProps.match.params.pageId) {
-      this.readPage(nextProps.match.params.pageId);
+  componentDidUpdate(previousProps) {
+    if (this.props.match.params.pageId !== previousProps.match.params.pageId) {
+      this.readPage(this.props.match.params.pageId);
     }
   }
 
@@ -82,7 +82,13 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPages, fetchTranslations }, dispatch));
+  return Object.assign(
+    { dispatch },
+    bindActionCreators({ fetchPages, fetchTranslations }, dispatch),
+  );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PageView);
