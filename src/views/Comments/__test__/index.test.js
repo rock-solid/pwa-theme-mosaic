@@ -27,6 +27,7 @@ describe('Comments screen', () => {
         categorySlug: 'category-slug',
         postId: '54',
         postSlug: 'post-slug',
+        commentStatus: 'closed',
       },
     };
     expect(
@@ -71,6 +72,7 @@ describe('Comments screen', () => {
         categorySlug: 'category-slug',
         postId: '54',
         postSlug: 'post-slug',
+        commentStatus: 'open',
       },
     };
     expect(

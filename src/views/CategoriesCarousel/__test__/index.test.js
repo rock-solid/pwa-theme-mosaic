@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import mockStore from '../../../__mocks__/redux-mock-store';
 import CategoriesCarousel from '../index';
 
-jest.mock('../../../components/CategoriesList/index', () => 'Categories list mock');
+jest.mock('../components/CategoriesList/index', () => 'Categories list mock');
 jest.mock('../../../components/NavBar/index', () => 'Navbar mock');
 jest.mock('../../SideMenu/index', () => 'Page side menu mock');
 

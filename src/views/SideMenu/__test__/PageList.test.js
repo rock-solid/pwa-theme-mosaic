@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import PageList from '../PageList';
+import PageList from '../components/PageList';
 
 describe('Page list', () => {
   it('renders page list in side menu', () => {

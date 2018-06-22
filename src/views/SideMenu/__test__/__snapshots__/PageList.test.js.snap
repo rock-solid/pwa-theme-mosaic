@@ -5,7 +5,9 @@ exports[`Page list renders page list in side menu 1`] = `
   divided={true}
   relaxed={true}
 >
-  <Header>
+  <Header
+    as="h2"
+  >
     Go to
   </Header>
   <ListItem>
@@ -17,9 +19,11 @@ exports[`Page list renders page list in side menu 1`] = `
     <ListContent>
       <Link
         replace={false}
-        to={Promise {}}
+        to="websiteUrl"
       >
-        <ListHeader>
+        <ListHeader
+          as="h3"
+        >
           Visit website
         </ListHeader>
       </Link>

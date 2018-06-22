@@ -2,7 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import PostView from '../PostView';
+import PostView from '../PostDetails';
+
+jest.mock('../components/SocialMedia', () => 'Social media test');
 
 describe('Post card', () => {
   it('should render post with image placeholder', () => {
@@ -26,6 +28,7 @@ describe('Post card', () => {
         rendered: 'Some excerpt to be rendered',
         protected: true,
       },
+      link: 'some-post-link',
       date: 'someMockDate', //TO DO : date validation => class Date
       // TO DO : proptype for image src
     };
@@ -63,6 +66,7 @@ describe('Post card', () => {
         rendered: 'Some excerpt to be rendered',
         protected: true,
       },
+      link: 'some-post-link',
       date: 'someMockDate', //TO DO : date validation => class Date
       // TO DO : proptype for image src
     };

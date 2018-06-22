@@ -1,149 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Posts list should render correctly even number of posts 1`] = `
-<div>
-  <Grid
-    columns={1}
-    divided={true}
-  >
-    <GridColumn
-      className="double-post"
-    >
-      <GridRow>
-        <PostCard
-          category={
-            Object {
-              "params": Object {
-                "categoryId": "32",
-                "categorySlug": "some-slug",
-              },
-            }
-          }
-          key="1"
-          post={
-            Object {
-              "_embedded": Object {
-                "wp:featuredmedia": "someMockImageUrl",
-              },
-              "author": 55,
-              "categories": Array [
-                43,
-                54,
-                23,
-              ],
-              "content": Object {
-                "protected": false,
-                "rendered": "Some mock content to be rendered",
-              },
-              "date": "some mock date",
-              "excerpt": Object {
-                "protected": true,
-                "rendered": "Some mock exceprt to be rendered",
-              },
-              "id": 1,
-              "slug": "mock-slug",
-              "title": Object {
-                "rendered": "Mock title",
-              },
-            }
-          }
-        />
-      </GridRow>
-      <hr />
-      <GridRow>
-        <PostCard
-          category={
-            Object {
-              "params": Object {
-                "categoryId": "32",
-                "categorySlug": "some-slug",
-              },
-            }
-          }
-          key="2"
-          post={
-            Object {
-              "_embedded": Object {
-                "wp:featuredmedia": "someMockImageUrl",
-              },
-              "author": 55,
-              "categories": Array [
-                43,
-                54,
-                23,
-              ],
-              "content": Object {
-                "protected": false,
-                "rendered": "Some mock content to be rendered",
-              },
-              "date": "some mock date",
-              "excerpt": Object {
-                "protected": true,
-                "rendered": "Some mock exceprt to be rendered",
-              },
-              "id": 2,
-              "slug": "mock-slug",
-              "title": Object {
-                "rendered": "Mock title",
-              },
-            }
-          }
-        />
-      </GridRow>
-    </GridColumn>
-  </Grid>
+<div
+  className="double-post"
+>
+  <PostCard
+    category={
+      Object {
+        "params": Object {
+          "categoryId": "32",
+          "categorySlug": "some-slug",
+        },
+      }
+    }
+    key="1"
+    post={
+      Object {
+        "_embedded": Object {
+          "wp:featuredmedia": "someMockImageUrl",
+        },
+        "author": 55,
+        "categories": Array [
+          43,
+          54,
+          23,
+        ],
+        "content": Object {
+          "protected": false,
+          "rendered": "Some mock content to be rendered",
+        },
+        "date": "some mock date",
+        "excerpt": Object {
+          "protected": true,
+          "rendered": "Some mock exceprt to be rendered",
+        },
+        "id": 1,
+        "slug": "mock-slug",
+        "title": Object {
+          "rendered": "Mock title",
+        },
+      }
+    }
+  />
+  <PostCard
+    category={
+      Object {
+        "params": Object {
+          "categoryId": "32",
+          "categorySlug": "some-slug",
+        },
+      }
+    }
+    key="2"
+    post={
+      Object {
+        "_embedded": Object {
+          "wp:featuredmedia": "someMockImageUrl",
+        },
+        "author": 55,
+        "categories": Array [
+          43,
+          54,
+          23,
+        ],
+        "content": Object {
+          "protected": false,
+          "rendered": "Some mock content to be rendered",
+        },
+        "date": "some mock date",
+        "excerpt": Object {
+          "protected": true,
+          "rendered": "Some mock exceprt to be rendered",
+        },
+        "id": 2,
+        "slug": "mock-slug",
+        "title": Object {
+          "rendered": "Mock title",
+        },
+      }
+    }
+  />
 </div>
 `;
 
 exports[`Posts list should render correctly odd number of posts 1`] = `
-<div>
-  <Grid
-    className="single-post"
-  >
-    <GridColumn>
-      <GridRow>
-        <Card>
-          <PostCard
-            category={
-              Object {
-                "params": Object {
-                  "categoryId": "32",
-                  "categorySlug": "some-slug",
-                },
-              }
-            }
-            key="1"
-            post={
-              Object {
-                "_embedded": Object {
-                  "wp:featuredmedia": "someMockImageUrl",
-                },
-                "author": 55,
-                "categories": Array [
-                  43,
-                  54,
-                  23,
-                ],
-                "content": Object {
-                  "protected": false,
-                  "rendered": "Some mock content to be rendered",
-                },
-                "date": "some mock date",
-                "excerpt": Object {
-                  "protected": true,
-                  "rendered": "Some mock exceprt to be rendered",
-                },
-                "id": 1,
-                "slug": "mock-slug",
-                "title": Object {
-                  "rendered": "Mock title",
-                },
-              }
-            }
-          />
-        </Card>
-      </GridRow>
-    </GridColumn>
-  </Grid>
+<div
+  className="single-post"
+>
+  <PostCard
+    category={
+      Object {
+        "params": Object {
+          "categoryId": "32",
+          "categorySlug": "some-slug",
+        },
+      }
+    }
+    key="1"
+    post={
+      Object {
+        "_embedded": Object {
+          "wp:featuredmedia": "someMockImageUrl",
+        },
+        "author": 55,
+        "categories": Array [
+          43,
+          54,
+          23,
+        ],
+        "content": Object {
+          "protected": false,
+          "rendered": "Some mock content to be rendered",
+        },
+        "date": "some mock date",
+        "excerpt": Object {
+          "protected": true,
+          "rendered": "Some mock exceprt to be rendered",
+        },
+        "id": 1,
+        "slug": "mock-slug",
+        "title": Object {
+          "rendered": "Mock title",
+        },
+      }
+    }
+  />
 </div>
 `;
