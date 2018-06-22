@@ -3,6 +3,7 @@ import { List, Header, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'react-global-configuration';
+import _ from 'lodash';
 
 import { pagePropType } from '../reducer';
 
@@ -25,14 +26,17 @@ export default class PageList extends Component {
 
   /**
    * Add a children property to each page - does/not have kids.
-   * @param {Object} nextProps
+   * @param {Object} previousProps
    */
-  componentWillReceiveProps(nextProps) {
-    const pages = nextProps.pages.map((item) => {
-      const children = this.props.pages.filter(child => child.parent === item.id);
+  componentDidUpdate(previousProps) {
+    const pages = this.props.pages.map((item) => {
+      const children = previousProps.pages.filter(child => child.parent === item.id);
       return Object.assign(item, { children: children.length > 0 });
     });
-    this.setState({ pages });
+
+    if (!_.isEqual(this.state.pages, pages)) {
+      this.setState({ pages });
+    }
   }
 
   filterPages() {
@@ -87,7 +91,9 @@ export default class PageList extends Component {
             <List.Icon name="linkify" size="large" verticalAlign="middle" />
             <List.Content>
               <a href={config.get('websiteUrl')}>
-                <List.Header as="h3">{this.props.text && this.props.text.VISIT_WEBSITE}</List.Header>
+                <List.Header as="h3">
+                  {this.props.text && this.props.text.VISIT_WEBSITE}
+                </List.Header>
               </a>
             </List.Content>
           </List.Item>
