@@ -32,33 +32,36 @@ export const INITIAL_STATE = Immutable({
 
 const items = (state = INITIAL_STATE.items, action) => {
   switch (action.type) {
-    case REQUEST_POSTS:
-      return state;
-    case RECEIVE_POSTS:
-      if (Array.isArray(action.posts)) {
-        return _.unionBy(state, action.posts, 'id');
-      }
-      return _.unionBy(state, [action.posts], 'id');
-    default:
-      return state;
+  case REQUEST_POSTS:
+    return state;
+  case RECEIVE_POSTS:
+    if (Array.isArray(action.posts)) {
+      const noPasswordPosts = _.filter(action.posts, post => post.content.protected === false);
+
+      return _.unionBy(state, noPasswordPosts, 'id');
+    }
+
+    return action.posts.content.protected === false
+        ? _.unionBy(state, [action.posts], 'id')
+        : state;
+  default:
+    return state;
   }
 };
 const isFetching = (state = INITIAL_STATE.isFetching, action) => {
   switch (action.type) {
-    case REQUEST_POSTS:
-      return state + 1;
-    case RECEIVE_POSTS:
-      return state - 1;
-    default:
-      return state;
+  case REQUEST_POSTS:
+    return state + 1;
+  case RECEIVE_POSTS:
+    return state - 1;
+  default:
+    return state;
   }
 };
 
 export const getPosts = state => state.items;
 export const getPostsByCategory = (state, categoryId) =>
-  state.items.filter(
-    post => post.categories.indexOf(Number(categoryId)) !== -1,
-  );
+  state.items.filter(post => post.categories.indexOf(Number(categoryId)) !== -1);
 
 export const getPostsFetching = state => state.isFetching;
 
