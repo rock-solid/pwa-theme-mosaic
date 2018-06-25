@@ -19,7 +19,7 @@ export const fetchCategories = (params = {}) => (dispatch) => {
   if (params && params.post) {
     url = config.get('export').categories + '?post=' + String(params.post);
   } else if (params && params.id) {
-    url = config.get('export').categories + String(params.id);
+    url = config.get('export').categories + '?id=' + String(params.id);
   } else {
     url =
       config.get('export').categories +
