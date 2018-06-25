@@ -9,6 +9,7 @@ export const categoryPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 });
 
 export const INITIAL_STATE = Immutable({
