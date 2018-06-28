@@ -61,7 +61,12 @@ class PostDetails extends Component {
         <Link to={goBack}>
           <Icon circular name="chevron left" />
         </Link>
-        {featuredMedia ? <div className="post-image" style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }} /> : null}
+        {featuredMedia ? (
+          <div
+            className="post-image"
+            style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }}
+          />
+        ) : null}
         <Container textAlign="justified">
           <Header>
             <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
@@ -72,16 +77,24 @@ class PostDetails extends Component {
             </Link>
           ))}
           <Header.Subheader>
-            &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>{author[0].name}</b>,&nbsp;<Moment format="MMMM DD, YYYY">
-              {post.date}
-            </Moment>
+            &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>
+              {author[0].name}
+            </b>,&nbsp;<Moment format="MMMM DD, YYYY">{post.date}</Moment>
           </Header.Subheader>
-          <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-          <DFPSlotsProvider dfpNetworkId={googleAds.phone.networkCode} sizeMapping={[{ viewport: [900, 768], sizes: googleAds.phone.sizes }]}>
-            <div className="mobile-ads">
-              <AdSlot sizes={googleAds.phone.sizes} adUnit={googleAds.phone.adUnitCode} />
-            </div>
-          </DFPSlotsProvider>
+          <div
+            className="post-content"
+            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+          />
+          {googleAds !== null ? (
+            <DFPSlotsProvider
+              dfpNetworkId={googleAds.phone.networkCode}
+              sizeMapping={[{ viewport: [900, 768], sizes: googleAds.phone.sizes }]}
+            >
+              <div className="mobile-ads">
+                <AdSlot sizes={googleAds.phone.sizes} adUnit={googleAds.phone.adUnitCode} />
+              </div>
+            </DFPSlotsProvider>
+          ) : null}
         </Container>
         <Modal
           className="share"
@@ -89,7 +102,9 @@ class PostDetails extends Component {
           onClick={this.handleClose}
           trigger={
             <Transition.Group animation="fade up" duration="500" className="transition-container">
-              {this.state.visible && <Icon circular name="share alternate" size="large" onClick={this.handleOpen} />}
+              {this.state.visible && (
+                <Icon circular name="share alternate" size="large" onClick={this.handleOpen} />
+              )}
             </Transition.Group>
           }
           basic
