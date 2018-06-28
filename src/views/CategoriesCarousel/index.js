@@ -150,7 +150,7 @@ class CategoriesCarousel extends Component {
         <Sidebar.Pushable>
           <SideMenu />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
-            {config.get('logo') && <Image src={config.get('logo')} size="tiny" />}
+            {config.get('logo') !== '' && <Image src={config.get('logo')} size="tiny" />}
             <NavBar />
             {this.props.loading === 1 ? <Loader active /> : null}
             <Slider {...settings}>
