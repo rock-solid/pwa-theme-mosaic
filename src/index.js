@@ -23,7 +23,7 @@ import './index.css';
 config.set(window.__INITIAL_CONFIG__, { freeze: false });
 
 // set up google analytics tracking
-if (config.get('ga-id')) {
+if (config.get('ga-id') !== null) {
   ReactGA.initialize(config.get('ga-id'), { debug: true });
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
@@ -39,10 +39,22 @@ render(
             <Route exact path="/category/:categorySlug/:categoryId" component={PostsCarousel} />
             {/* post routes direct url */}
             <Route exact path="/post/:postSlug/:postId" component={PostView} />
-            <Route exact path="/post/:postSlug/:postId/comments/:commentStatus" component={Comments} />
+            <Route
+              exact
+              path="/post/:postSlug/:postId/comments/:commentStatus"
+              component={Comments}
+            />
             {/* post routes from app navigation */}
-            <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId" component={PostView} />
-            <Route exact path="/category/:categorySlug/:categoryId/post/:postSlug/:postId/comments/:commentStatus" component={Comments} />
+            <Route
+              exact
+              path="/category/:categorySlug/:categoryId/post/:postSlug/:postId"
+              component={PostView}
+            />
+            <Route
+              exact
+              path="/category/:categorySlug/:categoryId/post/:postSlug/:postId/comments/:commentStatus"
+              component={Comments}
+            />
             <ModalRoute exact path="/page/:pageSlug/:pageId" parentPath="/" component={PageView} />
             <Route path="*" component={NotFound} />
           </Switch>
