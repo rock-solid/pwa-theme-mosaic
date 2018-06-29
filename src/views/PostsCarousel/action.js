@@ -7,9 +7,9 @@ export const requestPosts = () => ({
   type: REQUEST_POSTS,
 });
 
-export const receivePosts = posts => ({
+export const receivePosts = postsData => ({
   type: RECEIVE_POSTS,
-  posts,
+  postsData,
 });
 
 export const fetchPosts = (params = {}) => (dispatch) => {
