@@ -30,15 +30,15 @@ class PostsCarousel extends Component {
     this.loadMore = this.loadMore.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.readPosts(this.props.match.params.categoryId);
     this.props.dispatch(fetchTranslations);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(previousProps) {
     // If the category has changed, get the posts for the new category
-    if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
-      this.readPosts(nextProps.match.params.categoryId);
+    if (this.props.match.params.categoryId !== previousProps.match.params.categoryId) {
+      this.readPosts(this.props.match.params.categoryId);
     }
   }
 
