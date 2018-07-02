@@ -3,6 +3,7 @@ const concat = require('gulp-concat');
 const pump = require('pump');
 const replace = require('gulp-replace');
 
+// @todo Use webpack instead of gulp for this task
 gulp.task('default', ['build-custom-sass']);
 
 gulp.task('build-custom-sass', () => {
