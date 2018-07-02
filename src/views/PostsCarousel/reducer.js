@@ -28,8 +28,6 @@ export const postPropType = PropTypes.shape({
 export const INITIAL_STATE = Immutable({
   items: [],
   isFetching: 0,
-  page: 1,
-  loadMore: true,
 });
 
 const items = (state = INITIAL_STATE.items, action) => {
@@ -37,50 +35,14 @@ const items = (state = INITIAL_STATE.items, action) => {
   case REQUEST_POSTS:
     return state;
   case RECEIVE_POSTS:
-    if (_.isEmpty(action.postsData)) {
-      return state;
+    if (Array.isArray(action.posts)) {
+      return _.unionBy(state, action.posts, 'id');
     }
-
-    if (Array.isArray(action.postsData.posts)) {
-      return _.unionBy(state, action.postsData.posts, 'id');
-    }
-
-    return _.unionBy(state, [action.postsData.posts], 'id');
-
+    return _.unionBy(state, [action.posts], 'id');
   default:
     return state;
   }
 };
-
-const page = (state = INITIAL_STATE.page, action) => {
-  switch (action.type) {
-  case REQUEST_POSTS:
-    return state;
-  case RECEIVE_POSTS:
-    if (_.isEmpty(action.postsData)) {
-      return state;
-    }
-
-    return action.postsData.page;
-  default:
-    return state;
-  }
-};
-
-const loadMore = (state = INITIAL_STATE.loadMore, action) => {
-  switch (action.type) {
-  case REQUEST_POSTS:
-    return state;
-  case RECEIVE_POSTS:
-    if (_.isEmpty(action.postsData)) {
-      return state;
-    }
-    return action.postsData.loadMore;
-  default:
-    return state;
-  }
-};
-
 const isFetching = (state = INITIAL_STATE.isFetching, action) => {
   switch (action.type) {
   case REQUEST_POSTS:
@@ -96,14 +58,9 @@ export const getPosts = state => state.items;
 export const getPostsByCategory = (state, categoryId) =>
   state.items.filter(post => post.categories.indexOf(Number(categoryId)) !== -1);
 
-export const getPageNumber = state => state.page;
-export const getLoadMore = state => state.loadMore;
-
 export const getPostsFetching = state => state.isFetching;
 
 export default combineReducers({
   items,
   isFetching,
-  page,
-  loadMore,
 });

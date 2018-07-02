@@ -9,13 +9,7 @@ import Helmet from 'react-helmet';
 import { fetchPosts } from './action';
 import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
 import { getCategories as getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
-import {
-  postPropType,
-  getPostsFetching,
-  getPostsByCategory,
-  getLoadMore,
-  getPageNumber,
-} from './reducer';
+import { postPropType, getPostsFetching, getPostsByCategory } from './reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
@@ -31,24 +25,45 @@ class PostsCarousel extends Component {
     super(props);
     this.state = {
       itemsPerCard: 2,
+
+      // if load more is enabled for loading more items
+      loadMore: true,
+
+      // if we have a load more request in progress
+      requestMoreItems: false,
     };
 
     this.loadMore = this.loadMore.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.readPosts(this.props.match.params.categoryId);
     this.props.dispatch(fetchTranslations);
   }
 
-  componentDidUpdate(previousProps) {
+  componentWillReceiveProps(nextProps) {
     // If the category has changed, get the posts for the new category
-    if (
-      this.props.match.params.categoryId !== previousProps.match.params.categoryId &&
-      this.props.loadMore === true
-    ) {
-      this.readPosts(this.props.match.params.categoryId);
+    if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
+      this.setState({ loadMore: true });
+      this.readPosts(nextProps.match.params.categoryId);
+      return;
     }
+
+    // If we have requested more items and we don't get them - disable load more
+    if (this.state.requestMoreItems === true) {
+      if (nextProps.posts.length > 0 && nextProps.posts.length === this.props.posts.length) {
+        this.setState({ loadMore: false });
+      }
+
+      this.setState({ requestMoreItems: false });
+    }
+  }
+
+  /**
+   * Calculate the page number for the next request.
+   */
+  getPageNumber() {
+    return Math.round(this.props.posts.length / (this.state.itemsPerCard * 5));
   }
 
   /**
@@ -73,12 +88,14 @@ class PostsCarousel extends Component {
     dispatch(
       fetchPosts({
         categories: categoryId,
-        page: this.props.pageNumber,
+        page: this.getPageNumber() + 1,
         status: 'publish',
         per_page: this.state.itemsPerCard * 5,
       }),
     );
     dispatch(fetchCategory({ id: categoryId }));
+
+    this.setState({ requestMoreItems: true });
   }
 
   /**
@@ -86,13 +103,14 @@ class PostsCarousel extends Component {
    * @param {Number} index = The index of the card.
    */
   loadMore(index) {
-    if (this.props.loadMore === false) {
+    if (this.state.loadMore === false) {
       return;
     }
 
     const noCards = this.getNoCards();
 
     if (index === noCards - 1) {
+      this.setState({ requestMoreItems: true });
       this.readPosts(this.props.match.params.categoryId);
     }
   }
@@ -152,8 +170,6 @@ class PostsCarousel extends Component {
 PostsCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(postPropType).isRequired,
-  pageNumber: PropTypes.number.isRequired,
-  loadMore: PropTypes.bool.isRequired,
   loading: PropTypes.number.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -180,8 +196,6 @@ PostsCarousel.defaultProps = {
 };
 const mapStateToProps = (state, props) => ({
   posts: getPostsByCategory(state.posts, props.match.params.categoryId),
-  pageNumber: getPageNumber(state.posts),
-  loadMore: getLoadMore(state.posts),
   loading: getPostsFetching(state.posts),
   category: getCategory(state.categories),
   loadTranslations: getTranslationsFetching(state.translations),
