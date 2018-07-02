@@ -72,6 +72,15 @@ const isFetching = (state = INITIAL_STATE.isFetching, action) => {
 
 export const getPosts = state => state.items;
 export const getLoadMorePosts = state => state.loadMore;
+export const getPostProtectedStatus = (state, postId) => {
+  if (!_.isEmpty(state.items)) {
+    const post = _.find(state.items, postItem => Number(postItem.id) === Number(postId));
+
+    return !_.isNil(post) ? post.content.protected : true;
+  }
+
+  return true;
+};
 export const getPostsByCategory = (state, categoryId) =>
   state.items.filter(post => post.categories.indexOf(Number(categoryId)) !== -1);
 

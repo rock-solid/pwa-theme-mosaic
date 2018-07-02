@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Loader, Header, Icon } from 'semantic-ui-react';
 import _ from 'lodash';
 import ReactPullToRefresh from 'react-pull-to-refresh';
@@ -10,6 +10,7 @@ import 'react-router-modal/css/react-router-modal.css';
 
 import { fetchComments } from './actions';
 import { getComments, getCommentsFetching, commentPropType } from './reducers';
+import { getPostProtectedStatus } from '../PostsCarousel/reducer';
 import CommentsView from './components/CommentsView';
 
 // translations
@@ -60,7 +61,7 @@ class Comments extends Component {
     path =
       path + '/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId;
 
-    return (
+    return this.props.isProtectedPost === false ? (
       <div className="comments-container">
         <Header as="h3" block className="comments-header">
           {this.props.translations.TEXTS && this.props.translations.TEXTS.COMMENTS}
@@ -82,6 +83,8 @@ class Comments extends Component {
           </ReactPullToRefresh>
         )}
       </div>
+    ) : (
+      <Redirect to="/" />
     );
   }
 }
@@ -97,6 +100,7 @@ Comments.propTypes = {
       commentStatus: PropTypes.oneOf(['open', 'closed', 'disabled']).isRequired,
     }).isRequired,
   }).isRequired,
+  isProtectedPost: PropTypes.bool.isRequired,
   loading: PropTypes.number.isRequired,
   comments: PropTypes.arrayOf(commentPropType).isRequired,
   loadingTranslations: PropTypes.number.isRequired,
@@ -115,11 +119,12 @@ Comments.defaultProps = {
   },
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   comments: getComments(state.comments),
   loading: getCommentsFetching(state.comments),
   translations: getTranslations(state.translations),
   loadingTranslations: getTranslationsFetching(state.translations),
+  isProtectedPost: getPostProtectedStatus(state.posts, props.match.params.postId),
 });
 
 function mapDispatchToProps(dispatch) {
