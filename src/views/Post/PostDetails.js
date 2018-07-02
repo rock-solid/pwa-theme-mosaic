@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import config from 'react-global-configuration';
 import { DFPSlotsProvider, AdSlot } from 'react-dfp';
-
 import SocialMedia from './components/SocialMedia';
 import { postPropType } from '../PostsCarousel/reducer';
 import './style.css';
@@ -108,26 +107,28 @@ class PostDetails extends Component {
             </DFPSlotsProvider>
           ) : null}
         </Container>
-        <Modal
-          className="share"
-          open={this.state.modalOpen}
-          onClick={this.handleClose}
-          trigger={
-            <Transition.Group animation="fade up" duration="500" className="transition-container">
-              {this.state.visible && (
-                <Icon circular name="share alternate" size="large" onClick={this.handleOpen} />
-              )}
-            </Transition.Group>
-          }
-          basic
-        >
-          <Modal.Actions>
-            <Link to={path}>
-              <Icon name="comment" size="large" circular inverted color="grey" />
-            </Link>
-            <SocialMedia title={post.title.rendered} link={post.link} />
-          </Modal.Actions>
-        </Modal>
+        {post.content.protected === false ? (
+          <Modal
+            className="share"
+            open={this.state.modalOpen}
+            onClick={this.handleClose}
+            trigger={
+              <Transition.Group animation="fade up" duration="500" className="transition-container">
+                {this.state.visible && (
+                  <Icon circular name="share alternate" size="large" onClick={this.handleOpen} />
+                )}
+              </Transition.Group>
+            }
+            basic
+          >
+            <Modal.Actions>
+              <Link to={path}>
+                <Icon name="comment" size="large" circular inverted color="grey" />
+              </Link>
+              <SocialMedia title={post.title.rendered} link={post.link} />
+            </Modal.Actions>
+          </Modal>
+        ) : null}
       </Container>
     );
   }
