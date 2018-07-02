@@ -28,6 +28,7 @@ export const postPropType = PropTypes.shape({
 export const INITIAL_STATE = Immutable({
   items: [],
   isFetching: 0,
+  loadMore: true,
 });
 
 const items = (state = INITIAL_STATE.items, action) => {
@@ -43,6 +44,21 @@ const items = (state = INITIAL_STATE.items, action) => {
     return state;
   }
 };
+
+const loadMore = (state = INITIAL_STATE.loadMore, action) => {
+  switch (action.type) {
+  case REQUEST_POSTS:
+    return state;
+  case RECEIVE_POSTS:
+    if (Array.isArray(action.posts)) {
+      return !(action.posts.length < 10);
+    }
+    return state;
+  default:
+    return state;
+  }
+};
+
 const isFetching = (state = INITIAL_STATE.isFetching, action) => {
   switch (action.type) {
   case REQUEST_POSTS:
@@ -55,6 +71,7 @@ const isFetching = (state = INITIAL_STATE.isFetching, action) => {
 };
 
 export const getPosts = state => state.items;
+export const getLoadMore = state => state.loadMore;
 export const getPostsByCategory = (state, categoryId) =>
   state.items.filter(post => post.categories.indexOf(Number(categoryId)) !== -1);
 
@@ -63,4 +80,5 @@ export const getPostsFetching = state => state.isFetching;
 export default combineReducers({
   items,
   isFetching,
+  loadMore,
 });

@@ -65,7 +65,8 @@ const rootReducer = persistCombineReducers(rootPersistConfig, {
   posts: persistReducer(
     {
       key: 'posts',
-      ...persistConfig,
+      storage,
+      blacklist: ['isFetching', 'loadMore'],
     },
     posts,
   ),
@@ -93,7 +94,11 @@ const rootReducer = persistCombineReducers(rootPersistConfig, {
   form: formReducer,
 });
 
-const store = createStore(rootReducer, defaultState, compose(applyMiddleware(thunk, logger, routerMiddleware(history))));
+const store = createStore(
+  rootReducer,
+  defaultState,
+  compose(applyMiddleware(thunk, logger, routerMiddleware(history))),
+);
 const persistor = persistStore(store);
 
 export { history, persistor };

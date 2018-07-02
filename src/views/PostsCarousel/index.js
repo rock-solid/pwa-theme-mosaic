@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { fetchPosts } from './action';
 import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
 import { getCategories as getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
-import { postPropType, getPostsFetching, getPostsByCategory } from './reducer';
+import { postPropType, getPostsFetching, getPostsByCategory, getLoadMore } from './reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
@@ -25,12 +25,6 @@ class PostsCarousel extends Component {
     super(props);
     this.state = {
       itemsPerCard: 2,
-
-      // if load more is enabled for loading more items
-      loadMore: true,
-
-      // if we have a load more request in progress
-      requestMoreItems: false,
     };
 
     this.loadMore = this.loadMore.bind(this);
@@ -44,18 +38,7 @@ class PostsCarousel extends Component {
   componentWillReceiveProps(nextProps) {
     // If the category has changed, get the posts for the new category
     if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
-      this.setState({ loadMore: true });
       this.readPosts(nextProps.match.params.categoryId);
-      return;
-    }
-
-    // If we have requested more items and we don't get them - disable load more
-    if (this.state.requestMoreItems === true) {
-      if (nextProps.posts.length > 0 && nextProps.posts.length === this.props.posts.length) {
-        this.setState({ loadMore: false });
-      }
-
-      this.setState({ requestMoreItems: false });
     }
   }
 
@@ -94,8 +77,6 @@ class PostsCarousel extends Component {
       }),
     );
     dispatch(fetchCategory({ id: categoryId }));
-
-    this.setState({ requestMoreItems: true });
   }
 
   /**
@@ -103,14 +84,13 @@ class PostsCarousel extends Component {
    * @param {Number} index = The index of the card.
    */
   loadMore(index) {
-    if (this.state.loadMore === false) {
+    if (this.props.loadMore === false) {
       return;
     }
 
     const noCards = this.getNoCards();
 
     if (index === noCards - 1) {
-      this.setState({ requestMoreItems: true });
       this.readPosts(this.props.match.params.categoryId);
     }
   }
@@ -171,6 +151,7 @@ PostsCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(postPropType).isRequired,
   loading: PropTypes.number.isRequired,
+  loadMore: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       categoryId: PropTypes.string.isRequired,
@@ -200,6 +181,7 @@ const mapStateToProps = (state, props) => ({
   category: getCategory(state.categories),
   loadTranslations: getTranslationsFetching(state.translations),
   translations: getTranslations(state.translations),
+  loadMore: getLoadMore(state.posts),
 });
 
 function mapDispatchToProps(dispatch) {
