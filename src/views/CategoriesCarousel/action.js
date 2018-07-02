@@ -7,9 +7,10 @@ export const requestCategories = () => ({
   type: REQUEST_CATEGORIES,
 });
 
-export const receiveCategories = categories => ({
+export const receiveCategories = (categories, perPage = null) => ({
   type: RECEIVE_CATEGORIES,
   categories,
+  perPage,
 });
 
 export const fetchCategories = (params = {}) => (dispatch) => {
@@ -30,7 +31,7 @@ export const fetchCategories = (params = {}) => (dispatch) => {
   }
   return fetch(url)
     .then(response => response.json())
-    .then(json => dispatch(receiveCategories(json)))
+    .then(json => dispatch(receiveCategories(json, params.per_page)))
     .catch(() => {
       dispatch(receiveCategories([]));
     });

@@ -7,7 +7,12 @@ import { Sidebar, Loader, Image } from 'semantic-ui-react';
 import config from 'react-global-configuration';
 
 import { fetchCategories } from './action';
-import { getCategories, getCategoriesFetching, categoryPropType } from './reducer';
+import {
+  getCategories,
+  getCategoriesFetching,
+  categoryPropType,
+  getLoadMoreCategories,
+} from './reducer';
 
 import SideMenu from '../SideMenu/index';
 import NavBar from '../../components/NavBar/index';
@@ -23,12 +28,6 @@ class CategoriesCarousel extends Component {
     this.state = {
       itemsPerHome: 3,
       itemsPerCard: 5,
-
-      // if load more is enabled for loading more items
-      loadMore: true,
-
-      // if we have a load more request in progress
-      requestMoreItems: false,
     };
 
     this.hideSidebar = this.hideSidebar.bind(this);
@@ -44,20 +43,6 @@ class CategoriesCarousel extends Component {
     // calculate the no of items for one home card and two regular cards
     const noItems = this.state.itemsPerHome + this.state.itemsPerCard * 2;
     dispatch(fetchCategories({ page: 1, per_page: noItems }));
-  }
-
-  componentDidUpdate() {
-    // If we have requested more items and we don't get them - disable load more
-    if (this.state.requestMoreItems === true) {
-      if (
-        this.props.categories.length > 0 &&
-        this.props.categories.length === this.props.categories.length
-      ) {
-        this.setState({ loadMore: false });
-      }
-
-      this.setState({ requestMoreItems: false });
-    }
   }
 
   /**
@@ -111,7 +96,7 @@ class CategoriesCarousel extends Component {
    * @param {Number} index = The index of the card.
    */
   loadMore(index) {
-    if (this.state.loadMore === false) {
+    if (this.props.loadMore === false) {
       return;
     }
 
@@ -122,7 +107,6 @@ class CategoriesCarousel extends Component {
       dispatch(
         fetchCategories({ page: this.getPageNumber() + 1, per_page: this.state.itemsPerCard * 3 }),
       );
-      this.setState({ requestMoreItems: true });
     }
   }
 
@@ -173,12 +157,14 @@ CategoriesCarousel.propTypes = {
   categories: PropTypes.arrayOf(categoryPropType).isRequired,
   sideMenuVisible: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  loadMore: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   loading: getCategoriesFetching(state.categories),
   categories: getCategories(state.categories),
   sideMenuVisible: state.sideMenuVisible,
+  loadMore: getLoadMoreCategories(state.categories),
 });
 
 function mapDispatchToProps(dispatch) {

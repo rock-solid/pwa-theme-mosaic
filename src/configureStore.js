@@ -58,7 +58,8 @@ const rootReducer = persistCombineReducers(rootPersistConfig, {
   categories: persistReducer(
     {
       key: 'categories',
-      ...persistConfig,
+      storage,
+      blacklist: ['isFetching', 'loadMore'],
     },
     categories,
   ),

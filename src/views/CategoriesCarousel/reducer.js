@@ -15,6 +15,7 @@ export const categoryPropType = PropTypes.shape({
 export const INITIAL_STATE = Immutable({
   items: [],
   isFetching: 0,
+  loadMore: true,
 });
 
 const items = (state = INITIAL_STATE.items, action) => {
@@ -30,6 +31,21 @@ const items = (state = INITIAL_STATE.items, action) => {
     return state;
   }
 };
+
+const loadMore = (state = INITIAL_STATE.loadMore, action) => {
+  switch (action.type) {
+  case REQUEST_CATEGORIES:
+    return true;
+  case RECEIVE_CATEGORIES:
+    if (Array.isArray(action.categories) && action.perPage !== null) {
+      return !(action.categories.length < action.perPage);
+    }
+    return state;
+  default:
+    return state;
+  }
+};
+
 const isFetching = (state = INITIAL_STATE.isFetching, action) => {
   switch (action.type) {
   case REQUEST_CATEGORIES:
@@ -43,4 +59,5 @@ const isFetching = (state = INITIAL_STATE.isFetching, action) => {
 
 export const getCategories = state => state.items;
 export const getCategoriesFetching = state => state.isFetching;
-export default combineReducers({ items, isFetching });
+export const getLoadMoreCategories = state => state.loadMore;
+export default combineReducers({ items, isFetching, loadMore });
