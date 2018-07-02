@@ -48,7 +48,7 @@ const items = (state = INITIAL_STATE.items, action) => {
 const loadMore = (state = INITIAL_STATE.loadMore, action) => {
   switch (action.type) {
   case REQUEST_POSTS:
-    return state;
+    return true;
   case RECEIVE_POSTS:
     if (Array.isArray(action.posts)) {
       return !(action.posts.length < 10);
@@ -71,7 +71,7 @@ const isFetching = (state = INITIAL_STATE.isFetching, action) => {
 };
 
 export const getPosts = state => state.items;
-export const getLoadMore = state => state.loadMore;
+export const getLoadMorePosts = state => state.loadMore;
 export const getPostsByCategory = (state, categoryId) =>
   state.items.filter(post => post.categories.indexOf(Number(categoryId)) !== -1);
 

@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { fetchPosts } from './action';
 import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
 import { getCategories as getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
-import { postPropType, getPostsFetching, getPostsByCategory, getLoadMore } from './reducer';
+import { postPropType, getPostsFetching, getPostsByCategory, getLoadMorePosts } from './reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
@@ -181,7 +181,7 @@ const mapStateToProps = (state, props) => ({
   category: getCategory(state.categories),
   loadTranslations: getTranslationsFetching(state.translations),
   translations: getTranslations(state.translations),
-  loadMore: getLoadMore(state.posts),
+  loadMore: getLoadMorePosts(state.posts),
 });
 
 function mapDispatchToProps(dispatch) {
