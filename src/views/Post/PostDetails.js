@@ -25,6 +25,18 @@ class PostDetails extends Component {
     };
   }
 
+  getPostContent(post) {
+    if (post.content.protected === false) {
+      return post.content.rendered;
+    }
+
+    return (
+      "<p>This post is password protected! Enter the password <a href='" +
+      post.link +
+      "?pwa_theme_mode=desktop'>here</a>."
+    );
+  }
+
   handleOpen() {
     this.setState({ modalOpen: true, visible: !this.state.visible });
   }
@@ -83,7 +95,7 @@ class PostDetails extends Component {
           </Header.Subheader>
           <div
             className="post-content"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: this.getPostContent(post) }}
           />
           {googleAds !== null ? (
             <DFPSlotsProvider
