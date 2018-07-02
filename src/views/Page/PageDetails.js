@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import { Container, Image, Header, Button } from 'semantic-ui-react';
+import { Container, Image, Header, Icon } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import 'react-router-modal/css/react-router-modal.css';
@@ -21,7 +21,7 @@ const PageDetails = (props) => {
       </Helmet>
       <Header dividing>
         <Link to="/">
-          <Button size="huge" icon="close" />
+          <Icon size="large" link name="close" className="btn-close" />
         </Link>
         <h1 dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
       </Header>

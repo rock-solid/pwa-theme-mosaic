@@ -6,14 +6,17 @@
     flex-direction: column;
     margin: 0 !important;
     text-align: left;
+
     .post-image {
       height: 60vh;
       background: center no-repeat;
       background-size: cover;
     }
+
     .container {
       margin: $base-spacing;
-      padding-top: $base-spacing-lg;
+      padding-top: $base-spacing-xl;
+
       .ui.header {
         text-align: start;
       }
@@ -47,12 +50,14 @@
         color: $buttons-icon-color;
         background-color: $buttons-bg-color;
         box-shadow: none;
+
         &.chevron.left {
           position: absolute;
           z-index: 1;
-          top: $base-spacing-xsm;
-          left: $base-spacing-xsm;
+          top: $base-spacing;
+          left: $base-spacing;
         }
+
         &.share {
           margin: $base-spacing-xsm;
         }
