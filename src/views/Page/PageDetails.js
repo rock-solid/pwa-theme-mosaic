@@ -21,7 +21,7 @@ const PageDetails = (props) => {
       </Helmet>
       <Header dividing>
         <Link to="/">
-          <Icon size="large" link name="close" className="btn-close" />
+          <Icon size="large" link name="close" />
         </Link>
         <h1 dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
       </Header>

@@ -15,15 +15,17 @@
 
     .container {
       margin: $base-spacing;
-      padding-top: $base-spacing-xl;
+      padding-top: $base-spacing-sm;
 
       .ui.header {
         text-align: start;
       }
+
       .sub.header {
         margin-top: $base-spacing;
         margin-bottom: $base-spacing;
       }
+
       .label {
         height: unset;
         border-radius: 2px;
@@ -32,6 +34,7 @@
         background-color: $category-color;
         color: $category-text;
       }
+
       .post-content {
         padding: 0 $base-spacing-xsm;
         iframe {
@@ -52,10 +55,17 @@
         box-shadow: none;
 
         &.chevron.left {
+          margin-top: $base-spacing;
+          margin-left: $base-spacing;
+        }
+
+        &.chevron.left.absolute {
           position: absolute;
           z-index: 1;
           top: $base-spacing;
           left: $base-spacing;
+          margin-top: 0;
+          margin-left: 0;
         }
 
         &.share {

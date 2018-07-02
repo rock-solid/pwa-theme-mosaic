@@ -53,7 +53,7 @@ class PostDetails extends Component {
           <link rel="canonical" href={post.link} />
         </Helmet>
         <Link to={goBack}>
-          <Icon circular size="large" name="chevron left" />
+          <Icon circular size="large" name="chevron left" className={featuredMedia ? 'absolute' : ''} />
         </Link>
         {featuredMedia ? <div className="post-image" style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }} /> : null}
         <Container textAlign="justified">
