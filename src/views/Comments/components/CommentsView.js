@@ -67,20 +67,20 @@ class CommentsView extends Component {
             </Comment>
           ))
         ) : (
-          <Container className="no-comments">
-            {this.props.commentStatus === 'open'
-              ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
-              : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
-          </Container>
-        )}
+            <Container className="no-comments">
+              {this.props.commentStatus === 'open'
+                ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
+                : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
+            </Container>
+          )}
 
         {this.props.commentStatus === 'open' ? (
           <Button onClick={this.showModal}>{this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}</Button>
         ) : null}
 
         {this.state.isOpen === true ? (
-          <Modal open>
-            <Icon name="close" onClick={this.showModal} />
+          <Modal open className="comments-modal">
+            <Icon link name="close" onClick={this.showModal} />
             <Header icon="commenting" content={this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS} />
             <Modal.Content>
               <CommentForm onSubmit={this.submit} texts={this.props.texts} />

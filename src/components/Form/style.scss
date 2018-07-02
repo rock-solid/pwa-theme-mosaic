@@ -7,6 +7,12 @@
     textarea {
       margin: $base-spacing-xs 0 0 0;
       border-color: $form-border-color;
+      font-family: $base-font-family;
     }
+  }
+
+  button {
+    font-family: $base-font-family;
+    color: $buttons-icon-color;
   }
 }
