@@ -2,12 +2,32 @@
 
 exports[`Post card should render correctly post with featured image 1`] = `
 <Link
+  className="post-link"
   replace={false}
   to="/category/some-slug/32/post/mock-slug/1"
 >
   <Item
     className="post-item"
   >
+    <div
+      className="categories-labels"
+    >
+      <Label
+        key="43"
+      >
+        Some category
+      </Label>
+      <Label
+        key="54"
+      >
+        Some category
+      </Label>
+      <Label
+        key="23"
+      >
+        Some category
+      </Label>
+    </div>
     <ItemHeader
       as="h1"
       dangerouslySetInnerHTML={
@@ -37,14 +57,34 @@ exports[`Post card should render correctly post with featured image 1`] = `
 </Link>
 `;
 
-exports[`Post card should render correctly post with placeholder image 1`] = `
+exports[`Post card should render correctly post without image 1`] = `
 <Link
+  className="post-link"
   replace={false}
   to="/category/some-slug/32/post/mock-slug/1"
 >
   <Item
     className="post-item"
   >
+    <div
+      className="categories-labels"
+    >
+      <Label
+        key="43"
+      >
+        Some category
+      </Label>
+      <Label
+        key="54"
+      >
+        Some category
+      </Label>
+      <Label
+        key="23"
+      >
+        Some category
+      </Label>
+    </div>
     <ItemHeader
       as="h1"
       dangerouslySetInnerHTML={
