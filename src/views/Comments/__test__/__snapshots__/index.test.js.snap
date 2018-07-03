@@ -13,7 +13,7 @@ exports[`Comments screen renders a message if the page does not exist 1`] = `
     >
       <i
         aria-hidden="true"
-        className="close icon"
+        className="close large link icon"
       />
     </a>
   </h3>
@@ -67,7 +67,7 @@ exports[`Comments screen renders comments list 1`] = `
     >
       <i
         aria-hidden="true"
-        className="close icon"
+        className="close large link icon"
       />
     </a>
   </h3>
