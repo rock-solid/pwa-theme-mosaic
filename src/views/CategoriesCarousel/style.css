@@ -1,10 +1,11 @@
 .carousel-container {
   height: 100vh; }
 
+.carousel-container .pusher,
 .carousel-container .slick-slider,
 .carousel-container .slick-list,
 .carousel-container .slick-track,
-.carousel-container div {
+.carousel-container .pusher div {
   height: 100%; }
 
 .carousel-container .slick-side {

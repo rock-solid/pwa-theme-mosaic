@@ -3,7 +3,7 @@
   .ui.menu-pages.sidebar.visible i {
     color: #747474; }
   .ui.menu-pages.sidebar.visible .list {
-    padding: 10px; }
+    padding: 16px; }
     .ui.menu-pages.sidebar.visible .list .header {
       font-family: "Roboto Condensed", sans-serif, sans-serif;
       color: #303030;
@@ -11,9 +11,9 @@
     .ui.menu-pages.sidebar.visible .list .item {
       display: flex;
       align-items: center;
-      height: 8vh;
-      position: relative;
-      border-color: #dddddd; }
+      border-color: #dddddd;
+      padding-top: 0.5rem;
+      padding-bottom: 0.7rem; }
       .ui.menu-pages.sidebar.visible .list .item .content {
         display: flex;
         align-items: center; }

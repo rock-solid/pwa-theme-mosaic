@@ -6,7 +6,7 @@
     color: $buttons-icon-color;
   }
   .list {
-    padding: $base-spacing-xsm;
+    padding: $base-spacing;
 
     .header {
       font-family: $base-font-family, sans-serif;
@@ -17,9 +17,9 @@
     .item {
       display: flex;
       align-items: center;
-      height: 8vh;
-      position: relative;
       border-color: $border-color;
+      padding-top: 0.5rem;
+      padding-bottom: 0.7rem;
 
       .content {
         display: flex;
