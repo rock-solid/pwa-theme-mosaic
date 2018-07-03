@@ -11,7 +11,7 @@ const CategoryCard = (props) => {
     <Link to={'/category/' + slug + '/' + id}>
       <Item
         style={{
-          backgroundImage: props.category.image !== '' ? `url(${props.category.image})` : undefined,
+          backgroundImage: props.category.image && props.category.image !== '' ? `url(${props.category.image})` : undefined,
         }}
       >
         <Item.Header as={Header}>
