@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-let CommentForm = (props) => {
+const CommentForm = (props) => {
   const { handleSubmit } = props;
   return (
     <Form onSubmit={handleSubmit} className="comments-form">
@@ -43,6 +43,7 @@ CommentForm.defaultProps = {
     },
   },
 };
+
 CommentForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   texts: PropTypes.shape({
@@ -60,8 +61,6 @@ CommentForm.propTypes = {
   }),
 };
 
-CommentForm = reduxForm({
+export default reduxForm({
   form: 'comment',
 })(CommentForm);
-
-export default CommentForm;
