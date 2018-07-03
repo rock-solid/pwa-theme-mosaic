@@ -40,3 +40,10 @@
     top: 50%;
   }
 }
+
+.ui.image.tiny.logo {
+  position: absolute;
+  z-index: 1000;
+  top: $base-spacing;
+  left: $base-spacing;
+}

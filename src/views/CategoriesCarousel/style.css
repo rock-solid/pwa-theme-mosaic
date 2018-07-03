@@ -30,3 +30,9 @@
 
 .carousel-container .pusher .ui.loader.active::before, .carousel-container .pusher .ui.loader.active::after {
   top: 50%; }
+
+.ui.image.tiny.logo {
+  position: absolute;
+  z-index: 1000;
+  top: 16px;
+  left: 16px; }
