@@ -35,7 +35,6 @@ describe('Post details', () => {
       },
       link: 'some-post-link',
       date: 'someMockDate', // TO DO : date validation => class Date
-      protected: false,
       // TO DO : proptype for image src
     };
     const category = {
