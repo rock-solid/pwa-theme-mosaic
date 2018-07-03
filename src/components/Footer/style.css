@@ -10,8 +10,9 @@
   border-top: solid 1px #dddddd;
   z-index: 1000; }
   .posts-carousel-container .footer .footer-side {
-    max-width: 50px;
-    flex: 1; }
+    max-width: 60px;
+    flex: 1;
+    text-align: center; }
   .posts-carousel-container .footer h4 {
     flex: 1;
     text-align: center;
