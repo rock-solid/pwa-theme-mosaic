@@ -1,22 +1,25 @@
 .ui.menu-pages.sidebar.visible {
-  background-color: #ffffff;
   border-color: #dddddd; }
   .ui.menu-pages.sidebar.visible i {
     color: #747474; }
   .ui.menu-pages.sidebar.visible .list {
     padding: 10px; }
     .ui.menu-pages.sidebar.visible .list .header {
-      font-family: "Roboto Condensed", sans-serif;
+      font-family: "Roboto Condensed", sans-serif, sans-serif;
+      color: #303030;
       margin-top: 8px; }
     .ui.menu-pages.sidebar.visible .list .item {
       display: flex;
       align-items: center;
       height: 8vh;
-      position: relative; }
+      position: relative;
+      border-color: #dddddd; }
       .ui.menu-pages.sidebar.visible .list .item .content {
-        font-family: "Roboto Condensed", sans-serif;
         display: flex;
         align-items: center; }
+        .ui.menu-pages.sidebar.visible .list .item .content h3 {
+          font-family: "Roboto Condensed", sans-serif, sans-serif;
+          color: #303030; }
       .ui.menu-pages.sidebar.visible .list .item .icon.triangle {
         position: absolute;
         right: 0; }

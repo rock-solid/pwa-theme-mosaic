@@ -3,4 +3,9 @@
   .comments-form.ui.form > div input,
   .comments-form.ui.form > div textarea {
     margin: 5px 0 0 0;
-    border-color: #5c5c5c; }
+    border-color: #5c5c5c;
+    font-family: "Roboto Condensed", sans-serif; }
+
+.comments-form.ui.form button {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #747474; }

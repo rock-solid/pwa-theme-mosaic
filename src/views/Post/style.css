@@ -10,7 +10,7 @@
     background-size: cover; }
   .post.container .container {
     margin: 16px;
-    padding-top: 32px; }
+    padding-top: 8px; }
     .post.container .container .ui.header {
       text-align: start; }
     .post.container .container .sub.header {
@@ -36,10 +36,15 @@
     background-color: #fafafa;
     box-shadow: none; }
     .post.container i.icon.circular.chevron.left {
+      margin-top: 16px;
+      margin-left: 16px; }
+    .post.container i.icon.circular.chevron.left.absolute {
       position: absolute;
       z-index: 1;
-      top: 10px;
-      left: 10px; }
+      top: 16px;
+      left: 16px;
+      margin-top: 0;
+      margin-left: 0; }
     .post.container i.icon.circular.share {
       margin: 10px; }
 

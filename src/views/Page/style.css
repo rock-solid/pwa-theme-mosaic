@@ -1,12 +1,12 @@
 /* MODAL */
 .react-router-modal__container.page-details {
-  background-color: #ffffff;
   border-color: #dddddd;
   width: 100vw; }
   .react-router-modal__container.page-details .react-router-modal__modal {
     width: 94%;
     height: 98%;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    background-color: #ffffff; }
     .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page {
       margin-bottom: 20px; }
       .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page a {
@@ -17,11 +17,10 @@
         align-items: center;
         justify-content: space-between;
         padding-bottom: 10px;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        border-color: #dddddd; }
         .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page .ui.dividing.header a {
           margin: calc(2rem - 0.14285714em) 0 0rem; }
-          .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page .ui.dividing.header a button.ui.icon.button {
-            background: #fafafa; }
       .react-router-modal__container.page-details .react-router-modal__modal .ui.container.page .sub.header {
         color: #999999;
         padding-bottom: 10px;

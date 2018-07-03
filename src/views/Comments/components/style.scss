@@ -4,6 +4,7 @@
 .ui.comments.post-comments {
   margin: 0;
   height: 90vh;
+
   .comment {
     margin: $base-spacing-lg;
     padding: 0;
@@ -14,9 +15,21 @@
   /* Button */
   button {
     margin: $base-spacing-xmd $base-spacing-xsm 0;
+    font-family: $base-font-family;
+    color: $buttons-icon-color;
   }
+
   /* text */
   .no-comments {
+    font-family: $base-font-family;
     padding-top: $base-spacing-lg;
+  }
+}
+
+.ui.modal.comments-modal {
+  background-color: $base-bg-color !important;
+
+  .header, .content {
+    background: none;
   }
 }

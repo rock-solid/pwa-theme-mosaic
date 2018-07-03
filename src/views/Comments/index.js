@@ -55,22 +55,22 @@ class Comments extends Component {
         <Header as="h3" block className="comments-header">
           {this.props.translations.TEXTS && this.props.translations.TEXTS.COMMENTS}
           <Link to={path}>
-            <Icon name="close" />
+            <Icon size="large" link name="close" />
           </Link>
         </Header>
         {this.props.loading === 1 && this.props.loadingTranslations === 1 ? (
           <Loader active />
         ) : (
-          <ReactPullToRefresh onRefresh={this.handleRefresh}>
-            <CommentsView
-              comments={comm}
-              loading={this.props.loading}
-              postId={this.props.match.params.postId}
-              commentStatus={this.props.match.params.commentStatus}
-              texts={this.props.translations}
-            />
-          </ReactPullToRefresh>
-        )}
+            <ReactPullToRefresh onRefresh={this.handleRefresh}>
+              <CommentsView
+                comments={comm}
+                loading={this.props.loading}
+                postId={this.props.match.params.postId}
+                commentStatus={this.props.match.params.commentStatus}
+                texts={this.props.translations}
+              />
+            </ReactPullToRefresh>
+          )}
       </div>
     );
   }
