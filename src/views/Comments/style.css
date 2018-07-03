@@ -6,6 +6,8 @@
     margin: 0;
     color: #303030;
     font-family: "Roboto Condensed", sans-serif;
+    border-radius: 0;
+    background-color: #fafafa;
     /* CLOSE ICON */ }
     .comments-container .ui.block.header.comments-header a {
       position: absolute;

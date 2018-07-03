@@ -70,7 +70,7 @@ class PostDetails extends Component {
           <link rel="canonical" href={post.link} />
         </Helmet>
         <Link to={goBack}>
-          <Icon circular name="chevron left" />
+          <Icon circular size="large" name="chevron left" className={featuredMedia ? 'absolute' : ''} />
         </Link>
         {featuredMedia ? (
           <div

@@ -1,0 +1,25 @@
+{
+  "paths": [
+    "../src/utilities/_base.scss",
+    "../src/utilities/_functions.scss",
+    "../src/utilities/_typography.scss",
+    "../src/index.scss",
+    "../src/components/Footer/style.scss",
+    "../src/components/Form/style.scss",
+    "../src/components/NavBar/style.scss",
+    "../src/components/NotFound/style.scss",
+    "../src/views/CategoriesCarousel/components/CategoryCard/style.scss",
+    "../src/views/CategoriesCarousel/components/CategoriesList/style.scss",
+    "../src/views/CategoriesCarousel/style.scss",
+    "../src/views/Comments/components/style.scss",
+    "../src/views/Comments/style.scss",
+    "../src/views/Page/style.scss",
+    "../src/views/Post/components/style.scss",
+    "../src/views/Post/style.scss",
+    "../src/views/PostsCarousel/components/PostCard/style.scss",
+    "../src/views/PostsCarousel/components/PostsList/style.scss",
+    "../src/views/PostsCarousel/style.scss",
+    "../src/views/SideMenu/style.scss",
+    "../node_modules/react-router-modal/css/react-router-modal.css"
+  ]
+}

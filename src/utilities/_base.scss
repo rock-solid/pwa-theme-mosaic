@@ -1,13 +1,12 @@
 @import "../utilities/variables",
-  "../utilities/helpers",
-  "../utilities/mixins",
   "../utilities/typography";
-
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300");
-@import url("https://fonts.googleapis.com/css?family=Hind");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: $base-bg-color;
 }

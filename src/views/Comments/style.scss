@@ -8,6 +8,9 @@
     margin: 0;
     color: $base-text-color;
     font-family: $base-font-family;
+    border-radius: 0;
+    background-color: $footer-bg-color;
+
     /* CLOSE ICON */
     a {
       position: absolute;

@@ -10,6 +10,14 @@
     .ui.comments.post-comments .comment > .avatar ~ .content {
       text-align: start; }
   .ui.comments.post-comments button {
-    margin: 20px 10px 0; }
+    margin: 20px 10px 0;
+    font-family: "Roboto Condensed", sans-serif;
+    color: #747474; }
   .ui.comments.post-comments .no-comments {
+    font-family: "Roboto Condensed", sans-serif;
     padding-top: 32px; }
+
+.ui.modal.comments-modal {
+  background-color: #ffffff !important; }
+  .ui.modal.comments-modal .header, .ui.modal.comments-modal .content {
+    background: none; }
