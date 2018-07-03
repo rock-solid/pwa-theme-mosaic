@@ -3,7 +3,7 @@ import { Header, Comment, Icon, Container, Button, Modal, Loader } from 'semanti
 import PropTypes from 'prop-types';
 import ReactMoment from 'react-moment';
 import Moment from 'moment';
-
+import config from 'react-global-configuration';
 import { addComment } from '../actions';
 import { commentPropType } from '../reducers';
 import CommentForm from '../../../components/Form/index';
@@ -77,7 +77,7 @@ class CommentsView extends Component {
           </Container>
         )}
 
-        {this.props.commentStatus === 'open' ? (
+        {config.get('commentsEnabled') === true && this.props.commentStatus === 'open' ? (
           <Button onClick={this.showModal}>
             {this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}
           </Button>
