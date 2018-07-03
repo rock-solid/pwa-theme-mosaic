@@ -141,7 +141,6 @@ class PostsCarousel extends Component {
     return postsList;
   }
 
-  // @todo add empty message if posts are not found!
   render() {
     const listedPosts = this.createPostsList(2);
     const settings = {
@@ -167,12 +166,12 @@ class PostsCarousel extends Component {
                 )}
             </div>
           ) : (
-            listedPosts.map(postsList => (
-              <div key={Math.random()}>
-                <PostsList postsList={postsList} category={this.props.match} />
-              </div>
-            ))
-          )}
+              listedPosts.map(postsList => (
+                <div key={Math.random()}>
+                  <PostsList postsList={postsList} category={this.props.match} />
+                </div>
+              ))
+            )}
         </Slider>
         <Footer
           title={this.props.posts.length > 0 ? this.getCategoryName(this.props.posts[0]) : ''}
