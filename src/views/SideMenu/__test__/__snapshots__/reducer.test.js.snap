@@ -1,18 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Posts reducer handles RECEIVE_PAGES action case 1 1`] = `
+exports[`Pages reducer handles RECEIVE_PAGES action case 1 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 1,
       "name": "Nice page",
     },
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 2,
       "name": "Nicer page",
     },
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 3,
       "name": "Nicest page",
     },
@@ -20,19 +29,28 @@ Object {
 }
 `;
 
-exports[`Posts reducer handles RECEIVE_PAGES action case 2 1`] = `
+exports[`Pages reducer handles RECEIVE_PAGES action case 2 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 1,
       "name": "Nice page",
     },
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 2,
       "name": "Nicer page",
     },
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 3,
       "name": "Nicest page",
     },
@@ -40,15 +58,43 @@ Object {
 }
 `;
 
-exports[`Posts reducer handles REQUEST_PAGES action 1`] = `
+exports[`Pages reducer handles RECEIVE_PAGES with password protected pages keeps same state 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "content": Object {
+        "protected": false,
+      },
+      "id": 1,
+      "name": "Nice page",
+    },
+    Object {
+      "content": Object {
+        "protected": false,
+      },
+      "id": 2,
+      "name": "Nicer page",
+    },
+  ],
+}
+`;
+
+exports[`Pages reducer handles REQUEST_PAGES action 1`] = `
 Object {
   "isFetching": 1,
   "items": Array [
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 1,
       "name": "Nice page",
     },
     Object {
+      "content": Object {
+        "protected": false,
+      },
       "id": 2,
       "name": "Nicer page",
     },
@@ -56,7 +102,7 @@ Object {
 }
 `;
 
-exports[`Posts reducer returns same state on an unhandled action 1`] = `
+exports[`Pages reducer returns same state on an unhandled action 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [],
