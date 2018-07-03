@@ -7,11 +7,20 @@ exports[`Posts carousel renders loader 1`] = `
   <div
     className="ui active loader"
   />
+  <Footer mock
+    page={1}
+    title=""
+  />
 </div>
 `;
 
 exports[`Posts carousel renders posts 1`] = `
 <div
   className="posts-carousel-container"
-/>
+>
+  <Footer mock
+    page={1}
+    title=""
+  />
+</div>
 `;

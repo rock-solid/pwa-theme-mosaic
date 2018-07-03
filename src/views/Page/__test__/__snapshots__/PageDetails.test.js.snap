@@ -20,10 +20,11 @@ exports[`Page details renders page details 1`] = `
       replace={false}
       to="/"
     >
-      <Button
-        as="button"
-        icon="close"
-        size="huge"
+      <Icon
+        as="i"
+        link={true}
+        name="close"
+        size="large"
       />
     </Link>
     <h1

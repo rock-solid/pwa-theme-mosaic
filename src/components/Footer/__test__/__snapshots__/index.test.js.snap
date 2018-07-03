@@ -4,15 +4,56 @@ exports[`Footer should render correctly 1`] = `
 <div
   className="footer"
 >
-  <Link
-    replace={false}
-    to="/"
+  <div
+    className="footer-side"
   >
-    <Icon
-      as="i"
-      name="home"
-      size="big"
-    />
-  </Link>
+    <Link
+      replace={false}
+      to="/"
+    >
+      <Icon
+        as="i"
+        name="home"
+        size="big"
+      />
+    </Link>
+  </div>
+  <h4 />
+  <div
+    className="footer-side"
+  >
+    <span />
+  </div>
+</div>
+`;
+
+exports[`Footer should render correctly with title and page 1`] = `
+<div
+  className="footer"
+>
+  <div
+    className="footer-side"
+  >
+    <Link
+      replace={false}
+      to="/"
+    >
+      <Icon
+        as="i"
+        name="home"
+        size="big"
+      />
+    </Link>
+  </div>
+  <h4>
+    Footer title
+  </h4>
+  <div
+    className="footer-side"
+  >
+    <span>
+      Page 2
+    </span>
+  </div>
 </div>
 `;

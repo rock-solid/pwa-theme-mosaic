@@ -5,16 +5,18 @@ exports[`One card should render correctly 1`] = `
   className="full-row"
 >
   <GridRow>
-    <CategoryCard
-      category={
-        Object {
-          "id": 1,
-          "name": "Some mock name",
-          "slug": "mock-slug",
+    <GridColumn>
+      <CategoryCard
+        category={
+          Object {
+            "id": 1,
+            "name": "Some mock name",
+            "slug": "mock-slug",
+          }
         }
-      }
-      key="1"
-    />
+        key="1"
+      />
+    </GridColumn>
   </GridRow>
 </Grid>
 `;

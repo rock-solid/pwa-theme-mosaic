@@ -9,4 +9,9 @@ describe('Footer', () => {
     const output = shallow(<Footer />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
+
+  it('should render correctly with title and page', () => {
+    const output = shallow(<Footer title="Footer title" page={2} />);
+    expect(shallowToJson(output)).toMatchSnapshot();
+  });
 });
