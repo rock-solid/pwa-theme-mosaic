@@ -2,12 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import PostView from '../PostDetails';
+import PostDetails from '../PostDetails';
 
 jest.mock('../components/SocialMedia', () => 'Social media test');
+jest.mock('react-global-configuration', () => require.requireActual('../../../__mocks__/react-global-configuration').default);
 
-describe('Post card', () => {
-  it('should render post with image placeholder', () => {
+describe('Post details', () => {
+  it('should render post without image', () => {
     const mockPost = {
       id: 1,
       title: {
@@ -16,7 +17,11 @@ describe('Post card', () => {
       author: 45,
       _embedded: {
         author: 'Some mock author',
-        'wp:term': [[{ id: 1, name: 'Some category' }, { id: 2, name: 'Some category' }, { id: 3, name: 'Some category' }]],
+        'wp:term': [[
+          { id: 1, name: 'Some category', slug: 'some-category-slug-1' },
+          { id: 2, name: 'Some category', slug: 'some-category-slug-2' },
+          { id: 32, name: 'Some category', slug: 'some-category-slug-32' },
+        ]],
       },
       categories: [2, 54, 23, 6],
       slug: 'mock-slug',
@@ -29,7 +34,8 @@ describe('Post card', () => {
         protected: true,
       },
       link: 'some-post-link',
-      date: 'someMockDate', //TO DO : date validation => class Date
+      date: 'someMockDate', // TO DO : date validation => class Date
+      protected: false,
       // TO DO : proptype for image src
     };
     const category = {
@@ -40,7 +46,7 @@ describe('Post card', () => {
         },
       },
     };
-    const output = shallow(<PostView post={mockPost} category={category} />);
+    const output = shallow(<PostDetails post={mockPost} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 
@@ -53,7 +59,11 @@ describe('Post card', () => {
       author: 45,
       _embedded: {
         author: 'Some mock author',
-        'wp:term': [[{ id: 1, name: 'Some category' }, { id: 2, name: 'Some category' }, { id: 3, name: 'Some category' }]],
+        'wp:term': [[
+          { id: 1, name: 'Some category', slug: 'some-category-slug-1' },
+          { id: 2, name: 'Some category', slug: 'some-category-slug-2' },
+          { id: 32, name: 'Some category', slug: 'some-category-slug-32' },
+        ]],
         'wp:featuredmedia': 'some-post-image',
       },
       categories: [2, 54, 23, 6],
@@ -78,7 +88,7 @@ describe('Post card', () => {
         },
       },
     };
-    const output = shallow(<PostView post={mockPost} category={category} />);
+    const output = shallow(<PostDetails post={mockPost} category={category} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });
