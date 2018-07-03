@@ -16,15 +16,15 @@ import { fetchTranslations } from '../../translations/actions';
 import { getTranslations, getTranslationsFetching } from '../../translations/reducers';
 
 class Post extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchTranslations);
     this.readPost(this.props.match.params.postId);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.postId !== nextProps.match.params.postId) {
-      this.readPost(nextProps.match.params.postId);
+  componentDidUpdate(previousProps) {
+    if (previousProps.match.params.postId !== this.props.match.params.postId) {
+      this.readPost(this.props.match.params.postId);
     }
   }
 
@@ -44,7 +44,9 @@ class Post extends Component {
       return <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />;
     }
 
-    return <PostDetails post={post} category={this.props.match.params} texts={this.props.translations} />;
+    return (
+      <PostDetails post={post} category={this.props.match.params} texts={this.props.translations} />
+    );
   }
 }
 
@@ -82,7 +84,13 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchTranslations }, dispatch));
+  return Object.assign(
+    { dispatch },
+    bindActionCreators({ fetchPosts, fetchTranslations }, dispatch),
+  );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Post);

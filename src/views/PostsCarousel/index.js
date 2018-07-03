@@ -10,7 +10,7 @@ import _ from 'lodash';
 import { fetchPosts } from './action';
 import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
 import { getCategories as getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
-import { postPropType, getPostsFetching, getPostsByCategory } from './reducer';
+import { postPropType, getPostsFetching, getPostsByCategory, getLoadMorePosts } from './reducer';
 
 import PostsList from './components/PostsList';
 import Footer from '../../components/Footer/index';
@@ -27,38 +27,21 @@ class PostsCarousel extends Component {
     this.state = {
       itemsPerCard: 2,
 
-      // if load more is enabled for loading more items
-      loadMore: true,
-
-      // if we have a load more request in progress
-      requestMoreItems: false,
-
       currentPage: 1,
     };
 
     this.loadMore = this.loadMore.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.readPosts(this.props.match.params.categoryId);
     this.props.dispatch(fetchTranslations);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(previousProps) {
     // If the category has changed, get the posts for the new category
-    if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
-      this.setState({ loadMore: true });
-      this.readPosts(nextProps.match.params.categoryId);
-      return;
-    }
-
-    // If we have requested more items and we don't get them - disable load more
-    if (this.state.requestMoreItems === true) {
-      if (nextProps.posts.length > 0 && nextProps.posts.length === this.props.posts.length) {
-        this.setState({ loadMore: false });
-      }
-
-      this.setState({ requestMoreItems: false });
+    if (this.props.match.params.categoryId !== previousProps.match.params.categoryId) {
+      this.readPosts(this.props.match.params.categoryId);
     }
   }
 
@@ -67,14 +50,19 @@ class PostsCarousel extends Component {
    * @param {Array} categories
    */
   getCategoryName(post) {
-    if (!post._embedded || !post._embedded['wp:term'] || !post._embedded['wp:term'][0] ||
-      !post._embedded['wp:term'][0].length === 0) {
+    if (
+      !post._embedded ||
+      !post._embedded['wp:term'] ||
+      !post._embedded['wp:term'][0] ||
+      !post._embedded['wp:term'][0].length === 0
+    ) {
       return null;
     }
 
     const categories = post._embedded['wp:term'][0];
-    const category = categories.find(item =>
-      Number(item.id) === Number(this.props.match.params.categoryId));
+    const category = categories.find(
+      item => Number(item.id) === Number(this.props.match.params.categoryId),
+    );
 
     if (category) {
       return category.name;
@@ -97,7 +85,10 @@ class PostsCarousel extends Component {
     const noPosts = this.props.posts.length;
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
-    return Math.round(noPosts / this.state.itemsPerCard) + (noPosts % this.state.itemsPerCard === 0 ? 0 : 1);
+    return (
+      Math.round(noPosts / this.state.itemsPerCard) +
+      (noPosts % this.state.itemsPerCard === 0 ? 0 : 1)
+    );
   }
 
   /**
@@ -115,8 +106,6 @@ class PostsCarousel extends Component {
       }),
     );
     dispatch(fetchCategory({ id: categoryId }));
-
-    this.setState({ requestMoreItems: true });
   }
 
   /**
@@ -126,14 +115,13 @@ class PostsCarousel extends Component {
   loadMore(index) {
     this.setState({ currentPage: index + 1 });
 
-    if (this.state.loadMore === false) {
+    if (this.props.loadMore === false) {
       return;
     }
 
     const noCards = this.getNoCards();
 
     if (index === noCards - 1) {
-      this.setState({ requestMoreItems: true });
       this.readPosts(this.props.match.params.categoryId);
     }
   }
@@ -173,15 +161,18 @@ class PostsCarousel extends Component {
         <Slider {...settings}>
           {this.props.loading === 0 && listedPosts.length === 0 ? (
             <div key={Math.random()}>
-              {this.props.loadTranslations === 0 && this.props.translations.TEXTS && <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />}
+              {this.props.loadTranslations === 0 &&
+                this.props.translations.TEXTS && (
+                  <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />
+                )}
             </div>
           ) : (
-              listedPosts.map(postsList => (
-                <div key={Math.random()}>
-                  <PostsList postsList={postsList} category={this.props.match} />
-                </div>
-              ))
-            )}
+            listedPosts.map(postsList => (
+              <div key={Math.random()}>
+                <PostsList postsList={postsList} category={this.props.match} />
+              </div>
+            ))
+          )}
         </Slider>
         <Footer
           title={this.props.posts.length > 0 ? this.getCategoryName(this.props.posts[0]) : ''}
@@ -196,6 +187,7 @@ PostsCarousel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(postPropType).isRequired,
   loading: PropTypes.number.isRequired,
+  loadMore: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       categoryId: PropTypes.string.isRequired,
@@ -225,9 +217,13 @@ const mapStateToProps = (state, props) => ({
   category: getCategory(state.categories),
   loadTranslations: getTranslationsFetching(state.translations),
   translations: getTranslations(state.translations),
+  loadMore: getLoadMorePosts(state.posts),
 });
 
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchCategory }, dispatch));
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PostsCarousel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PostsCarousel);

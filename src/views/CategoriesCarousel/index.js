@@ -8,7 +8,12 @@ import config from 'react-global-configuration';
 import _ from 'lodash';
 
 import { fetchCategories } from './action';
-import { getCategories, getCategoriesFetching, categoryPropType } from './reducer';
+import {
+  getCategories,
+  getCategoriesFetching,
+  categoryPropType,
+  getLoadMoreCategories,
+} from './reducer';
 
 import SideMenu from '../SideMenu/index';
 import NavBar from '../../components/NavBar/index';
@@ -24,12 +29,6 @@ class CategoriesCarousel extends Component {
     this.state = {
       itemsPerHome: 3,
       itemsPerCard: 5,
-
-      // if load more is enabled for loading more items
-      loadMore: true,
-
-      // if we have a load more request in progress
-      requestMoreItems: false,
     };
 
     this.hideSidebar = this.hideSidebar.bind(this);
@@ -39,24 +38,12 @@ class CategoriesCarousel extends Component {
   /**
    * Make request to load the initial data set.
    */
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props;
 
     // calculate the no of items for one home card and two regular cards
-    const noItems = this.state.itemsPerHome + (this.state.itemsPerCard * 2);
+    const noItems = this.state.itemsPerHome + this.state.itemsPerCard * 2;
     dispatch(fetchCategories({ page: 1, per_page: noItems }));
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // If we have requested more items and we don't get them - disable load more
-    if (this.state.requestMoreItems === true) {
-      if (nextProps.categories.length > 0 &&
-        nextProps.categories.length === this.props.categories.length) {
-        this.setState({ loadMore: false });
-      }
-
-      this.setState({ requestMoreItems: false });
-    }
   }
 
   /**
@@ -81,8 +68,11 @@ class CategoriesCarousel extends Component {
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
     // Add +1 for the home card.
-    return Math.round(lengthWithoutHome / this.state.itemsPerCard) +
-      (lengthWithoutHome % this.state.itemsPerCard === 0 ? 0 : 1) + 1;
+    return (
+      Math.round(lengthWithoutHome / this.state.itemsPerCard) +
+      (lengthWithoutHome % this.state.itemsPerCard === 0 ? 0 : 1) +
+      1
+    );
   }
 
   /**
@@ -109,7 +99,7 @@ class CategoriesCarousel extends Component {
    * @param {Number} index = The index of the card.
    */
   loadMore(index) {
-    if (this.state.loadMore === false) {
+    if (this.props.loadMore === false) {
       return;
     }
 
@@ -117,8 +107,9 @@ class CategoriesCarousel extends Component {
 
     if (index === noCards - 1) {
       const { dispatch } = this.props;
-      dispatch(fetchCategories({ page: this.getPageNumber() + 1, per_page: this.state.itemsPerCard * 3 }));
-      this.setState({ requestMoreItems: true });
+      dispatch(
+        fetchCategories({ page: this.getPageNumber() + 1, per_page: this.state.itemsPerCard * 3 }),
+      );
     }
   }
 
@@ -146,19 +137,20 @@ class CategoriesCarousel extends Component {
         <Sidebar.Pushable>
           <SideMenu />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
-            {config.get('logo') && <Image src={config.get('logo')} size="tiny" className="logo" />}
+            {config.get('logo') !== '' && (
+              <Image src={config.get('logo')} size="tiny" className="logo" />
+            )}
             <NavBar />
             {this.props.loading === 1 ? <Loader active /> : null}
-            {categoriesList.length > 0 ?
-              (
-                <Slider {...settings}>
-                  {categoriesList.map((categoriesChunk, k) => (
-                    <div key={Math.random(k)} className="categories-card">
-                      <CategoriesList categoriesChunk={categoriesChunk} />
-                    </div>
-                  ))}
-                </Slider>
-              ) : null}
+            {categoriesList.length > 0 ? (
+              <Slider {...settings}>
+                {categoriesList.map((categoriesChunk, k) => (
+                  <div key={Math.random(k)} className="categories-card">
+                    <CategoriesList categoriesChunk={categoriesChunk} />
+                  </div>
+                ))}
+              </Slider>
+            ) : null}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
@@ -172,15 +164,20 @@ CategoriesCarousel.propTypes = {
   categories: PropTypes.arrayOf(categoryPropType).isRequired,
   sideMenuVisible: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  loadMore: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   loading: getCategoriesFetching(state.categories),
   categories: getCategories(state.categories),
   sideMenuVisible: state.sideMenuVisible,
+  loadMore: getLoadMoreCategories(state.categories),
 });
 
 function mapDispatchToProps(dispatch) {
   return Object.assign({ dispatch }, bindActionCreators({ fetchCategories, closeMenu }, dispatch));
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesCarousel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CategoriesCarousel);

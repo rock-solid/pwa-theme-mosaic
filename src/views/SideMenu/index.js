@@ -15,7 +15,7 @@ import { getTranslations, getTranslationsFetching } from '../../translations/red
 import './style.css';
 
 class SideMenu extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchPages({ per_page: 100 }));
     dispatch(fetchTranslations);
@@ -32,7 +32,11 @@ class SideMenu extends Component {
         visible={this.props.sideMenuVisible}
         className="menu-pages"
       >
-        {this.props.loadingPages === 1 && this.props.loadingTranslations === 1 ? <Loader active /> : ''}
+        {this.props.loadingPages === 1 && this.props.loadingTranslations === 1 ? (
+          <Loader active />
+        ) : (
+          ''
+        )}
         <PageList text={translations.LINKS} pages={pages} />
       </Sidebar>
     );
@@ -67,6 +71,12 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPages, fetchTranslations }, dispatch));
+  return Object.assign(
+    { dispatch },
+    bindActionCreators({ fetchPages, fetchTranslations }, dispatch),
+  );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SideMenu);

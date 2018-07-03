@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Header, Comment, Icon, Container, Button, Modal, Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
-
+import ReactMoment from 'react-moment';
+import Moment from 'moment';
+import config from 'react-global-configuration';
 import { addComment } from '../actions';
 import { commentPropType } from '../reducers';
 import CommentForm from '../../../components/Form/index';
@@ -23,12 +24,10 @@ class CommentsView extends Component {
   submit(values) {
     const params = {
       author_name: values.name,
-      email: values.email,
-      content: {
-        rendered: values.content,
-      },
-      date: new Date(),
-      post: this.props.postId,
+      author_email: values.email,
+      content: values.content,
+      date: new Moment().format(),
+      post: Number(this.props.postId),
     };
     addComment(params);
   }
@@ -53,35 +52,44 @@ class CommentsView extends Component {
             <Comment key={String(comment.id) + String(comment.content.rendered.length)}>
               <Comment.Avatar src={comment.author_avatar_urls[24]} />
               <Comment.Content>
-                <Comment.Author as="a">{comment.author_name}</Comment.Author>
+                <Comment.Author as="a" href={comment.author_url}>
+                  {comment.author_name}
+                </Comment.Author>
                 <Comment.Metadata>
                   <div>
-                    <Moment format="MMMM DD, YYYY">{comment.date}</Moment>
+                    <ReactMoment format="MMMM DD, YYYY">{comment.date}</ReactMoment>
                   </div>
                 </Comment.Metadata>
                 <Comment.Text dangerouslySetInnerHTML={{ __html: comment.content.rendered }} />
                 <Comment.Actions>
-                  <Comment.Action onClick={this.showModal}>{this.props.texts.FORMS && this.props.texts.FORMS.REPLY}</Comment.Action>
+                  <Comment.Action onClick={this.showModal}>
+                    {this.props.texts.FORMS && this.props.texts.FORMS.REPLY}
+                  </Comment.Action>
                 </Comment.Actions>
               </Comment.Content>
             </Comment>
           ))
         ) : (
-            <Container className="no-comments">
-              {this.props.commentStatus === 'open'
-                ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
-                : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
-            </Container>
-          )}
+          <Container className="no-comments">
+            {this.props.commentStatus === 'open'
+              ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
+              : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
+          </Container>
+        )}
 
-        {this.props.commentStatus === 'open' ? (
-          <Button onClick={this.showModal}>{this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}</Button>
+        {config.get('commentsEnabled') === true && this.props.commentStatus === 'open' ? (
+          <Button onClick={this.showModal}>
+            {this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}
+          </Button>
         ) : null}
 
         {this.state.isOpen === true ? (
           <Modal open className="comments-modal">
             <Icon link name="close" onClick={this.showModal} />
-            <Header icon="commenting" content={this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS} />
+            <Header
+              icon="commenting"
+              content={this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}
+            />
             <Modal.Content>
               <CommentForm onSubmit={this.submit} texts={this.props.texts} />
             </Modal.Content>

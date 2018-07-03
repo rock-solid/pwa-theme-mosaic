@@ -32,9 +32,13 @@ const items = (state = INITIAL_STATE.items, action) => {
     return state;
   case RECEIVE_PAGES:
     if (Array.isArray(action.pages)) {
-      return _.unionBy(state, action.pages, 'id');
+      const noPasswordPages = _.filter(action.pages, page => page.content.protected === false);
+
+      return _.unionBy(state, noPasswordPages, 'id');
     }
-    return _.unionBy(state, [action.pages], 'id');
+    return action.pages.content.protected === false
+        ? _.unionBy(state, [action.pages], 'id')
+        : state;
   default:
     return state;
   }

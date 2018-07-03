@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Loader, Header, Icon } from 'semantic-ui-react';
 import _ from 'lodash';
 import ReactPullToRefresh from 'react-pull-to-refresh';
@@ -10,6 +10,7 @@ import 'react-router-modal/css/react-router-modal.css';
 
 import { fetchComments } from './actions';
 import { getComments, getCommentsFetching, commentPropType } from './reducers';
+import { getPostProtectedStatus } from '../PostsCarousel/reducer';
 import CommentsView from './components/CommentsView';
 
 // translations
@@ -24,7 +25,7 @@ class Comments extends Component {
     this.handleRefresh = this.handleRefresh.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchComments({ post: this.props.match.params.postId, per_page: 100 }));
     dispatch(fetchTranslations);
@@ -41,16 +42,26 @@ class Comments extends Component {
   }
 
   render() {
-    const comm = this.props.comments.filter(comment => comment.post === Number(this.props.match.params.postId));
+    const comm = this.props.comments.filter(
+      comment => comment.post === Number(this.props.match.params.postId),
+    );
 
     let path = '';
-    if (!_.isNil(this.props.match.params.categorySlug) && !_.isNil(this.props.match.params.categoryId)) {
-      path = '/category/' + this.props.match.params.categorySlug + '/' + this.props.match.params.categoryId;
+    if (
+      !_.isNil(this.props.match.params.categorySlug) &&
+      !_.isNil(this.props.match.params.categoryId)
+    ) {
+      path =
+        '/category/' +
+        this.props.match.params.categorySlug +
+        '/' +
+        this.props.match.params.categoryId;
     }
 
-    path = path + '/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId;
+    path =
+      path + '/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId;
 
-    return (
+    return this.props.isProtectedPost === false ? (
       <div className="comments-container">
         <Header as="h3" block className="comments-header">
           {this.props.translations.TEXTS && this.props.translations.TEXTS.COMMENTS}
@@ -61,17 +72,21 @@ class Comments extends Component {
         {this.props.loading === 1 && this.props.loadingTranslations === 1 ? (
           <Loader active />
         ) : (
-            <ReactPullToRefresh onRefresh={this.handleRefresh}>
-              <CommentsView
-                comments={comm}
-                loading={this.props.loading}
-                postId={this.props.match.params.postId}
-                commentStatus={this.props.match.params.commentStatus}
-                texts={this.props.translations}
-              />
-            </ReactPullToRefresh>
-          )}
+          <ReactPullToRefresh onRefresh={this.handleRefresh}>
+            <CommentsView
+              comments={comm}
+              loading={this.props.loading}
+              postId={this.props.match.params.postId}
+              commentStatus={this.props.match.params.commentStatus}
+              texts={this.props.translations}
+            />
+          </ReactPullToRefresh>
+        )}
       </div>
+    ) : (
+      <Redirect
+        to={'/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId}
+      />
     );
   }
 }
@@ -87,6 +102,7 @@ Comments.propTypes = {
       commentStatus: PropTypes.oneOf(['open', 'closed', 'disabled']).isRequired,
     }).isRequired,
   }).isRequired,
+  isProtectedPost: PropTypes.bool.isRequired,
   loading: PropTypes.number.isRequired,
   comments: PropTypes.arrayOf(commentPropType).isRequired,
   loadingTranslations: PropTypes.number.isRequired,
@@ -105,14 +121,21 @@ Comments.defaultProps = {
   },
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   comments: getComments(state.comments),
   loading: getCommentsFetching(state.comments),
   translations: getTranslations(state.translations),
   loadingTranslations: getTranslationsFetching(state.translations),
+  isProtectedPost: getPostProtectedStatus(state.posts, props.match.params.postId),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchComments, fetchTranslations }, dispatch));
+  return Object.assign(
+    { dispatch },
+    bindActionCreators({ fetchComments, fetchTranslations }, dispatch),
+  );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Comments);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Comments);
