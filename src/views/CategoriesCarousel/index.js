@@ -146,13 +146,16 @@ class CategoriesCarousel extends Component {
             {config.get('logo') && <Image src={config.get('logo')} size="tiny" />}
             <NavBar />
             {this.props.loading === 1 ? <Loader active /> : null}
-            <Slider {...settings}>
-              {categoriesList.map((categoriesChunk, k) => (
-                <div key={Math.random(k)} className="categories-card">
-                  <CategoriesList categoriesChunk={categoriesChunk} />
-                </div>
-              ))}
-            </Slider>
+            {categoriesList.length > 0 ?
+              (
+                <Slider {...settings}>
+                  {categoriesList.map((categoriesChunk, k) => (
+                    <div key={Math.random(k)} className="categories-card">
+                      <CategoriesList categoriesChunk={categoriesChunk} />
+                    </div>
+                  ))}
+                </Slider>
+              ) : null}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
