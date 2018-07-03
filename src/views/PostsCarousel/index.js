@@ -72,8 +72,14 @@ class PostsCarousel extends Component {
     }
 
     const categories = post._embedded['wp:term'][0];
-    return categories.find(category =>
-      Number(category.id) === Number(this.props.match.params.categoryId)).name;
+    const category = categories.find(item =>
+      Number(item.id) === Number(this.props.match.params.categoryId));
+
+    if (category) {
+      return category.name;
+    }
+
+    return null;
   }
 
   /**
