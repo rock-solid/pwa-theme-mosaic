@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Sidebar, Loader, Image } from 'semantic-ui-react';
 import config from 'react-global-configuration';
+import _ from 'lodash';
 
 import { fetchCategories } from './action';
 import { getCategories, getCategoriesFetching, categoryPropType } from './reducer';
@@ -91,12 +92,14 @@ class CategoriesCarousel extends Component {
    */
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
+    const sortedCategories = _.orderBy(this.props.categories, ['name'], ['asc']);
+
     const categoriesList = [];
-    categoriesList.push(this.props.categories.slice(0, homeChunkSize));
+    categoriesList.push(sortedCategories.slice(0, homeChunkSize));
 
     let i;
-    for (i = homeChunkSize; i < this.props.categories.length; i += regularChunkSize) {
-      categoriesList.push(this.props.categories.slice(i, i + regularChunkSize));
+    for (i = homeChunkSize; i < sortedCategories.length; i += regularChunkSize) {
+      categoriesList.push(sortedCategories.slice(i, i + regularChunkSize));
     }
     return categoriesList;
   }
