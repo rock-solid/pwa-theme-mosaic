@@ -1,6 +1,7 @@
 @import "../../utilities/variables";
 
 .carousel-container {
+  background-color: $cover-panel-color;
   height: 100vh;
 }
 
@@ -39,4 +40,11 @@
   &::before, &::after {
     top: 50%;
   }
+}
+
+.ui.image.tiny.logo {
+  position: absolute;
+  z-index: 1000;
+  top: $base-spacing;
+  left: $base-spacing;
 }
