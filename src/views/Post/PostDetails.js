@@ -24,7 +24,8 @@ class PostDetails extends Component {
     };
   }
 
-  getPostContent(post) {
+  getPostContent() {
+    const { post } = this.props;
     if (post.content.protected === false) {
       return post.content.rendered;
     }
@@ -94,9 +95,9 @@ class PostDetails extends Component {
           </Header.Subheader>
           <div
             className="post-content"
-            dangerouslySetInnerHTML={{ __html: this.getPostContent(post) }}
+            dangerouslySetInnerHTML={{ __html: this.getPostContent() }}
           />
-          {googleAds !== null ? (
+          {!_.isNil(googleAds) && !_.isNil(googleAds.phone) ? (
             <DFPSlotsProvider
               dfpNetworkId={googleAds.phone.networkCode}
               sizeMapping={[{ viewport: [900, 768], sizes: googleAds.phone.sizes }]}
