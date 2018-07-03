@@ -31,6 +31,8 @@ class PostsCarousel extends Component {
 
       // if we have a load more request in progress
       requestMoreItems: false,
+
+      currentPage: 1,
     };
 
     this.loadMore = this.loadMore.bind(this);
@@ -57,6 +59,21 @@ class PostsCarousel extends Component {
 
       this.setState({ requestMoreItems: false });
     }
+  }
+
+  /**
+   * Get the category name from one of the post's categories.
+   * @param {Array} categories
+   */
+  getCategoryName(post) {
+    if (!post._embedded || !post._embedded['wp:term'] || !post._embedded['wp:term'][0] ||
+      !post._embedded['wp:term'][0].length === 0) {
+      return null;
+    }
+
+    const categories = post._embedded['wp:term'][0];
+    return categories.find(category =>
+      Number(category.id) === Number(this.props.match.params.categoryId)).name;
   }
 
   /**
@@ -100,6 +117,8 @@ class PostsCarousel extends Component {
    * @param {Number} index = The index of the card.
    */
   loadMore(index) {
+    this.setState({ currentPage: index + 1 });
+
     if (this.state.loadMore === false) {
       return;
     }
@@ -154,7 +173,10 @@ class PostsCarousel extends Component {
               ))
             )}
         </Slider>
-        <Footer />
+        <Footer
+          title={this.props.posts.length > 0 ? this.getCategoryName(this.props.posts[0]) : ''}
+          page={this.state.currentPage}
+        />
       </div>
     );
   }

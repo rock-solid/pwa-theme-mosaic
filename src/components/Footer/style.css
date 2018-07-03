@@ -3,9 +3,19 @@
   bottom: 0;
   height: unset;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   background: #fafafa;
   padding: 5px;
   border-top: solid 1px #dddddd;
   z-index: 1000; }
+  .posts-carousel-container .footer .footer-side {
+    max-width: 50px;
+    flex: 1; }
+  .posts-carousel-container .footer h4 {
+    flex: 1;
+    text-align: center;
+    margin: 0; }
+  .posts-carousel-container .footer h4, .posts-carousel-container .footer span {
+    color: #303030;
+    line-height: 2rem; }
