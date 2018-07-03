@@ -2,20 +2,19 @@
   position: relative; }
 
 .categories-card .ui.header {
-  position: absolute;
   z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex;
   align-items: flex-end;
+  flex-direction: row;
   text-align: start;
-  font-weight: 100;
-  text-transform: uppercase;
   padding: 9px 15px;
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.08) 55px, transparent 80px, transparent); }
   .categories-card .ui.header h1 {
-    color: #ffffff; }
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #ffffff;
+    overflow-wrap: break-word;
+    max-width: 100%; }
 
 .categories-card .ui.header.header > div {
   height: unset;

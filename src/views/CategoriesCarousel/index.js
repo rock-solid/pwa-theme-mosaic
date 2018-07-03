@@ -137,19 +137,20 @@ class CategoriesCarousel extends Component {
         <Sidebar.Pushable>
           <SideMenu />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
-            {config.get('logo') !== '' && <Image src={config.get('logo')} size="tiny" />}
+            {config.get('logo') !== '' && (
+              <Image src={config.get('logo')} size="tiny" className="logo" />
+            )}
             <NavBar />
             {this.props.loading === 1 ? <Loader active /> : null}
-            {categoriesList.length > 0 ?
-              (
-                <Slider {...settings}>
-                  {categoriesList.map((categoriesChunk, k) => (
-                    <div key={Math.random(k)} className="categories-card">
-                      <CategoriesList categoriesChunk={categoriesChunk} />
-                    </div>
-                  ))}
-                </Slider>
-              ) : null}
+            {categoriesList.length > 0 ? (
+              <Slider {...settings}>
+                {categoriesList.map((categoriesChunk, k) => (
+                  <div key={Math.random(k)} className="categories-card">
+                    <CategoriesList categoriesChunk={categoriesChunk} />
+                  </div>
+                ))}
+              </Slider>
+            ) : null}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
