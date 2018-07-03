@@ -5,9 +5,26 @@
   bottom: 0;
   height: unset;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   background: $footer-bg-color;
   padding: $base-spacing-xs;
   border-top: solid 1px $border-color;
+  z-index: 1000;
+
+  .footer-side {
+    max-width: 50px;
+    flex: 1;
+  }
+
+  h4 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+  }
+
+  h4, span {
+    color: $base-text-color;
+    line-height: 2rem;
+  }
 }

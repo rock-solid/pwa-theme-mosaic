@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'react-global-configuration';
 
-import { pagePropType } from '../reducer';
+import { pagePropType } from './reducer';
 
-import '../style.css';
+import './style.css';
 
 export default class PageList extends Component {
   constructor(props) {
@@ -58,11 +58,11 @@ export default class PageList extends Component {
         {this.state.parentId === 0 ? (
           <Header as="h2">{this.props.text && this.props.text.GO_TO}</Header>
         ) : (
-          <Header as="h2">
-            <Icon name="caret left" onClick={this.goBack} />
-            {this.state.parentPageTitle[this.state.parentPageTitle.length - 1]}
-          </Header>
-        )}
+            <Header as="h2">
+              <Icon name="caret left" onClick={this.goBack} />
+              {this.state.parentPageTitle[this.state.parentPageTitle.length - 1]}
+            </Header>
+          )}
         {pages.map(page => (
           <List.Item key={Math.random()}>
             <List.Icon name="linkify" size="large" verticalAlign="middle" />

@@ -4,7 +4,13 @@
   display: flex;
   flex-direction: column;
   min-height: 93vh;
-  a {
+
+  .post-item {
+    max-height: 50vh;
+    overflow: hidden;
+  }
+
+  a.post-link {
     flex: 1;
     min-height: 40vh;
     &:first-child {
@@ -17,7 +23,7 @@
   display: flex;
   flex-direction: column;
   min-height: 90vh;
-  a {
+  a.post-link {
     flex: 1;
     min-width: 90vw;
     margin-top: $base-spacing-md;
