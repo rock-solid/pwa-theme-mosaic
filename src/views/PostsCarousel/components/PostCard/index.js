@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item } from 'semantic-ui-react';
+import { Item, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -17,8 +17,13 @@ const PostCard = (props) => {
   path = path + '/post/' + props.post.slug + '/' + props.post.id;
 
   return (
-    <Link to={path}>
+    <Link to={path} className="post-link">
       <Item className="post-item">
+        <div className="categories-labels">
+          {props.post._embedded['wp:term'][0].map(category => (
+            <Label key={category.id}>{category.name}</Label>
+          ))}
+        </div>
         {props.post.title && <Item.Header as="h1" dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />}
         <Item.Content>
           {props.post.featured_media ? (

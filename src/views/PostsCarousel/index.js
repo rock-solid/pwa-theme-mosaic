@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
+import _ from 'lodash';
 
 import { fetchPosts } from './action';
 import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
@@ -25,6 +26,8 @@ class PostsCarousel extends Component {
     super(props);
     this.state = {
       itemsPerCard: 2,
+
+      currentPage: 1,
     };
 
     this.loadMore = this.loadMore.bind(this);
@@ -40,6 +43,32 @@ class PostsCarousel extends Component {
     if (this.props.match.params.categoryId !== previousProps.match.params.categoryId) {
       this.readPosts(this.props.match.params.categoryId);
     }
+  }
+
+  /**
+   * Get the category name from one of the post's categories.
+   * @param {Array} categories
+   */
+  getCategoryName(post) {
+    if (
+      !post._embedded ||
+      !post._embedded['wp:term'] ||
+      !post._embedded['wp:term'][0] ||
+      !post._embedded['wp:term'][0].length === 0
+    ) {
+      return null;
+    }
+
+    const categories = post._embedded['wp:term'][0];
+    const category = categories.find(
+      item => Number(item.id) === Number(this.props.match.params.categoryId),
+    );
+
+    if (category) {
+      return category.name;
+    }
+
+    return null;
   }
 
   /**
@@ -84,6 +113,8 @@ class PostsCarousel extends Component {
    * @param {Number} index = The index of the card.
    */
   loadMore(index) {
+    this.setState({ currentPage: index + 1 });
+
     if (this.props.loadMore === false) {
       return;
     }
@@ -100,9 +131,12 @@ class PostsCarousel extends Component {
    * @param {Number} chunkSize
    */
   createPostsList(chunkSize) {
+    // sort posts by date descending (so the same order from the api is used)
+    const sortedPost = _.orderBy(this.props.posts, ['date'], ['desc']);
+
     const postsList = [];
-    for (let i = 0; i < this.props.posts.length; i += chunkSize) {
-      postsList.push(this.props.posts.slice(i, i + chunkSize));
+    for (let i = 0; i < sortedPost.length; i += chunkSize) {
+      postsList.push(sortedPost.slice(i, i + chunkSize));
     }
     return postsList;
   }
@@ -131,17 +165,19 @@ class PostsCarousel extends Component {
                 this.props.translations.TEXTS && (
                   <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />
                 )}
-              <Footer />
             </div>
           ) : (
             listedPosts.map(postsList => (
               <div key={Math.random()}>
                 <PostsList postsList={postsList} category={this.props.match} />
-                <Footer />
               </div>
             ))
           )}
         </Slider>
+        <Footer
+          title={this.props.posts.length > 0 ? this.getCategoryName(this.props.posts[0]) : ''}
+          page={this.state.currentPage}
+        />
       </div>
     );
   }

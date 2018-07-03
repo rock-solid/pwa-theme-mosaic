@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Sidebar, Loader, Image } from 'semantic-ui-react';
 import config from 'react-global-configuration';
+import _ from 'lodash';
 
 import { fetchCategories } from './action';
 import {
@@ -81,12 +82,14 @@ class CategoriesCarousel extends Component {
    */
   createCategoriesList(homeChunkSize, regularChunkSize) {
     // get the subset of categories for home card
+    const sortedCategories = _.orderBy(this.props.categories, ['name'], ['asc']);
+
     const categoriesList = [];
-    categoriesList.push(this.props.categories.slice(0, homeChunkSize));
+    categoriesList.push(sortedCategories.slice(0, homeChunkSize));
 
     let i;
-    for (i = homeChunkSize; i < this.props.categories.length; i += regularChunkSize) {
-      categoriesList.push(this.props.categories.slice(i, i + regularChunkSize));
+    for (i = homeChunkSize; i < sortedCategories.length; i += regularChunkSize) {
+      categoriesList.push(sortedCategories.slice(i, i + regularChunkSize));
     }
     return categoriesList;
   }
@@ -137,13 +140,16 @@ class CategoriesCarousel extends Component {
             {config.get('logo') !== '' && <Image src={config.get('logo')} size="tiny" />}
             <NavBar />
             {this.props.loading === 1 ? <Loader active /> : null}
-            <Slider {...settings}>
-              {categoriesList.map((categoriesChunk, k) => (
-                <div key={Math.random(k)} className="categories-card">
-                  <CategoriesList categoriesChunk={categoriesChunk} />
-                </div>
-              ))}
-            </Slider>
+            {categoriesList.length > 0 ?
+              (
+                <Slider {...settings}>
+                  {categoriesList.map((categoriesChunk, k) => (
+                    <div key={Math.random(k)} className="categories-card">
+                      <CategoriesList categoriesChunk={categoriesChunk} />
+                    </div>
+                  ))}
+                </Slider>
+              ) : null}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

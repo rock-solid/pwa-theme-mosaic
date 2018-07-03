@@ -1,25 +1,25 @@
-.ui.menu-pages.sidebar.visible {
+.ui.menu-pages.sidebar {
   border-color: #dddddd; }
-  .ui.menu-pages.sidebar.visible i {
+  .ui.menu-pages.sidebar i {
     color: #747474; }
-  .ui.menu-pages.sidebar.visible .list {
-    padding: 10px; }
-    .ui.menu-pages.sidebar.visible .list .header {
+  .ui.menu-pages.sidebar .list {
+    padding: 16px; }
+    .ui.menu-pages.sidebar .list .header {
       font-family: "Roboto Condensed", sans-serif, sans-serif;
       color: #303030;
       margin-top: 8px; }
-    .ui.menu-pages.sidebar.visible .list .item {
+    .ui.menu-pages.sidebar .list .item {
       display: flex;
       align-items: center;
-      height: 8vh;
-      position: relative;
-      border-color: #dddddd; }
-      .ui.menu-pages.sidebar.visible .list .item .content {
+      border-color: #dddddd;
+      padding-top: 0.5rem;
+      padding-bottom: 0.7rem; }
+      .ui.menu-pages.sidebar .list .item .content {
         display: flex;
         align-items: center; }
-        .ui.menu-pages.sidebar.visible .list .item .content h3 {
+        .ui.menu-pages.sidebar .list .item .content h3 {
           font-family: "Roboto Condensed", sans-serif, sans-serif;
           color: #303030; }
-      .ui.menu-pages.sidebar.visible .list .item .icon.triangle {
+      .ui.menu-pages.sidebar .list .item .icon.triangle {
         position: absolute;
         right: 0; }

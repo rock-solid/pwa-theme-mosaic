@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Sidebar, Loader } from 'semantic-ui-react';
+import { Sidebar, Loader, Menu } from 'semantic-ui-react';
 
 import { fetchPages } from './action';
 import { getPages, pagePropType, getPagesFetching } from './reducer';
-import PageList from './components/PageList';
+import PageList from './PageList';
 
 // translations
 import { fetchTranslations } from '../../translations/actions';
@@ -25,7 +25,13 @@ class SideMenu extends Component {
     const { pages, translations } = this.props;
 
     return (
-      <Sidebar visible={this.props.sideMenuVisible} direction="right" className="menu-pages">
+      <Sidebar
+        as={Menu}
+        animation="push"
+        direction="right"
+        visible={this.props.sideMenuVisible}
+        className="menu-pages"
+      >
         {this.props.loadingPages === 1 && this.props.loadingTranslations === 1 ? (
           <Loader active />
         ) : (
