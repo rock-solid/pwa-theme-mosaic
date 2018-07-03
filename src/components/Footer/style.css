@@ -7,4 +7,5 @@
   width: 100%;
   background: #fafafa;
   padding: 5px;
-  border-top: solid 1px #dddddd; }
+  border-top: solid 1px #dddddd;
+  z-index: 1000; }

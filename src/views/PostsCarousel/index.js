@@ -145,17 +145,16 @@ class PostsCarousel extends Component {
           {this.props.loading === 0 && listedPosts.length === 0 ? (
             <div key={Math.random()}>
               {this.props.loadTranslations === 0 && this.props.translations.TEXTS && <NotFound content={this.props.translations.TEXTS.NO_ARTICLES} />}
-              <Footer />
             </div>
           ) : (
-            listedPosts.map(postsList => (
-              <div key={Math.random()}>
-                <PostsList postsList={postsList} category={this.props.match} />
-                <Footer />
-              </div>
-            ))
-          )}
+              listedPosts.map(postsList => (
+                <div key={Math.random()}>
+                  <PostsList postsList={postsList} category={this.props.match} />
+                </div>
+              ))
+            )}
         </Slider>
+        <Footer />
       </div>
     );
   }
