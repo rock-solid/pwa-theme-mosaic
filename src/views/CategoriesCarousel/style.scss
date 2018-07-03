@@ -34,3 +34,9 @@
 .carousel-container .slick-dots li.slick-active button::before {
   color: $buttons-bg-color;
 }
+
+.carousel-container .pusher .ui.loader.active {
+  &::before, &::after {
+    top: 50%;
+  }
+}
