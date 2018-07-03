@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   min-height: 93vh; }
-  .double-post a {
+  .double-post a.post-link {
     flex: 1;
     min-height: 40vh; }
-    .double-post a:first-child {
+    .double-post a.post-link:first-child {
       border-bottom: 1px solid; }
 
 .single-post {
   display: flex;
   flex-direction: column;
   min-height: 90vh; }
-  .single-post a {
+  .single-post a.post-link {
     flex: 1;
     min-width: 90vw;
     margin-top: 24px;
