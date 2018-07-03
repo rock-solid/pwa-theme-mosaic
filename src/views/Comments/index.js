@@ -72,19 +72,21 @@ class Comments extends Component {
         {this.props.loading === 1 && this.props.loadingTranslations === 1 ? (
           <Loader active />
         ) : (
-            <ReactPullToRefresh onRefresh={this.handleRefresh}>
-              <CommentsView
-                comments={comm}
-                loading={this.props.loading}
-                postId={this.props.match.params.postId}
-                commentStatus={this.props.match.params.commentStatus}
-                texts={this.props.translations}
-              />
-            </ReactPullToRefresh>
-          )}
+          <ReactPullToRefresh onRefresh={this.handleRefresh}>
+            <CommentsView
+              comments={comm}
+              loading={this.props.loading}
+              postId={this.props.match.params.postId}
+              commentStatus={this.props.match.params.commentStatus}
+              texts={this.props.translations}
+            />
+          </ReactPullToRefresh>
+        )}
       </div>
     ) : (
-      <Redirect to="/" />
+      <Redirect
+        to={'/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId}
+      />
     );
   }
 }
