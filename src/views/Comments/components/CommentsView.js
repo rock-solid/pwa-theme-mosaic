@@ -52,7 +52,9 @@ class CommentsView extends Component {
             <Comment key={String(comment.id) + String(comment.content.rendered.length)}>
               <Comment.Avatar src={comment.author_avatar_urls[24]} />
               <Comment.Content>
-                <Comment.Author as="a">{comment.author_name}</Comment.Author>
+                <Comment.Author as="a" href={comment.author_url}>
+                  {comment.author_name}
+                </Comment.Author>
                 <Comment.Metadata>
                   <div>
                     <ReactMoment format="MMMM DD, YYYY">{comment.date}</ReactMoment>
