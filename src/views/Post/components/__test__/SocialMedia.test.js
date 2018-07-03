@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import SocialMedia from '../components/SocialMedia';
+import SocialMedia from '../SocialMedia';
 
 describe('Social media component', () => {
   const title = 'mock-title';
