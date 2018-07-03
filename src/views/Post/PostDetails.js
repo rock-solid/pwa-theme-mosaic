@@ -32,7 +32,7 @@ class PostDetails extends Component {
     return (
       "<p>This post is password protected! Enter the password <a href='" +
       post.link +
-      "?pwa_theme_mode=desktop'>here</a>."
+      "?pwapp_theme_mode=desktop'>here</a>."
     );
   }
 
