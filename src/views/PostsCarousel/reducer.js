@@ -22,7 +22,29 @@ export const postPropType = PropTypes.shape({
     protected: PropTypes.bool.isRequired,
   }).isRequired,
   date: PropTypes.string.isRequired, //TO DO : date validation => class Date
-  // TO DO : proptype for image src (_embedded params)
+  _embedded: PropTypes.shape({
+    author: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    'wp:featuredmedia': PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        source_url: PropTypes.string.isRequired,
+      }),
+    ),
+    'wp:term': PropTypes.arrayOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          name: PropTypes.string.isRequired,
+          slug: PropTypes.string.isRequired,
+        }),
+      ),
+    ).isRequired,
+  }),
 });
 
 export const INITIAL_STATE = Immutable({
