@@ -1,6 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Posts reducer handles RECEIVE_POSTS action case 1 1`] = `
+exports[`Posts reducer getPostsByCategory returns posts from category 1`] = `
+Array [
+  Object {
+    "categories": Array [
+      101,
+      102,
+    ],
+    "name": "Some post",
+  },
+]
+`;
+
+exports[`Posts reducer getPostsByCategory returns posts from category 2`] = `
+Array [
+  Object {
+    "categories": Array [
+      101,
+      102,
+    ],
+    "name": "Some post",
+  },
+  Object {
+    "categories": Array [
+      102,
+      103,
+    ],
+    "name": "Another post",
+  },
+]
+`;
+
+exports[`Posts reducer getPostsByCategory returns posts from category 3`] = `Array []`;
+
+exports[`Posts reducer handles RECEIVE_POSTS action and ads new posts to the state 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [
@@ -17,10 +50,50 @@ Object {
       "name": "Nicest post",
     },
   ],
+  "loadMore": false,
 }
 `;
 
-exports[`Posts reducer handles RECEIVE_POSTS action case 2 1`] = `
+exports[`Posts reducer handles RECEIVE_POSTS action and continues load more 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "id": 1,
+    },
+    Object {
+      "id": 2,
+    },
+    Object {
+      "id": 3,
+    },
+    Object {
+      "id": 4,
+    },
+    Object {
+      "id": 5,
+    },
+    Object {
+      "id": 6,
+    },
+    Object {
+      "id": 7,
+    },
+    Object {
+      "id": 8,
+    },
+    Object {
+      "id": 9,
+    },
+    Object {
+      "id": 10,
+    },
+  ],
+  "loadMore": true,
+}
+`;
+
+exports[`Posts reducer handles RECEIVE_POSTS action and merges by post id 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [
@@ -32,11 +105,8 @@ Object {
       "id": 2,
       "name": "Nicer post",
     },
-    Object {
-      "id": 3,
-      "name": "Nicest post",
-    },
   ],
+  "loadMore": false,
 }
 `;
 
@@ -53,6 +123,7 @@ Object {
       "name": "Nicer post",
     },
   ],
+  "loadMore": true,
 }
 `;
 
@@ -60,5 +131,6 @@ exports[`Posts reducer returns same state on an unhandled action 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [],
+  "loadMore": true,
 }
 `;
