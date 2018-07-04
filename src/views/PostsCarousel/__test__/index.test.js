@@ -35,6 +35,7 @@ describe('Posts carousel', () => {
           },
         ],
         isFetching: 0,
+        loadMore: false,
       },
       categories: {
         items: [
@@ -58,6 +59,7 @@ describe('Posts carousel', () => {
         isFetching: 0,
       },
     });
+
     const match = {
       params: {
         categoryId: '35',
@@ -72,6 +74,7 @@ describe('Posts carousel', () => {
       posts: {
         items: [],
         isFetching: 1,
+        loadMore: false,
       },
       categories: {
         items: [],
@@ -82,6 +85,7 @@ describe('Posts carousel', () => {
         isFetching: 1,
       },
     });
+
     const match = {
       params: {
         categoryId: '35',

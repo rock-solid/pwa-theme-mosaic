@@ -28,6 +28,7 @@ describe('Categories carousel', () => {
           },
         ],
         isFetching: 0,
+        loadMore: false,
       },
       sideMenuVisible: false,
     });
@@ -38,6 +39,7 @@ describe('Categories carousel', () => {
       categories: {
         items: [],
         isFetching: 1,
+        loadMore: false,
       },
       sideMenuVisible: false,
     });

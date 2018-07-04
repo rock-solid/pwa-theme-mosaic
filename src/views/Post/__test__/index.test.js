@@ -5,6 +5,7 @@ import mockStore from '../../../__mocks__/redux-mock-store';
 import Post from '../index';
 
 jest.mock('../PostDetails', () => 'Post view test');
+jest.mock('react-global-configuration', () => require.requireActual('../../../__mocks__/react-global-configuration'));
 
 describe('Post screen', () => {
   it('should render correctly that a post does not exist', () => {
