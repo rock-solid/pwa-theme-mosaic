@@ -101,7 +101,7 @@ const store = createStore(
   compose(applyMiddleware(thunk, routerMiddleware(history))),
 );
 
-const persistor = window.__INITIAL_CONFIG__.offlineMode === true ? persistStore(store) : null;
+const persistor = window.__INITIAL_CONFIG__.offlineMode === 1 ? persistStore(store) : null;
 
 export { history, persistor };
 export default store;

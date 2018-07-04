@@ -77,7 +77,7 @@ class CommentsView extends Component {
           </Container>
         )}
 
-        {config.get('commentsEnabled') === true && this.props.commentStatus === 'open' ? (
+        {config.get('commentsEnabled') === 1 && this.props.commentStatus === 'open' ? (
           <Button onClick={this.showModal}>
             {this.props.texts.TEXTS && this.props.texts.TEXTS.LEAVE_COMMENTS}
           </Button>
