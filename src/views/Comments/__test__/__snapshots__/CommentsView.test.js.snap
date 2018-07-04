@@ -52,12 +52,6 @@ exports[`Comments view renders comments, allows adding new comments 1`] = `
       </CommentActions>
     </CommentContent>
   </Comment>
-  <Button
-    as="button"
-    onClick={[Function]}
-  >
-    Leave comment
-  </Button>
 </CommentGroup>
 `;
 
@@ -125,12 +119,6 @@ exports[`Comments view renders no comments, allows adding new comments 1`] = `
   >
     No comments
   </Container>
-  <Button
-    as="button"
-    onClick={[Function]}
-  >
-    Leave comment
-  </Button>
 </CommentGroup>
 `;
 
