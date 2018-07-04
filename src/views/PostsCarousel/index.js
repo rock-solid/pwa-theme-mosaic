@@ -207,7 +207,7 @@ PostsCarousel.propTypes = {
 };
 
 PostsCarousel.defaultProps = {
-  category: {},
+  category: undefined,
   loadTranslations: 0,
   translations: {
     TEXTS: {
