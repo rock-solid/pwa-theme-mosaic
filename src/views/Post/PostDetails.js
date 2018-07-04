@@ -90,7 +90,7 @@ class PostDetails extends Component {
           ))}
           <Header.Subheader>
             &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>
-              {author[0].name}
+              {author.map(item => item.name).join(', ')}
             </b>,&nbsp;<Moment format="MMMM DD, YYYY">{post.date}</Moment>
           </Header.Subheader>
           <div

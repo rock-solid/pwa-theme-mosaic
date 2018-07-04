@@ -27,7 +27,7 @@ const PageDetails = (props) => {
       </Header>
       <Header.Subheader>
         &nbsp;{props.texts.TEXTS && props.texts.TEXTS.BY_AUTHOR}&nbsp;
-        <b>{author[0].name}</b>,&nbsp;
+        <b>{author.map(item => item.name).join(', ')}</b>,&nbsp;
         <Moment format="MMMM DD, YYYY">{page.date}</Moment>
       </Header.Subheader>
       {featuredMedia ? <Image src={featuredMedia[0].source_url} /> : ''}
