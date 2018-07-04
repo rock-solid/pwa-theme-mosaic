@@ -16,6 +16,8 @@ const PostCard = (props) => {
 
   path = path + '/post/' + props.post.slug + '/' + props.post.id;
 
+  const featuredMedia = props.post._embedded['wp:featuredmedia'];
+
   return (
     <Link to={path} className="post-link">
       <Item className="post-item">
@@ -30,7 +32,7 @@ const PostCard = (props) => {
             <div
               className="image"
               style={{
-                backgroundImage: 'url(' + props.post._embedded['wp:featuredmedia'][0].source_url + ')',
+                backgroundImage: 'url(' + (_.isArray(featuredMedia) && !_.isNil(featuredMedia[0]) ? featuredMedia[0].source_url : '') + ')',
               }}
             />
           ) : null}

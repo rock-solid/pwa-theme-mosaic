@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Categories reducer handles RECEIVE_CATEGORIES action 1`] = `
+exports[`Categories reducer handles RECEIVE_CATEGORIES action and adds new categories to the state 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [
@@ -17,6 +17,74 @@ Object {
       "name": "Nicest one",
     },
   ],
+  "loadMore": true,
+}
+`;
+
+exports[`Categories reducer handles RECEIVE_CATEGORIES action and adds new category to the state 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "id": 1,
+      "name": "Nice one",
+    },
+    Object {
+      "id": 2,
+      "name": "Nicer one",
+    },
+    Object {
+      "id": 3,
+      "name": "Nicest one",
+    },
+  ],
+  "loadMore": true,
+}
+`;
+
+exports[`Categories reducer handles RECEIVE_CATEGORIES action and continues load more 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "id": 1,
+      "name": "Nice one",
+    },
+    Object {
+      "id": 2,
+      "name": "Nicer one",
+    },
+    Object {
+      "id": 3,
+      "name": "Nicest one",
+    },
+    Object {
+      "id": 4,
+      "name": "Another category",
+    },
+  ],
+  "loadMore": true,
+}
+`;
+
+exports[`Categories reducer handles RECEIVE_CATEGORIES action and disables load more 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "id": 1,
+      "name": "Nice one",
+    },
+    Object {
+      "id": 2,
+      "name": "Nicer one",
+    },
+    Object {
+      "id": 3,
+      "name": "Nicest one",
+    },
+  ],
+  "loadMore": false,
 }
 `;
 
@@ -33,6 +101,7 @@ Object {
       "name": "Nicer one",
     },
   ],
+  "loadMore": true,
 }
 `;
 
@@ -40,5 +109,6 @@ exports[`Categories reducer returns the same state on an unhandled action 1`] = 
 Object {
   "isFetching": 0,
   "items": Array [],
+  "loadMore": true,
 }
 `;

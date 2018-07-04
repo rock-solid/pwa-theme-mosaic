@@ -5,7 +5,13 @@ exports[`Category card should render correctly 1`] = `
   replace={false}
   to="/category/mock-slug/1"
 >
-  <Item>
+  <Item
+    style={
+      Object {
+        "backgroundImage": undefined,
+      }
+    }
+  >
     <ItemHeader
       as={[Function]}
     >

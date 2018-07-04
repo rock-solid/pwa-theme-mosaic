@@ -20,6 +20,7 @@ const settings = {
   'ga-id': 'UA-000000-01',
   websiteUrl: 'http://localhost/wordpress-4.8.3/wordpress?wmp_theme_mode=desktop',
   logo: 'http://localhost/wordpress-4.8.3/wordpress/wp-content/uploads/wordpress-mobile-pack/logo_1516880924.png',
+  googleAds: null,
 };
 
 class ReactGlobalConfiguration extends React.Component {

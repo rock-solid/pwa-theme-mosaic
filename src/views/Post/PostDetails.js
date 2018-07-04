@@ -24,7 +24,8 @@ class PostDetails extends Component {
     };
   }
 
-  getPostContent(post) {
+  getPostContent() {
+    const { post } = this.props;
     if (post.content.protected === false) {
       return post.content.rendered;
     }
@@ -72,7 +73,7 @@ class PostDetails extends Component {
         <Link to={goBack}>
           <Icon circular size="large" name="chevron left" className={featuredMedia ? 'absolute' : ''} />
         </Link>
-        {featuredMedia ? (
+        {_.isArray(featuredMedia) && !_.isNil(featuredMedia[0]) ? (
           <div
             className="post-image"
             style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }}
@@ -89,14 +90,14 @@ class PostDetails extends Component {
           ))}
           <Header.Subheader>
             &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>
-              {author[0].name}
+              {author.map(item => item.name).join(', ')}
             </b>,&nbsp;<Moment format="MMMM DD, YYYY">{post.date}</Moment>
           </Header.Subheader>
           <div
             className="post-content"
-            dangerouslySetInnerHTML={{ __html: this.getPostContent(post) }}
+            dangerouslySetInnerHTML={{ __html: this.getPostContent() }}
           />
-          {googleAds !== null ? (
+          {!_.isNil(googleAds) && !_.isNil(googleAds.phone) ? (
             <DFPSlotsProvider
               dfpNetworkId={googleAds.phone.networkCode}
               sizeMapping={[{ viewport: [900, 768], sizes: googleAds.phone.sizes }]}

@@ -58,6 +58,15 @@ const isFetching = (state = INITIAL_STATE.isFetching, action) => {
 };
 
 export const getCategories = state => state.items;
+
+/**
+ * Search categories by category id
+ * @param {Object} state
+ * @param {Number} categoryId
+ */
+export const getCategory = (state, categoryId) =>
+  _.find(state.items, item => Number(item.id) === Number(categoryId));
+
 export const getCategoriesFetching = state => state.isFetching;
 export const getLoadMoreCategories = state => state.loadMore;
 export default combineReducers({ items, isFetching, loadMore });

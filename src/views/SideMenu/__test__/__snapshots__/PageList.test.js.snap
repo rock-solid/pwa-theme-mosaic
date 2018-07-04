@@ -17,16 +17,15 @@ exports[`Page list renders page list in side menu 1`] = `
       verticalAlign="middle"
     />
     <ListContent>
-      <Link
-        replace={false}
-        to="websiteUrl"
+      <a
+        href="websiteUrl"
       >
         <ListHeader
           as="h3"
         >
           Visit website
         </ListHeader>
-      </Link>
+      </a>
     </ListContent>
   </ListItem>
 </List>

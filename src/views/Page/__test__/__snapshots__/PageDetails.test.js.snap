@@ -20,10 +20,11 @@ exports[`Page details renders page details 1`] = `
       replace={false}
       to="/"
     >
-      <Button
-        as="button"
-        icon="close"
-        size="huge"
+      <Icon
+        as="i"
+        link={true}
+        name="close"
+        size="large"
       />
     </Link>
     <h1
@@ -38,7 +39,9 @@ exports[`Page details renders page details 1`] = `
      
     by
      
-    <b />
+    <b>
+      Some author
+    </b>
     , 
     <t
       ago={false}
@@ -56,6 +59,7 @@ exports[`Page details renders page details 1`] = `
   </HeaderSubheader>
   <Image
     as="img"
+    src="some-image"
     ui={true}
   />
   <Container

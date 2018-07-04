@@ -16,6 +16,19 @@ describe('Comments screen', () => {
         items: [],
         isFetching: 0,
       },
+      posts: {
+        items: [
+          {
+            id: 54,
+            name: 'Test post',
+            content: {
+              protected: false,
+            },
+          },
+        ],
+        isFetching: 0,
+        loadMore: false,
+      },
       translations: {
         items: {},
         isFetching: 0,
@@ -38,6 +51,7 @@ describe('Comments screen', () => {
       ),
     ).toMatchSnapshot();
   });
+
   it('renders comments list', () => {
     const store = mockStore({
       comments: {
@@ -56,6 +70,19 @@ describe('Comments screen', () => {
           },
         ],
         isFetching: 0,
+      },
+      posts: {
+        items: [
+          {
+            id: 54,
+            name: 'Test post',
+            content: {
+              protected: false,
+            },
+          },
+        ],
+        isFetching: 0,
+        loadMore: false,
       },
       translations: {
         items: {
@@ -78,7 +105,7 @@ describe('Comments screen', () => {
     expect(
       renderer.create(
         <MemoryRouter>
-          <Comments store={store} fetchComments={jest.fn()} match={match} />
+          <Comments store={store} fetchComments={jest.fn()} match={match} isProtectedPost={false} />
         </MemoryRouter>,
       ),
     ).toMatchSnapshot();

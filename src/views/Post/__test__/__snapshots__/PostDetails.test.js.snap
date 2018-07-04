@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Post card should render post with featured image 1`] = `
+exports[`Post details should render post with featured image 1`] = `
 <Container
   className="post"
 >
@@ -20,14 +20,16 @@ exports[`Post card should render post with featured image 1`] = `
     <Icon
       as="i"
       circular={true}
+      className="absolute"
       name="chevron left"
+      size="large"
     />
   </Link>
   <div
     className="post-image"
     style={
       Object {
-        "backgroundImage": "url(undefined)",
+        "backgroundImage": "url(some-post-image)",
       }
     }
   />
@@ -46,7 +48,7 @@ exports[`Post card should render post with featured image 1`] = `
     <Link
       key="Some category"
       replace={false}
-      to="/category/undefined/1"
+      to="/category/some-category-slug-1/1"
     >
       <Label>
         Some category
@@ -55,7 +57,7 @@ exports[`Post card should render post with featured image 1`] = `
     <Link
       key="Some category"
       replace={false}
-      to="/category/undefined/2"
+      to="/category/some-category-slug-2/2"
     >
       <Label>
         Some category
@@ -64,7 +66,7 @@ exports[`Post card should render post with featured image 1`] = `
     <Link
       key="Some category"
       replace={false}
-      to="/category/undefined/3"
+      to="/category/some-category-slug-32/32"
     >
       <Label>
         Some category
@@ -74,7 +76,9 @@ exports[`Post card should render post with featured image 1`] = `
        
       by
        
-      <b />
+      <b>
+        Some mock author
+      </b>
       , 
       <t
         ago={false}
@@ -148,7 +152,7 @@ exports[`Post card should render post with featured image 1`] = `
 </Container>
 `;
 
-exports[`Post card should render post with image placeholder 1`] = `
+exports[`Post details should render post without image 1`] = `
 <Container
   className="post"
 >
@@ -168,7 +172,9 @@ exports[`Post card should render post with image placeholder 1`] = `
     <Icon
       as="i"
       circular={true}
+      className=""
       name="chevron left"
+      size="large"
     />
   </Link>
   <Container
@@ -186,7 +192,7 @@ exports[`Post card should render post with image placeholder 1`] = `
     <Link
       key="Some category"
       replace={false}
-      to="/category/undefined/1"
+      to="/category/some-category-slug-1/1"
     >
       <Label>
         Some category
@@ -195,7 +201,7 @@ exports[`Post card should render post with image placeholder 1`] = `
     <Link
       key="Some category"
       replace={false}
-      to="/category/undefined/2"
+      to="/category/some-category-slug-2/2"
     >
       <Label>
         Some category
@@ -204,7 +210,7 @@ exports[`Post card should render post with image placeholder 1`] = `
     <Link
       key="Some category"
       replace={false}
-      to="/category/undefined/3"
+      to="/category/some-category-slug-32/32"
     >
       <Label>
         Some category
@@ -214,7 +220,9 @@ exports[`Post card should render post with image placeholder 1`] = `
        
       by
        
-      <b />
+      <b>
+        Some mock author
+      </b>
       , 
       <t
         ago={false}

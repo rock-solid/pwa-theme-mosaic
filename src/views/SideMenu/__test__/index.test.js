@@ -5,7 +5,7 @@ import mockStore from '../../../__mocks__/redux-mock-store';
 
 import SideMenu from '../index';
 
-jest.mock('../components/PageList', () => 'Page list test');
+jest.mock('../PageList', () => 'Page list test');
 
 describe('Side menu', () => {
   it('renders side menu', () => {

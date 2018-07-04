@@ -17,18 +17,17 @@ export const fetchCategories = (params = {}) => (dispatch) => {
   dispatch(requestCategories());
 
   let url;
-  if (params && params.post) {
-    url = config.get('export').categories + '?post=' + String(params.post);
-  } else if (params && params.id) {
-    url = config.get('export').categories + '?id=' + String(params.id);
-  } else {
+  if (params) {
     url =
       config.get('export').categories +
       '?' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
         .join('&');
+  } else {
+    url = config.get('export').categories;
   }
+
   return fetch(url)
     .then(response => response.json())
     .then(json => dispatch(receiveCategories(json, params.per_page)))

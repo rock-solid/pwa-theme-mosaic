@@ -23,7 +23,7 @@ const PostsList = (props) => {
 };
 
 PostsList.propTypes = {
-  postsList: PropTypes.arrayOf(postPropType).isRequired, // TO DO: check rule for eslint
+  postsList: PropTypes.arrayOf(postPropType).isRequired,
   category: PropTypes.shape({
     params: PropTypes.shape({
       categoryId: PropTypes.string.isRequired,

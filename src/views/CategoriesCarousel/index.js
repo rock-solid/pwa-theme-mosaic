@@ -66,13 +66,9 @@ class CategoriesCarousel extends Component {
       return 1;
     }
 
-    // Add +1 if the items are not exactly split over cards (last card is incomplete).
+    // Add +1 (ceil) if the items are not exactly split over cards (last card is incomplete).
     // Add +1 for the home card.
-    return (
-      Math.round(lengthWithoutHome / this.state.itemsPerCard) +
-      (lengthWithoutHome % this.state.itemsPerCard === 0 ? 0 : 1) +
-      1
-    );
+    return (Math.ceil(lengthWithoutHome / this.state.itemsPerCard) + 1);
   }
 
   /**

@@ -5,6 +5,7 @@ import mockStore from '../../../__mocks__/redux-mock-store';
 import Post from '../index';
 
 jest.mock('../PostDetails', () => 'Post view test');
+jest.mock('react-global-configuration', () => require.requireActual('../../../__mocks__/react-global-configuration'));
 
 describe('Post screen', () => {
   it('should render correctly that a post does not exist', () => {
@@ -62,6 +63,19 @@ describe('Post screen', () => {
               protected: false,
             },
             date: 'some mock date',
+            _embedded: {
+              author: [
+                {
+                  id: 54,
+                  name: 'Some author',
+                },
+              ],
+              'wp:term': [[
+                { id: 1, name: 'Some category 1', slug: 'some-category-slug-1' },
+                { id: 4, name: 'Some category 4', slug: 'some-category-slug-4' },
+                { id: 2, name: 'Some category 2', slug: 'some-category-slug-2' },
+              ]],
+            },
           },
         ],
         isFetching: 0,

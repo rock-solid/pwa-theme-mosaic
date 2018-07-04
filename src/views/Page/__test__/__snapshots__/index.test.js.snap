@@ -10,6 +10,14 @@ exports[`Page screen renders existing pages 1`] = `
 <Page details test
   page={
     Object {
+      "_embedded": Object {
+        "author": Array [
+          Object {
+            "id": 54,
+            "name": "Some author",
+          },
+        ],
+      },
       "author": 54,
       "comment_status": "dunno",
       "content": Object {

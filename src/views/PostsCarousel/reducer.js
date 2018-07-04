@@ -22,7 +22,29 @@ export const postPropType = PropTypes.shape({
     protected: PropTypes.bool.isRequired,
   }).isRequired,
   date: PropTypes.string.isRequired, //TO DO : date validation => class Date
-  // TO DO : proptype for image src
+  _embedded: PropTypes.shape({
+    author: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    'wp:featuredmedia': PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        source_url: PropTypes.string.isRequired,
+      }),
+    ),
+    'wp:term': PropTypes.arrayOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          name: PropTypes.string.isRequired,
+          slug: PropTypes.string.isRequired,
+        }),
+      ),
+    ).isRequired,
+  }),
 });
 
 export const INITIAL_STATE = Immutable({
@@ -33,45 +55,57 @@ export const INITIAL_STATE = Immutable({
 
 const items = (state = INITIAL_STATE.items, action) => {
   switch (action.type) {
-  case REQUEST_POSTS:
-    return state;
-  case RECEIVE_POSTS:
-    if (Array.isArray(action.posts)) {
-      return _.unionBy(state, action.posts, 'id');
-    }
-    return _.unionBy(state, [action.posts], 'id');
-  default:
-    return state;
+    case REQUEST_POSTS:
+      return state;
+    case RECEIVE_POSTS:
+      if (Array.isArray(action.posts)) {
+        return _.unionBy(state, action.posts, 'id');
+      }
+      return _.unionBy(state, [action.posts], 'id');
+    default:
+      return state;
   }
 };
 
 const loadMore = (state = INITIAL_STATE.loadMore, action) => {
   switch (action.type) {
-  case REQUEST_POSTS:
-    return true;
-  case RECEIVE_POSTS:
-    if (Array.isArray(action.posts)) {
-      return !(action.posts.length < 10);
-    }
-    return state;
-  default:
-    return state;
+    case REQUEST_POSTS:
+      return true;
+    case RECEIVE_POSTS:
+      if (Array.isArray(action.posts)) {
+        return !(action.posts.length < 10);
+      }
+      return state;
+    default:
+      return state;
   }
 };
 
 const isFetching = (state = INITIAL_STATE.isFetching, action) => {
   switch (action.type) {
-  case REQUEST_POSTS:
-    return state + 1;
-  case RECEIVE_POSTS:
-    return state - 1;
-  default:
-    return state;
+    case REQUEST_POSTS:
+      return state + 1;
+    case RECEIVE_POSTS:
+      return state - 1;
+    default:
+      return state;
   }
 };
 
 export const getPosts = state => state.items;
+export const getPostsByCategory = (state, categoryId) =>
+  state.items.filter(post => post.categories.indexOf(Number(categoryId)) !== -1);
+
 export const getLoadMorePosts = state => state.loadMore;
+export const getPostsFetching = state => state.isFetching;
+
+/**
+ * Check the password protected status for a post.
+ * Returns true if the post does not exist in the state.
+ *
+ * @param {Object} state
+ * @param {Number} postId
+ */
 export const getPostProtectedStatus = (state, postId) => {
   if (!_.isEmpty(state.items)) {
     const post = _.find(state.items, postItem => Number(postItem.id) === Number(postId));
@@ -81,10 +115,6 @@ export const getPostProtectedStatus = (state, postId) => {
 
   return true;
 };
-export const getPostsByCategory = (state, categoryId) =>
-  state.items.filter(post => post.categories.indexOf(Number(categoryId)) !== -1);
-
-export const getPostsFetching = state => state.isFetching;
 
 export default combineReducers({
   items,

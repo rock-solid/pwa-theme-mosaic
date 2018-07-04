@@ -13,7 +13,7 @@ describe('Posts list', () => {
           rendered: 'Mock title',
         },
         author: 55,
-        categories: [43, 54, 23],
+        categories: [1],
         slug: 'mock-slug',
         content: {
           rendered: 'Some mock content to be rendered',
@@ -25,7 +25,15 @@ describe('Posts list', () => {
         },
         date: 'some mock date',
         _embedded: {
-          'wp:featuredmedia': 'someMockImageUrl',
+          'wp:term': [[
+            { id: 1, name: 'Cat 1', slug: 'cat-1' },
+          ]],
+          author: [
+            {
+              id: 55,
+              name: 'Some author',
+            },
+          ],
         },
       },
       {
@@ -34,19 +42,31 @@ describe('Posts list', () => {
           rendered: 'Mock title',
         },
         author: 55,
-        categories: [43, 54, 23],
+        categories: [1],
         slug: 'mock-slug',
         content: {
           rendered: 'Some mock content to be rendered',
           protected: false,
         },
+        featured_media: 3,
         excerpt: {
           rendered: 'Some mock exceprt to be rendered',
           protected: true,
         },
         date: 'some mock date',
         _embedded: {
-          'wp:featuredmedia': 'someMockImageUrl',
+          'wp:term': [[
+            { id: 1, name: 'Cat 1', slug: 'cat-1' },
+          ]],
+          author: [
+            {
+              id: 55,
+              name: 'Some author',
+            },
+          ],
+          'wp:featuredmedia': [
+            { id: 3, source_url: 'someMockImageUrl' },
+          ],
         },
       },
     ];
@@ -80,7 +100,15 @@ describe('Posts list', () => {
         },
         date: 'some mock date',
         _embedded: {
-          'wp:featuredmedia': 'someMockImageUrl',
+          'wp:term': [[
+            { id: 1, name: 'Cat 1', slug: 'cat-1' },
+          ]],
+          author: [
+            {
+              id: 55,
+              name: 'Some author',
+            },
+          ],
         },
       },
     ];
