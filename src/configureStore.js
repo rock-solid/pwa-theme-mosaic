@@ -3,7 +3,7 @@ import { persistCombineReducers, persistReducer, persistStore } from 'redux-pers
 import storage from 'redux-persist/es/storage';
 import createHistory from 'history/createBrowserHistory';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
@@ -98,9 +98,10 @@ const rootReducer = persistCombineReducers(rootPersistConfig, {
 const store = createStore(
   rootReducer,
   defaultState,
-  compose(applyMiddleware(thunk, logger, routerMiddleware(history))),
+  compose(applyMiddleware(thunk, routerMiddleware(history))),
 );
-const persistor = persistStore(store);
+
+const persistor = window.__INITIAL_CONFIG__.offlineMode === true ? persistStore(store) : null;
 
 export { history, persistor };
 export default store;
