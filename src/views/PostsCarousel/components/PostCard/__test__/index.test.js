@@ -25,13 +25,27 @@ describe('Post card', () => {
       featured_media: 23,
       date: 'some mock date',
       _embedded: {
-        author: 'Some mock author',
+        author: [
+          {
+            id: 55,
+            name: 'Some mock author',
+          },
+          {
+            id: 56,
+            name: 'Another mock author',
+          },
+        ],
         'wp:term': [[
           { id: 43, name: 'Some category', slug: 'some-category-slug-1' },
           { id: 54, name: 'Some category', slug: 'some-category-slug-2' },
           { id: 23, name: 'Some category', slug: 'some-category-slug-32' },
         ]],
-        'wp:featuredmedia': 'someMockImageUrl',
+        'wp:featuredmedia': [
+          {
+            id: 23,
+            source_url: 'someMockImageUrl',
+          },
+        ],
       },
     };
     const category = {
@@ -64,7 +78,12 @@ describe('Post card', () => {
       featured_media: 0,
       date: 'some mock date',
       _embedded: {
-        author: 'Some mock author',
+        author: [
+          {
+            id: 55,
+            name: 'Some mock author',
+          },
+        ],
         'wp:term': [[
           { id: 43, name: 'Some category', slug: 'some-category-slug-1' },
           { id: 54, name: 'Some category', slug: 'some-category-slug-2' },

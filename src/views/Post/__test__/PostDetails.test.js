@@ -16,7 +16,7 @@ describe('Post details', () => {
       },
       author: 45,
       _embedded: {
-        author: 'Some mock author',
+        author: [{ id: 45, name: 'Some mock author' }],
         'wp:term': [[
           { id: 1, name: 'Some category', slug: 'some-category-slug-1' },
           { id: 2, name: 'Some category', slug: 'some-category-slug-2' },
@@ -34,8 +34,7 @@ describe('Post details', () => {
         protected: true,
       },
       link: 'some-post-link',
-      date: 'someMockDate', // TO DO : date validation => class Date
-      // TO DO : proptype for image src
+      date: 'someMockDate',
     };
     const category = {
       match: {
@@ -56,14 +55,20 @@ describe('Post details', () => {
         rendered: 'Mock title',
       },
       author: 45,
+      featured_media: 23,
       _embedded: {
-        author: 'Some mock author',
+        author: [{ id: 45, name: 'Some mock author' }],
         'wp:term': [[
           { id: 1, name: 'Some category', slug: 'some-category-slug-1' },
           { id: 2, name: 'Some category', slug: 'some-category-slug-2' },
           { id: 32, name: 'Some category', slug: 'some-category-slug-32' },
         ]],
-        'wp:featuredmedia': 'some-post-image',
+        'wp:featuredmedia': [
+          {
+            id: 23,
+            source_url: 'some-post-image',
+          },
+        ],
       },
       categories: [2, 54, 23, 6],
       slug: 'mock-slug',
@@ -76,9 +81,9 @@ describe('Post details', () => {
         protected: true,
       },
       link: 'some-post-link',
-      date: 'someMockDate', //TO DO : date validation => class Date
-      // TO DO : proptype for image src
+      date: 'someMockDate',
     };
+
     const category = {
       match: {
         params: {

@@ -20,8 +20,13 @@ describe('Page details', () => {
       author: 32,
       featured_media: 43,
       _embedded: {
-        author: 'Some author',
-        'wp:featuredmedia': 'some-image',
+        author: [{ id: 32, name: 'Some author' }],
+        'wp:featuredmedia': [
+          {
+            id: 43,
+            source_url: 'some-image',
+          },
+        ],
       },
       comment_status: 'some-status',
       status: 'some-status',

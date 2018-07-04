@@ -41,7 +41,7 @@ exports[`Post card should render correctly post with featured image 1`] = `
         className="image"
         style={
           Object {
-            "backgroundImage": "url(undefined)",
+            "backgroundImage": "url(someMockImageUrl)",
           }
         }
       />

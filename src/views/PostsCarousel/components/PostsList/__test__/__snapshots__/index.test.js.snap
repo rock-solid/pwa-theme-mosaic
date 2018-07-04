@@ -17,13 +17,25 @@ exports[`Posts list should render correctly even number of posts 1`] = `
     post={
       Object {
         "_embedded": Object {
-          "wp:featuredmedia": "someMockImageUrl",
+          "author": Array [
+            Object {
+              "id": 55,
+              "name": "Some author",
+            },
+          ],
+          "wp:term": Array [
+            Array [
+              Object {
+                "id": 1,
+                "name": "Cat 1",
+                "slug": "cat-1",
+              },
+            ],
+          ],
         },
         "author": 55,
         "categories": Array [
-          43,
-          54,
-          23,
+          1,
         ],
         "content": Object {
           "protected": false,
@@ -55,13 +67,31 @@ exports[`Posts list should render correctly even number of posts 1`] = `
     post={
       Object {
         "_embedded": Object {
-          "wp:featuredmedia": "someMockImageUrl",
+          "author": Array [
+            Object {
+              "id": 55,
+              "name": "Some author",
+            },
+          ],
+          "wp:featuredmedia": Array [
+            Object {
+              "id": 3,
+              "source_url": "someMockImageUrl",
+            },
+          ],
+          "wp:term": Array [
+            Array [
+              Object {
+                "id": 1,
+                "name": "Cat 1",
+                "slug": "cat-1",
+              },
+            ],
+          ],
         },
         "author": 55,
         "categories": Array [
-          43,
-          54,
-          23,
+          1,
         ],
         "content": Object {
           "protected": false,
@@ -72,6 +102,7 @@ exports[`Posts list should render correctly even number of posts 1`] = `
           "protected": true,
           "rendered": "Some mock exceprt to be rendered",
         },
+        "featured_media": 3,
         "id": 2,
         "slug": "mock-slug",
         "title": Object {
@@ -100,7 +131,21 @@ exports[`Posts list should render correctly odd number of posts 1`] = `
     post={
       Object {
         "_embedded": Object {
-          "wp:featuredmedia": "someMockImageUrl",
+          "author": Array [
+            Object {
+              "id": 55,
+              "name": "Some author",
+            },
+          ],
+          "wp:term": Array [
+            Array [
+              Object {
+                "id": 1,
+                "name": "Cat 1",
+                "slug": "cat-1",
+              },
+            ],
+          ],
         },
         "author": 55,
         "categories": Array [

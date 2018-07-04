@@ -39,7 +39,12 @@ describe('Posts carousel', () => {
                 { id: 54, name: 'Some category', slug: 'some-category-slug-2' },
                 { id: 6, name: 'Some category', slug: 'some-category-slug-32' },
               ]],
-              'wp:featuredmedia': 'someMockImageUrl',
+              author: [
+                {
+                  id: 56,
+                  name: 'Some author',
+                },
+              ],
             },
           },
         ],
@@ -161,6 +166,7 @@ describe('Posts carousel', () => {
           slug: 'post-' + String(i),
           _embedded: {
             'wp:term': [[{ ...category }]],
+            author: [{ id: 3, name: 'Some author' }],
           },
         });
     }
@@ -213,6 +219,7 @@ describe('Posts carousel', () => {
           slug: 'post-' + String(i),
           _embedded: {
             'wp:term': [[{ ...category }]],
+            author: [{ id: 3, name: 'Some author' }],
           },
         });
     }
@@ -273,6 +280,7 @@ describe('Posts carousel', () => {
           slug: 'post-' + String(i),
           _embedded: {
             'wp:term': [[{ ...category }]],
+            author: [{ id: 3, name: 'Some author' }],
           },
         });
     }

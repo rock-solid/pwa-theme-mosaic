@@ -63,6 +63,19 @@ describe('Post screen', () => {
               protected: false,
             },
             date: 'some mock date',
+            _embedded: {
+              author: [
+                {
+                  id: 54,
+                  name: 'Some author',
+                },
+              ],
+              'wp:term': [[
+                { id: 1, name: 'Some category 1', slug: 'some-category-slug-1' },
+                { id: 4, name: 'Some category 4', slug: 'some-category-slug-4' },
+                { id: 2, name: 'Some category 2', slug: 'some-category-slug-2' },
+              ]],
+            },
           },
         ],
         isFetching: 0,

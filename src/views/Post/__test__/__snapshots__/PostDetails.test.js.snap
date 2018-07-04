@@ -29,7 +29,7 @@ exports[`Post details should render post with featured image 1`] = `
     className="post-image"
     style={
       Object {
-        "backgroundImage": "url(undefined)",
+        "backgroundImage": "url(some-post-image)",
       }
     }
   />
@@ -76,7 +76,9 @@ exports[`Post details should render post with featured image 1`] = `
        
       by
        
-      <b />
+      <b>
+        Some mock author
+      </b>
       , 
       <t
         ago={false}
@@ -218,7 +220,9 @@ exports[`Post details should render post without image 1`] = `
        
       by
        
-      <b />
+      <b>
+        Some mock author
+      </b>
       , 
       <t
         ago={false}

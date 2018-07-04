@@ -39,7 +39,9 @@ exports[`Page details renders page details 1`] = `
      
     by
      
-    <b />
+    <b>
+      Some author
+    </b>
     , 
     <t
       ago={false}
@@ -57,6 +59,7 @@ exports[`Page details renders page details 1`] = `
   </HeaderSubheader>
   <Image
     as="img"
+    src="some-image"
     ui={true}
   />
   <Container

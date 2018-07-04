@@ -67,6 +67,14 @@ describe('Page screen', () => {
             comment_status: 'dunno',
             featured_media: 43,
             status: 'some-status',
+            _embedded: {
+              author: [
+                {
+                  id: 54,
+                  name: 'Some author',
+                },
+              ],
+            },
           },
           {
             id: 3,
@@ -83,6 +91,14 @@ describe('Page screen', () => {
             comment_status: 'dunno',
             featured_media: 43,
             status: 'some-status',
+            _embedded: {
+              author: [
+                {
+                  id: 54,
+                  name: 'Some author',
+                },
+              ],
+            },
           },
         ],
         isFetching: 0,

@@ -15,6 +15,33 @@ exports[`Post screen should render correctly an existing post 1`] = `
   }
   post={
     Object {
+      "_embedded": Object {
+        "author": Array [
+          Object {
+            "id": 54,
+            "name": "Some author",
+          },
+        ],
+        "wp:term": Array [
+          Array [
+            Object {
+              "id": 1,
+              "name": "Some category 1",
+              "slug": "some-category-slug-1",
+            },
+            Object {
+              "id": 4,
+              "name": "Some category 4",
+              "slug": "some-category-slug-4",
+            },
+            Object {
+              "id": 2,
+              "name": "Some category 2",
+              "slug": "some-category-slug-2",
+            },
+          ],
+        ],
+      },
       "author": 54,
       "categories": Array [
         1,
