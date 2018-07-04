@@ -53,7 +53,7 @@ class PostsCarousel extends Component {
     if (
       !post._embedded ||
       !post._embedded['wp:term'] ||
-      !post._embedded['wp:term'][0] ||
+      !_.isArray(post._embedded['wp:term'][0]) ||
       !post._embedded['wp:term'][0].length === 0
     ) {
       return null;
@@ -85,10 +85,7 @@ class PostsCarousel extends Component {
     const noPosts = this.props.posts.length;
 
     // Add +1 if the items are not exactly split over cards (last card is incomplete).
-    return (
-      Math.round(noPosts / this.state.itemsPerCard) +
-      (noPosts % this.state.itemsPerCard === 0 ? 0 : 1)
-    );
+    return Math.ceil(noPosts / this.state.itemsPerCard);
   }
 
   /**
