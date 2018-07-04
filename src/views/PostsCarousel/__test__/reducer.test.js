@@ -76,6 +76,30 @@ describe('Posts reducer', () => {
     expect(posts(postState, receivePosts(response))).toMatchSnapshot();
   });
 
+  it('handles RECEIVE_POSTS action with single post request', () => {
+    const postState = {
+      isFetching: 1,
+      items: [
+        {
+          id: 1,
+          name: 'Nice post',
+        },
+        {
+          id: 2,
+          name: 'Nicer post',
+        },
+      ],
+      loadMore: true,
+    };
+
+    const response = {
+      id: 3,
+      name: 'Nicer post',
+    };
+
+    expect(posts(postState, receivePosts(response))).toMatchSnapshot();
+  });
+
   it('handles RECEIVE_POSTS action and continues load more', () => {
     const postState = {
       isFetching: 1,

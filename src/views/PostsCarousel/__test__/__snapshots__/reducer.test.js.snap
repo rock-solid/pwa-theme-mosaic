@@ -110,6 +110,27 @@ Object {
 }
 `;
 
+exports[`Posts reducer handles RECEIVE_POSTS action with single post request 1`] = `
+Object {
+  "isFetching": 0,
+  "items": Array [
+    Object {
+      "id": 1,
+      "name": "Nice post",
+    },
+    Object {
+      "id": 2,
+      "name": "Nicer post",
+    },
+    Object {
+      "id": 3,
+      "name": "Nicer post",
+    },
+  ],
+  "loadMore": true,
+}
+`;
+
 exports[`Posts reducer handles REQUEST_POSTS action 1`] = `
 Object {
   "isFetching": 1,
