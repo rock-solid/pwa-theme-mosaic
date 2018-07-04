@@ -8,8 +8,8 @@ import Helmet from 'react-helmet';
 import _ from 'lodash';
 
 import { fetchPosts } from './action';
-import { fetchCategories as fetchCategory } from '../CategoriesCarousel/action';
-import { getCategories as getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
+import { fetchCategories } from '../CategoriesCarousel/action';
+import { getCategory, categoryPropType } from '../CategoriesCarousel/reducer';
 import { postPropType, getPostsFetching, getPostsByCategory, getLoadMorePosts } from './reducer';
 
 import PostsList from './components/PostsList';
@@ -105,7 +105,7 @@ class PostsCarousel extends Component {
         per_page: this.state.itemsPerCard * 5,
       }),
     );
-    dispatch(fetchCategory({ id: categoryId }));
+    dispatch(fetchCategories({ include: categoryId }));
   }
 
   /**
@@ -153,10 +153,14 @@ class PostsCarousel extends Component {
 
     return (
       <div className="posts-carousel-container">
-        <Helmet>
-          <link rel="canonical" href={this.props.category[0] && this.props.category[0].link} />
-        </Helmet>
+        {!_.isNil(this.props.category) ?
+          <Helmet>
+            <link rel="canonical" href={this.props.category.link} />
+          </Helmet>
+          : null}
+
         {this.props.loading === 1 ? <Loader active /> : null}
+
         <Slider {...settings}>
           {this.props.loading === 0 && listedPosts.length === 0 ? (
             <div key={Math.random()}>
@@ -193,7 +197,7 @@ PostsCarousel.propTypes = {
       categorySlug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  category: PropTypes.arrayOf(categoryPropType),
+  category: categoryPropType,
   loadTranslations: PropTypes.number,
   translations: PropTypes.shape({
     TEXTS: PropTypes.shape({
@@ -201,6 +205,7 @@ PostsCarousel.propTypes = {
     }),
   }),
 };
+
 PostsCarousel.defaultProps = {
   category: {},
   loadTranslations: 0,
@@ -210,17 +215,18 @@ PostsCarousel.defaultProps = {
     },
   },
 };
+
 const mapStateToProps = (state, props) => ({
   posts: getPostsByCategory(state.posts, props.match.params.categoryId),
   loading: getPostsFetching(state.posts),
-  category: getCategory(state.categories),
+  category: getCategory(state.categories, props.match.params.categoryId),
   loadTranslations: getTranslationsFetching(state.translations),
   translations: getTranslations(state.translations),
   loadMore: getLoadMorePosts(state.posts),
 });
 
 function mapDispatchToProps(dispatch) {
-  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchCategory }, dispatch));
+  return Object.assign({ dispatch }, bindActionCreators({ fetchPosts, fetchCategories }, dispatch));
 }
 export default connect(
   mapStateToProps,
