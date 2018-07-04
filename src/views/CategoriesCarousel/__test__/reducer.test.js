@@ -1,4 +1,4 @@
-import categories, { INITIAL_STATE, getCategories, getCategoriesFetching, getLoadMoreCategories } from '../reducer';
+import categories, { INITIAL_STATE, getCategories, getCategoriesFetching, getLoadMoreCategories, getCategory } from '../reducer';
 import { requestCategories, receiveCategories } from '../action';
 
 describe('Categories reducer', () => {
@@ -141,6 +141,19 @@ describe('Categories reducer', () => {
       ],
     };
     expect(getCategories(state)).toBe(state.items);
+  });
+
+  it('getCategory finds category by id', () => {
+    const state = {
+      items: [
+        {
+          id: 1,
+          name: 'Nice one',
+        },
+      ],
+    };
+    expect(getCategory(state, 1)).toBe(state.items[0]);
+    expect(getCategory(state, 2)).toBe(undefined);
   });
 
   it('getLoadMoreCategories returns state.loadMore', () => {
