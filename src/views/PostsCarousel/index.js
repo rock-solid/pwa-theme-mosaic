@@ -64,7 +64,7 @@ class PostsCarousel extends Component {
       item => Number(item.id) === Number(this.props.match.params.categoryId),
     );
 
-    if (category) {
+    if (!_.isNil(category)) {
       return category.name;
     }
 
