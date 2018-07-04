@@ -61,7 +61,6 @@ Post.propTypes = {
   loading: PropTypes.number.isRequired,
   translations: PropTypes.shape({
     TEXTS: PropTypes.shape({
-      BY_AUTHOR: PropTypes.string,
       NO_ARTICLES: PropTypes.string,
     }),
   }),
@@ -70,7 +69,6 @@ Post.propTypes = {
 Post.defaultProps = {
   translations: {
     TEXTS: {
-      BY_AUTHOR: 'by',
       NO_ARTICLES: 'There are no articles!',
     },
   },
