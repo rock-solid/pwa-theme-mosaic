@@ -24,7 +24,7 @@ describe('Posts reducer', () => {
     expect(posts(postsList, requestPosts())).toMatchSnapshot();
   });
 
-  it('handles RECEIVE_POSTS action and ads new posts to the state', () => {
+  it('handles RECEIVE_POSTS action and adds new posts to the state', () => {
     const postState = {
       isFetching: 1,
       items: [

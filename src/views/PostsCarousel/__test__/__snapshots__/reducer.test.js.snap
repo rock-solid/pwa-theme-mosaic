@@ -33,7 +33,7 @@ Array [
 
 exports[`Posts reducer getPostsByCategory returns posts from category 3`] = `Array []`;
 
-exports[`Posts reducer handles RECEIVE_POSTS action and ads new posts to the state 1`] = `
+exports[`Posts reducer handles RECEIVE_POSTS action and adds new posts to the state 1`] = `
 Object {
   "isFetching": 0,
   "items": Array [
