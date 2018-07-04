@@ -73,7 +73,7 @@ class PostDetails extends Component {
         <Link to={goBack}>
           <Icon circular size="large" name="chevron left" className={featuredMedia ? 'absolute' : ''} />
         </Link>
-        {featuredMedia ? (
+        {_.isArray(featuredMedia) && !_.isNil(featuredMedia[0]) ? (
           <div
             className="post-image"
             style={{ backgroundImage: `url(${featuredMedia[0].source_url})` }}
