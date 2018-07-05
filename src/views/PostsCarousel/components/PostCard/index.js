@@ -19,8 +19,8 @@ const PostCard = (props) => {
   const featuredMedia = props.post._embedded['wp:featuredmedia'];
 
   return (
-    <Link to={path} className="post-link">
-      <Item className="post-item">
+    <Item className="post-item">
+      <Link to={path} className="post-link">
         <div className="categories-labels">
           {props.post._embedded['wp:term'][0].map(category => (
             <Label key={category.id}>{category.name}</Label>
@@ -38,8 +38,8 @@ const PostCard = (props) => {
           ) : null}
           <Item.Description dangerouslySetInnerHTML={{ __html: props.post.excerpt.rendered }} />
         </Item.Content>
-      </Item>
-    </Link>
+      </Link>
+    </Item>
   );
 };
 

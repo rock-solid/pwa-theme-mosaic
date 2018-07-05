@@ -1,18 +1,13 @@
 @import "../../../../utilities/_variables.scss";
 
 .double-post {
-  display: flex;
-  flex-direction: column;
-  min-height: 93vh;
+  flex: 1;
+  margin-bottom: 45px;
 
   .post-item {
-    max-height: 50vh;
+    height: 50%;
     overflow: hidden;
-  }
 
-  a.post-link {
-    flex: 1;
-    min-height: 40vh;
     &:first-child {
       border-bottom: 1px solid;
     }
@@ -20,12 +15,12 @@
 }
 
 .single-post {
-  display: flex;
-  flex-direction: column;
-  min-height: 90vh;
-  a.post-link {
-    flex: 1;
-    min-width: 90vw;
+  flex: 1;
+  margin-bottom: 45px;
+
+  .post-item {
+    height: 90%;
+    min-width: 90%;
     margin-top: $base-spacing-md;
     margin-bottom: 0;
     margin-left: $base-spacing;
