@@ -1,7 +1,6 @@
 .posts-carousel-container .footer {
   position: absolute;
   bottom: 0;
-  height: unset;
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -16,7 +15,10 @@
   .posts-carousel-container .footer h4 {
     flex: 1;
     text-align: center;
-    margin: 0; }
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   .posts-carousel-container .footer h4, .posts-carousel-container .footer span {
     color: #303030;
     line-height: 2rem; }
