@@ -2,7 +2,9 @@
   padding: 1rem; }
   .item.post-item .header {
     text-transform: uppercase;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: 8px; }
   .item.post-item .categories-labels .ui.label {
     height: unset;
     border-radius: 2px;

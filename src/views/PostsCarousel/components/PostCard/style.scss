@@ -5,6 +5,8 @@
   .header {
     text-transform: uppercase;
     overflow: hidden;
+    margin-top: $base-spacing-sm;
+    margin-bottom: $base-spacing-sm;
   }
 
   .categories-labels{
