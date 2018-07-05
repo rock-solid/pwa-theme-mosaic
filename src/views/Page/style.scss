@@ -37,6 +37,21 @@
         padding-bottom: $base-spacing-xsm;
         margin-bottom: $base-spacing-xsm;
       }
+
+      .page-content {
+        iframe {
+          max-width: 100%;
+          height: auto;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        div {
+          max-width: 100%;
+        }
+      }
     }
   }
 }

@@ -33,7 +33,7 @@ const PageDetails = (props) => {
       </Header.Subheader>
       {_.isArray(featuredMedia) && !_.isNil(featuredMedia[0]) ? <Image src={featuredMedia[0].source_url} /> : ''}
       <Container textAlign="justified">
-        <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+        <div className="page-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
       </Container>
     </Container>
   );
