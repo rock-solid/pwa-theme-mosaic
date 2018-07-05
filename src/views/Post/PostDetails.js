@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import { Container, Header, Label, Icon, Modal, Transition } from 'semantic-ui-react';
+import { Container, Header, Icon, Modal, Transition } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -9,6 +9,7 @@ import config from 'react-global-configuration';
 import { DFPSlotsProvider, AdSlot } from 'react-dfp';
 import SocialMedia from './components/SocialMedia';
 import { postPropType } from '../PostsCarousel/reducer';
+import CategoryLabel from '../../components/CategoryLabel';
 import './style.css';
 
 class PostDetails extends Component {
@@ -84,9 +85,11 @@ class PostDetails extends Component {
             <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           </Header>
           {categoriesList[0].map(category => (
-            <Link to={`/category/${category.slug}/${category.id}`} key={category.name}>
-              <Label>{category.name}</Label>
-            </Link>
+            <CategoryLabel
+              link={`/category/${category.slug}/${category.id}`}
+              name={category.name}
+              key={category.name}
+            />
           ))}
           <Header.Subheader>
             &nbsp;{this.props.texts.TEXTS && this.props.texts.TEXTS.BY_AUTHOR}&nbsp;<b>

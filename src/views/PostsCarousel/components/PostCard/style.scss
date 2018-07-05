@@ -9,18 +9,6 @@
     margin-bottom: $base-spacing-sm;
   }
 
-  .categories-labels{
-    .ui.label {
-      height: unset;
-      border-radius: 2px;
-      padding: $base-spacing-sm;
-      margin: $base-spacing-xxs;
-      background-color: $category-color;
-      color: $category-text;
-      font-size: $base-font-size;
-    }
-  }
-
   .content {
     padding-top: $base-spacing-xsm;
     .image {

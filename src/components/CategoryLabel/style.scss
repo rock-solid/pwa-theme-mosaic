@@ -1,0 +1,11 @@
+@import "../../utilities/variables";
+
+.categories-labels {
+  display: inline-block;
+  border-radius: 2px;
+  padding: $base-spacing-xs;
+  margin: $base-spacing-xxs;
+  background-color: $category-color;
+  color: $category-text;
+  font-size: $base-font-size;
+}

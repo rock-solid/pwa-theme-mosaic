@@ -5,14 +5,6 @@
     overflow: hidden;
     margin-top: 8px;
     margin-bottom: 8px; }
-  .item.post-item .categories-labels .ui.label {
-    height: unset;
-    border-radius: 2px;
-    padding: 8px;
-    margin: 2px;
-    background-color: #f90c9a;
-    color: #ffffff;
-    font-size: 1rem; }
   .item.post-item .content {
     padding-top: 10px; }
     .item.post-item .content .image {
