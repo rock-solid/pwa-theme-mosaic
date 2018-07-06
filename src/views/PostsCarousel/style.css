@@ -1,5 +1,17 @@
-.posts-carousel-container * {
-  border-color: #dddddd !important; }
-
-.posts-carousel-container .slick-slide.slick-active {
-  height: 100vh; }
+.posts-carousel-container {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+  .posts-carousel-container .pusher,
+  .posts-carousel-container .slick-slider,
+  .posts-carousel-container .slick-list,
+  .posts-carousel-container .slick-track {
+    height: 100%; }
+    .posts-carousel-container .pusher .slick-slide,
+    .posts-carousel-container .slick-slider .slick-slide,
+    .posts-carousel-container .slick-list .slick-slide,
+    .posts-carousel-container .slick-track .slick-slide {
+      display: flex;
+      flex-direction: column; }
+  .posts-carousel-container * {
+    border-color: #dddddd !important; }

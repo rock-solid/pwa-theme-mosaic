@@ -45,6 +45,10 @@
           max-width: 100%;
           height: auto;
         }
+
+        div {
+          max-width: 100%;
+        }
       }
     }
     /* ICON */
@@ -69,7 +73,7 @@
         }
 
         &.share {
-          margin: $base-spacing-xsm;
+          margin: $base-spacing-md;
         }
       }
     }

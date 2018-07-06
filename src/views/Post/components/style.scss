@@ -1,14 +1,21 @@
 @import "../../../utilities/variables";
 
-.share.ui.modal.visible.active.transition {
-  min-height: 97vh;
+.share.ui.modal {
+  height: 90%;
+
   .actions {
-    min-height: 95vh;
+    height: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-left: $base-spacing-sm;
+      margin-right: $base-spacing-sm;
+    }
+
     .social-media {
-      min-width: 66vw;
       display: flex;
       justify-content: space-evenly;
     }

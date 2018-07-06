@@ -72,7 +72,9 @@ export default class PageList extends Component {
             <List.Icon name="linkify" size="large" verticalAlign="middle" />
             <List.Content>
               <Link to={'/page/' + page.slug + '/' + page.id}>
-                <List.Header as="h3">{page.title.rendered}</List.Header>
+                <List.Header as="h3">
+                  <span dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
+                </List.Header>
               </Link>
             </List.Content>
             {page.children ? (

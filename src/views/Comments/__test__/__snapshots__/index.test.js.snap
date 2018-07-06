@@ -17,39 +17,13 @@ exports[`Comments screen renders a message if the page does not exist 1`] = `
       />
     </a>
   </h3>
-  <div>
-    <div
-      className="ptr-element"
-    >
-      <span
-        className="genericon genericon-next"
-      />
-      <div
-        className="loading"
-      >
-        <span
-          className="loading-ptr-1"
-        />
-        <span
-          className="loading-ptr-2"
-        />
-        <span
-          className="loading-ptr-3"
-        />
-      </div>
-    </div>
-    <div
-      className="refresh-view"
-    >
-      <Comments view test
-        commentStatus="closed"
-        comments={Array []}
-        loading={0}
-        postId="54"
-        texts={Object {}}
-      />
-    </div>
-  </div>
+  <Comments view test
+    commentStatus="closed"
+    comments={Array []}
+    loading={0}
+    postId="54"
+    texts={Object {}}
+  />
 </div>
 `;
 
@@ -71,59 +45,33 @@ exports[`Comments screen renders comments list 1`] = `
       />
     </a>
   </h3>
-  <div>
-    <div
-      className="ptr-element"
-    >
-      <span
-        className="genericon genericon-next"
-      />
-      <div
-        className="loading"
-      >
-        <span
-          className="loading-ptr-1"
-        />
-        <span
-          className="loading-ptr-2"
-        />
-        <span
-          className="loading-ptr-3"
-        />
-      </div>
-    </div>
-    <div
-      className="refresh-view"
-    >
-      <Comments view test
-        commentStatus="open"
-        comments={
-          Array [
-            Object {
-              "author_avatar_urls": Object {
-                "24": "some-rurl",
-              },
-              "author_name": "Comment Author",
-              "content": Object {
-                "rendered": "Comment content",
-              },
-              "date": "d date",
-              "id": 67,
-              "post": 54,
-            },
-          ]
-        }
-        loading={0}
-        postId="54"
-        texts={
-          Object {
-            "TEXTS": Object {
-              "COMMENTS": "Comments",
-            },
-          }
-        }
-      />
-    </div>
-  </div>
+  <Comments view test
+    commentStatus="open"
+    comments={
+      Array [
+        Object {
+          "author_avatar_urls": Object {
+            "24": "some-rurl",
+          },
+          "author_name": "Comment Author",
+          "content": Object {
+            "rendered": "Comment content",
+          },
+          "date": "d date",
+          "id": 67,
+          "post": 54,
+        },
+      ]
+    }
+    loading={0}
+    postId="54"
+    texts={
+      Object {
+        "TEXTS": Object {
+          "COMMENTS": "Comments",
+        },
+      }
+    }
+  />
 </div>
 `;

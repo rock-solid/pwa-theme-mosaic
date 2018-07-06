@@ -31,6 +31,8 @@
       .post.container .container .post-content img {
         max-width: 100%;
         height: auto; }
+      .post.container .container .post-content div {
+        max-width: 100%; }
   .post.container i.icon.circular {
     color: #747474;
     background-color: #fafafa;
@@ -46,7 +48,7 @@
       margin-top: 0;
       margin-left: 0; }
     .post.container i.icon.circular.share {
-      margin: 10px; }
+      margin: 24px; }
 
 .post .transition-container {
   display: flex;

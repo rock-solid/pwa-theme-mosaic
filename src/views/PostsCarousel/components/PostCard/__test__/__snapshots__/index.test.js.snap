@@ -1,32 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Post card should render correctly post with featured image 1`] = `
-<Link
-  className="post-link"
-  replace={false}
-  to="/category/some-slug/32/post/mock-slug/1"
+<Item
+  className="post-item"
 >
-  <Item
-    className="post-item"
+  <Link
+    className="post-link"
+    replace={false}
+    to="/category/some-slug/32/post/mock-slug/1"
   >
-    <div
-      className="categories-labels"
-    >
-      <Label
+    <div>
+      <CategoryLabel
         key="43"
-      >
-        Some category
-      </Label>
-      <Label
+        link={null}
+        name="Some category"
+      />
+      <CategoryLabel
         key="54"
-      >
-        Some category
-      </Label>
-      <Label
+        link={null}
+        name="Some category"
+      />
+      <CategoryLabel
         key="23"
-      >
-        Some category
-      </Label>
+        link={null}
+        name="Some category"
+      />
     </div>
     <ItemHeader
       as="h1"
@@ -53,37 +51,35 @@ exports[`Post card should render correctly post with featured image 1`] = `
         }
       />
     </ItemContent>
-  </Item>
-</Link>
+  </Link>
+</Item>
 `;
 
 exports[`Post card should render correctly post without image 1`] = `
-<Link
-  className="post-link"
-  replace={false}
-  to="/category/some-slug/32/post/mock-slug/1"
+<Item
+  className="post-item"
 >
-  <Item
-    className="post-item"
+  <Link
+    className="post-link"
+    replace={false}
+    to="/category/some-slug/32/post/mock-slug/1"
   >
-    <div
-      className="categories-labels"
-    >
-      <Label
+    <div>
+      <CategoryLabel
         key="43"
-      >
-        Some category
-      </Label>
-      <Label
+        link={null}
+        name="Some category"
+      />
+      <CategoryLabel
         key="54"
-      >
-        Some category
-      </Label>
-      <Label
+        link={null}
+        name="Some category"
+      />
+      <CategoryLabel
         key="23"
-      >
-        Some category
-      </Label>
+        link={null}
+        name="Some category"
+      />
     </div>
     <ItemHeader
       as="h1"
@@ -102,6 +98,6 @@ exports[`Post card should render correctly post without image 1`] = `
         }
       />
     </ItemContent>
-  </Item>
-</Link>
+  </Link>
+</Item>
 `;

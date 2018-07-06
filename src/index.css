@@ -62,3 +62,6 @@ a {
 
 body {
   background-color: #ffffff; }
+
+html, body {
+  height: 100%; }

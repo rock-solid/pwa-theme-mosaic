@@ -1,6 +1,8 @@
 .carousel-container {
   background-color: #32394a;
-  height: 100vh; }
+  position: absolute;
+  width: 100%;
+  height: 100%; }
 
 .carousel-container .pusher,
 .carousel-container .slick-slider,
@@ -32,8 +34,10 @@
 .carousel-container .pusher .ui.loader.active::before, .carousel-container .pusher .ui.loader.active::after {
   top: 50%; }
 
-.ui.image.tiny.logo {
+.ui.image.logo {
   position: absolute;
   z-index: 1000;
   top: 16px;
-  left: 16px; }
+  left: 16px;
+  width: 100px;
+  height: auto; }

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Item, Label } from 'semantic-ui-react';
+import { Item } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
+import CategoryLabel from '../../../../components/CategoryLabel';
 import { postPropType } from '../../reducer';
 import './style.css';
 
@@ -19,11 +20,11 @@ const PostCard = (props) => {
   const featuredMedia = props.post._embedded['wp:featuredmedia'];
 
   return (
-    <Link to={path} className="post-link">
-      <Item className="post-item">
-        <div className="categories-labels">
+    <Item className="post-item">
+      <Link to={path} className="post-link">
+        <div>
           {props.post._embedded['wp:term'][0].map(category => (
-            <Label key={category.id}>{category.name}</Label>
+            <CategoryLabel key={category.id} name={category.name} />
           ))}
         </div>
         {props.post.title && <Item.Header as="h1" dangerouslySetInnerHTML={{ __html: props.post.title.rendered }} />}
@@ -38,8 +39,8 @@ const PostCard = (props) => {
           ) : null}
           <Item.Description dangerouslySetInnerHTML={{ __html: props.post.excerpt.rendered }} />
         </Item.Content>
-      </Item>
-    </Link>
+      </Link>
+    </Item>
   );
 };
 

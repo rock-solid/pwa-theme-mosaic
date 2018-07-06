@@ -45,33 +45,21 @@ exports[`Post details should render post with featured image 1`] = `
         }
       />
     </Header>
-    <Link
+    <CategoryLabel
       key="Some category"
-      replace={false}
-      to="/category/some-category-slug-1/1"
-    >
-      <Label>
-        Some category
-      </Label>
-    </Link>
-    <Link
+      link="/category/some-category-slug-1/1"
+      name="Some category"
+    />
+    <CategoryLabel
       key="Some category"
-      replace={false}
-      to="/category/some-category-slug-2/2"
-    >
-      <Label>
-        Some category
-      </Label>
-    </Link>
-    <Link
+      link="/category/some-category-slug-2/2"
+      name="Some category"
+    />
+    <CategoryLabel
       key="Some category"
-      replace={false}
-      to="/category/some-category-slug-32/32"
-    >
-      <Label>
-        Some category
-      </Label>
-    </Link>
+      link="/category/some-category-slug-32/32"
+      name="Some category"
+    />
     <HeaderSubheader>
        
       by
@@ -189,33 +177,21 @@ exports[`Post details should render post without image 1`] = `
         }
       />
     </Header>
-    <Link
+    <CategoryLabel
       key="Some category"
-      replace={false}
-      to="/category/some-category-slug-1/1"
-    >
-      <Label>
-        Some category
-      </Label>
-    </Link>
-    <Link
+      link="/category/some-category-slug-1/1"
+      name="Some category"
+    />
+    <CategoryLabel
       key="Some category"
-      replace={false}
-      to="/category/some-category-slug-2/2"
-    >
-      <Label>
-        Some category
-      </Label>
-    </Link>
-    <Link
+      link="/category/some-category-slug-2/2"
+      name="Some category"
+    />
+    <CategoryLabel
       key="Some category"
-      replace={false}
-      to="/category/some-category-slug-32/32"
-    >
-      <Label>
-        Some category
-      </Label>
-    </Link>
+      link="/category/some-category-slug-32/32"
+      name="Some category"
+    />
     <HeaderSubheader>
        
       by
