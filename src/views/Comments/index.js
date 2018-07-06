@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Loader, Header, Icon } from 'semantic-ui-react';
 import _ from 'lodash';
-import ReactPullToRefresh from 'react-pull-to-refresh';
+// import ReactPullToRefresh from 'react-pull-to-refresh';
 import 'react-router-modal/css/react-router-modal.css';
 
 import { fetchComments } from './actions';
@@ -72,7 +72,6 @@ class Comments extends Component {
         {this.props.loading === 1 && this.props.loadingTranslations === 1 ? (
           <Loader active />
         ) : (
-          <ReactPullToRefresh onRefresh={this.handleRefresh}>
             <CommentsView
               comments={comm}
               loading={this.props.loading}
@@ -80,14 +79,13 @@ class Comments extends Component {
               commentStatus={this.props.match.params.commentStatus}
               texts={this.props.translations}
             />
-          </ReactPullToRefresh>
-        )}
+          )}
       </div>
     ) : (
-      <Redirect
-        to={'/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId}
-      />
-    );
+        <Redirect
+          to={'/post/' + this.props.match.params.postSlug + '/' + this.props.match.params.postId}
+        />
+      );
   }
 }
 
