@@ -3,9 +3,11 @@
 .double-post {
   flex: 1;
   margin-bottom: 45px;
+  max-height: 95%;
 
   .post-item {
     height: 50%;
+    max-height: 50%;
     overflow: hidden;
 
     &:first-child {
@@ -17,6 +19,7 @@
 .single-post {
   flex: 1;
   margin-bottom: 45px;
+  max-height: 95%;
 
   .post-item {
     height: 90%;
