@@ -66,6 +66,7 @@ exports[`Page details renders page details 1`] = `
     textAlign="justified"
   >
     <div
+      className="page-content"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Some content for some page",

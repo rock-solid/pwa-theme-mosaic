@@ -14,7 +14,7 @@ exports[`Categories carousel renders categories 1`] = `
     >
       <img
         alt={undefined}
-        className="ui tiny image logo"
+        className="ui image logo"
         height={undefined}
         src="logo"
         width={undefined}
@@ -39,7 +39,7 @@ exports[`Categories carousel renders loader 1`] = `
     >
       <img
         alt={undefined}
-        className="ui tiny image logo"
+        className="ui image logo"
         height={undefined}
         src="logo"
         width={undefined}
