@@ -30,15 +30,22 @@
         a {
           margin: calc(2rem - 0.14285714em) 0 0rem;
         }
+
+        h1 {
+          overflow-wrap: break-word;
+        }
       }
 
       .sub.header {
         color: $extra-text-color;
         padding-bottom: $base-spacing-xsm;
         margin-bottom: $base-spacing-xsm;
+        overflow-wrap: break-word;
       }
 
       .page-content {
+        overflow-wrap: break-word;
+
         iframe {
           max-width: 100%;
           height: auto;

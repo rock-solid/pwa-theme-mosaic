@@ -19,11 +19,16 @@
 
       .ui.header {
         text-align: start;
+
+        h1 {
+          overflow-wrap: break-word;
+        }
       }
 
       .sub.header {
         margin-top: $base-spacing;
         margin-bottom: $base-spacing;
+        overflow-wrap: break-word;
       }
 
       .label {
@@ -37,6 +42,8 @@
 
       .post-content {
         padding: 0 $base-spacing-xsm;
+        overflow-wrap: break-word;
+
         iframe {
           max-width: 100%;
           height: auto;

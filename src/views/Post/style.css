@@ -13,9 +13,12 @@
     padding-top: 8px; }
     .post.container .container .ui.header {
       text-align: start; }
+      .post.container .container .ui.header h1 {
+        overflow-wrap: break-word; }
     .post.container .container .sub.header {
       margin-top: 16px;
-      margin-bottom: 16px; }
+      margin-bottom: 16px;
+      overflow-wrap: break-word; }
     .post.container .container .label {
       height: unset;
       border-radius: 2px;
@@ -24,7 +27,8 @@
       background-color: #f90c9a;
       color: #ffffff; }
     .post.container .container .post-content {
-      padding: 0 10px; }
+      padding: 0 10px;
+      overflow-wrap: break-word; }
       .post.container .container .post-content iframe {
         max-width: 100%;
         height: auto; }

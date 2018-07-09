@@ -4,7 +4,8 @@
     text-transform: uppercase;
     overflow: hidden;
     margin-top: 8px;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+    overflow-wrap: break-word; }
   .item.post-item .content {
     padding-top: 10px; }
     .item.post-item .content .image {

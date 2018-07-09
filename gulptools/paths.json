@@ -4,6 +4,7 @@
     "../src/utilities/_functions.scss",
     "../src/utilities/_typography.scss",
     "../src/index.scss",
+    "../src/components/CategoryLabel/style.scss",
     "../src/components/Footer/style.scss",
     "../src/components/Form/style.scss",
     "../src/components/NavBar/style.scss",
