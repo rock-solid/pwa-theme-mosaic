@@ -40,7 +40,8 @@ export default class PageList extends Component {
   }
 
   filterPages() {
-    return this.state.pages.filter(page => page.parent === this.state.parentId);
+    const filteredPages = this.state.pages.filter(page => page.parent === this.state.parentId);
+    return _.orderBy(filteredPages, ['menu_order'], ['asc']);
   }
 
   openSubmenu(parentId, parentPageTitle) {

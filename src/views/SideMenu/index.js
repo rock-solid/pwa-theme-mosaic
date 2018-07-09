@@ -17,7 +17,7 @@ import './style.css';
 class SideMenu extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchPages({ per_page: 100 }));
+    dispatch(fetchPages({ per_page: 100, orderby: 'menu_order', order: 'asc' }));
     dispatch(fetchTranslations);
   }
 
@@ -35,8 +35,8 @@ class SideMenu extends Component {
         {this.props.loadingPages === 1 && this.props.loadingTranslations === 1 ? (
           <Loader active />
         ) : (
-          ''
-        )}
+            ''
+          )}
         <PageList text={translations.LINKS} pages={pages} />
       </Sidebar>
     );
