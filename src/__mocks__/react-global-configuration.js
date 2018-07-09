@@ -4,7 +4,7 @@ const settings = {
   export: {
     categories: 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/categories',
     posts: 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/posts',
-    pages: 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/pages?_embed=media',
+    pages: 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/pages',
     comments: 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/comments',
     media: 'http://localhost/wordpress-4.8.3/wordpress/wp-json/wp/v2/media',
   },

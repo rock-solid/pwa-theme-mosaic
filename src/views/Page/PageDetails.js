@@ -31,7 +31,7 @@ const PageDetails = (props) => {
         <b>{author.map(item => item.name).join(', ')}</b>,&nbsp;
         <Moment format="MMMM DD, YYYY">{page.date}</Moment>
       </Header.Subheader>
-      {_.isArray(featuredMedia) && !_.isNil(featuredMedia[0]) ? <Image src={featuredMedia[0].source_url} /> : ''}
+      {_.isArray(featuredMedia) && !_.isNil(featuredMedia[0]) ? <Image src={featuredMedia[0].source_url} centered className="page-featured-image" /> : ''}
       <Container textAlign="justified">
         <div className="page-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
       </Container>
