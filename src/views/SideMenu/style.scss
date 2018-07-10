@@ -7,11 +7,18 @@
   }
   .list {
     padding: $base-spacing;
+    width: 100%;
 
     .header {
       font-family: $base-font-family, sans-serif;
       color: $base-text-color;
       margin-top: $base-spacing-sm;
+
+      .icon {
+        text-align: left;
+        margin-right: 0;
+        width: 1em;
+      }
     }
 
     .item {
@@ -34,6 +41,8 @@
       .icon.triangle {
         position: absolute;
         right: 0;
+        padding-right: 0;
+        text-align: right;
       }
     }
   }
