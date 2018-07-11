@@ -70,12 +70,12 @@ class CommentsView extends Component {
             </Comment>
           ))
         ) : (
-          <Container className="no-comments">
-            {this.props.commentStatus === 'open'
-              ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
-              : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
-          </Container>
-        )}
+            <Container className="no-comments">
+              {config.get('commentsEnabled') === 1 && this.props.commentStatus === 'open'
+                ? this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS
+                : this.props.texts.TEXTS && this.props.texts.TEXTS.NO_COMMENTS_SHORT}
+            </Container>
+          )}
 
         {config.get('commentsEnabled') === 1 && this.props.commentStatus === 'open' ? (
           <Button onClick={this.showModal}>
