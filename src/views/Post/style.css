@@ -16,6 +16,7 @@
       .post.container .container .ui.header h1 {
         overflow-wrap: break-word; }
     .post.container .container .sub.header {
+      color: #999999;
       margin-top: 16px;
       margin-bottom: 16px;
       overflow-wrap: break-word; }
