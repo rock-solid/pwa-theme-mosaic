@@ -19,5 +19,11 @@
       display: flex;
       justify-content: space-evenly;
     }
+
+    i.icon.circular {
+      color: $buttons-icon-color;
+      background-color: $buttons-bg-color;
+      box-shadow: none;
+    }
   }
 }

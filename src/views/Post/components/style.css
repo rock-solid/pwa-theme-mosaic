@@ -12,3 +12,7 @@
     .share.ui.modal .actions .social-media {
       display: flex;
       justify-content: space-evenly; }
+    .share.ui.modal .actions i.icon.circular {
+      color: #747474;
+      background-color: #fafafa;
+      box-shadow: none; }

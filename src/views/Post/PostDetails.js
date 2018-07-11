@@ -127,7 +127,7 @@ class PostDetails extends Component {
           >
             <Modal.Actions>
               <Link to={path}>
-                <Icon name="comment" size="large" circular inverted color="grey" />
+                <Icon circular name="comment" size="large" />
               </Link>
               <SocialMedia title={post.title.rendered} link={post.link} />
             </Modal.Actions>
