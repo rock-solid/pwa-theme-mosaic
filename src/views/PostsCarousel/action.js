@@ -17,11 +17,11 @@ export const fetchPosts = (params = {}) => (dispatch) => {
 
   let url;
   if (params && params.id) {
-    url = config.get('export').posts + '/' + String(params.id) + '?_embed=1';
+    url = config.get('export').posts + '/' + String(params.id) + '?_embed=1&status=publish';
   } else {
     url =
       config.get('export').posts +
-      '?_embed=1&' +
+      '?_embed=1&status=publish&' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
         .join('&');

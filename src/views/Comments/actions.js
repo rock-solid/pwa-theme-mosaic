@@ -19,7 +19,7 @@ export const fetchComments = (params = {}) => (dispatch) => {
   if (params) {
     url =
       config.get('export').comments +
-      '?' +
+      '?status=approve&' +
       Object.keys(params)
         .map(k => k + '=' + encodeURIComponent(params[k]))
         .join('&');

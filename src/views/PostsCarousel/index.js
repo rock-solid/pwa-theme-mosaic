@@ -98,7 +98,6 @@ class PostsCarousel extends Component {
       fetchPosts({
         categories: categoryId,
         page: this.getPageNumber() + 1,
-        status: 'publish',
         per_page: this.state.itemsPerCard * 5,
       }),
     );
