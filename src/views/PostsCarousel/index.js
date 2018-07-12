@@ -101,7 +101,7 @@ class PostsCarousel extends Component {
         per_page: this.state.itemsPerCard * 5,
       }),
     );
-    dispatch(fetchCategories({ include: categoryId }));
+    dispatch(fetchCategories({ id: categoryId }));
   }
 
   /**
@@ -176,6 +176,7 @@ class PostsCarousel extends Component {
         <Footer
           title={this.props.posts.length > 0 ? this.getCategoryName(this.props.posts[0]) : ''}
           page={this.state.currentPage}
+          pageLabel={this.props.translations.TEXTS ? this.props.translations.TEXTS.PAGE : ''}
         />
       </div>
     );
@@ -198,6 +199,7 @@ PostsCarousel.propTypes = {
   translations: PropTypes.shape({
     TEXTS: PropTypes.shape({
       NO_ARTICLES: PropTypes.string,
+      PAGE: PropTypes.string,
     }),
   }),
 };
@@ -207,7 +209,8 @@ PostsCarousel.defaultProps = {
   loadTranslations: 0,
   translations: {
     TEXTS: {
-      NO_ARTICLES: '',
+      NO_ARTICLES: 'There are no articles!',
+      PAGE: 'Page',
     },
   },
 };

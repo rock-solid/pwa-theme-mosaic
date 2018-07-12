@@ -14,7 +14,7 @@ const Footer = props => (
     </div>
     <h4>{props.title}</h4>
     <div className="footer-side">
-      <span>{props.page ? `Page ${props.page}` : ''}</span>
+      <span>{props.page ? `${props.pageLabel} ${props.page}` : ''}</span>
     </div>
   </div>
 );
@@ -22,11 +22,13 @@ const Footer = props => (
 Footer.propTypes = {
   title: PropTypes.string,
   page: PropTypes.number,
+  pageLabel: PropTypes.string,
 };
 
 Footer.defaultProps = {
   title: null,
   page: null,
+  pageLabel: '',
 };
 
 export default Footer;
