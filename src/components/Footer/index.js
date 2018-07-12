@@ -14,7 +14,7 @@ const Footer = props => (
     </div>
     <h4>{props.title}</h4>
     <div className="footer-side">
-      <span>{props.page ? `${props.pageLabel} ${props.page}` : ''}</span>
+      <span>{props.page && props.pageLabel ? `${props.pageLabel} ${props.page}` : ''}</span>
     </div>
   </div>
 );
@@ -28,7 +28,7 @@ Footer.propTypes = {
 Footer.defaultProps = {
   title: null,
   page: null,
-  pageLabel: '',
+  pageLabel: null,
 };
 
 export default Footer;
