@@ -176,7 +176,7 @@ class PostsCarousel extends Component {
         <Footer
           title={this.props.posts.length > 0 ? this.getCategoryName(this.props.posts[0]) : ''}
           page={this.state.currentPage}
-          pageLabel={this.props.translations.TEXTS ? this.props.translations.TEXTS.PAGE : ''}
+          pageLabel={this.props.posts.length > 0 && this.props.translations.TEXTS ? this.props.translations.TEXTS.PAGE : ''}
         />
       </div>
     );
