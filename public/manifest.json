@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PWA Mosaic",
+  "name": "Progressive Web App Mosaic v2 with React and Semantic UI",
   "icons": [
     {
       "src": "favicon.ico",
