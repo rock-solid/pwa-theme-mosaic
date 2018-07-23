@@ -1,15 +1,35 @@
 {
   "short_name": "PWA Mosaic",
   "name": "Progressive Web App Mosaic v2 with React and Semantic UI",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "48icon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/96icon.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "144icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "196icon.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    },
+    {
+      "src": "512icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
