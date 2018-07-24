@@ -1,4 +1,29 @@
+# [Progressive Web App Mosaic v2](https://pwathemes.com)
+
 DEMO: [https://demo-mosaic-react.wpmobilepack.com](https://demo-mosaic-react.wpmobilepack.com)
+
+ &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](https://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/jfbnuN2.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/UQY7TDs.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/AtI7537.gif) &nbsp; &nbsp;  &nbsp; &nbsp;
+
+The PWA MOSAIC is the window-display of themes. It is built on top of the [WordPress REST API](https://developer.wordpress.org/rest-api/reference/). You can instantly see several posts categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space. It's great for publishers that have posts spanning several categories and need a way to visually structure their content.
+
+It comes with support for:
+
+- Multi-image mosaic on cover page
+- Pages & sub-pages menu
+- Side-to-side navigation with lateral swiping through categories
+- Maximum 2 articles per card
+
+The **tech stack** we used for building this Progressive Web App includes:
+
+- React JS
+- Semantic UI for UI components
+- Redux for app state management
+- SASS
+- Webpack (Create React App boilerplate)
+- Babel
+- Jest & Sinon for unit tests
+
+We have an average of 70-80% code coverage with unit tests and we're working on improving this rate. While we do our best to catch any bugs out there, we are aware that some of them might escape us. Please reach out if you happen to come across a nasty one 😊.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -182,6 +207,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
 
+See the `gulp` command below from building a SCSS file with the custom styling rules.
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
@@ -191,6 +218,12 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+### `gulp`
+
+For creating a SCSS file will all the app's customized styling (without variables), you can run the `gulp` command inside the `gulptools` folder. This file is useful for integrating the app with customized styling in different dashboards.
+
+When adding new SCSS files to the app, please edit the `gulptools/paths.json` file to include their paths.
 
 ## Supported Language Features and Polyfills
 
