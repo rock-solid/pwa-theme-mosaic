@@ -59,6 +59,8 @@ exports[`Page details renders page details 1`] = `
   </HeaderSubheader>
   <Image
     as="img"
+    centered={true}
+    className="page-featured-image"
     src="some-image"
     ui={true}
   />

@@ -11,7 +11,7 @@ describe('Footer', () => {
   });
 
   it('should render correctly with title and page', () => {
-    const output = shallow(<Footer title="Footer title" page={2} />);
+    const output = shallow(<Footer title="Footer title" page={2} pageLabel="Page" />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

@@ -8,9 +8,10 @@ describe('One card', () => {
   it('should render correctly', () => {
     const mockCategory = [
       {
-        slug: 'mock-slug',
+        slug: 'mock-slug-1',
         id: 1,
         name: 'Some mock name',
+        link: 'http://localhost/mock-slug-1',
       },
     ];
     const output = shallow(<OneCard categoriesList={mockCategory} />);

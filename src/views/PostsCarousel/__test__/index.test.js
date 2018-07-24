@@ -35,9 +35,9 @@ describe('Posts carousel', () => {
             date: 'some mock date',
             _embedded: {
               'wp:term': [[
-                { id: 32, name: 'Cat 1', slug: 'cat-1' },
-                { id: 54, name: 'Some category', slug: 'some-category-slug-2' },
-                { id: 6, name: 'Some category', slug: 'some-category-slug-32' },
+                { id: 32, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-32' },
+                { id: 54, name: 'Some category', slug: 'some-category-slug-2', link: 'http://localhost/cat-54' },
+                { id: 6, name: 'Some category', slug: 'some-category-slug-32', link: 'http://localhost/cat-6' },
               ]],
               author: [
                 {
@@ -57,11 +57,13 @@ describe('Posts carousel', () => {
             id: 32,
             name: 'Cat 1',
             slug: 'cat-1',
+            link: 'http://localhost/cat-1',
           },
           {
             id: 43,
             name: 'Cat 2',
             slug: 'cat-2',
+            link: 'http://localhost/cat-2',
           },
         ],
         isFetching: 0,
@@ -141,7 +143,7 @@ describe('Posts carousel', () => {
       },
     };
 
-    const category = { id: 32, name: 'Cat 1', slug: 'cat-1' };
+    const category = { id: 32, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-32' };
 
     const posts = [];
 
@@ -194,7 +196,7 @@ describe('Posts carousel', () => {
       },
     };
 
-    const category = { id: 32, name: 'Cat 1', slug: 'cat-1' };
+    const category = { id: 32, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-32' };
 
     const posts = [];
 
@@ -255,7 +257,7 @@ describe('Posts carousel', () => {
       },
     };
 
-    const category = { id: 32, name: 'Cat 1', slug: 'cat-1' };
+    const category = { id: 32, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-32' };
 
     const posts = [];
 

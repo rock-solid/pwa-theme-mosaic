@@ -10,6 +10,7 @@ describe('Category card', () => {
       slug: 'mock-slug',
       id: 1,
       name: 'Some mock name',
+      link: 'http://localhost/mock-slug-1',
     };
     const output = shallow(<CategoryCard category={mockCategory} />);
     expect(shallowToJson(output)).toMatchSnapshot();

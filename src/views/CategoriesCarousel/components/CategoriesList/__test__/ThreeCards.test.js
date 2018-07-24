@@ -8,19 +8,22 @@ describe('Three cards', () => {
   it('should render correctly', () => {
     const mockCategory = [
       {
-        slug: 'mock-slug',
+        slug: 'mock-slug-1',
         id: 1,
         name: 'Some mock name',
+        link: 'http://localhost/mock-slug-1',
       },
       {
-        slug: 'mock-slug',
+        slug: 'mock-slug-2',
         id: 2,
         name: 'Some other mock name',
+        link: 'http://localhost/mock-slug-2',
       },
       {
-        slug: 'mock-slug',
+        slug: 'mock-slug-3',
         id: 3,
         name: 'Some name',
+        link: 'http://localhost/mock-slug-3',
       },
     ];
     const output = shallow(<ThreeCards categoriesList={mockCategory} />);

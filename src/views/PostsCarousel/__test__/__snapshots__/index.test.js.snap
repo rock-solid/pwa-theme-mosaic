@@ -9,6 +9,7 @@ exports[`Posts carousel renders loader 1`] = `
   />
   <Footer mock
     page={1}
+    pageLabel=""
     title=""
   />
 </div>
@@ -20,6 +21,7 @@ exports[`Posts carousel renders posts container 1`] = `
 >
   <Footer mock
     page={1}
+    pageLabel={undefined}
     title="Cat 1"
   />
 </div>

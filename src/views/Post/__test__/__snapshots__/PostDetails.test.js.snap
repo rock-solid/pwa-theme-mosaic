@@ -125,8 +125,6 @@ exports[`Post details should render post with featured image 1`] = `
         <Icon
           as="i"
           circular={true}
-          color="grey"
-          inverted={true}
           name="comment"
           size="large"
         />
@@ -257,8 +255,6 @@ exports[`Post details should render post without image 1`] = `
         <Icon
           as="i"
           circular={true}
-          color="grey"
-          inverted={true}
           name="comment"
           size="large"
         />

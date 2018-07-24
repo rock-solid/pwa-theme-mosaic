@@ -7,13 +7,15 @@ exports[`Categories list should render correctly 2 categories 1`] = `
       Array [
         Object {
           "id": 1,
+          "link": "http://localhost/mock-slug-1",
           "name": "Some mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-1",
         },
         Object {
           "id": 2,
+          "link": "http://localhost/mock-slug-2",
           "name": "Some other mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-2",
         },
       ]
     }
@@ -28,18 +30,21 @@ exports[`Categories list should render correctly 3 categories 1`] = `
       Array [
         Object {
           "id": 1,
+          "link": "http://localhost/mock-slug-1",
           "name": "Some mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-1",
         },
         Object {
           "id": 2,
+          "link": "http://localhost/mock-slug-2",
           "name": "Some other mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-2",
         },
         Object {
           "id": 3,
+          "link": "http://localhost/mock-slug-3",
           "name": "Some name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-3",
         },
       ]
     }
@@ -54,23 +59,27 @@ exports[`Categories list should render correctly 4 categories 1`] = `
       Array [
         Object {
           "id": 1,
+          "link": "http://localhost/mock-slug-1",
           "name": "Some mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-1",
         },
         Object {
           "id": 2,
+          "link": "http://localhost/mock-slug-2",
           "name": "Some other mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-2",
         },
         Object {
           "id": 3,
+          "link": "http://localhost/mock-slug-3",
           "name": "Some name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-3",
         },
         Object {
           "id": 4,
+          "link": "http://localhost/mock-slug-4",
           "name": "Mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-4",
         },
       ]
     }
@@ -85,28 +94,33 @@ exports[`Categories list should render correctly 5 categories 1`] = `
       Array [
         Object {
           "id": 1,
+          "link": "http://localhost/mock-slug-1",
           "name": "Some mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-1",
         },
         Object {
           "id": 2,
+          "link": "http://localhost/mock-slug-2",
           "name": "Some other mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-2",
         },
         Object {
           "id": 3,
+          "link": "http://localhost/mock-slug-3",
           "name": "Some name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-3",
         },
         Object {
           "id": 4,
+          "link": "http://localhost/mock-slug-4",
           "name": "Mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-4",
         },
         Object {
           "id": 5,
+          "link": "http://localhost/mock-slug-5",
           "name": "Some other other mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-5",
         },
       ]
     }
@@ -123,8 +137,9 @@ exports[`Categories list should render correctly one category 1`] = `
       Array [
         Object {
           "id": 1,
+          "link": "http://localhost/mock-slug-1",
           "name": "Some mock name",
-          "slug": "mock-slug",
+          "slug": "mock-slug-1",
         },
       ]
     }

@@ -21,11 +21,13 @@ describe('Categories carousel', () => {
             id: 32,
             name: 'Cat 1',
             slug: 'cat-1',
+            link: 'http://localhost/cat-1',
           },
           {
             id: 43,
             name: 'Cat 2',
             slug: 'cat-2',
+            link: 'http://localhost/cat-2',
           },
         ],
         isFetching: 0,
@@ -66,9 +68,9 @@ describe('Categories carousel', () => {
 
   it('calculates the number of pages and cards for single card', () => {
     const categories = [
-      { id: 1, name: 'Cat 1', slug: 'cat-1' },
-      { id: 2, name: 'Cat 2', slug: 'cat-2' },
-      { id: 3, name: 'Cat 3', slug: 'cat-3' },
+      { id: 1, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-1' },
+      { id: 2, name: 'Cat 2', slug: 'cat-2', link: 'http://localhost/cat-2' },
+      { id: 3, name: 'Cat 3', slug: 'cat-3', link: 'http://localhost/cat-3' },
     ];
 
     const componentInstance = renderer.create(
@@ -88,13 +90,13 @@ describe('Categories carousel', () => {
 
   it('calculates the number of cards for two cards', () => {
     const moreCategories = [
-      { id: 1, name: 'Cat 1', slug: 'cat-1' },
-      { id: 2, name: 'Cat 2', slug: 'cat-2' },
-      { id: 3, name: 'Cat 3', slug: 'cat-3' },
-      { id: 4, name: 'Cat 4', slug: 'cat-4' },
-      { id: 5, name: 'Cat 5', slug: 'cat-5' },
-      { id: 6, name: 'Cat 6', slug: 'cat-6' },
-      { id: 7, name: 'Cat 7', slug: 'cat-7' },
+      { id: 1, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-1' },
+      { id: 2, name: 'Cat 2', slug: 'cat-2', link: 'http://localhost/cat-2' },
+      { id: 3, name: 'Cat 3', slug: 'cat-3', link: 'http://localhost/cat-3' },
+      { id: 4, name: 'Cat 4', slug: 'cat-4', link: 'http://localhost/cat-4' },
+      { id: 5, name: 'Cat 5', slug: 'cat-5', link: 'http://localhost/cat-5' },
+      { id: 6, name: 'Cat 6', slug: 'cat-6', link: 'http://localhost/cat-6' },
+      { id: 7, name: 'Cat 7', slug: 'cat-7', link: 'http://localhost/cat-7' },
     ];
 
     const componentInstance2 = renderer.create(
@@ -119,20 +121,20 @@ describe('Categories carousel', () => {
 
   it('calculates the number of cards for multiple cards', () => {
     const moreCategories2 = [
-      { id: 1, name: 'Cat 1', slug: 'cat-1' },
-      { id: 2, name: 'Cat 2', slug: 'cat-1' },
-      { id: 3, name: 'Cat 3', slug: 'cat-1' },
-      { id: 4, name: 'Cat 4', slug: 'cat-1' },
-      { id: 5, name: 'Cat 5', slug: 'cat-1' },
-      { id: 6, name: 'Cat 6', slug: 'cat-1' },
-      { id: 7, name: 'Cat 7', slug: 'cat-1' },
-      { id: 8, name: 'Cat 8', slug: 'cat-1' },
-      { id: 9, name: 'Cat 9', slug: 'cat-1' },
-      { id: 10, name: 'Cat 10', slug: 'cat-1' },
-      { id: 11, name: 'Cat 11', slug: 'cat-1' },
-      { id: 12, name: 'Cat 12', slug: 'cat-1' },
-      { id: 13, name: 'Cat 13', slug: 'cat-1' },
-      { id: 14, name: 'Cat 14', slug: 'cat-1' },
+      { id: 1, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-1' },
+      { id: 2, name: 'Cat 2', slug: 'cat-2', link: 'http://localhost/cat-2' },
+      { id: 3, name: 'Cat 3', slug: 'cat-3', link: 'http://localhost/cat-3' },
+      { id: 4, name: 'Cat 4', slug: 'cat-4', link: 'http://localhost/cat-4' },
+      { id: 5, name: 'Cat 5', slug: 'cat-5', link: 'http://localhost/cat-5' },
+      { id: 6, name: 'Cat 6', slug: 'cat-6', link: 'http://localhost/cat-6' },
+      { id: 7, name: 'Cat 7', slug: 'cat-7', link: 'http://localhost/cat-7' },
+      { id: 8, name: 'Cat 8', slug: 'cat-8', link: 'http://localhost/cat-8' },
+      { id: 9, name: 'Cat 9', slug: 'cat-9', link: 'http://localhost/cat-9' },
+      { id: 10, name: 'Cat 10', slug: 'cat-10', link: 'http://localhost/cat-10' },
+      { id: 11, name: 'Cat 11', slug: 'cat-11', link: 'http://localhost/cat-11' },
+      { id: 12, name: 'Cat 12', slug: 'cat-12', link: 'http://localhost/cat-12' },
+      { id: 13, name: 'Cat 13', slug: 'cat-13', link: 'http://localhost/cat-13' },
+      { id: 14, name: 'Cat 14', slug: 'cat-14', link: 'http://localhost/cat-14' },
     ];
 
     const componentInstance3 = renderer.create(
@@ -153,9 +155,9 @@ describe('Categories carousel', () => {
     const dispatchSpy = sinon.spy(jest.fn());
 
     const moreCategories = [
-      { id: 1, name: 'Cat 1', slug: 'cat-1' },
-      { id: 2, name: 'Cat 2', slug: 'cat-1' },
-      { id: 3, name: 'Cat 3', slug: 'cat-1' },
+      { id: 1, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-1' },
+      { id: 2, name: 'Cat 2', slug: 'cat-2', link: 'http://localhost/cat-2' },
+      { id: 3, name: 'Cat 3', slug: 'cat-3', link: 'http://localhost/cat-3' },
     ];
 
     const componentInstance = renderer.create(
@@ -178,20 +180,20 @@ describe('Categories carousel', () => {
     const dispatchSpy = sinon.spy(jest.fn());
 
     const moreCategories = [
-      { id: 1, name: 'Cat 1', slug: 'cat-1' },
-      { id: 2, name: 'Cat 2', slug: 'cat-1' },
-      { id: 3, name: 'Cat 3', slug: 'cat-1' },
-      { id: 4, name: 'Cat 4', slug: 'cat-1' },
-      { id: 5, name: 'Cat 5', slug: 'cat-1' },
-      { id: 6, name: 'Cat 6', slug: 'cat-1' },
-      { id: 7, name: 'Cat 7', slug: 'cat-1' },
-      { id: 8, name: 'Cat 8', slug: 'cat-1' },
-      { id: 9, name: 'Cat 9', slug: 'cat-1' },
-      { id: 10, name: 'Cat 10', slug: 'cat-1' },
-      { id: 11, name: 'Cat 11', slug: 'cat-1' },
-      { id: 12, name: 'Cat 12', slug: 'cat-1' },
-      { id: 13, name: 'Cat 13', slug: 'cat-1' },
-      { id: 14, name: 'Cat 14', slug: 'cat-1' },
+      { id: 1, name: 'Cat 1', slug: 'cat-1', link: 'http://localhost/cat-1' },
+      { id: 2, name: 'Cat 2', slug: 'cat-2', link: 'http://localhost/cat-2' },
+      { id: 3, name: 'Cat 3', slug: 'cat-3', link: 'http://localhost/cat-3' },
+      { id: 4, name: 'Cat 4', slug: 'cat-4', link: 'http://localhost/cat-4' },
+      { id: 5, name: 'Cat 5', slug: 'cat-5', link: 'http://localhost/cat-5' },
+      { id: 6, name: 'Cat 6', slug: 'cat-6', link: 'http://localhost/cat-6' },
+      { id: 7, name: 'Cat 7', slug: 'cat-7', link: 'http://localhost/cat-7' },
+      { id: 8, name: 'Cat 8', slug: 'cat-8', link: 'http://localhost/cat-8' },
+      { id: 9, name: 'Cat 9', slug: 'cat-9', link: 'http://localhost/cat-9' },
+      { id: 10, name: 'Cat 10', slug: 'cat-10', link: 'http://localhost/cat-10' },
+      { id: 11, name: 'Cat 11', slug: 'cat-11', link: 'http://localhost/cat-11' },
+      { id: 12, name: 'Cat 12', slug: 'cat-12', link: 'http://localhost/cat-12' },
+      { id: 13, name: 'Cat 13', slug: 'cat-13', link: 'http://localhost/cat-13' },
+      { id: 14, name: 'Cat 14', slug: 'cat-14', link: 'http://localhost/cat-14' },
     ];
 
     const componentInstance = renderer.create(

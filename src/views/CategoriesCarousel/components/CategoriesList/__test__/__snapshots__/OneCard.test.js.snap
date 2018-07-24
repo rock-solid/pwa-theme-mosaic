@@ -10,8 +10,9 @@ exports[`One card should render correctly 1`] = `
         category={
           Object {
             "id": 1,
+            "link": "http://localhost/mock-slug-1",
             "name": "Some mock name",
-            "slug": "mock-slug",
+            "slug": "mock-slug-1",
           }
         }
         key="1"
